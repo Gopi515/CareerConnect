@@ -4,7 +4,10 @@
 /*roots*/
 
 :root{
-    
+    --first-col:#ffff;
+    --second-col:#E7FBFF;
+    --third-col:#00ECFF;
+    --fourth-col: #0083FA;
 }
 
 /*start*/
@@ -23,3 +26,4 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
