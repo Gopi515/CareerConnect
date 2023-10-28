@@ -3,10 +3,12 @@
 
 /*roots*/
 :root{
-    --first-col:#ffff;
+    --first-col:#ffffff;
+    --last-col: #00000000;
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
+    --h1-fontsize: 45px
 }
 
 /*start*/
@@ -18,6 +20,11 @@
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
 }
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
 
 #wrapper{
     height: 100vh;
@@ -25,3 +32,35 @@
     overflow-x: hidden;
 }
 
+/*------------Login Page------------*/
+.login-page {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    justify-content: space-between;
+    position: absolute;
+    display: inline-flex;
+    text-align: left;
+    align-items: center;
+}
+
+/*Left side writtings*/
+.left-side {
+    margin-left: 250px;
+}
+
+h1 {
+    font-size: var(--h1-fontsize);
+    font-weight: 800;
+}
+
+span {
+    color: var(--fourth-col);
+}
+
+/*right side box*/
+.right-side {
+    margin: 100px;
+    padding: 15px;
+    background-color: #0083FA;
+}
