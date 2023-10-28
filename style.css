@@ -32,6 +32,43 @@ html {
     overflow-x: hidden;
 }
 
+
+/* langing page */
+
+/* navbar */
+#navbar {
+    position: fixed;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-right: -120%;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.6rem;
+}
+
+/* Page content styles */
+.content {
+    padding: 4rem;
+    font-size: 2rem;
+    height: 200vh;
+}
+
 /*------------Login Page------------*/
 .login-page {
     height: 100%;
