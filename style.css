@@ -8,7 +8,9 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
-    --h1-fontsize: 45px
+    --h1-fontsize: 45px;
+    --padding-btn: 10px 20px;
+    --border: none;
 }
 
 /*start*/
@@ -100,4 +102,15 @@ span {
     margin: 100px;
     padding: 15px;
     background-color: #0083FA;
+}
+
+/*button*/
+.btn {
+    padding: var(--padding-btn);
+    border-radius: 50px;
+    border: var(--border);
+    font-weight: 600;
+    font-size: 15px;
+    background-color: var(--fourth-col);
+    color: var(--first-col);
 }
