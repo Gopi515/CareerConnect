@@ -8,9 +8,11 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
+    --fifth-col: #3bc6d0;
     --h1-fontsize: 45px;
     --padding-btn: 10px 20px;
     --border: none;
+    --box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
 }
 
 /*start*/
@@ -100,12 +102,17 @@ span {
 /*right side box*/
 .right-side {
     margin: 100px;
-    padding: 15px;
-    background-color: #0083FA;
+    padding: 50px;
+    background-color: var(--second-col);
 }
 
 /*button*/
+.right-card {
+    margin-bottom: 40px;
+}
+
 .btn {
+    margin: 3px;
     padding: var(--padding-btn);
     border-radius: 50px;
     border: var(--border);
@@ -113,4 +120,14 @@ span {
     font-size: 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
+.btn:hover {
+    box-shadow: var(--box-shadow);
+}
+.btn:focus {
+    background-color: var(--fifth-col);
+}
+
+/*entries part*/
