@@ -199,6 +199,23 @@ span {
 
 /* ----student profiles---- */
 
+.stu-container{
+    width:1280px;
+    margin:0 auto;
+    background-color: var(--first-col);
+    margin-top: 100px;
+}
+
+.stu-header{
+    width: 1138px;
+    margin: 0 auto;
+    background-color: var(--first-col);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .header-item1{
     font-size: 35px;
     color: var(--third-col);
@@ -229,6 +246,7 @@ span {
     border-radius: 20px;
     color: var(--fourth-col);
     font-size: 23px;
+    padding-left: 10px;
 }
 
 .stu-box-design2{
@@ -238,8 +256,10 @@ span {
     border-radius: 20px;   
     color: var(--fourth-col); 
     font-size: 23px;
+    padding-left: 10px;
 }
 
+/* country code dropdown  */
 #country-code{
     height: 75px;
     width: 89px;
@@ -247,7 +267,9 @@ span {
     border-radius: 20px; 
     color: var(--fourth-col);
     font-size: 23px;
-
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .mob-box{
@@ -257,6 +279,8 @@ span {
     border-radius: 20px; 
     color: var(--fourth-col);
     font-size: 23px;
+    padding-left: 10px;
+    margin-left: 21px;
 }
 
 .stu-para-style2{
@@ -276,6 +300,7 @@ span {
     border-radius: 20px;
     color: var(--fourth-col);
     font-size: 23px;
+    padding-left: 10px;
 }
 
 .stu-entry-boxes1{
@@ -291,10 +316,8 @@ span {
 }
 
 .stu-entry-boxes3{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: 30px;
+    margin-left: 83px;
 }
 
 .stu-entry-boxes4{
@@ -304,10 +327,42 @@ span {
 
 .stu-first-name{
     margin-left: 65px;
-    margin-top: 35px;
+    margin-top: 50px;
 }
 
 .stu-last-name{
     margin-right: 65px;
-    margin-top: 35px;
+    margin-top: 50px;
+}
+
+.stu-email, .stu-address1, 
+.stu-address2, .stu-pin,
+.stu-state, .stu-city,
+.stu-country{
+    margin-top: 30px;
+}
+
+.stu-address{
+    margin-top: 50px;
+    margin-left: 83px;
+
+}
+
+.pin-state{
+    margin-left: 27.7px;
+}
+
+.city-country{
+    margin-right: 27.7px;
+}
+
+/* end next button */
+.next-btn{
+    font-size: 23px;
+    font-weight: 500;
+    /* border-radius: 20px; */
+    padding: 12px 40px;
+    margin-top: 45px;
+    margin-left: 1070px;
+    margin-bottom: 100px;
 }
