@@ -8,10 +8,11 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
-    --h1-fontsize: 45px;
+    --fifth-col: #16c9d5;
     --h1-fontsize: 45px;
     --padding-btn: 10px 20px;
     --border: none;
+    --box-shadow: 0 1px 2px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.07), 0 16px 32px rgba(0,0,0,0.07), 0 32px 64px rgba(0,0,0,0.07);
 }
 
 /*start*/
@@ -118,12 +119,17 @@ span {
 /*right side box*/
 .right-side {
     margin: 100px;
-    padding: 15px;
-    background-color: #0083FA;
+    padding: 50px;
+    background-color: var(--second-col);
 }
 
 /*button*/
+.right-card {
+    margin-bottom: 20px;
+}
+
 .btn {
+    margin: 3px;
     padding: var(--padding-btn);
     border-radius: 50px;
     border: var(--border);
@@ -131,139 +137,15 @@ span {
     font-size: 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
-
-
-
-/* ----------profiles--------------- */
-
-/* ----student profile---- */
-
-.stu-container{
-    width:1280px;
-    margin:0 auto;
-    background-color: var(--first-col);
-    margin-top: 100px;
+.btn:hover {
+    box-shadow: var(--box-shadow);
 }
-
-.stu-header{
-    width: 1138px;
-    margin: 0 auto;
-    background-color: var(--first-col);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.btn:focus {
+    background-color: var(--fifth-col);
 }
-
-.header-item1{
-    font-size: 35px;
-    color: var(--third-col);
-}
-
-.header-item2{
-    font-size: 45px;
-    color: #0362FF;
-}
-
-.stu-hero-section{
-    width: 1138px;
-    margin: 0 auto;
-    background-color: #F1F7FC;
-    border-radius: 30px;
-    margin-top: 75px;
-}
-
-.stu-para-style1{
-    font-size: 25px;
-    color: var(--fourth-col);
-}
-
-.stu-box-design1{
-    height: 75px;
-    width: 479px;
-    background-color: #99EEDD;
-    border-radius: 20px;
-    color: var(--fourth-col);
-    font-size: 23px;
-}
-
-.stu-box-design2{
-    height: 75px;
-    width: 974px;
-    background-color: #99EEDD;
-    border-radius: 20px;   
-    color: var(--fourth-col); 
-    font-size: 23px;
-}
-
-#country-code{
-    height: 75px;
-    width: 89px;
-    background-color: #99EEDD;
-    border-radius: 20px; 
-    color: var(--fourth-col);
-    font-size: 23px;
-
-}
-
-.mob-box{
-    height: 75px;
-    width: 859px;
-    background-color: #99EEDD;
-    border-radius: 20px; 
-    color: var(--fourth-col);
-    font-size: 23px;
-}
-
-.stu-para-style2{
-    font-size: 23px;
-    color: var(--fourth-col);
-}
-
-.stu-para{
-    font-size: 20px;
-    color: var(--third-col);
-}
-
-.stu-box-design3{
-    height: 75px;
-    width: 459px;
-    background-color: #99EEDD;
-    border-radius: 20px;
-    color: var(--fourth-col);
-    font-size: 23px;
-}
-
-.stu-entry-boxes1{
-    display: flex;
-    justify-content: space-evenly;
-    
-}
-
-.stu-entry-boxes2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.stu-entry-boxes3{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.stu-entry-boxes4{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.stu-first-name{
-    margin-left: 50px;
-}
-
-.stu-last-name{
-    margin-right: 50px;
+.btn::after {
+    background-color: var(--fifth-col);
 }
