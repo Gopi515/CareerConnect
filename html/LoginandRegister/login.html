@@ -25,9 +25,9 @@
 
             <!-- for the re-direct -->
             <div class="right-card">
-                <button class="btn teacher">Teacher</button>
-                <button class="btn student">Student</button>
-                <button class="btn company">Company</button>
+                <button class="btn" id="teacherButton">Teacher</button>
+                <button class="btn" id="studentButton">Student</button>
+                <button class="btn" id="companyButton">Company</button>
             </div>
 
             <!-- entries -->
@@ -43,16 +43,19 @@
                     <input type="password" placeholder="password please">
                 </div>
                 <div>
-                    <button class="btn submit">Submit</button>
+                    <button class="btn submit" id="submitButton" onclick="submitSelection()">Submit</button>
                 </div>
 
                 <!-- registration re-direct -->
                 <div class="gotoreg">
                     <p>Don't have an account?</p>
-                    <button class="btn">Register Here</button>
+                    <a href="/html/LoginandRegister/"><button class="btn">Register Here</button></a>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- JavaScript connects -->
+    <script src="/javaScripts/pageRedirect.js"></script>
 </body>
 </html>
