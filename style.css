@@ -126,6 +126,7 @@ span {
     margin: 100px;
     padding: 50px;
     background-color: var(--second-col);
+    border-radius: 12px;
 }
 
 /*button*/
