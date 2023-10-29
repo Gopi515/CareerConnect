@@ -8,7 +8,6 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
-    --fifth-col: #3bc6d0;
     --h1-fontsize: 45px;
     --padding-btn: 10px 20px;
     --border: none;
@@ -44,7 +43,7 @@ html {
     position: fixed;
     background-color: var(--second-col);
     width: 100%;
-    height: 5rem;
+    height: 4.5rem;
 }
 
 .container {
@@ -71,9 +70,14 @@ html {
     color: var(--fourth-col);
     font-size: 1.2rem;
     font-weight: 600;
+    transition: 0.5s;
 }
 .nav-links li a:hover{
-
+    color: var(--first-col);
+    background: var(--fourth-col);
+    padding: 8px 18px;
+    font-size: 1rem;
+    border-radius: 3rem;
 }
 
 /* Page content styles */
@@ -132,14 +136,4 @@ span {
     font-size: 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
 }
-.btn:hover {
-    box-shadow: var(--box-shadow);
-}
-.btn:focus {
-    background-color: var(--fifth-col);
-}
-
-/*entries part*/
