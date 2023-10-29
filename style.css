@@ -39,7 +39,7 @@ html {
 }
 
 
-/* langing page */
+/*------langing page------*/
 
 /* navbar */
 #navbar {
@@ -47,6 +47,7 @@ html {
     background-color: var(--second-col);
     width: 100%;
     height: 4.5rem;
+    z-index: 999;
 }
 
 .container {
@@ -85,10 +86,50 @@ html {
 
 /* Page content styles */
 .content {
-    padding: 4rem;
-    font-size: 2rem;
-    height: 200vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
+.content .helloText{
+    transform: translateY(10rem)
+}
+.helloText h1{
+    font-size: 1.4rem;
+    color: var(--fourth-col);
+    font-weight: 600;
+}
+.helloText p{
+    color: var(--third-col);
+    font-weight: 600;
+}
+
+/* trending slider */
+.trending h1{
+    transform: translateY(15rem);
+    font-size: 1.4rem;
+    color: var(--fourth-col);
+    font-weight: 600;
+}
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
 
 
