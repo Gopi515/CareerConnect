@@ -8,12 +8,9 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
-<<<<<<< Updated upstream
     --fifth-col: #16c9d5;
-=======
     --sixth-col: #0362FF;
     --seventh-col: #99EEDD;
->>>>>>> Stashed changes
     --h1-fontsize: 45px;
     --padding-btn: 10px 20px;
     --border: none;
@@ -152,10 +149,9 @@ span {
 .btn:focus {
     background-color: var(--fifth-col);
 }
-<<<<<<< Updated upstream
 .btn::after {
     background-color: var(--fifth-col);
-=======
+}
 
 .header-item1{
     font-size: 35px;
@@ -268,5 +264,4 @@ span {
 .stu-last-name{
     margin-right: 65px;
     margin-top: 35px;
->>>>>>> Stashed changes
 }
