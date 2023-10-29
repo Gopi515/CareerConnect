@@ -8,6 +8,7 @@
     --second-col:#E7FBFF;
     --third-col:#00ECFF;
     --fourth-col: #0083FA;
+    --fifth-col: #16c9d5;
     --h1-fontsize: 45px;
     --padding-btn: 10px 20px;
     --border: none;
@@ -124,7 +125,7 @@ span {
 
 /*button*/
 .right-card {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .btn {
@@ -136,4 +137,15 @@ span {
     font-size: 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+    box-shadow: var(--box-shadow);
+}
+.btn:focus {
+    background-color: var(--fifth-col);
+}
+.btn::after {
+    background-color: var(--fifth-col);
 }
