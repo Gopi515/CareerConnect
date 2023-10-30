@@ -193,10 +193,7 @@ span {
 .btn:hover {
     box-shadow: var(--box-shadow);
 }
-.btn:focus {
-    background-color: var(--fifth-col);
-}
-.btn::after {
+.btn.selected {
     background-color: var(--fifth-col);
 }
 
