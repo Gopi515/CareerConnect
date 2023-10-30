@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- metas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- titles -->
+    <title>CareerConnect-Register</title>
+
+    <!-- linking -->
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <div class="register-page">
+
+        <!-- The main box -->
+        <div class="right-side">
+
+            <!-- heading -->
+            <h2 class="title">Register Page</h2>
+
+            <!-- the input boxes -->
+            <div class="withReg">
+                <div class="inputboxes">
+                    <p class="inphead user-name">User Name</p>
+                    <input class="pleasebox" type="text" placeholder="Enter your username">
+                    
+                    <p class="inphead email">Email</p>
+                    <input class="pleasebox" type="email" placeholder="Enter the email">
+                    
+                    <p class="inphead password">Password</p>
+                    <input class="pleasebox" type="password" placeholder="Password please">
+
+                    <p class="inphead password">Repeat Password</p>
+                    <input class="pleasebox" type="password" placeholder="Retype password please">
+                </div>
+            </div>
+
+            <!-- role button -->
+            <div class="role-box">
+                <p class="selecttext">Please select your role:</p>
+                <div class="buttonsrole">
+                    <button class="btn forpad" id="teacherButton">Teacher</button>
+                    <button class="btn forpad" id="studentButton">Student</button>
+                    <button class="btn forpad" id="companyButton">Company</button>
+                </div>
+            </div>
+
+            <!-- The submit button -->
+            <div class="regdiv">
+                <button class="btn register" id="submitButton" onclick="submitSelection()">Register</button>
+            </div>
+                
+            <div class="gotolog">
+                <p>Already have an account?</p>
+                <a href="/html/LoginandRegister/login.html"><button class="btn">Login Here</button></a>
+            </div>
+        </div>
+    </div>
+<script src="/javaScripts/pageRedirect.js"></script>
+</body>
+
+</html>
