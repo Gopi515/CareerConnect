@@ -1,10 +1,12 @@
-const genderButtons = document.querySelectorAll('.gender-button');
+const buttons = document.querySelectorAll('.gender-button, .btn');
 
-genderButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        genderButtons.forEach(btn => {
-            btn.classList.remove('selected');
-        });
-        button.classList.add('selected');
-    });
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    if (button.classList.contains('selected')) {
+      button.classList.remove('selected');
+    } else {
+      buttons.forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+    }
+  });
 });
