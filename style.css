@@ -307,7 +307,7 @@ span {
     width:1280px;
     margin:0 auto;
     background-color: var(--first-col);
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 .stu-header{
@@ -419,7 +419,7 @@ span {
     align-items: center;
 }
 
-.stu-entry-boxes3{
+.stu-entry-boxes3, .stu-gender{
     margin-top: 30px;
     margin-left: 83px;
 }
@@ -458,6 +458,37 @@ span {
 
 .city-country{
     margin-right: 27.7px;
+}
+
+/*-- gender button --*/
+.gender-selection {
+    display: flex;
+}
+
+.gender-button {
+    color: var(--fourth-col);
+    background-color: var(--seventh-col);
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1.4rem;
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+}
+
+.gender-button:hover {
+    background-color: var(--fourth-col);
+    color: #fff;
+}
+
+.gender-button.selected {
+    background-color: var(--fourth-col);
+    color: #fff;
+}
+
+#female, #others{
+    margin-left: 1.5rem;
 }
 
 /* end next button */
