@@ -134,7 +134,9 @@
                     </div>
                 </div>
 
+
                 <!-- gender button -->
+
                 <div class="stu-gender">
                     <p class="stu-para-style1">Gender</p>
                     <div class="gender-selection">
@@ -144,17 +146,70 @@
                     </div>
                 </div>
 
+
+                <!-- select languages -->
+
+                <div class="stu-language">
+
+
+                    <p class="stu-para-style1">Languages you know</p>
+
+
+                    <div id="selected-items">
+                        <div id="selected-items-list"></div>
+                    </div>
+
+                    <div class="add-language">
+                        <div id="select-items-button" onclick="showMenu()">+ Add Languages</div>
+                        <div id="languages">
+                          <div class="checkbox-div">
+                            <div class="label">
+                                <input type="checkbox" value="bengail" id="bengail">
+                                <label for="bengail">Bengali</label>
+                            </div>
+                            <div class="label">
+                                <input type="checkbox" value="hindi" id="hindi">
+                                <label for="hindi">Hindi</label>
+                            </div>
+                            <div class="label">
+                                <input type="checkbox" value="english" id="english">
+                                <label for="english">English</label>
+                            </div>
+                            <div class="label">
+                                <input type="checkbox" value="tamil" id="tamil">
+                                <label for="tamil">Tamil</label>
+                            </div>
+                            <div class="label">
+                                <input type="checkbox" value="french" id="french">
+                                <label for="french">French</label>
+                            </div>
+                            <div class="label">
+                                <input type="checkbox" value="spanish" id="spanish">
+                                <label for="spanish">Spanish</label>
+                            </div>
+                          </div>
+                          <div onclick="addToSelected()" class="ok-btn">OK</div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+
             </div>
 
-
+          
             <!-- end next button  -->
-            <button href="#" class="btn next-btn">Next</button>
+            <a href="../../landingPage/landingPage.html"><button class="btn next-btn">Next</button></a>
 
         </div>
 
 
     </div>
 
-    <script src="/javaScripts/selectGender.js"></script>
+    <script src="../../../javaScripts/selectGender.js"></script>
+    <script src="../../../javaScripts/selectLanguage.js"></script>
 </body>
 </html>
+
+

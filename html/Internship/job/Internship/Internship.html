@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship/Job</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <!-- navbar -->
+    <header>
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo">CareerConnect</div>
+                <ul class="nav-links">
+                    <li><a href="#">Internship</a></li>
+                    <li><a href="#">Job</a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="#"><i class="fas fa-message"></i></a></li>
+                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- filter section -->
+    <div class="internshipSection">
+    <div class="filterContainer">
+      <div class="filter">
+        <i class="fas fa-filter">
+            <h1>Filters</h1>
+        </i>
+      </div>
+       
+      <div class="filterOptions">
+
+        <!-- checkbox -->
+        <label class="container">As per my preferences
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container containerWfrmH">Work from home
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container containerPartTime">Part-time
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container containerjobOff">Internships with job offer
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+
+        <!-- inputbox -->
+        <label class="inputBox">
+            <p>Profile</p>
+            <input type="text" placeholder="e.g. Web Development">
+        </label>
+        <label class="inputBox inputBoxlocation">
+            <p>Location</p>
+            <input type="text" placeholder="e.g. Delhi">
+        </label>
+        <label class="inputBox inputBoxDate">
+            <p>Starting from (or after)</p>
+            <input type="date" placeholder="Choose Date">
+        </label>
+        <label class="inputBox inputBoxDuration">
+            <p>Max.duration(months)</p>
+            <div class="dropdown">
+                <input type="text" id="inputBox" onclick="showDropdown()" placeholder="Choose Duration">
+                <div class="dropdown-content" id="dropdownOptions">
+                  <a href="#" onclick="selectOption('1 month')">1 month</a>
+                  <a href="#" onclick="selectOption('2 months')">2 months</a>
+                  <a href="#" onclick="selectOption('3 months')">3 months</a>
+                  <a href="#" onclick="selectOption('4 months')">4 months</a>
+                  <a href="#" onclick="selectOption('5 months')">5 months</a>
+                  <a href="#" onclick="selectOption('6 months')">6 months</a>
+                </div>
+              </div>
+        </label>
+
+      </div>
+    </div>
+    </div>
+
+
+    <script src="/javaScripts/dropdown.js"></script>
+</body>
+</html>
