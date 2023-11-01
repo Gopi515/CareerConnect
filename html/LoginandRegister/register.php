@@ -17,55 +17,78 @@
 
 <!-- php -->
 <?php
-require '../../partials/dbconnect.php'
-    ?>
-<?php
+require '../../dbconnect.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
+
+    if (isset($_POST['password']) && isset($_POST['cpassword'])) {
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+    } else {
+        echo "<script>alert('Error: Password and password confirmation are required.');</script>";
+        // For further error handling or redirect the user as needed.
+        exit;
+    }
+
     if (isset($_POST['role'])) {
         $roles = $_POST['role'];
 
-        if ($roles == 'teacher') {
-            $existsql = "SELECT * FROM `teacher` WHERE `user_name` = '$username' or `email` = '$email'";
-            $existresult = mysqli_query($conn, $existsql);
+        if (empty($roles)) {
+            echo "<script>alert('Error: Please select a role.');</script>";
+            // For further error handling or redirect the user as needed.
+            exit;
+        }
+
+        function registerUser($conn, $role, $username, $password, $email, $cpassword)
+        {
+            $existsql = "SELECT * FROM `$role` WHERE `user_name` = ? or `email` = ?";
+            $existstmt = mysqli_prepare($conn, $existsql);
+            mysqli_stmt_bind_param($existstmt, "ss", $username, $email);
+            mysqli_stmt_execute($existstmt);
+            $existresult = mysqli_stmt_get_result($existstmt);
             $num = mysqli_num_rows($existresult);
+
             if ($num != 0) {
                 header("location: ./register.php");
                 exit;
-            } else {
-                if ($password == $cpassword) {
-                    echo $username;
-                    echo $email;
-                    $HASH = password_hash($password, PASSWORD_DEFAULT);
-                    $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) VALUES ('$username','$HASH','$email')";
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
-                        header("location: ../profiles/teacher/teacher.html");
-                        exit;
-                    }
-                }
             }
-        } elseif ($roles == 'student') {
+
             if ($password == $cpassword) {
-                echo $username;
-                echo $email;
                 $HASH = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) VALUES ('$username','$HASH','$email')";
-                $result = mysqli_query($conn, $sql);
-                if ($result) {
-                    header("location: ../profiles/student/student.html");
+                $sql = "INSERT INTO `$role`(`user_name`, `pass`, `email`) VALUES (?, ?, ?)";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "sss", $username, $HASH, $email);
+                mysqli_stmt_execute($stmt);
+
+                if ($stmt) {
+                    header("location: ../profiles/$role/$role.html");
                     exit;
+                } else {
+                    echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
+                    error_log("Database error: " . mysqli_error($conn));
                 }
+            } else {
+                echo "<script>alert('Error: Password and password confirmation do not match. Please make sure you entered the same password in both fields.');</script>";
             }
+        }
+
+        if ($roles == 'teacher') {
+            registerUser($conn, 'teacher', $username, $password, $email, $cpassword);
+        } elseif ($roles == 'student') {
+            registerUser($conn, 'student', $username, $password, $email, $cpassword);
+        } elseif ($roles == 'company') {
+            registerUser($conn, 'company', $username, $password, $email, $cpassword);
+        }
+        else {
+            echo "<script>alert('Error: Please select a role first')</script>";
         }
     }
 }
-
 ?>
 
+<!-- normal html starts again -->
 <body>
 
     <div class="register-page">
@@ -82,16 +105,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="withReg">
                         <div class="inputboxes">
                             <p class="inphead user-name">User Name</p>
-                            <input name="username" class="pleasebox" type="text" placeholder="Enter your username">
+                            <input name="username" required class="pleasebox" type="text" placeholder="Enter your username">
 
                             <p class="inphead email">Email</p>
-                            <input name="email" class="pleasebox" type="email" placeholder="Enter the email">
+                            <input name="email" required class="pleasebox" type="email" placeholder="Enter the email">
 
                             <p class="inphead password">Password</p>
-                            <input name="password" class="pleasebox" type="password" placeholder="Password please">
+                            <input name="password" required class="pleasebox" type="password" placeholder="Password please">
 
                             <p class="inphead password">Repeat Password</p>
-                            <input name="cpassword" class="pleasebox" type="password"
+                            <input name="cpassword" required class="pleasebox" type="password"
                                 placeholder="Retype password please">
                         </div>
                     </div>
@@ -101,15 +124,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p class="selecttext">Please select your role:</p>
                         <div class="buttonsrole">
                             <select class="roles" name="role" id="roles">
-                                <option value="teacher">Teacher</option>
-                                <option value="student">Student</option>
-                                <option value="company">Company</option>
+                                <option class="drpdwn" value="default">Select a role</option>
+                                <option class="drpdwn" value="teacher">Teacher</option>
+                                <option class="drpdwn" value="student">Student</option>
+                                <option class="drpdwn" value="company">Company</option>
                             </select>
-
-
-                            <!-- <button value="teacher" class="btn forpad" id="teacherButton">Teacher</button>
-                            <button value="student" class="btn forpad" id="studentButton">Student</button>
-                            <button value="company" class="btn forpad" id="companyButton">Company</button> -->
                         </div>
                     </div>
 
@@ -122,13 +141,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="gotolog">
                 <p>Already have an account?</p>
-                <a href="/html/LoginandRegister/login.html"><button class="btn">Login Here</button></a>
+                <a href="../LoginandRegister/login.php"><button class="btn">Login Here</button></a>
             </div>
         </div>
     </div>
 
     <!-- scripts -->
-    <script src="../../javaScripts/pageRedirect.js"></script>
     <script src="../../javaScripts/selectGender.js"></script>
 </body>
 
