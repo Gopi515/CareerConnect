@@ -10,7 +10,7 @@
     <title>CareerConnect-Login</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../../style.css">
 
 </head>
 <body>
@@ -51,7 +51,7 @@
                 <!-- registration re-direct -->
                 <div class="gotoreg">
                     <p>Don't have an account?</p>
-                    <a href="/html/LoginandRegister/register.html"><button class="btn">Register Here</button></a>
+                    <a href="../LoginandRegister/register.php"><button class="btn">Register Here</button></a>
                 </div>
             </div>
         </div>
