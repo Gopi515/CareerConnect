@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="#">Internship</a></li>
+                    <li id="internshipButton"><a href="#">Internship</a></li>
                     <li><a href="#">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
@@ -38,39 +38,39 @@
 
         <!-- checkbox -->
         <label class="container">As per my preferences
-            <input type="checkbox" checked="checked">
+            <input type="checkbox"  id="myCheckbox" onchange="toggleInput()">
             <span class="checkmark"></span>
         </label>
         <label class="container containerWfrmH">Work from home
-            <input type="checkbox" checked="checked">
+            <input type="checkbox" id="option5Input" onchange="toggleInput()">
             <span class="checkmark"></span>
         </label>
         <label class="container containerPartTime">Part-time
-            <input type="checkbox" checked="checked">
+            <input type="checkbox" id="option6Input">
             <span class="checkmark"></span>
         </label>
         <label class="container containerjobOff">Internships with job offer
-            <input type="checkbox" checked="checked">
+            <input type="checkbox" id="option7Input">
             <span class="checkmark"></span>
         </label>
 
         <!-- inputbox -->
         <label class="inputBox">
             <p>Profile</p>
-            <input type="text" placeholder="e.g. Web Development">
+            <input type="text" placeholder="e.g. Web Development" id="option1Input">
         </label>
         <label class="inputBox inputBoxlocation">
             <p>Location</p>
-            <input type="text" placeholder="e.g. Delhi">
+            <input type="text" placeholder="e.g. Delhi" id="option2Input">
         </label>
         <label class="inputBox inputBoxDate">
             <p>Starting from (or after)</p>
-            <input type="date" placeholder="Choose Date">
+            <input type="date" placeholder="Choose Date" id="option3Input">
         </label>
         <label class="inputBox inputBoxDuration">
             <p>Max.duration(months)</p>
             <div class="dropdown">
-                <input type="text" id="inputBox" onclick="showDropdown()" placeholder="Choose Duration">
+                <input type="text" id="option4Input" onclick="showDropdown()" placeholder="Choose Duration">
                 <div class="dropdown-content" id="dropdownOptions">
                   <a href="#" onclick="selectOption('1 month')">1 month</a>
                   <a href="#" onclick="selectOption('2 months')">2 months</a>
@@ -84,9 +84,35 @@
 
       </div>
     </div>
+
+    <!-- Internship listings -->
+    <div class="internshipContainer">
+        <h2>
+         821 Total  internships
+        </h2>
+
+        <div class="internshipOrder">
+            <div class="internshipCard internshipCard1"></div>
+            <div class="internshipCard internshipCard2"></div>
+            <div class="internshipCard internshipCard3"></div>
+            <div class="internshipCard internshipCard4"></div>
+        </div>
+
+        <h3>
+            1/206
+        </h3>
+    </div>
+
     </div>
 
 
+    <!-- <footer>
+
+    </footer> -->
+
+
+
     <script src="/javaScripts/dropdown.js"></script>
+    <script src="/javaScripts/inputDisable.js"></script>
 </body>
 </html>
