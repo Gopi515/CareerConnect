@@ -17,7 +17,7 @@
 
 <!-- php -->
 <?php
-require '../../partials/dbconnect.php'
+require '../../dbconnect.php'
     ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -66,6 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
+
+<!-- normal html starts again -->
 <body>
 
     <div class="register-page">
@@ -101,15 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p class="selecttext">Please select your role:</p>
                         <div class="buttonsrole">
                             <select class="roles" name="role" id="roles">
-                                <option value="teacher">Teacher</option>
-                                <option value="student">Student</option>
-                                <option value="company">Company</option>
+                                <option class="drpdwn" value="default">Select a role</option>
+                                <option class="drpdwn" value="teacher">Teacher</option>
+                                <option class="drpdwn" value="student">Student</option>
+                                <option class="drpdwn" value="company">Company</option>
                             </select>
-
-
-                            <!-- <button value="teacher" class="btn forpad" id="teacherButton">Teacher</button>
-                            <button value="student" class="btn forpad" id="studentButton">Student</button>
-                            <button value="company" class="btn forpad" id="companyButton">Company</button> -->
                         </div>
                     </div>
 
@@ -122,13 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="gotolog">
                 <p>Already have an account?</p>
-                <a href="/html/LoginandRegister/login.html"><button class="btn">Login Here</button></a>
+                <a href="../LoginandRegister/login.php"><button class="btn">Login Here</button></a>
             </div>
         </div>
     </div>
 
     <!-- scripts -->
-    <script src="../../javaScripts/pageRedirect.js"></script>
     <script src="../../javaScripts/selectGender.js"></script>
 </body>
 
