@@ -206,6 +206,31 @@ footer{
 }
 
 
+/*------ Internship/Job page ------*/
+
+.internshipSection{
+    height: 100%;
+    width: 100%;
+    height: 200vh;
+}
+
+.filterContainer{
+    height: 45%;
+    width: 30%;
+    background-color: var(--second-col);
+    transform: translate(20%, 30%);
+    justify-content: center;
+    display: flex;
+}
+.filterContainer .filter{
+    color: var(--fourth-col);
+    margin-top: 6%;
+}
+.filterContainer .filter h1{
+    display: inline-flex;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
 
 
 
