@@ -3,6 +3,8 @@ const studentButton = document.getElementById("studentButton");
 const companyButton = document.getElementById("companyButton");
 const submitButton = document.getElementById("submitButton");
 
+// console.log (teacherButton.e.target.value)
+
 let selectedOption = null;
 
 teacherButton.addEventListener("click", function () {
