@@ -3,13 +3,13 @@ function showDropdown() {
   }
 
   function selectOption(option) {
-    document.getElementById("inputBox").value = option;
+    document.getElementById("option4Input").value = option;
     document.getElementById("dropdownOptions").style.display = "none";
   }
 
-  // Close the dropdown if the user clicks outside of it
+  // Closing the dropdown
   window.onclick = function (event) {
-    if (!event.target.matches('#inputBox')) {
+    if (!event.target.matches('#option4Input')) {
       var dropdown = document.getElementById("dropdownOptions");
       if (dropdown.style.display === 'block') {
         dropdown.style.display = 'none';
