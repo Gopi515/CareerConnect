@@ -475,6 +475,24 @@ span {
     border-radius: 50px;
 }
 
+/*Rolelogin*/
+.select-box {
+    background-color: var(--first-col);
+    padding: 15px 50px;
+    margin: 15px 0px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectrole {
+    margin-left: 40px ;
+}
+.subdiv {
+    float: right;
+}
+
 /*button*/
 .right-card {
     margin-bottom: 20px;
@@ -540,7 +558,7 @@ span {
     box-shadow: var(--box-shadow);
 }
 
-.entry .withsubmit .subdiv {
+.entry .withsubmit{
     float: right;
 }
 
@@ -583,7 +601,7 @@ span {
 .role-box {
     background-color: var(--first-col);
     padding: 20px 100px;
-    margin-top: 20px;
+    margin: 20px 0px;
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -612,6 +630,7 @@ span {
     color: var(--first-col);
     appearance: none;
     --webkit-appearance: none;
+    text-align: center;
     outline: none;
     cursor: pointer;
 }

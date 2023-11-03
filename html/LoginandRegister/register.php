@@ -101,6 +101,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <form action="register.php" method="POST">
                 <div>
+
+                    <!-- role button -->
+                    <div class="role-box">
+                        <p class="selecttext">Please select your role:</p>
+                        <div class="buttonsrole">
+                            <select class="roles" name="role" id="roles">
+                                <option class="drpdwn" value="default">Select a role</option>
+                                <option class="drpdwn" value="teacher">Teacher</option>
+                                <option class="drpdwn" value="student">Student</option>
+                                <option class="drpdwn" value="company">Company</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <!-- the input boxes -->
                     <div class="withReg">
                         <div class="inputboxes">
@@ -116,19 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <p class="inphead password">Repeat Password</p>
                             <input name="cpassword" required class="pleasebox" type="password"
                                 placeholder="Retype password please">
-                        </div>
-                    </div>
-
-                    <!-- role button -->
-                    <div class="role-box">
-                        <p class="selecttext">Please select your role:</p>
-                        <div class="buttonsrole">
-                            <select class="roles" name="role" id="roles">
-                                <option class="drpdwn" value="default">Select a role</option>
-                                <option class="drpdwn" value="teacher">Teacher</option>
-                                <option class="drpdwn" value="student">Student</option>
-                                <option class="drpdwn" value="company">Company</option>
-                            </select>
                         </div>
                     </div>
 
@@ -151,3 +152,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 </html>
+
