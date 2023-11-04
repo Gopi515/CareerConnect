@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- metas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- titles -->
+    <title>Add Internship offer</title>
+
+    <!-- linking -->
+    <link rel="stylesheet" href="../../../style.css">
+
+</head>
+
+<!-- php here -->
+
+<!-- body starts -->
+
+<body>
+    <div class="Internship">
+
+        <!-- internship topic -->
+        <div class="topic">
+            <p class="Internship-topic">Topic of the Internship</p>
+            <input type="text" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer">
+        </div>
+
+        <!-- company Name goes here -->
+
+        <!-- type of internship -->
+        <div class="category">
+            <legend>Select the internship type:</legend>
+            <label for="Online">
+                <input type="radio" class="WFH" id="WFH" name="worklocation" value="workfromhome" checked> Work From
+                Home
+            </label>
+            <br>
+            <label for="Offline">
+                <input type="radio" class="NWFH" name="workLocation" value="officeLocation"> Location:
+                <input type="text" class="NWFH-loc" name="locationName" placeholder="Enter location name">
+            </label>
+        </div>
+
+        <!-- work time -->
+        <div class="duraptionpart">
+            <select name="duration" id="duration">
+                <option value="day">15 days</option>
+                <option value="one">1 month</option>
+                <option value="two">2 months</option>
+                <option value="three">3 months</option>
+                <option value="four">4 months</option>
+                <option value="five">5 months</option>
+                <option value="six">6 months</option>
+            </select>
+        </div>
+
+        <!-- stripend -->
+        <div class="Stripendpart">
+            <p class="stripend">Stripend</p>
+            <input type="text" placeholder="Please keep it in INR">
+        </div>
+
+        <!-- apply by -->
+        <div class="lastdate">
+            <p class="applyby">Last date till apply:</p>
+            <input type="date">
+        </div>
+
+        <!-- about the company -->
+
+        <!-- about the internship -->
+        <div class="internabout">
+            <p class="aboutintern">Please write something about the internship</p>
+            <input type="text"
+                placeholder="You can write about the requirements that will be needed in the internship.">
+        </div>
+
+        <!-- certificate -->
+        <div class="iscertificate">
+            <input type="checkbox" id="certificate" name="certificate" value="certificate">
+            <label for="vehicle1"> Certificate after completion.</label>
+        </div>
+
+        <!-- Number of opening -->
+        <div class="Total-vacancy">
+            <p class="opening">Number of Openings:</p>
+            <input type="number" placeholder="Number only">
+        </div>
+
+        <!-- submit button -->
+        <div class="subdiv">
+            <button class="btn submit" id="submitButton">Upload</button>
+        </div>
+
+    </div>
+</body>
+
+</html>

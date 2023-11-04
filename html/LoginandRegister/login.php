@@ -34,19 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 function loginUser($conn, $role, $username, $email, $password)
                 {
-                    $HASH = password_hash($password, PASSWORD_DEFAULT);
-                    $sql = "SELECT * FROM `$role` WHERE `user_name` = '$username' AND `email` = '$email'";
+                    $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = '$username' AND `email` = '$email'";
                     $result = mysqli_query($conn, $sql);
 
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    if ($row = mysqli_fetch_assoc($result)) {
                         if (password_verify($password, $row['pass'])) {
                             header("location: ../profiles/$role/$role.html");
                         } else {
-                            $entered_password = $HASH;
-                            $database_hashed_password = $row['pass'];
-
-                            echo "<script>alert('Error: Incorrect password. Please try again.;</script>";
+                            echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
                         }
+                    } else {
+                        echo "<script>alert('Error:Case sensitive username or you have selected a different role.');</script>";
                     }
                 }
 
@@ -117,26 +115,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="/javaScripts/selectGender.js"></script>
 </body>
 </html>
-
-<!-- require '../../dbconnect.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = ($_POST['username']);
-    $email = ($_POST['email']);
-    $password = ($_POST['password']);
-    $role = ($_POST['role']);
-
-    echo $username, $email, $password, $role;
-
-    $sql = "SELECT * FROM student WHERE `user_name` = '$username' AND `email` = '$email'";
-    $result = mysqli_query($conn, $sql);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        if (password_verify($password, $row['pass'])) {
-            session_start();
-            header("location: ../profiles/student/student.html");
-        } else {
-            echo "<script>alert('Error: Incorrect password. Please try again.);</script>";
-        }
-    }
-} -->
