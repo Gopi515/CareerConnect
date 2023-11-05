@@ -221,7 +221,19 @@ footer {
 }
 
 
-/*------ Internship/Job page ------*/
+/*------ Internship page ------*/
+
+.active{
+    color: var(--first-col);
+    background: var(--fourth-col);
+    padding: 8px 18px;
+    font-size: 1rem;
+    border-radius: 3rem;
+}
+.internshipPage{
+    height: 100%;
+    width: 100%;
+}
 
 .internshipSection {
     height: 100%;
@@ -438,6 +450,13 @@ footer {
     font-size: 1.2rem;
     color: var(--fourth-col);
     font-weight: 600;
+}
+
+/*-------- job page --------*/
+.jobPage{
+    height: 100%;
+    width: 100%;
+    display: none;
 }
 
 
