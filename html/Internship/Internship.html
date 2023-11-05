@@ -15,8 +15,8 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li id="internshipButton"><a href="#">Internship</a></li>
-                    <li><a href="#">Job</a></li>
+                    <li id="button1" class="interJobbutton" onclick="toggleCard(1)"><a href="#">Internship</a></li>
+                    <li id="button2" class="interJobbutton" onclick="toggleCard(2)"><a href="#">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
@@ -25,8 +25,11 @@
         </nav>
     </header>
 
-    <!-- filter section -->
+    <!-- internship page -->
+    <div class="internshipPage" id="card1">
     <div class="internshipSection">
+
+    <!-- filter section -->
     <div class="filterContainer">
       <div class="filter">
         <i class="fas fa-filter">
@@ -104,7 +107,89 @@
     </div>
 
     </div>
+ </div>
 
+
+  <!-- job page -->
+  <div class="jobPage" id="card2">
+    <div class="internshipSection">
+
+    <!-- filter section -->
+    <div class="filterContainer">
+      <div class="filter">
+        <i class="fas fa-filter">
+            <h1>Filters</h1>
+        </i>
+      </div>
+       
+      <div class="filterOptions">
+
+        <!-- checkbox -->
+        <label class="container">As per my preferences
+            <input type="checkbox"  id="myCheckboxjob" onchange="toggleInputjob()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container containerWfrmH">Work from home
+            <input type="checkbox" id="option5Inputjob" onchange="toggleInputjob()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container containerPartTime">Part-time
+            <input type="checkbox" id="option6Inputjob">
+            <span class="checkmark"></span>
+        </label>
+
+        <!-- inputbox -->
+        <label class="inputBox">
+            <p>Profile</p>
+            <input type="text" placeholder="e.g. Web Development" id="option1Inputjob">
+        </label>
+        <label class="inputBox inputBoxlocation">
+            <p>Location</p>
+            <input type="text" placeholder="e.g. Delhi" id="option2Inputjob">
+        </label>
+        <label class="inputBox inputBoxDate">
+            <p>Starting from (or after)</p>
+            <input type="date" placeholder="Choose Date" id="option3Inputjob">
+        </label>
+        <label class="inputBox inputBoxDuration">
+            <p>Years of experience</p>
+            <div class="dropdown">
+                <input type="text" id="option4Inputjob" onclick="showDropdown()" placeholder="Select years of experience">
+                <div class="dropdown-content" id="dropdownoptionsJob">
+                  <a href="#" onclick="selectOption('freser')">Fresher</a>
+                  <a href="#" onclick="selectOption('1 year')">1 year</a>
+                  <a href="#" onclick="selectOption('2 years')">2 years</a>
+                  <a href="#" onclick="selectOption('3 years')">3 years</a>
+                  <a href="#" onclick="selectOption('4 years')">4 years</a>
+                  <a href="#" onclick="selectOption('5 years')">5 years</a>
+                  <a href="#" onclick="selectOption('5+ years')">5+ years</a>
+                </div>
+              </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- Internship listings -->
+    <div class="internshipContainer">
+        <h2>
+         643 Total  jobs
+        </h2>
+
+        <div class="internshipOrder">
+            <div class="internshipCard internshipCard1"></div>
+            <div class="internshipCard internshipCard2"></div>
+            <div class="internshipCard internshipCard3"></div>
+            <div class="internshipCard internshipCard4"></div>
+        </div>
+
+        <h3>
+            1/206
+        </h3>
+    </div>
+
+    </div>
+ </div>
 
     <!-- <footer>
 
@@ -114,5 +199,7 @@
 
     <script src="../../javaScripts/dropdown.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
+    <script src="../../javaScripts/switchState.js"></script>
+    <script src="../../javaScripts/buttonSwitch.js"></script>
 </body>
 </html>
