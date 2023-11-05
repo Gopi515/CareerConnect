@@ -498,7 +498,7 @@ span {
     margin-bottom: 20px;
     padding: 10px;
     background-color: var(--first-col);
-    border-radius: 50px;
+    border-radius: var(--border-50);
 }
 
 .btn {
@@ -668,7 +668,178 @@ span {
     margin: 20px 0 0 0;
 }
 
+/*------------add internship------------*/
 
+.tinterna {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* Style for the main container */
+.Internship {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 50px;
+    background-color: var(--second-col);
+    border-radius: var(--border-50);
+    box-shadow: var(--box-shadow);
+}
+
+/* Style for the internship topic section */
+.topic {
+    margin-bottom: 20px;
+}
+
+.Internship-topic {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--fourth-col);
+    margin-left: 10px;
+}
+
+.txt-box {
+    width: 100%;
+    background-color: var(--seventh-col);
+    border: var(--border);
+    padding: 15px 15px;
+    border-radius: var(--border-50);
+    color: var(--sixth-col);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+.txt-box:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
+}
+
+/* Style for the category section */
+.category {
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: var(--fourth-col);
+    margin-bottom: 10px;
+}
+
+/* Style for radio buttons and input fields in category section */
+.WFH, .NWFH {
+    margin-right: 10px;
+}
+
+.NWFH-loc {
+    width: 60%;
+    padding: 10px;
+    border: var(--border);
+    border-radius: var(--border-50);
+    background-color: var(--seventh-col);
+    color: var(--fourth-col);
+}
+.NWFH-loc:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
+}
+
+/* Style for the duration selection */
+.duraptionpart {
+    margin-bottom: 20px;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    color: var(--fourth-col);
+}
+
+#duration {
+    width: 10%;
+    margin-left: 15px;
+    align-items: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: var(--border);
+    background-color: var(--seventh-col);
+    border-radius: var(--border-50);
+    transition: var(--transition);
+}
+#duration:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
+}
+
+/* Style for the stipend section */
+.Stripendpart {
+    margin-bottom: 20px;
+}
+
+.stripend {
+    font-weight: bold;
+    color: var(--fourth-col);
+}
+
+/* Style for the last date section */
+.lastdate {
+    margin-bottom: 20px;
+}
+
+.applyby {
+    font-weight: bold;
+    color: var(--fourth-col);
+}
+
+.date {
+    background-color: var(--seventh-col);
+    border: var(--border);
+    padding: 15px 15px;
+    border-radius: var(--border-50);
+    color: var(--last-col);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+/* Style for the about the internship section */
+.internabout {
+    color: var(--fourth-col);
+    margin-bottom: 20px;
+}
+
+.aboutintern {
+    font-weight: bold;
+}
+
+
+/* Style for the certificate section */
+.iscertificate {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+#certificate {
+    scale: 1.5;
+    margin-right: 10px;
+}
+
+/* Style for the number of openings section */
+.Total-vacancy {
+    color: var(--fourth-col);
+    margin-bottom: 20px;
+}
+
+.opening {
+    font-weight: bold;
+}
+
+/* Style for the submit button */
+.subaddintern {
+    text-align: center;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
 
 
 /* -------------profiles----------- */
