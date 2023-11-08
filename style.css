@@ -220,7 +220,34 @@ footer {
     transform: translateY(150rem);
 }
 
+/* company landing page */
+.dropdownCompany{
+    position: relative;
+    display: inline-block;
+}
+.dropdownCompany .dropdown-content {
+    position: absolute;
+    background-color: var(--first-col);
+    width: 10rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transform: translate(-95%, 2%);
+    border-radius: 20px 0px 20px 20px;
+}
 
+.dropdownCompany .dropdown-content a {
+    color: var(--last-col);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+}
+
+.dropdownCompany .dropdown-content a:hover {
+    background-color: var(--fifth-col);
+    font-size: 0.9rem;
+    border-radius: 20px 20px 20px 20px;
+}
 /*------ Internship page ------*/
 
 .active{
