@@ -1,3 +1,14 @@
+<!-- php -->
+
+<?php 
+
+    require_once '../../dbconnect.php';
+
+    $sql = "SELECT * FROM internships";
+    $all_internships = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,10 +106,43 @@
         </h2>
 
         <div class="internshipOrder">
-            <div class="internshipCard internshipCard1"></div>
-            <div class="internshipCard internshipCard2"></div>
-            <div class="internshipCard internshipCard3"></div>
-            <div class="internshipCard internshipCard4"></div>
+            <?php
+                while($row = mysqli_fetch_assoc($all_internships)){
+            ?>
+
+            <div class="internshipCard internshipCard1">
+                <h1>  <?php echo $row["topic"]; ?>  </h1>
+                <div class="locationP">
+                <i class="fa-solid fa-location-dot"></i> 
+
+                <?php echo $row["work_location"]; ?> 
+                <?php echo $row["location_name"]; ?>
+
+                </div>
+                <div class="mainDetails">
+                    <div class="lastDateapply">
+                        <p><i class="fa-solid fa-calendar-days"></i>  Last date to apply</p>
+                        <p> <?php echo $row["apply_by"]; ?> </p>
+                    </div>
+                    <div class="durationInternship">
+                        <p><i class="fa-solid fa-clock"></i>  Duration</p>
+                        <p> <?php echo $row["duration"]; ?> </p>
+                    </div>
+                    <div class="stipendInternship">
+                        <p><i class="fa-solid fa-sack-dollar"></i>  Stipend</p>
+                        <p>&#8377; <?php echo $row["stipend"]; ?> /month</p>
+                    </div>
+                </div>
+                <div class="buttonNextstep">
+                    <div class="details"><button>View Details</button></div>
+                    <div class="applyInternship"><button>Apply</button></div>
+                </div>
+            </div>
+
+            <?php
+
+                }
+            ?>
         </div>
 
         <h3>
