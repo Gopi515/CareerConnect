@@ -471,6 +471,56 @@ footer {
     height: 26rem;
     background-color: var(--second-col);
 }
+.internshipCard h1{
+    font-size: 1.5rem;
+    margin-left: 7%;
+    margin-top: 8%;
+    color: var(--fourth-col);
+}
+.internshipCard .locationP{
+    margin-top: 5%;
+    margin-left: 7%;
+    color: var(--fourth-col);
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.internshipCard .mainDetails{
+    margin-top: 5%;
+    display: flex;
+    margin-left: -1.5%;
+    justify-content: space-around;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.internshipCard .buttonNextstep{
+    margin-top: 8%;
+    display: flex;
+    margin-left: 7%;
+}
+.buttonNextstep button{
+    padding: 10px 8px;
+    width: 8rem;
+    font-size: 1rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.buttonNextstep .details button{
+    color: var(--fifth-col);
+    background: none;
+}
+.buttonNextstep .details button:hover{
+    transform: translateY(-4%);
+}
+.buttonNextstep .applyInternship button{
+    color: var(--seventh-col);
+    background-color: var(--fourth-col);
+    border-radius: 10px;
+    margin-left: 5%;
+}
+.buttonNextstep .applyInternship button:hover{
+    transform: translateY(-4%);
+}
 .internshipContainer h3{
     position: absolute;
     top: 98%;
