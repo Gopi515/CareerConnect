@@ -122,7 +122,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="tech-email">
                         <p class="tech-para-style1">Email</p>
-                        <input name="email"type="text" placeholder="Enter email" class="tech-box-design2" required>
+                        <input name="email" type="email" placeholder="Enter email" class="tech-box-design2" required>
                     </div>
 
                 </div>

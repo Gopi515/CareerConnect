@@ -945,7 +945,13 @@ legend {
 }
 
 
+
+
+
+
+
 /* -------------profiles----------- */
+
 
 /* ----student profiles & teacher profile---- */
 
@@ -988,6 +994,39 @@ legend {
     font-size: 23px;
     color: var(--fourth-col);
 
+}
+
+.stu-para-style2, .tech-para-style2{
+    font-size: 21px;
+    color: var(--fourth-col);
+}
+
+.stu-para, .tech-para{
+    font-size: 18px;
+    color: var(--third-col);
+}
+
+.stu-entry-boxes1, .tech-entry-boxes1{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.stu-entry-boxes2, .tech-entry-boxes2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stu-entry-boxes3, .tech-entry-boxes3, 
+.stu-gender, .tech-gender{
+    margin-top: 30px;
+    margin-left: 83px;
+}
+
+.stu-entry-boxes4, .tech-entry-boxes4{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .stu-box-design1, .tech-box-design1{
@@ -1040,16 +1079,6 @@ legend {
     border: var(--border);
 }
 
-.stu-para-style2, .tech-para-style2{
-    font-size: 21px;
-    color: var(--fourth-col);
-}
-
-.stu-para, .tech-para{
-    font-size: 18px;
-    color: var(--third-col);
-}
-
 .stu-box-design3, .tech-box-design3{
     height: 55px;
     width: 459px;
@@ -1059,29 +1088,6 @@ legend {
     font-size: 21px;
     padding-left: 20px;
     border: var(--border);
-}
-
-.stu-entry-boxes1, .tech-entry-boxes1{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.stu-entry-boxes2, .tech-entry-boxes2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.stu-entry-boxes3, .tech-entry-boxes3, 
-.stu-gender, .tech-gender{
-    margin-top: 30px;
-    margin-left: 83px;
-}
-
-.stu-entry-boxes4, .tech-entry-boxes4{
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .stu-first-name, .tech-first-name{
@@ -1221,12 +1227,9 @@ legend {
     cursor: pointer;
 }
 
-
 .selected-item {
     padding: 1rem 2rem;
 }
-
-
 
 /* end next button */
 .next-btn{

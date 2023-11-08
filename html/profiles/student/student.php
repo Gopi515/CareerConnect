@@ -7,6 +7,68 @@
     <link rel="stylesheet" href="../../../style.css">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
+
+
+<!-- php  -->
+<?php
+session_start();
+require '../../../dbconnect.php';
+
+if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $lastname = htmlspecialchars($_POST['lastname']);
+    $email = htmlspecialchars($_POST['email']);
+    $countrycode = $_POST['countrycode'];
+    $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
+    $address1 = htmlspecialchars($_POST['address1']);
+    $address2 = htmlspecialchars($_POST['adderss2']);
+    $pincode = htmlspecialchars($_POST['pincode']);
+    $city = htmlspecialchars($_POST['city']);
+    $state = htmlspecialchars($_POST['state']);
+    $country = htmlspecialchars($_POST['country']); 
+    $gender = $_POST['gender']; 
+    $language = $_POST['language'];
+    // to convert array to string in php we use implode
+    $lang = implode(",",$language);
+    
+   if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) && 
+      !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) && 
+      !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)) {
+
+        if (isset($_SESSION['last_id'])) {
+            $id = $_SESSION['last_id'];
+        
+            $insertdata = "INSERT INTO `stu_personal_details`(`id`, `F_name`, `L_name`, `email`,
+            `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
+            VALUES ('$id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2',
+            '$pincode','$city','$state','$country','$gender','$lang')";
+
+            $smt = mysqli_query($conn, $insertdata);
+
+            unset($_SESSION['last_id']);
+             
+        } else {
+            echo "<script>alert('Error: Session in not working.');</script>";
+        }
+
+        if ($smt) {
+            header("location: ../../landingPage/landingPage.html");
+            exit;
+        } else {
+            echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+            error_log("Database error: " . mysqli_error($conn));
+        }
+
+    } else {
+        echo "<script>alert('Error: Please enter all the field.')</script>";
+    }
+
+
+} 
+
+?>
+
 <body>
 
     <!-- wrapper -->
@@ -30,7 +92,7 @@
         </nav>
 
         <!-- main container -->
-        <div class="stu-container">
+        <form action="#" method="POST" class="stu-container">
 
             <!-- header -->
             <div class="stu-header">
@@ -45,12 +107,12 @@
 
                     <div class="stu-first-name">
                         <p class="stu-para-style1">First name</p>
-                        <input type="text" placeholder="Enter first name" class="stu-box-design1" required>
+                        <input name="firstname" type="text" placeholder="Enter first name" class="stu-box-design1" required>
                     </div>
 
                     <div class="stu-last-name">
                         <p class="stu-para-style1">Last name</p>
-                        <input type="text" placeholder="Enter last name" class="stu-box-design1" required>
+                        <input name="lastname" type="text" placeholder="Enter last name" class="stu-box-design1" required>
                     </div>
 
                 </div>
@@ -59,7 +121,7 @@
 
                     <div class="stu-email">
                         <p class="stu-para-style1">Email</p>
-                        <input type="text" placeholder="Enter email" class="stu-box-design2" required>
+                        <input name="email" type="email" placeholder="Enter email" class="stu-box-design2" required>
                     </div>
 
                 </div>
@@ -68,7 +130,7 @@
 
                     <p class="stu-para-style1">Contact number</p>
                     <!-- country code dropdown -->
-                    <select name="#" id="country-code">
+                    <select name="countrycode" id="country-code">
                         <option value="+91">+91</option>
                         <option value="+880">+880</option>
                         <option value="+977">+977</option>
@@ -78,7 +140,7 @@
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input type="number" placeholder="0000000000" class="mob-box" required> 
+                    <input name="mobilenumber" type="number" placeholder="0000000000" class="mob-box" required> 
 
                 </div>
 
@@ -91,12 +153,12 @@
 
                     <div class="stu-address1">
                         <p class="stu-para-style2">Address1</p>
-                        <input type="text" placeholder="Ex.-House no, Building, Street, Area" class="stu-box-design2" required>
+                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="stu-box-design2" required>
                     </div>
 
                     <div class="stu-address2">
                         <p class="stu-para-style2">Address2</p>
-                        <input type="text" placeholder="Ex.-Locality/Town, City/District" class="stu-box-design2" required>
+                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="stu-box-design2" required>
                     </div>
 
                 </div>
@@ -107,12 +169,12 @@
 
                         <div class="stu-pin">
                             <p class="stu-para-style2">Pin</p>
-                            <input type="number" placeholder="Enter pin" class="stu-box-design3" required>
+                            <input name="pincode" type="number" placeholder="Enter pin" class="stu-box-design3" required>
                         </div>
 
                         <div class="stu-state">
                             <p class="stu-para-style2">State</p>
-                            <input type="text" placeholder="Enter state" class="stu-box-design3" required>
+                            <input name="state" type="text" placeholder="Enter state" class="stu-box-design3" required>
                         </div>
 
                     </div>
@@ -121,12 +183,12 @@
 
                         <div class="stu-city">
                             <p class="stu-para-style2">City</p>
-                            <input type="text" placeholder="Enter city" class="stu-box-design3" required>
+                            <input name="city" type="text" placeholder="Enter city" class="stu-box-design3" required>
                         </div>
 
                         <div class="stu-country">
                             <p class="stu-para-style2">Country</p>
-                            <input type="text" placeholder="Enter country" class="stu-box-design3" required>
+                            <input name="country" type="text" placeholder="Enter country" class="stu-box-design3" required>
                         </div>
 
                     </div>
@@ -173,27 +235,28 @@
                         <div id="languages">
                           <div class="checkbox-div">
                             <div class="label">
-                                <input type="checkbox" value="bengail" id="bengail">
+                                <input type="checkbox" name="language[]" value="bengail" id="bengail">
                                 <label for="bengail">Bengali</label>
                             </div>
+                            <!-- language[] to take multiple value we use [], we take input as array -->
                             <div class="label">
-                                <input type="checkbox" value="hindi" id="hindi">
+                                <input type="checkbox" name="language[]" value="hindi" id="hindi">
                                 <label for="hindi">Hindi</label>
                             </div>
                             <div class="label">
-                                <input type="checkbox" value="english" id="english">
+                                <input type="checkbox" name="language[]" value="english" id="english">
                                 <label for="english">English</label>
                             </div>
                             <div class="label">
-                                <input type="checkbox" value="tamil" id="tamil">
+                                <input type="checkbox" name="language[]" value="tamil" id="tamil">
                                 <label for="tamil">Tamil</label>
                             </div>
                             <div class="label">
-                                <input type="checkbox" value="french" id="french">
+                                <input type="checkbox" name="language[]" value="french" id="french">
                                 <label for="french">French</label>
                             </div>
                             <div class="label">
-                                <input type="checkbox" value="spanish" id="spanish">
+                                <input type="checkbox" name="language[]" value="spanish" id="spanish">
                                 <label for="spanish">Spanish</label>
                             </div>
                           </div>
@@ -211,7 +274,7 @@
             <!-- end next button  -->
             <button value="submit" name="submit" class="btn next-btn">Next</button>
 
-        </div>
+        </form>
 
 
     </div>

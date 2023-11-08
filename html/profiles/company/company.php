@@ -8,7 +8,64 @@
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
+
 <!-- php  -->
+<?php
+session_start();
+require '../../../dbconnect.php';
+
+if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $countrycode = $_POST['countrycode'];
+    $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
+    $arrivaldate = htmlspecialchars($_POST['arrivaldate']);
+    $address1 = htmlspecialchars($_POST['address1']);
+    $address2 = htmlspecialchars($_POST['adderss2']);
+    $pincode = htmlspecialchars($_POST['pincode']);
+    $city = htmlspecialchars($_POST['city']);
+    $state = htmlspecialchars($_POST['state']);
+    $country = htmlspecialchars($_POST['country']); 
+    $website = htmlspecialchars($_POST['website']); 
+    $about = htmlspecialchars($_POST['about']);
+    
+   if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
+      !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
+      !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
+
+        if (isset($_SESSION['last_id'])) {
+            $id = $_SESSION['last_id'];
+        
+            $insertdata = "INSERT INTO `com_personal_details`(`id`, `name`, `email`, `phone_code`, `phone_no`,
+            `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
+            VALUES ('$id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
+            '$pincode','$city','$state','$country','$website','$about')";
+
+            $smt = mysqli_query($conn, $insertdata);
+
+            unset($_SESSION['last_id']);
+             
+        } else {
+            echo "<script>alert('Error: Session in not working.');</script>";
+        }
+
+        if ($smt) {
+            header("location: ../../landingPage/landingPage.html");
+            exit;
+        } else {
+            echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+            error_log("Database error: " . mysqli_error($conn));
+        }
+
+    } else {
+        echo "<script>alert('Error: Please enter all the field.')</script>";
+    }
+
+
+} 
+
+?>
 
 
 
@@ -62,7 +119,7 @@
 
                     <div class="com-email">
                         <p class="com-para-style1">Email</p>
-                        <input name="email" type="text" placeholder="Enter email" class="com-box-design1" required>
+                        <input name="email" type="email" placeholder="Enter email" class="com-box-design1" required>
                     </div>
 
                 </div>
