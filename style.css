@@ -897,16 +897,16 @@ legend {
 
 /* -------------profiles----------- */
 
-/* ----student profiles---- */
+/* ----student profiles & teacher profile---- */
 
-.stu-container{
+.stu-container, .tech-container{
     width:1280px;
     margin:0 auto;
     background-color: var(--first-col);
     margin-top: 150px;
 }
 
-.stu-header{
+.stu-header, .tech-header{
     width: 1138px;
     margin: 0 auto;
     background-color: var(--first-col);
@@ -926,7 +926,7 @@ legend {
     color: var(--sixth-col);
 }
 
-.stu-hero-section{
+.stu-hero-section, .tech-hero-section{
     width: 1138px;
     margin: 0 auto;
     background-color: var(--second-col);
@@ -934,13 +934,13 @@ legend {
     margin-top: 75px;
 }
 
-.stu-para-style1{
+.stu-para-style1, .tech-para-style1{
     font-size: 23px;
     color: var(--fourth-col);
 
 }
 
-.stu-box-design1{
+.stu-box-design1, .tech-box-design1{
     height: 55px;
     width: 479px;
     background-color: var(--seventh-col);
@@ -952,7 +952,7 @@ legend {
     /* outline: none; */
 }
 
-.stu-box-design2{
+.stu-box-design2, .tech-box-design2{
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
@@ -990,17 +990,17 @@ legend {
     border: var(--border);
 }
 
-.stu-para-style2{
+.stu-para-style2, .tech-para-style2{
     font-size: 21px;
     color: var(--fourth-col);
 }
 
-.stu-para{
+.stu-para, .tech-para{
     font-size: 18px;
     color: var(--third-col);
 }
 
-.stu-box-design3{
+.stu-box-design3, .tech-box-design3{
     height: 55px;
     width: 459px;
     background-color: var(--seventh-col);
@@ -1011,46 +1011,51 @@ legend {
     border: var(--border);
 }
 
-.stu-entry-boxes1{
+.stu-entry-boxes1, .tech-entry-boxes1{
     display: flex;
     justify-content: space-evenly;
 }
 
-.stu-entry-boxes2{
+.stu-entry-boxes2, .tech-entry-boxes2{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.stu-entry-boxes3, .stu-gender{
+.stu-entry-boxes3, .tech-entry-boxes3, 
+.stu-gender, .tech-gender{
     margin-top: 30px;
     margin-left: 83px;
 }
 
-.stu-entry-boxes4{
+.stu-entry-boxes4, .tech-entry-boxes4{
     display: flex;
     justify-content: space-evenly;
 }
 
-.stu-first-name{
+.stu-first-name, .tech-first-name{
     margin-left: 65px;
     margin-top: 50px;
 }
 
-.stu-last-name{
+.stu-last-name, .tech-last-name{
     margin-right: 65px;
     margin-top: 50px;
 }
 
-.stu-email, .stu-address1, 
-.stu-address2, .stu-pin,
-.stu-state, .stu-city,
-.stu-country, .stu-language{
+.stu-email, .tech-email,
+.stu-address1, .tech-address1,
+.stu-address2, .tech-address2,
+.stu-pin, .tech-pin,
+.stu-state, .tech-state,
+.stu-city, .tech-city,
+.stu-country, .tech-country,
+.stu-language, .tech-language{
     margin-top: 30px;
 }
 
-.stu-address{
+.stu-address, .tech-address{
     margin-top: 50px;
     margin-left: 83px;
 
@@ -1064,42 +1069,42 @@ legend {
     margin-right: 27.7px;
 }
 
-/*-- gender button --*/
+
+/* gender button*/
+
 .gender-selection {
     display: flex;
+    margin-top: 11px;
 }
 
-.gender-button {
+.radio{
+    display: none;
+}
+
+.gen-label{
     color: var(--fourth-col);
     background-color: var(--seventh-col);
     cursor: pointer;
     padding: 0.8rem 2rem;
     border-radius: 20px;
     font-size: 21px;
-    transition: background-color 0.3s, color 0.3s;
-    user-select: none;
 }
 
-.gender-button:hover {
+#male:checked ~ .label-1, 
+#female:checked ~ .label-2,
+#others:checked ~ .label-3{
     background-color: var(--fourth-col);
-    color: #fff;
+    color: var(--first-col);
 }
 
-.gender-button.selected {
-    background-color: var(--fourth-col);
-    color: #fff;
-}
-
-#female, #others{
+.female, .others{
     margin-left: 1.5rem;
 }
 
 
-
-
 /* select languages */
 
-.stu-language{
+.stu-language, .tech-language{
     margin-left: 83px;
     padding-bottom: 70px;
 }
@@ -1124,12 +1129,6 @@ legend {
     padding-top: 0.5rem;
     /* width: 6rem; */
 }
-
-/* .label:hover {
-    background-color: var(--fourth-col);
-    color: #fff;
-    border-radius: 25px;
-} */
 
 .label input{
     margin-right: 8px;
@@ -1188,6 +1187,159 @@ legend {
     margin-top: 45px;
     margin-left: 1070px;
     margin-bottom: 100px;
+}
+
+
+
+
+/* company profile */
+
+
+.com-container{
+    width:1280px;
+    margin:0 auto;
+    background-color: var(--first-col);
+    margin-top: 150px;
+}
+
+.com-header{
+    width: 1138px;
+    margin: 0 auto;
+    background-color: var(--first-col);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.com-hero-section{
+    width: 1138px;
+    margin: 0 auto;
+    background-color: var(--second-col);
+    border-radius: 30px;
+    margin-top: 75px;
+}
+
+.com-para-style1{
+    font-size: 23px;
+    color: var(--fourth-col);
+
+}
+
+.com-para-style2{
+    font-size: 21px;
+    color: var(--fourth-col);
+}
+
+.com-para{
+    font-size: 18px;
+    color: var(--third-col);
+}
+
+.com-entry-boxes1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.com-entry-boxes2, .com-link{
+    margin-top: 30px;
+    margin-left: 83px;
+}
+
+.com-entry-boxes3{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.com-box-design1{
+    height: 55px;
+    width: 974px;
+    background-color: var(--seventh-col);
+    border-radius: 20px;   
+    color: var(--fourth-col); 
+    font-size: 21px;
+    padding-left: 20px;
+    border: var(--border);
+}
+
+.com-box-design2{
+    height: 55px;
+    width: 459px;
+    background-color: var(--seventh-col);
+    border-radius: 20px;
+    color: var(--fourth-col);
+    font-size: 21px;
+    padding-left: 20px;
+    border: var(--border);
+}
+
+.com-name{
+    margin-top: 50px;
+}
+
+.com-email, .com-address1, 
+.com-address2, .com-pin,
+.com-state, .com-city,
+.com-country, .com-about{
+    margin-top: 30px;
+}
+
+.com-address{
+    margin-top: 50px;
+    margin-left: 83px;
+
+}
+
+.pin-state{
+    margin-left: 27.7px;
+}
+
+.city-country{
+    margin-right: 27.7px;
+}
+
+.com-about{
+    margin-left: 83px;
+    padding-bottom: 70px;
+}
+
+
+
+
+/* student resume */
+
+
+.resume-container{
+    width:1280px;
+    margin:0 auto;
+    background-color: var(--first-col);
+    margin-top: 150px;
+}
+
+.resume-header{
+    width: 1138px;
+    margin: 0 auto;
+    background-color: var(--first-col);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume-header-item{
+    font-size: 60px;
+    color: var(--sixth-col);
+    font-weight: 600;
+}
+
+.resume-hero-section{
+    width: 1052px;
+    margin: 0 auto;
+    background-color: var(--second-col);
+    border-radius: 30px;
+    margin-top: 75px;
 }
 
 

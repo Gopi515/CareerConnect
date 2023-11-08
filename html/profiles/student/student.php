@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher profile</title>
+    <title>Student profile</title>
     <link rel="stylesheet" href="../../../style.css">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
@@ -20,8 +20,6 @@
                 <div class="logo">CareerConnect</div>
 
                 <ul class="nav-links">
-                    <li><a href="#">Internship</a></li>
-                    <li><a href="#">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
@@ -47,12 +45,12 @@
 
                     <div class="stu-first-name">
                         <p class="stu-para-style1">First name</p>
-                        <input type="text" placeholder="Enter first name" class="stu-box-design1">
+                        <input type="text" placeholder="Enter first name" class="stu-box-design1" required>
                     </div>
 
                     <div class="stu-last-name">
                         <p class="stu-para-style1">Last name</p>
-                        <input type="text" placeholder="Enter last name" class="stu-box-design1">
+                        <input type="text" placeholder="Enter last name" class="stu-box-design1" required>
                     </div>
 
                 </div>
@@ -61,7 +59,7 @@
 
                     <div class="stu-email">
                         <p class="stu-para-style1">Email</p>
-                        <input type="text" placeholder="Enter email" class="stu-box-design2">
+                        <input type="text" placeholder="Enter email" class="stu-box-design2" required>
                     </div>
 
                 </div>
@@ -80,7 +78,7 @@
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input type="number" placeholder="0000000000" class="mob-box"> 
+                    <input type="number" placeholder="0000000000" class="mob-box" required> 
 
                 </div>
 
@@ -93,12 +91,12 @@
 
                     <div class="stu-address1">
                         <p class="stu-para-style2">Address1</p>
-                        <input type="text" placeholder="Ex.-House no, Building, Street, Area" class="stu-box-design2">
+                        <input type="text" placeholder="Ex.-House no, Building, Street, Area" class="stu-box-design2" required>
                     </div>
 
                     <div class="stu-address2">
                         <p class="stu-para-style2">Address2</p>
-                        <input type="text" placeholder="Ex.-Locality/Town, City/District" class="stu-box-design2">
+                        <input type="text" placeholder="Ex.-Locality/Town, City/District" class="stu-box-design2" required>
                     </div>
 
                 </div>
@@ -109,12 +107,12 @@
 
                         <div class="stu-pin">
                             <p class="stu-para-style2">Pin</p>
-                            <input type="number" placeholder="Enter pin" class="stu-box-design3">
+                            <input type="number" placeholder="Enter pin" class="stu-box-design3" required>
                         </div>
 
                         <div class="stu-state">
                             <p class="stu-para-style2">State</p>
-                            <input type="text" placeholder="Enter state" class="stu-box-design3">
+                            <input type="text" placeholder="Enter state" class="stu-box-design3" required>
                         </div>
 
                     </div>
@@ -123,12 +121,12 @@
 
                         <div class="stu-city">
                             <p class="stu-para-style2">City</p>
-                            <input type="text" placeholder="Enter city" class="stu-box-design3">
+                            <input type="text" placeholder="Enter city" class="stu-box-design3" required>
                         </div>
 
                         <div class="stu-country">
                             <p class="stu-para-style2">Country</p>
-                            <input type="text" placeholder="Enter country" class="stu-box-design3">
+                            <input type="text" placeholder="Enter country" class="stu-box-design3" required>
                         </div>
 
                     </div>
@@ -137,14 +135,25 @@
 
                 <!-- gender button -->
 
+
                 <div class="stu-gender">
                     <p class="stu-para-style1">Gender</p>
                     <div class="gender-selection">
-                        <div class="gender-button" id="male" data-gender="male">Male</div>
-                        <div class="gender-button" id="female" data-gender="female">Female</div>
-                        <div class="gender-button" id="others" data-gender="others">Others</div>
-                    </div>
-                </div>
+                        <div class="male">
+                            <input type="radio" id="male" name="gender" value="male" class="radio" checked>
+                            <label for="male" class="gen-label label-1">Male</label>
+                        </div>
+                        <div class="female">
+                            <input type="radio" id="female" name="gender" value="female" class="radio">
+                            <label for="female" class="gen-label label-2">Female</label>
+                        </div>
+                        <div class="others">
+                            <input type="radio" id="others" name="gender" value="others" class="radio">
+                            <label for="others" class="gen-label label-3">Others</label>
+                        </div>
+                    </div> 
+                </div> 
+
 
 
                 <!-- select languages -->
@@ -191,6 +200,7 @@
                           <div onclick="addToSelected()" class="ok-btn">OK</div>
                         </div>
                     </div>
+
                    
                 </div>
 
@@ -199,15 +209,15 @@
 
           
             <!-- end next button  -->
-            <a href="../../landingPage/landingPage.html"><button class="btn next-btn">Next</button></a>
+            <button value="submit" name="submit" class="btn next-btn">Next</button>
 
         </div>
 
 
     </div>
 
-    <script src="../../../javaScripts/selectGender.js"></script>
     <script src="../../../javaScripts/selectLanguage.js"></script>
 </body>
 </html>
+
 
