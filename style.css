@@ -830,7 +830,6 @@ legend {
     font-weight: bold;
 }
 
-
 /* Style for the certificate section */
 .iscertificate {
     margin-bottom: 20px;
@@ -858,6 +857,14 @@ legend {
 
 .submit:hover {
     background-color: #0056b3;
+}
+
+.information {
+    margin-bottom: 20px;
+}
+.additionalinfo {
+    font-weight: bold;
+    color: var(--fourth-col);
 }
 
 
