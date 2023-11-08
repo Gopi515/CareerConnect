@@ -17,6 +17,7 @@
 
 <!-- php -->
 <?php
+session_start();
 require '../../dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -63,7 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_stmt_execute($stmt);
 
                 if ($stmt) {
-                    header("location: ../profiles/$role/$role.html");
+                    $id = mysqli_insert_id( $conn );
+                    $_SESSION['last_id'] = $id;
+                }
+
+                if ($stmt) {
+                    header("location: ../profiles/$role/$role.php");
                     exit;
                 } else {
                     echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
