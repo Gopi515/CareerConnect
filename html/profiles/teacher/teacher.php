@@ -13,7 +13,6 @@
 <?php
 session_start();
 require '../../../dbconnect.php';
-echo $_SESSION['last_id'];
 
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -54,7 +53,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if ($smt) {
-            header("location: ../../LoginandRegister/login.php");
+            header("location: ../../landingPage/landingPage.html");
             exit;
         } else {
             echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
