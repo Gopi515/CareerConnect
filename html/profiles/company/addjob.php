@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!is_numeric($CTC)) {
-        $errors[] = "Stipend must be a numeric value.";
+        $errors[] = "CTC must be a numeric value.";
     }
 
     if (empty($applyBy)) {
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($aboutJob)) {
-        $errors[] = "Please provide information about the internship.";
+        $errors[] = "Please provide some information about the Job.";
     }
 
     if (!is_numeric($openings) || $openings <= 0) {
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "ssssdsssi", $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $aboutJob, $additionalinfo, $openings);
 
         if (mysqli_stmt_execute($stmt)) {
-            header('Location: company.html');
+            header('Location: ../../landingPage/landingPage.php');
             exit;
         } else {
             echo "Error: " . mysqli_error($db);
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- Duration selection -->
             <div class="duraptionpart">
                 <p>Experience:</p>
-                <select name="duration" id="duration" required>
+                <select name="experience" id="duration" required>
                     <option value="fresher">Fresher</option>
                     <option value="lessthan1">0-1 year</option>
                     <option value="1to2">1-2 years</option>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- CTC input -->
             <div class="Stripendpart">
                 <p class="stripend">CTC (annual)</p>
-                <input type="number" name="stipend" class="txt-box" placeholder="Please enter in INR and it should be in annual.">
+                <input type="number" name="CTC" class="txt-box" placeholder="Please enter in INR and it should be in annual.">
             </div>
             
             <!-- Last date to apply input -->
@@ -140,13 +140,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <!-- Information about the Job -->
             <div class="internabout">
                 <p class="aboutintern">Please add some Job details:</p>
-                <textarea name="aboutintern" class="txt-box abouttxt" placeholder="You can write about the Job requirements, what they should expect from the job" style="resize: none;" required></textarea>
+                <textarea name="about_job" class="txt-box abouttxt" placeholder="You can write about the Job requirements, what they should expect from the job" style="resize: none;" required></textarea>
             </div>
 
             <!-- Additional Information area -->
             <div class="information">
                 <p class="additionalinfo">Additional informations:</p>
-                <textarea name="moreabout" class="txt-box abouttxt" placeholder="Add the work time, work days in a week etc.,." style="resize: none;" required></textarea>
+                <textarea name="additionalinfo" class="txt-box abouttxt" placeholder="Add the work time, work days in a week etc.,." style="resize: none;" required></textarea>
             </div>
 
             <!-- Number of Openings input -->

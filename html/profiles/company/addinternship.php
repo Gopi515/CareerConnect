@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "ssssdsssi", $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $aboutInternship, $certificate, $openings);
 
         if (mysqli_stmt_execute($stmt)) {
-            header('Location: company.html');
+            header('Location: ../../landingPage/landingPage.php');
             exit;
         } else {
             echo "Error: " . mysqli_error($db);
