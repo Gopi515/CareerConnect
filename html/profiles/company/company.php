@@ -51,7 +51,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if ($smt) {
-            header("location: ../../landingPage/landingPage.html");
+            header("location: ../../landingPage/landingCompany.html");
             exit;
         } else {
             echo "<script>alert('Error: Data input failed. Please try again later.');</script>";

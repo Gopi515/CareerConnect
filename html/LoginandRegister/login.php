@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     if ($row = mysqli_fetch_assoc($result)) {
                         if (password_verify($password, $row['pass'])) {
-                            header("location: ../landingPage/landingPage.html");
+                            header("location: ../landingPage/landingPage.php");
                         } else {
                             echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
                         }
