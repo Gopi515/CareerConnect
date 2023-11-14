@@ -158,14 +158,14 @@ html {
 
 /* Internship slider */
 
-.Internship h1 {
+.Internship_section h1 {
     transform: translateY(7rem);
     font-size: 1.4rem;
     color: var(--fourth-col);
     font-weight: 600;
 }
 
-.Internship .swiper-Int {
+.Internship_section .swiper-Int {
     margin-top: 12%;
 }
 
@@ -248,6 +248,7 @@ footer {
     font-size: 0.9rem;
     border-radius: 20px 20px 20px 20px;
 }
+
 /*------ Internship page ------*/
 
 .active{
@@ -529,6 +530,123 @@ footer {
     font-weight: 600;
 }
 
+
+/* apply page */
+.goBack{
+    margin-left: 5%;
+}
+.applyHeading h1{
+    margin-left: 12%;
+    margin-top: 0.5%;
+    color: var(--fourth-col);
+    font-size: 2rem;
+}
+.coverLetter{
+    transform: translate(12%, 25%);
+}
+.coverLetter h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+}
+.coverLetter h3{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.coverLetter p{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--third-col);
+}
+.coverLetter input{
+    height: 4rem;
+    width: 60rem;
+    margin-top: 1%;
+    padding: 10px 10px;
+    border: 5px solid rgb(224, 224, 224);
+    border-radius: 20px;
+    background-color: var(--seventh-col);
+    color: var();
+}
+.radioButtons{
+    transform: translate(12%, 55%);
+}
+.radioButtons h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+}
+.radioButtons h3{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.radioButtons .radionButtonOr{
+    margin-top: 0.5%;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--third-col);
+}
+.radionButtonOr .availability{
+    height: 3rem;
+    width: 40rem;
+    margin-top: 1%;
+    padding: 10px 10px;
+    border: 5px solid rgb(224, 224, 224);
+    border-radius: 20px;
+    background-color: var(--seventh-col);
+    color: var();
+}
+.assesment{
+    transform: translate(12%, 75%);
+}
+.assesment h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+}
+.assesment h3{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.assesment p{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--third-col);
+    width: 60rem;
+}
+.assesment input{
+    height: 4rem;
+    width: 60rem;
+    margin-top: 1%;
+    padding: 10px 10px;
+    border: 5px solid rgb(224, 224, 224);
+    border-radius: 20px;
+    background-color: var(--seventh-col);
+    color: var();
+}
+.internshipApplybtn{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    left: 45%;
+    top: 125%;
+    padding: 10px 10px;
+    width: 10rem;
+    border-radius: 50px;
+    border: none;
+    color: var(--first-col);
+    background-color: var(--fourth-col);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.internshipApplybtn:hover{
+    transform: scale(1.1);
+}
 /*-------- job page --------*/
 .jobPage{
     height: 100%;

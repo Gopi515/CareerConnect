@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing page</title>
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
@@ -17,8 +17,8 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="../Internship/Internship.html">Internship</a></li>
-                    <li><a href="../Internship/job/Internship/Internship.html">Job</a></li>
+                    <li><a href="../Internship/Internship.php">Internship</a></li>
+                    <li><a href="../Internship/Internship.php">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
@@ -40,7 +40,8 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <div class="card1 cards"></div>
+                    <div class="card1 cards">
+                    </div>
                     <div class="card2 cards"></div>
                     <div class="card3 cards"></div>
                   </div>
@@ -63,12 +64,22 @@
 
 
         <!-- Internship section -->
-        <div class="Internship">
+        <div class="Internship_section">
             <h1>Internships</h1>
             <div class="swiper mySwiper swiper-Int">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <div class="card10 cards"></div>
+                    <div class="card10 cards">
+                    <!-- <div class="infos">
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+
+                        <p>work from home</p>
+
+                      </div>
+                      </div> -->
+                    </div>
                     <div class="card11 cards"></div>
                     <div class="card12 cards"></div>
                  </div>
