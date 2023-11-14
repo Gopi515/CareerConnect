@@ -135,7 +135,7 @@
                 </div>
                 <div class="buttonNextstep">
                     <div class="details"><button>View Details</button></div>
-                    <div class="applyInternship"><button>Apply</button></div>
+                    <div class="applyInternship"><a href="../Internship/apply.php"><button>Apply</button></a></div>
                 </div>
             </div>
 
