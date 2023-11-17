@@ -772,6 +772,63 @@ span {
     box-shadow: var(--box-shadow);
 }
 
+/*For the password part*/
+.password-container {
+    position: relative;
+}
+.pwrd {
+    width: 90%;
+    background-color: var(--seventh-col);
+    border: var(--border);
+    padding: 15px 15px;
+    border-radius: var(--border-50);
+    color: var(--sixth-col);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+.pwrd:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
+}
+.eye-icon {
+    background-color: var(--seventh-col);
+    padding: 12px 15px;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    border-radius: var(--border-50);
+    cursor: pointer;
+}
+
+.logincont {
+    display: flex;
+}
+.pwrdl {
+    width: 100%;
+    background-color: var(--seventh-col);
+    border: var(--border);
+    padding: 15px 15px;
+    border-radius: var(--border-50);
+    color: var(--sixth-col);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+.pwrdl:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
+}
+.eye-iconl {
+    width: 100%;
+    position: absolute;
+    font-size: 20px;
+    left: 92%;
+    top: 11px;
+    border-radius: var(--border-50);
+    cursor: pointer;
+}
+
 .entry .withsubmit{
     float: right;
 }

@@ -11,7 +11,8 @@
     <title>CareerConnect-Register</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -131,7 +132,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input name="email" required class="pleasebox" type="email" placeholder="Enter the email">
 
                             <p class="inphead password">Password</p>
-                            <input name="password" required class="pleasebox" type="password" placeholder="Password please">
+                            <div id="foreye" class="password-container">
+                                <input name="password" required class="pwrd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
+                                <span class="eye-icon" onclick="togglePassword()">
+                                    <i class="far fa-eye"></i>
+                                </span>
+                            </div>
 
                             <p class="inphead password">Repeat Password</p>
                             <input name="cpassword" required class="pleasebox" type="password"
@@ -154,7 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <!-- scripts -->
-    <script src="../../javaScripts/selectGender.js"></script>
+    <script src="../../javaScripts/theeye.js"></script>
+    <script src="../../javaScripts/passvalidation.js"></script>
 </body>
 
 </html>
