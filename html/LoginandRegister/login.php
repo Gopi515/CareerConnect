@@ -10,7 +10,8 @@
     <title>CareerConnect-Login</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -94,7 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input name="email" class="pleasebox" type="email" placeholder="Enter the email">
                         
                     <p class="inphead password">Password</p>
-                    <input name="password" class="pleasebox" type="password" placeholder="Password please">
+                    <div id="foreye" class="password-container logincont">
+                        <input name="password" required class="pwrdl" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
+                        <span class="eye-iconl" onclick="togglePassword()">
+                            <i class="far fa-eye"></i>
+                        </span>
+                    </div>
                 </div>
                 <div class="subdiv">
                     <button class="btn submit" id="submitButton" onclick="submitSelection()">Login</button>
@@ -111,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <!-- JavaScript connects -->
-    <script src="/javaScripts/pageRedirect.js"></script>
-    <script src="/javaScripts/selectGender.js"></script>
+    <script src="../../javaScripts/theeye.js"></script>
+    <script src="../../javaScripts/passvalidation.js"></script>
 </body>
 </html>
