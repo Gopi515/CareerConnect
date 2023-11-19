@@ -165,5 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- JavaScript inclusion -->
     <script src="../../../javaScripts/tillzero.js"></script>
+    <script src="../../../javaScripts/date.js"></script>
 </body>
 </html>
