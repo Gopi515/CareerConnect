@@ -140,7 +140,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input name="mobilenumber" type="number" placeholder="0000000000" class="mob-box" required> 
+                    <input name="mobilenumber" type="tel" placeholder="0000000000" class="mob-box" pattern="\d{10}" maxlength="10" required> 
 
                 </div>
 
