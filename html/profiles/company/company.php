@@ -17,7 +17,11 @@ require '../../../dbconnect.php';
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
+    if (isset($_SESSION['mail'])) {
+        $email = $_SESSION['mail'];
+        } else {
+            echo "<script>alert('Error: Session is not working.')</script>";
+        }
     $countrycode = $_POST['countrycode'];
     $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
     $arrivaldate = htmlspecialchars($_POST['arrivaldate']);
@@ -51,7 +55,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if ($smt) {
-            header("location: ../../landingPage/landingCompany.html");
+            header("location: ../../landingPage/landingCompany.php");
             exit;
         } else {
             echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
@@ -119,7 +123,17 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="com-email">
                         <p class="com-para-style1">Email</p>
-                        <input name="email" type="email" placeholder="Enter email" class="com-box-design1" required>
+                        <div class="com-email-box">
+                            <?php 
+                            if (isset($_SESSION['mail'])) {
+                            $email = $_SESSION['mail'];
+                            } else {
+                            echo "<script>alert('Error: Session is not working.')</script>";
+                            }
+                            echo $email; 
+                            ?>
+                        </div>
+
                     </div>
 
                 </div>

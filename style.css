@@ -1218,7 +1218,7 @@ legend {
     /* outline: none; */
 }
 
-.stu-box-design2, .tech-box-design2{
+.stu-email-box, .tech-email-box{
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
@@ -1226,6 +1226,7 @@ legend {
     color: var(--fourth-col); 
     font-size: 21px;
     padding-left: 20px;
+    padding-top: 10px;
     border: var(--border);
 }
 
@@ -1253,6 +1254,17 @@ legend {
     font-size: 21px;
     padding-left: 20px;
     margin-left: 21px;
+    border: var(--border);
+}
+
+.stu-box-design2, .tech-box-design2{
+    height: 55px;
+    width: 974px;
+    background-color: var(--seventh-col);
+    border-radius: 20px;   
+    color: var(--fourth-col); 
+    font-size: 21px;
+    padding-left: 20px;
     border: var(--border);
 }
 
@@ -1300,6 +1312,11 @@ legend {
 
 .city-country{
     margin-right: 27.7px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
 }
 
 
@@ -1494,6 +1511,18 @@ legend {
     border: var(--border);
 }
 
+.com-email-box{
+    height: 55px;
+    width: 974px;
+    background-color: var(--seventh-col);
+    border-radius: 20px;   
+    color: var(--fourth-col); 
+    font-size: 21px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: var(--border);
+}
+
 .com-box-design2{
     height: 55px;
     width: 459px;
@@ -1528,6 +1557,11 @@ legend {
 
 .city-country{
     margin-right: 27.7px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
 }
 
 .com-about{

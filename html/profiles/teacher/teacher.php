@@ -18,7 +18,11 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
-    $email = htmlspecialchars($_POST['email']);
+    if (isset($_SESSION['mail'])) {
+        $email = $_SESSION['mail'];
+        } else {
+            echo "<script>alert('Error: Session is not working.')</script>";
+        }
     $countrycode = $_POST['countrycode'];
     $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
     $address1 = htmlspecialchars($_POST['address1']);
@@ -122,7 +126,17 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="tech-email">
                         <p class="tech-para-style1">Email</p>
-                        <input name="email" type="email" placeholder="Enter email" class="tech-box-design2" required>
+                        <div class="tech-email-box">
+                            <?php 
+                            if (isset($_SESSION['mail'])) {
+                            $email = $_SESSION['mail'];
+                            } else {
+                            echo "<script>alert('Error: Session is not working.')</script>";
+                            }
+                            echo $email; 
+                            ?>
+                        </div>
+
                     </div>
 
                 </div>
