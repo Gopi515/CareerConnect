@@ -1000,12 +1000,14 @@ legend {
 }
 
 .NWFH-loc {
+    display: none;
     width: 60%;
     padding: 10px;
     border: var(--border);
     border-radius: var(--border-50);
     background-color: var(--seventh-col);
     color: var(--fourth-col);
+    transition: var(--transition);
 }
 .NWFH-loc:focus {
     outline: none;
