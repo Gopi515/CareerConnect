@@ -98,17 +98,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" name="topic" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer" required>
             </div>
             <div class="category">
-                <legend>Select the internship type:</legend>
-                
+                <legend>Select the job type:</legend>
+    
                 <!-- Radio button for Work From Home -->
                 <label for="WFH">
-                    <input type="radio" id="WFH" name="worklocation" value="workfromhome" checked> Work From Home
+                    <input type="radio" id="WFH" name="worklocation" value="workfromhome" checked onclick="disableInput()"> Remote Job.
                 </label>
                 <br>
                 <!-- Radio button for Office Location -->
                 <label for="NWFH">
-                    <input type="radio" id="NWFH" name="worklocation" value="officelocation"> Office Location:
-                    <input type="text" name="locationName" class="NWFH-loc" placeholder="Enter the city name">
+                    <input type="radio" id="NWFH" name="worklocation" value="officelocation" onclick="enableInput()"> Office Location.
+                    <input type="text" name="locationName" class="NWFH-loc" placeholder="Enter the city name" disabled>
                 </label>
             </div>
 
@@ -167,5 +167,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- JavaScript inclusion -->
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
+    <script src="../../../javaScripts/label.js"></script>
 </body>
 </html>
