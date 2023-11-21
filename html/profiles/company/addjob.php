@@ -117,8 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="reqskills-para">Required Skills*</p>
 
 
-                <div id="selected-items">
-                    <div id="selected-items-list"></div>
+                <div id="selected-items" class="selected-items">
+                    <div id="selected-items-list" class="selected-items-list"></div>
                 </div>
 
                 <div class="addsk">
@@ -127,35 +127,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="checkbox-div">
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="html" id="HTML">
-                                <label for="html">HTML</label>
+                                <label for="HTML">HTML</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="css" id="CSS">
-                                <label for="css">CSS</label>
+                                <label for="CSS">CSS</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="javascript" id="JavaScript">
-                                <label for="javascript">JavaScript</label>
+                                <label for="JavaScript">JavaScript</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="php" id="PHP">
-                                <label for="php">PHP</label>
+                                <label for="PHP">PHP</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="mysql" id="MySQL">
-                                <label for="mysql">MySQL</label>
+                                <label for="MySQL">MySQL</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="react" id="React">
-                                <label for="react">React</label>
+                                <label for="React">React</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="blender" id="Blender">
-                                <label for="blender">Blender</label>
+                                <label for="Blender">Blender</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="maya" id="Maya">
-                                <label for="maya">Maya</label>
+                                <label for="Maya">Maya</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="photoshop" id="photoshop">
@@ -163,19 +163,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="aftereffect" id="AfterEffect">
-                                <label for="aftereffect">Adobe AfterEffect</label>
+                                <label for="AfterEffect">Adobe AfterEffect</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="nodejs" id="nodeJS">
-                                <label for="nodejs">node.js</label>
+                                <label for="nodeJS">node.js</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="nextjs" id="nextJS">
-                                <label for="nextjs">next.js</label>
+                                <label for="nextJS">next.js</label>
                             </div>
                             <div class="label">
                                 <input type="checkbox" name="languages[]" value="oracle" id="Oracle">
-                                <label for="oracle">Oracle Database</label>
+                                <label for="Oracle">Oracle Database</label>
                             </div>
                         </div>
                         <div onclick="addToSelected()" class="add-btn">Add</div>
