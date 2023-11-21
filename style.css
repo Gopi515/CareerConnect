@@ -1466,6 +1466,8 @@ input::-webkit-inner-spin-button {
 
 #selected-items-list {
     display: flex;
+    flex-wrap: wrap !important;
+    max-width: 974px !important;
 }
 
 #selected-items-list div{
