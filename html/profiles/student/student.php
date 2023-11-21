@@ -76,10 +76,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "<script>alert('Error: Please enter all the field.')</script>";
     }
-
-
 } 
-
 ?>
 
 <body>

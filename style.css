@@ -654,6 +654,62 @@ footer {
     display: none;
 }
 
+/*required skills area*/
+.reqskills {
+    margin-bottom: 20px;
+}
+.reqskills-para {
+    font-weight: bold;
+    color: var(--fourth-col);
+    margin-top: 10px;
+}
+.select-add-skill {
+    width: 10% !important;
+    padding: 15px !important;
+    text-align: center !important;
+    border-radius: var(--border-50) !important;
+    font-weight: 700;
+    margin-left: 0px !important;
+    font-size: 13.33px !important;
+    color: var(--last-col) !important;
+    background-color: var(--seventh-col) !important;
+}
+.addsk {
+    margin-left: 10px;
+}
+.checkbox-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1080px;
+}
+.label {
+    background-color: var(--second-col);
+    padding: 10px 20px;
+    border-radius: var(--border-50);
+    margin: 5px !important;
+    flex: 1;
+    max-width: calc(100% - 10px);
+    white-space: nowrap;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.languages {
+    width: 100% !important;
+}
+.add-btn {
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    padding: 15px;
+    width: 8%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: var(--border-50);
+    text-align: center;
+    cursor: pointer;
+}
 
 /*------------Login Page------------*/
 .login-page {
