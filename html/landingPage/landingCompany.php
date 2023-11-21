@@ -27,8 +27,8 @@
                     <div class="dropdownCompany">
                     <li><a href="#"><i class="fas fa-user" onclick="showDropdown()" id="postOptions"></i></a>
                         <div class="dropdown-content" id="dropdownOptionsPost">
-                            <a href="../profiles/company/addinternship.html" onclick="selectOption('Post Internship')">Post Internship</a>
-                            <a href="#" onclick="selectOption('Post Job')">Post Job</a>
+                            <a href="../profiles/company/addinternship.php" onclick="selectOption('Post Internship')">Post Internship</a>
+                            <a href="../profiles/company/addjob.php" onclick="selectOption('Post Job')">Post Job</a>
                           </div>
                     </li>
                 </div>
