@@ -1523,6 +1523,26 @@ input::-webkit-inner-spin-button {
     border: var(--border);
 }
 
+.com-arr-date{
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+    width: 380px;
+    background-color: var(--seventh-col);
+    border-radius: 20px;
+    color: var(--fourth-col);
+    font-size: 21px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: var(--border);
+}
+
+.fa-calendar{
+    color: var(--last-col);
+    padding-right: 20px;
+    padding-top: 7px;
+}
+
 .com-box-design2{
     height: 55px;
     width: 459px;

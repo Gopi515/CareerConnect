@@ -20,9 +20,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $lastname = htmlspecialchars($_POST['lastname']);
     if (isset($_SESSION['mail'])) {
         $email = $_SESSION['mail'];
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
     $countrycode = $_POST['countrycode'];
     $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
     $address1 = htmlspecialchars($_POST['address1']);
@@ -42,7 +42,16 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (isset($_SESSION['last_id'])) {
             $id = $_SESSION['last_id'];
-        
+            
+            $checkmobile = "SELECT * FROM `stu_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            $result = mysqli_query($conn,$checkmobile);
+            $count = mysqli_num_rows($result);
+
+            if ($count != 0) {
+                header("location: ./student.php");
+                exit;
+            }
+
             $insertdata = "INSERT INTO `stu_personal_details`(`id`, `F_name`, `L_name`, `email`,
             `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
             VALUES ('$id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2',
@@ -128,9 +137,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="stu-email-box">
                             <?php 
                             if (isset($_SESSION['mail'])) {
-                            $email = $_SESSION['mail'];
+                                $email = $_SESSION['mail'];
                             } else {
-                            echo "<script>alert('Error: Session is not working.')</script>";
+                                echo "<script>alert('Error: Session is not working.')</script>";
                             }
                             echo $email; 
                             ?>
@@ -248,31 +257,31 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div id="select-items-button" onclick="showMenu()">+ Add Languages</div>
                         <div id="languages">
                           <div class="checkbox-div">
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="bengail" id="bengail">
-                                <label for="bengail">Bengali</label>
-                            </div>
-                            <!-- language[] to take multiple value we use [], we take input as array -->
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="hindi" id="hindi">
-                                <label for="hindi">Hindi</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="english" id="english">
-                                <label for="english">English</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="tamil" id="tamil">
-                                <label for="tamil">Tamil</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="french" id="french">
-                                <label for="french">French</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="language[]" value="spanish" id="spanish">
-                                <label for="spanish">Spanish</label>
-                            </div>
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="bengali" id="bengali">
+                                    <label for="bengali">Bengali</label>
+                                </div>
+                                <!-- language[] to take multiple value we use [], we take input as array -->
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="hindi" id="hindi">
+                                    <label for="hindi">Hindi</label>
+                                </div>
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="english" id="english">
+                                    <label for="english">English</label>
+                                </div>
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="tamil" id="tamil">
+                                    <label for="tamil">Tamil</label>
+                                </div>
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="french" id="french">
+                                    <label for="french">French</label>
+                                </div>
+                                <div class="label">
+                                    <input type="checkbox" name="language[]" value="spanish" id="spanish">
+                                    <label for="spanish">Spanish</label>
+                                </div>
                           </div>
                           <div onclick="addToSelected()" class="ok-btn">OK</div>
                         </div>

@@ -19,12 +19,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = htmlspecialchars($_POST['name']);
     if (isset($_SESSION['mail'])) {
         $email = $_SESSION['mail'];
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
     $countrycode = $_POST['countrycode'];
     $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
-    $arrivaldate = htmlspecialchars($_POST['arrivaldate']);
+    $arrivaldate = date('Y-m-d');
     $address1 = htmlspecialchars($_POST['address1']);
     $address2 = htmlspecialchars($_POST['adderss2']);
     $pincode = htmlspecialchars($_POST['pincode']);
@@ -41,6 +41,15 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['last_id'])) {
             $id = $_SESSION['last_id'];
         
+            $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            $result = mysqli_query($conn,$checkmobile);
+            $count = mysqli_num_rows($result);
+
+            if ($count != 0) {
+                header("location: ./company.php");
+                exit;
+            }
+
             $insertdata = "INSERT INTO `com_personal_details`(`id`, `name`, `email`, `phone_code`, `phone_no`,
             `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
             VALUES ('$id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
@@ -126,9 +135,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="com-email-box">
                             <?php 
                             if (isset($_SESSION['mail'])) {
-                            $email = $_SESSION['mail'];
+                                $email = $_SESSION['mail'];
                             } else {
-                            echo "<script>alert('Error: Session is not working.')</script>";
+                                echo "<script>alert('Error: Session is not working.')</script>";
                             }
                             echo $email; 
                             ?>
@@ -162,7 +171,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="com-arrival">
                         <p class="com-para-style1">Date of Arrival</p>
-                        <input name="arrivaldate" type="date" placeholder="Enter the date you first arrive" class="com-box-design2" required>
+                        <div class="com-arr-date">
+                        <?php echo date('d/m/Y'); ?><i class="fa-regular fa-calendar"></i>
+                        </div>
                     </div>
 
                 </div>
