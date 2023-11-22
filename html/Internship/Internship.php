@@ -1,12 +1,18 @@
 <!-- php -->
 
 <?php 
+session_start();
+    require '../../dbconnect.php';
 
-    require_once '../../dbconnect.php';
-
-    $sql = "SELECT * FROM internships";
-    $all_internships = $conn->query($sql);
-
+    if(isset($_POST["apply"])){
+        $internship_id = $_GET["id"];
+        $internship_topic = $_POST["hidden_topic"];
+        $internship_location = $_POST["hidden_location"];
+        $internship_duration = $_POST["hidden_duration"];
+     
+        $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`) VALUES ('$internship_topic', '$internship_location', '$internship_duration');";
+        mysqli_query($conn, $sql);
+     }
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internship/Job</title>
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -28,7 +34,7 @@
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton" onclick="toggleCard(1)"><a href="#">Internship</a></li>
                     <li id="button2" class="interJobbutton" onclick="toggleCard(2)"><a href="#">Job</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="../internship/applied.php"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
                 </ul>
@@ -107,10 +113,17 @@
 
         <div class="internshipOrder">
             <?php
-                while($row = mysqli_fetch_assoc($all_internships)){
-            ?>
 
+            $query = "SELECT * FROM `internships` ORDER BY id ASC";
+            $result = mysqli_query($conn, $query);
+
+            if(mysqli_num_rows($result)>0){
+                while($row = mysqli_fetch_array($result)){
+
+            ?>
             <div class="internshipCard internshipCard1">
+
+            <form action="Internship.php?action=add&id=<?php echo $row["id"]?>" method="POST">
                 <h1>  <?php echo $row["topic"]; ?>  </h1>
                 <div class="locationP">
                 <i class="fa-solid fa-location-dot"></i> 
@@ -133,15 +146,22 @@
                         <p>&#8377; <?php echo $row["stipend"]; ?> /month</p>
                     </div>
                 </div>
+
+                <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>">
+                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
+                <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>">
+                
+
                 <div class="buttonNextstep">
                     <div class="details"><button>View Details</button></div>
-                    <div class="applyInternship"><a href="../Internship/apply.php"><button>Apply</button></a></div>
+                   <button class="applyButton" type="submit" name="apply">Apply</button>
                 </div>
+                </form>
             </div>
-
             <?php
 
                 }
+            }
             ?>
         </div>
 
