@@ -10,6 +10,7 @@
 
     $query = "INSERT INTO application_details (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
     mysqli_query($conn, $query);
+
  
     // echo
     // "<script> alert('Application submitted successfully'); </script>";
@@ -70,7 +71,9 @@
             <input type="text" placeholder="Enter text..." name="assessment">
         </div>
 
+
         <button class="internshipApplybtn" type="submit" name="submit">Submit</button>
         </form>
+
 </body>
 </html>
