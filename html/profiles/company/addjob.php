@@ -11,7 +11,7 @@
     <title>Add Job offer</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check for empty values
     $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
     $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
-    $locationName = ($workLocation == "officelocation" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
+    $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
     $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
     $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
     $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
@@ -75,12 +75,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
                 <!-- Radio button for Work From Home -->
                 <label for="WFH">
-                    <input type="radio" id="WFH" name="worklocation" value="workfromhome" checked onclick="disableInput()"> Remote Job.
+                    <input type="radio" id="WFH" name="worklocation" value="" checked onclick="disableInput()"> Remote Job.
                 </label>
                 <br>
                 <!-- Radio button for Office Location -->
                 <label for="NWFH">
-                    <input type="radio" id="NWFH" name="worklocation" value="officelocation" onclick="enableInput()"> Office Location.
+                    <input type="radio" id="NWFH" name="worklocation" value="" onclick="enableInput()"> Office Location.
                     <input type="text" name="locationName" class="NWFH-loc" placeholder="Enter the city name" disabled>
                 </label>
             </div>

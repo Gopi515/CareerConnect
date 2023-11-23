@@ -13,7 +13,8 @@ session_start();
         $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`) VALUES ('$internship_topic', '$internship_location', '$internship_duration');";
         mysqli_query($conn, $sql);
         header("Location:../Internship/apply.php");
-     }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -148,6 +149,7 @@ session_start();
                     </div>
                 </div>
 
+                <!-- for storing the data of applied internship temporary -->
                 <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>">
                 <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
                 <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>">
@@ -166,13 +168,15 @@ session_start();
             ?>
         </div>
 
-        <h3>
-            1/206
-        </h3>
+        
+    </div>
+    
     </div>
 
-    </div>
  </div>
+ <!-- <h3 class="pagecountInternship">
+        1/206
+</h3> -->
 
 
   <!-- job page -->
@@ -242,15 +246,64 @@ session_start();
         </h2>
 
         <div class="internshipOrder">
-            <div class="internshipCard internshipCard1"></div>
-            <div class="internshipCard internshipCard2"></div>
-            <div class="internshipCard internshipCard3"></div>
-            <div class="internshipCard internshipCard4"></div>
+        <?php
+
+        $query = "SELECT * FROM `job` ORDER BY id ASC";
+        $result = mysqli_query($conn, $query);
+
+        if(mysqli_num_rows($result)>0){
+         while($row = mysqli_fetch_array($result)){
+
+        ?>
+
+        <div class="internshipCard internshipCard1">
+
+            <form action="" method="POST">
+                <h1>  <?php echo $row["Topic"]; ?>  </h1>
+                <div class="locationP">
+                <i class="fa-solid fa-location-dot"></i> 
+
+                <?php echo $row["work_location"]; ?> 
+                <?php echo $row["location_name"]; ?>
+
+                </div>
+                <div class="mainDetails">
+                    <div class="lastDateapply">
+                        <p><i class="fa-solid fa-calendar-days"></i>  Last date to apply</p>
+                        <p> <?php echo $row["apply_by"]; ?> </p>
+                    </div>
+                    <div class="durationInternship">
+                        <p><i class="fa-solid fa-clock"></i>  Experience</p>
+                        <p> <?php echo $row["experience"]; ?> </p>
+                    </div>
+                    <div class="stipendInternship">
+                        <p><i class="fa-solid fa-sack-dollar"></i>  CTC(Annual)</p>
+                        <p>&#8377; <?php echo $row["CTC"]; ?> </p>
+                    </div>
+                </div>
+
+                <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>">
+                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
+                <input type="hidden" name="hidden_experience" value="<?php echo $row["experience"]; ?>">
+                
+
+                <div class="buttonNextstep">
+                    <div class="details"><button>View Details</button></div>
+                   <button class="applyButton" type="submit" name="applyJob">Apply</button>
+                </div>
+                </form>
+            </div>
+
+        <?php
+
+        }
+        }
+        ?>
         </div>
 
-        <h3>
+        <!-- <h3>
             1/206
-        </h3>
+        </h3> -->
     </div>
 
     </div>
