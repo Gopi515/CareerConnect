@@ -25,7 +25,7 @@
     
     <div class="appliedHeading">
     <a href="../Internship/Internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
-        <h1>My Apllications</h1>
+        <h1>My Applications</h1>
     </div>
 
 

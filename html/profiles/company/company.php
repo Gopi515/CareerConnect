@@ -234,9 +234,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- compani link -->
 
                 <div class="com-link">
-                    <p class="com-para-style1">Compani website</p>
+                    <p class="com-para-style1">Company website</p>
                     <div>
-                        <input  name="website" type="text" placeholder="Enter the link of your website" class="com-box-design1" required>
+                        <input  name="website" type="url" placeholder="Enter the link of your website" class="com-box-design1" required>
                     </div>
                 </div>
 
