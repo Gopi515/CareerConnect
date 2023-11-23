@@ -12,6 +12,7 @@ session_start();
      
         $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`) VALUES ('$internship_topic', '$internship_location', '$internship_duration');";
         mysqli_query($conn, $sql);
+        header("Location:../Internship/apply.php");
      }
 ?>
 

@@ -12,8 +12,10 @@
     mysqli_query($conn, $query);
 
  
-    // echo
-    // "<script> alert('Application submitted successfully'); </script>";
+    echo
+    "<script> alert('Application submitted successfully'); </script>";
+
+    header("Location:../Internship/Internship.php");
     
  }
 

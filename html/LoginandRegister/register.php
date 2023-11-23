@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                             <p class="inphead password">Password</p>
                             <div id="foreye" class="password-container">
-                                <input name="password" required class="pwrd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
+                                <input name="password" required class="pwrd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Create Password" oninput="setCustomValidity('')">
                                 <span class="eye-icon" onclick="togglePassword()">
                                     <i class="far fa-eye"></i>
                                 </span>
