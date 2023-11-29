@@ -447,25 +447,29 @@ footer {
     position: absolute;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
     width: 57%;
-    height: 118rem;
     background: none;
-    transform: translate(70%, -27.8%);
+    transform: translate(70%);
+    height: 110rem;
+    top: 30%;
 }
 .internshipContainer h2{
+    font-size: 1.2rem;
+    color: var(--fourth-col);
+    font-weight: 600;
+    margin-left: 37%;
+}
+.pagecountInternship{
     font-size: 1.2rem;
     color: var(--fourth-col);
     font-weight: 600;
 }
 .internshipContainer .internshipOrder{
     width: 100%;
-    height: 110rem;
-    top: 3%;
-    position: absolute;
-    background-color: none;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
 }
 .internshipOrder .internshipCard{
     width: 100%;
@@ -476,6 +480,7 @@ footer {
     font-size: 1.5rem;
     margin-left: 7%;
     margin-top: 8%;
+    padding-top: 7%;
     color: var(--fourth-col);
 }
 .internshipCard .locationP{
@@ -786,10 +791,10 @@ footer {
     width: 13rem;
 }
 .appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation{
-    margin-left: -6%;
+    margin-left: -3%;
 }
 .appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration{
-    margin-left: -10%;
+    margin-left: -3%;
 }
 .appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus{
     color: var(--first-col);
