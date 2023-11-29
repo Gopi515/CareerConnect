@@ -17,6 +17,7 @@
 
 <!-- the php part -->
 <?php
+session_start();
 require '../../dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = trim($_POST['password']);
 
     if (empty($username) || empty($email) || empty($password)) {
-        echo "<script>alert('Error: Username, email and password all are required.');</script>";
+        echo "<script>alert('Error: Username, email, and password are all required.');</script>";
     } else {
         if (isset($_POST['role'])) {
             $role = $_POST['role'];
@@ -38,14 +39,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = '$username' AND `email` = '$email'";
                     $result = mysqli_query($conn, $sql);
 
+                    if ($result) {
+                        $_SESSION['mail'] = $email;
+                    }
+
                     if ($row = mysqli_fetch_assoc($result)) {
                         if (password_verify($password, $row['pass'])) {
-                            header("location: ../landingPage/landingPage.php");
+                            // Redirect based on the role
+                            switch ($role) {
+                                case 'teacher':
+                                    header("location: ../landingPage/landingPage.php");
+                                    break;
+                                case 'student':
+                                    header("location: ../landingPage/landingPage.php");
+                                    break;
+                                case 'company':
+                                    header("location: ../landingPage/landingCompany.php");
+                                    break;
+                                default:
+                                    echo "<script>alert('Error: Unknown role.');</script>";
+                                    break;
+                            }
                         } else {
                             echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
                         }
                     } else {
-                        echo "<script>alert('Error:Case sensitive username or you have selected a different role.');</script>";
+                        echo "<script>alert('Error: Case-sensitive username or you have selected a different role.');</script>";
                     }
                 }
 

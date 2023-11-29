@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher profile</title>
-    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
@@ -120,12 +120,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tech-entry-boxes1">
 
                     <div class="tech-first-name">
-                        <p class="tech-para-style1">First name</p>
+                        <p class="tech-para-style1">First name*</p>
                         <input name="firstname" type="text" placeholder="Enter first name" class="tech-box-design1" required>
                     </div>
 
                     <div class="tech-last-name">
-                        <p class= "tech-para-style1">Last name</p>
+                        <p class= "tech-para-style1">Last name*</p>
                         <input name="lastname" type="text" placeholder="Enter last name" class="tech-box-design1" required>
                     </div>
 
@@ -134,7 +134,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tech-entry-boxes2">
 
                     <div class="tech-email">
-                        <p class="tech-para-style1">Email</p>
+                        <p class="tech-para-style1">Email*</p>
                         <div class="tech-email-box">
                             <?php 
                             if (isset($_SESSION['mail'])) {
@@ -152,7 +152,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="tech-entry-boxes3">
 
-                    <p class="tech-para-style1">Contact number</p>
+                    <p class="tech-para-style1">Contact number*</p>
                     <!-- country code dropdown -->
                     <select name="countrycode" id="country-code">
                         <option value="+91">+91</option>
@@ -176,12 +176,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tech-entry-boxes2">
 
                     <div class="tech-address1">
-                        <p class="tech-para-style2">Address1</p>
+                        <p class="tech-para-style2">Address1*</p>
                         <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="tech-box-design2" required>
                     </div>
 
                     <div class="tech-address2">
-                        <p class="tech-para-style2">Address2</p>
+                        <p class="tech-para-style2">Address2*</p>
                         <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="tech-box-design2" required>
                     </div>
 
@@ -192,12 +192,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="pin-state">
 
                         <div class="tech-pin">
-                            <p class="tech-para-style2">Pin</p>
+                            <p class="tech-para-style2">Pin*</p>
                             <input name="pincode" type="number" placeholder="Enter pin" class="tech-box-design3" required>
                         </div>
 
                         <div class="tech-state">
-                            <p class="tech-para-style2">State</p>
+                            <p class="tech-para-style2">State*</p>
                             <input name="state" type="text" placeholder="Enter state" class="tech-box-design3" required>
                         </div>
 
@@ -206,12 +206,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="city-country">
 
                         <div class="tech-city">
-                            <p class="tech-para-style2">City</p>
+                            <p class="tech-para-style2">City*</p>
                             <input name="city" type="text" placeholder="Enter city" class="tech-box-design3" required>
                         </div>
 
                         <div class="tech-country">
-                            <p class="tech-para-style2">Country</p>
+                            <p class="tech-para-style2">Country*</p>
                             <input name="country" type="text" placeholder="Enter country" class="tech-box-design3" required>
                         </div>
 
@@ -223,7 +223,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 
                 <div class="tech-gender">
-                    <p class="tech-para-style1">Gender</p>
+                    <p class="tech-para-style1">Gender*</p>
                     <div class="gender-selection">
                         <div class="male">
                             <input type="radio" id="male" name="gender" value="male" class="radio" checked>
@@ -247,7 +247,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tech-language">
 
 
-                    <p class="tech-para-style1">Languages you know</p>
+                    <p class="tech-para-style1">Languages you know*</p>
 
 
                     <div id="selected-items">

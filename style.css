@@ -1740,6 +1740,22 @@ input::-webkit-inner-spin-button {
 
 
 
+
+/* student and techer and company view personal details  */
+
+
+.view-details{
+    padding-top: 13.5px;
+}
+
+.mob-code{
+    display: flex;
+}
+
+
+
+
+
 /* student resume */
 
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company profile</title>
-    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
@@ -41,7 +41,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['last_id'])) {
             $id = $_SESSION['last_id'];
         
-            $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
             $result = mysqli_query($conn,$checkmobile);
             $count = mysqli_num_rows($result);
 
@@ -56,6 +56,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             '$pincode','$city','$state','$country','$website','$about')";
 
             $smt = mysqli_query($conn, $insertdata);
+
+            if ($smt) {
+                $_SESSION['mail'] = $email;
+            }
 
             unset($_SESSION['last_id']);
              
@@ -120,7 +124,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="com-entry-boxes1">
 
                     <div class="com-name">
-                        <p class="com-para-style1">Company name</p>
+                        <p class="com-para-style1">Company name*</p>
                         <input name="name" type="text" placeholder="Enter the name" class="com-box-design1" required>
                     </div>
 
@@ -131,7 +135,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="com-entry-boxes1">
 
                     <div class="com-email">
-                        <p class="com-para-style1">Email</p>
+                        <p class="com-para-style1">Email*</p>
                         <div class="com-email-box">
                             <?php 
                             if (isset($_SESSION['mail'])) {
@@ -150,7 +154,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- contact no  -->
                 <div class="com-entry-boxes2">
 
-                    <p class="com-para-style1">Contact number</p>
+                    <p class="com-para-style1">Contact number*</p>
                     <!-- country code dropdown -->
                     <select name="countrycode" id="country-code">
                         <option value="+91">+91</option>
@@ -170,7 +174,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="com-entry-boxes2">
 
                     <div class="com-arrival">
-                        <p class="com-para-style1">Date of Arrival</p>
+                        <p class="com-para-style1">Date of Arrival*</p>
                         <div class="com-arr-date">
                         <?php echo date('d/m/Y'); ?><i class="fa-regular fa-calendar"></i>
                         </div>
@@ -188,12 +192,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="com-entry-boxes1">
 
                     <div class="com-address1">
-                        <p class="com-para-style2">Address1</p>
+                        <p class="com-para-style2">Address1*</p>
                         <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="com-box-design1" required>
                     </div>
 
                     <div class="com-address2">
-                        <p class="com-para-style2">Address2</p>
+                        <p class="com-para-style2">Address2*</p>
                         <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="com-box-design1" required>
                     </div>
 
@@ -204,12 +208,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="pin-state">
 
                         <div class="com-pin">
-                            <p class="com-para-style2">Pin</p>
+                            <p class="com-para-style2">Pin*</p>
                             <input name="pincode" type="number" placeholder="Enter pin" class="com-box-design2" required>
                         </div>
 
                         <div class="com-state">
-                            <p class="com-para-style2">State</p>
+                            <p class="com-para-style2">State*</p>
                             <input name="state" type="text" placeholder="Enter state" class="com-box-design2" required>
                         </div>
 
@@ -218,12 +222,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="city-country">
 
                         <div class="com-city">
-                            <p class="com-para-style2">City</p>
+                            <p class="com-para-style2">City*</p>
                             <input name="city" type="text" placeholder="Enter city" class="com-box-design2" required>
                         </div>
 
                         <div class="com-country">
-                            <p class="com-para-style2">Country</p>
+                            <p class="com-para-style2">Country*</p>
                             <input name="country" type="text" placeholder="Enter country" class="com-box-design2" required>
                         </div>
 
@@ -234,7 +238,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- compani link -->
 
                 <div class="com-link">
-                    <p class="com-para-style1">Compani website</p>
+                    <p class="com-para-style1">Company website*</p>
                     <div>
                         <input  name="website" type="text" placeholder="Enter the link of your website" class="com-box-design1" required>
                     </div>
@@ -246,7 +250,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="com-about">
 
 
-                    <p class="com-para-style1">About</p>
+                    <p class="com-para-style1">About*</p>
                     <div>
                         <input  name="about" type="text" placeholder="Write about your company" class="com-box-design1" required>
                     </div>
