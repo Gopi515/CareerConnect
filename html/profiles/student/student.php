@@ -66,7 +66,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if ($smt) {
-            header("location: ../../landingPage/landingPage.php");
+            header("location: ../../landingPage/landingStudent.php");
             exit;
         } else {
             echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
@@ -92,9 +92,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="logo">CareerConnect</div>
 
                 <ul class="nav-links">
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
-                    <li><a href="#"><i class="fas fa-message"></i></a></li>
-                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+
                 </ul>
 
             </div>

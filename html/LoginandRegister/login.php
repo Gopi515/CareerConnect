@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             // Redirect based on the role
                             switch ($role) {
                                 case 'teacher':
-                                    header("location: ../landingPage/landingPage.php");
+                                    header("location: ../landingPage/landingTeacher.php");
                                     break;
                                 case 'student':
-                                    header("location: ../landingPage/landingPage.php");
+                                    header("location: ../landingPage/landingStudent.php");
                                     break;
                                 case 'company':
                                     header("location: ../landingPage/landingCompany.php");
