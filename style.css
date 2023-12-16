@@ -1134,6 +1134,50 @@ span {
     box-shadow: var(--box-shadow);
 }
 
+/* Styles for the first half of proficiency dropdowns */
+.prf-fst-half {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.prf-fst-half .dropdown-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.prf-fst-half select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styles for the second half of proficiency dropdowns */
+.prf-snd-half {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.prf-snd-half .dropdown-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.prf-snd-half select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 /* Style for the category section */
 .category {
     margin-bottom: 20px;
@@ -1524,33 +1568,88 @@ input::-webkit-inner-spin-button {
     font-size: 21px;
 }
 
-.label{
-    font-size: 18px;
-    margin-left: 30px;
-    padding-top: 0.5rem;
-    /* width: 6rem; */
+.langlabel{
+    background-color: var(--second-col);
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px !important;
+    margin-bottom: 15px !important;
+    flex: 1;
+    max-width: calc(100% - 10px);
+    white-space: nowrap;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .label input{
     margin-right: 8px;
+}
+.dropdown-label1 {
+    font-weight: 600;
+    font-size: 20px;
+}
+.language-dropdown{
+    width: 30%;
+    margin-left: 15px;
+    align-items: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    appearance: none;
+    -webkit-appearance: none;
+    border: var(--border);
+    background-color: var(--seventh-col);
+    border-radius: var(--border-50);
+    transition: var(--transition);
+}
+.language-dropdown:focus {
+    outline: none;
+    border: 3px solid var(--second-col);
+    box-shadow: var(--box-shadow);
 }
 
 .ok-btn{
     background-color: var(--fourth-col);
     color: var(--first-col);
     padding: 0.4rem 0.8rem;
+    width: 20%;
     border-radius: 20px;
-    width: 3rem;
-    margin-left: 51px;
+    margin: 0px 160px;
     margin-top: 17px;
+    font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+.ok-btn:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.proficiency{
+    background-color: var(--second-col);
+    padding: 10px;
+    border-radius: 20px;
+    align-items: center;
+}
+.proficiency-title{
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.dropboxesproficiency{
+    margin: 10px;
 }
 
 #languages {
     display: none;
     color: var(--fourth-col);
     background-color: var(--seventh-col);
-    width: 10rem;
+    width: 40%;
     border-radius: 20px;
     padding: 0.4rem;
 }

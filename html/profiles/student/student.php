@@ -239,10 +239,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- select languages -->
 
                 <div class="stu-language">
-
-
                     <p class="stu-para-style1">Languages you know*</p>
-
 
                     <div id="selected-items">
                         <div id="selected-items-list"></div>
@@ -250,40 +247,64 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="add-language">
                         <div id="select-items-button" onclick="showMenu()">+ Add Languages</div>
-                        <div id="languages">
-                          <div class="checkbox-div">
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="bengali" id="bengali">
-                                    <label for="bengali">Bengali</label>
-                                </div>
-                                <!-- language[] to take multiple value we use [], we take input as array -->
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="hindi" id="hindi">
-                                    <label for="hindi">Hindi</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="english" id="english">
-                                    <label for="english">English</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="tamil" id="tamil">
-                                    <label for="tamil">Tamil</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="french" id="french">
-                                    <label for="french">French</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="spanish" id="spanish">
-                                    <label for="spanish">Spanish</label>
-                                </div>
-                          </div>
-                          <div onclick="addToSelected()" class="ok-btn">OK</div>
-                        </div>
-                    </div>
+                        <div id="languages" style="display: none;">
+                        <!-- Language dropdown button -->
+                            <div class="langlabel">
+                                <label class="dropdown-label1">Select Language:</label>
+                                <select class="language-dropdown" id="language-dropdown">
+                                    <option value="English">English</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Spanish">Spanish</option>
+                                    <option value="Mandarin">Mandarin</option>
+                                    <!-- Add other languages here -->
+                                </select>
+                            </div>
 
-                   
+                            <!-- Proficiency dropdowns -->
+                            <div class="proficiency"><p class="proficiency-title">Proficiency Level</p>
+                                <div class="dropboxesproficiency">
+                                    <div class="prf-fst-half">
+                                        <label class="dropdown-label">Writing:</label>
+                                        <select class="writingDropdown">
+                                            <option value="Basic">Basic</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Proficient">Proficient</option>
+                                            <option value="Mother-Tongue">Mother Tongue</option>
+                                        </select>
+
+                                        <label class="dropdown-label">Reading:</label>
+                                        <select class="readingDropdown">
+                                            <option value="Basic">Basic</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Proficient">Proficient</option>
+                                            <option value="Mother-Tongue">Mother Tongue</option>
+                                        </select>
+                                    </div>
+                                    <div class="prf-snd-half">
+                                        <label class="dropdown-label">Listening:</label>
+                                        <select class="listeningDropdown">
+                                            <option value="Basic">Basic</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Proficient">Proficient</option>
+                                            <option value="Mother-Tongue">Mother Tongue</option>
+                                        </select>
+
+                                        <label class="dropdown-label">Speaking:</label>
+                                        <select class="speakingDropdown">
+                                            <option value="Basic">Basic</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Proficient">Proficient</option>
+                                            <option value="Mother-Tongue">Mother Tongue</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div onclick="addToSelected()" class="ok-btn">OK</div>
+                    </div>
                 </div>
+            </div>
 
 
             </div>
@@ -300,5 +321,3 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="../../../javaScripts/selectLanguage.js"></script>
 </body>
 </html>
-
-
