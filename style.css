@@ -14,6 +14,7 @@
     --eighth-col: gray;
     --h1-fontsize: 45px;
     --h2-fontsize: 35px;
+    --h3-fontsize: 25px;
     --padding-btn: 10px 20px;
     --border: none;
     --border-50: 50px;
@@ -41,6 +42,111 @@ html {
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+/*-------Main landing page-------*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--second-col);
+    padding: 15px;
+}
+
+.navbar-brand {
+    color: var(--fourth-col);
+    font-weight: 700;
+    font-size: var(--h3-fontsize);
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 500;
+    border: var(--border);
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-button:hover {
+    box-shadow: var(--box-shadow);
+}
+
+/* the login inner */
+#logInNav {
+    position: absolute;
+    top: 50%;
+    display: none;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    border-radius: 35px;
+    border: 1px var(--fourth-col) solid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--second-col);
+    transition: all 0.3s ease-in-out;
+}
+
+.logInNav p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+}
+
+.linkingLogIn {
+    text-decoration: none;
+}
+
+.buttonInnerLog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    width: fit-content;
+    font-weight: 500;
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 3px transparent solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+.buttonInnerLog:hover {
+    box-shadow: var(--box-shadow);
+    border: 3px var(--first-col) solid;
+}
+
+.closeLogIn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    font-weight: 700;
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 3px var(--fourth-col) solid;
+}
+
+.closeLogIn:hover {
+    box-shadow: var(--box-shadow);
+    background-color: rgb(255, 75, 75);
+    border: 3px var(--first-col) solid;
 }
 
 
@@ -101,7 +207,7 @@ html {
 }
 
 .content .helloText {
-    transform: translateY(10rem)
+    transform: translateY(10rem);
 }
 
 .helloText h1 {
@@ -221,10 +327,11 @@ footer {
 }
 
 /* company landing page */
-.dropdownCompany{
+.dropdownCompany {
     position: relative;
     display: inline-block;
 }
+
 .dropdownCompany .dropdown-content {
     position: absolute;
     background-color: var(--first-col);
@@ -251,14 +358,15 @@ footer {
 
 /*------ Internship page ------*/
 
-.active{
+.active {
     color: var(--first-col);
     background: var(--fourth-col);
     padding: 8px 18px;
     font-size: 1rem;
     border-radius: 3rem;
 }
-.internshipPage{
+
+.internshipPage {
     height: 100%;
     width: 100%;
 }
@@ -270,7 +378,7 @@ footer {
 }
 
 
-.filterContainer{
+.filterContainer {
     height: 30%;
     width: 30%;
     background-color: var(--second-col);
@@ -443,7 +551,7 @@ footer {
 
 
 /* internship Listings */
-.internshipSection .internshipContainer{
+.internshipSection .internshipContainer {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -455,42 +563,49 @@ footer {
     height: 110rem;
     top: 30%;
 }
-.internshipContainer h2{
+
+.internshipContainer h2 {
     font-size: 1.2rem;
     color: var(--fourth-col);
     font-weight: 600;
     margin-left: 37%;
 }
-.pagecountInternship{
+
+.pagecountInternship {
     font-size: 1.2rem;
     color: var(--fourth-col);
     font-weight: 600;
 }
-.internshipContainer .internshipOrder{
+
+.internshipContainer .internshipOrder {
     width: 100%;
     height: 100%;
     overflow-y: auto;
 }
-.internshipOrder .internshipCard{
+
+.internshipOrder .internshipCard {
     width: 100%;
     height: 26rem;
     background-color: var(--second-col);
 }
-.internshipCard h1{
+
+.internshipCard h1 {
     font-size: 1.5rem;
     margin-left: 7%;
     margin-top: 8%;
     padding-top: 7%;
     color: var(--fourth-col);
 }
-.internshipCard .locationP{
+
+.internshipCard .locationP {
     margin-top: 5%;
     margin-left: 7%;
     color: var(--fourth-col);
     font-weight: 500;
     font-size: 1.2rem;
 }
-.internshipCard .mainDetails{
+
+.internshipCard .mainDetails {
     margin-top: 5%;
     display: flex;
     margin-left: -1.5%;
@@ -498,12 +613,14 @@ footer {
     color: var(--fourth-col);
     font-weight: 500;
 }
-.internshipCard .buttonNextstep{
+
+.internshipCard .buttonNextstep {
     margin-top: 8%;
     display: flex;
     margin-left: 7%;
 }
-.buttonNextstep button{
+
+.buttonNextstep button {
     padding: 10px 8px;
     width: 8rem;
     font-size: 1rem;
@@ -511,14 +628,17 @@ footer {
     font-weight: 600;
     cursor: pointer;
 }
-.buttonNextstep .details button{
+
+.buttonNextstep .details button {
     color: var(--fifth-col);
     background: none;
 }
-.buttonNextstep .details button:hover{
+
+.buttonNextstep .details button:hover {
     transform: translateY(-4%);
 }
-.buttonNextstep .applyButton{
+
+.buttonNextstep .applyButton {
     color: var(--seventh-col);
     background-color: var(--fourth-col);
     border-radius: 10px;
@@ -527,10 +647,12 @@ footer {
     cursor: pointer;
     margin-left: 5%;
 }
-.buttonNextstep .applyButton:hover{
+
+.buttonNextstep .applyButton:hover {
     transform: translateY(-4%);
 }
-.internshipContainer h3{
+
+.internshipContainer h3 {
     position: absolute;
     top: 98%;
     font-size: 1.2rem;
@@ -540,34 +662,40 @@ footer {
 
 
 /* apply page */
-.goBack{
+.goBack {
     margin-left: 5%;
 }
-.applyHeading h1{
+
+.applyHeading h1 {
     margin-left: 12%;
     margin-top: 0.5%;
     color: var(--fourth-col);
     font-size: 2rem;
 }
-.coverLetter{
+
+.coverLetter {
     transform: translate(12%, 25%);
 }
-.coverLetter h2{
+
+.coverLetter h2 {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--fourth-col);
 }
-.coverLetter h3{
+
+.coverLetter h3 {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.coverLetter p{
+
+.coverLetter p {
     font-size: 1rem;
     font-weight: 600;
     color: var(--third-col);
 }
-.coverLetter input{
+
+.coverLetter input {
     height: 4rem;
     width: 60rem;
     margin-top: 1%;
@@ -577,26 +705,31 @@ footer {
     background-color: var(--seventh-col);
     color: var();
 }
-.radioButtons{
+
+.radioButtons {
     transform: translate(12%, 55%);
 }
-.radioButtons h2{
+
+.radioButtons h2 {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--fourth-col);
 }
-.radioButtons h3{
+
+.radioButtons h3 {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.radioButtons .radionButtonOr{
+
+.radioButtons .radionButtonOr {
     margin-top: 0.5%;
     font-weight: 600;
     font-size: 1rem;
     color: var(--third-col);
 }
-.radionButtonOr .availability{
+
+.radionButtonOr .availability {
     height: 3rem;
     width: 40rem;
     margin-top: 1%;
@@ -606,26 +739,31 @@ footer {
     background-color: var(--seventh-col);
     color: var();
 }
-.assesment{
+
+.assesment {
     transform: translate(12%, 75%);
 }
-.assesment h2{
+
+.assesment h2 {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--fourth-col);
 }
-.assesment h3{
+
+.assesment h3 {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.assesment p{
+
+.assesment p {
     font-size: 1rem;
     font-weight: 600;
     color: var(--third-col);
     width: 60rem;
 }
-.assesment input{
+
+.assesment input {
     height: 4rem;
     width: 60rem;
     margin-top: 1%;
@@ -635,7 +773,8 @@ footer {
     background-color: var(--seventh-col);
     color: var();
 }
-.internshipApplybtn{
+
+.internshipApplybtn {
     position: absolute;
     display: flex;
     text-align: center;
@@ -652,11 +791,13 @@ footer {
     cursor: pointer;
     transition: 0.5s;
 }
-.internshipApplybtn:hover{
+
+.internshipApplybtn:hover {
     transform: scale(1.1);
 }
+
 /*-------- job page --------*/
-.jobPage{
+.jobPage {
     height: 100%;
     width: 100%;
     display: none;
@@ -666,11 +807,13 @@ footer {
 .reqskills {
     margin-bottom: 20px;
 }
+
 .reqskills-para {
     font-weight: bold;
     color: var(--fourth-col);
     margin-top: 10px;
 }
+
 .select-add-skill {
     width: 10% !important;
     padding: 15px !important;
@@ -682,15 +825,18 @@ footer {
     color: var(--last-col) !important;
     background-color: var(--seventh-col) !important;
 }
+
 .addsk {
     margin-left: 10px;
 }
+
 .checkbox-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1080px;
 }
+
 .label {
     background-color: var(--second-col);
     padding: 10px 20px;
@@ -704,9 +850,11 @@ footer {
     box-sizing: border-box;
     cursor: pointer;
 }
+
 .languages {
     width: 100% !important;
 }
+
 .add-btn {
     background-color: var(--fourth-col);
     color: var(--first-col);
@@ -722,33 +870,37 @@ footer {
 
 
 /* application page */
-.appliedInternship{
+.appliedInternship {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.appliedInternship .appliedHeading{
+
+.appliedInternship .appliedHeading {
     justify-content: center;
     margin-top: 5%;
 }
-.appliedInternship .appliedHeading .goBack{
+
+.appliedInternship .appliedHeading .goBack {
     position: absolute;
     left: 2%;
 }
-.appliedInternship .appliedHeading h1{
+
+.appliedInternship .appliedHeading h1 {
     font-size: 2rem;
     color: var(--fourth-col);
 }
 
-.appliedInternship .applliedInternshiplist{
+.appliedInternship .applliedInternshiplist {
     position: absolute;
     top: 28%;
     width: 70rem;
     border: 4px solid var(--second-col);
     border-radius: 20px;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipheading{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipheading {
     display: flex;
     justify-content: space-around;
     font-size: 1rem;
@@ -756,24 +908,28 @@ footer {
     background-color: var(--second-col);
     border-radius: 17px 17px 0 0;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipheading h2{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipheading h2 {
     padding: 1rem;
     color: var(--fourth-col);
     font-weight: 600;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
     width: 27rem;
     margin-left: 5%;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
     width: 18rem;
     margin-left: 1%;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
     width: 17rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems{
+.appliedInternship .applliedInternshiplist .appliedInternshipitems {
     display: flex;
     justify-content: space-around;
     font-size: 0.9rem;
@@ -782,21 +938,26 @@ footer {
     border-radius: 17px 17px 0 0;
     border: 2px solid var(--second-col);
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipitems h2{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipitems h2 {
     padding: 1rem;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
     width: 13rem;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
     margin-left: -3%;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
     margin-left: -3%;
 }
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus{
+
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
     color: var(--first-col);
     padding-left: 9px;
     padding-right: 9px;
@@ -806,6 +967,7 @@ footer {
     border-radius: 50px;
     height: 3rem;
 }
+
 /*------------Login Page------------*/
 .login-page {
     height: 100%;
@@ -852,8 +1014,9 @@ span {
 }
 
 .selectrole {
-    margin-left: 40px ;
+    margin-left: 40px;
 }
+
 .subdiv {
     float: right;
 }
@@ -927,6 +1090,7 @@ span {
 .password-container {
     position: relative;
 }
+
 .pwrd {
     width: 90%;
     background-color: var(--seventh-col);
@@ -937,11 +1101,13 @@ span {
     margin-bottom: 15px;
     transition: var(--transition);
 }
+
 .pwrd:focus {
     outline: none;
     border: 3px solid var(--second-col);
     box-shadow: var(--box-shadow);
 }
+
 .eye-icon {
     background-color: var(--seventh-col);
     padding: 12px 15px;
@@ -955,6 +1121,7 @@ span {
 .logincont {
     display: flex;
 }
+
 .pwrdl {
     width: 100%;
     background-color: var(--seventh-col);
@@ -965,11 +1132,13 @@ span {
     margin-bottom: 15px;
     transition: var(--transition);
 }
+
 .pwrdl:focus {
     outline: none;
     border: 3px solid var(--second-col);
     box-shadow: var(--box-shadow);
 }
+
 .eye-iconl {
     width: 100%;
     position: absolute;
@@ -980,7 +1149,7 @@ span {
     cursor: pointer;
 }
 
-.entry .withsubmit{
+.entry .withsubmit {
     float: right;
 }
 
@@ -1096,6 +1265,7 @@ span {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 /* Style for the main container */
 .Internship {
     width: 80%;
@@ -1128,6 +1298,7 @@ span {
     margin-bottom: 15px;
     transition: var(--transition);
 }
+
 .txt-box:focus {
     outline: none;
     border: 3px solid var(--second-col);
@@ -1190,7 +1361,8 @@ legend {
 }
 
 /* Style for radio buttons and input fields in category section */
-.WFH, .NWFH {
+.WFH,
+.NWFH {
     margin-right: 10px;
 }
 
@@ -1204,6 +1376,7 @@ legend {
     color: var(--fourth-col);
     transition: var(--transition);
 }
+
 .NWFH-loc:focus {
     outline: none;
     border: 3px solid var(--second-col);
@@ -1233,6 +1406,7 @@ legend {
     border-radius: var(--border-50);
     transition: var(--transition);
 }
+
 #duration:focus {
     outline: none;
     border: 3px solid var(--second-col);
@@ -1284,6 +1458,7 @@ legend {
     margin-bottom: 20px;
     font-weight: 600;
 }
+
 #certificate {
     scale: 1.5;
     margin-right: 10px;
@@ -1311,6 +1486,7 @@ legend {
 .information {
     margin-bottom: 20px;
 }
+
 .additionalinfo {
     font-weight: bold;
     color: var(--fourth-col);
@@ -1327,14 +1503,16 @@ legend {
 
 /* ----student profiles & teacher profile---- */
 
-.stu-container, .tech-container{
-    width:1280px;
-    margin:0 auto;
+.stu-container,
+.tech-container {
+    width: 1280px;
+    margin: 0 auto;
     background-color: var(--first-col);
     margin-top: 150px;
 }
 
-.stu-header, .tech-header{
+.stu-header,
+.tech-header {
     width: 1138px;
     margin: 0 auto;
     background-color: var(--first-col);
@@ -1344,17 +1522,18 @@ legend {
     align-items: center;
 }
 
-.header-item1{
+.header-item1 {
     font-size: 30px;
     color: var(--third-col);
 }
 
-.header-item2{
+.header-item2 {
     font-size: 40px;
     color: var(--sixth-col);
 }
 
-.stu-hero-section, .tech-hero-section{
+.stu-hero-section,
+.tech-hero-section {
     width: 1138px;
     margin: 0 auto;
     background-color: var(--second-col);
@@ -1362,46 +1541,55 @@ legend {
     margin-top: 75px;
 }
 
-.stu-para-style1, .tech-para-style1{
+.stu-para-style1,
+.tech-para-style1 {
     font-size: 23px;
     color: var(--fourth-col);
 
 }
 
-.stu-para-style2, .tech-para-style2{
+.stu-para-style2,
+.tech-para-style2 {
     font-size: 21px;
     color: var(--fourth-col);
 }
 
-.stu-para, .tech-para{
+.stu-para,
+.tech-para {
     font-size: 18px;
     color: var(--third-col);
 }
 
-.stu-entry-boxes1, .tech-entry-boxes1{
+.stu-entry-boxes1,
+.tech-entry-boxes1 {
     display: flex;
     justify-content: space-evenly;
 }
 
-.stu-entry-boxes2, .tech-entry-boxes2{
+.stu-entry-boxes2,
+.tech-entry-boxes2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.stu-entry-boxes3, .tech-entry-boxes3, 
-.stu-gender, .tech-gender{
+.stu-entry-boxes3,
+.tech-entry-boxes3,
+.stu-gender,
+.tech-gender {
     margin-top: 30px;
     margin-left: 83px;
 }
 
-.stu-entry-boxes4, .tech-entry-boxes4{
+.stu-entry-boxes4,
+.tech-entry-boxes4 {
     display: flex;
     justify-content: space-evenly;
 }
 
-.stu-box-design1, .tech-box-design1{
+.stu-box-design1,
+.tech-box-design1 {
     height: 55px;
     width: 479px;
     background-color: var(--seventh-col);
@@ -1413,12 +1601,13 @@ legend {
     /* outline: none; */
 }
 
-.stu-email-box, .tech-email-box{
+.stu-email-box,
+.tech-email-box {
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
-    border-radius: 20px;   
-    color: var(--fourth-col); 
+    border-radius: 20px;
+    color: var(--fourth-col);
     font-size: 21px;
     padding-left: 20px;
     padding-top: 10px;
@@ -1426,11 +1615,11 @@ legend {
 }
 
 /* country code dropdown  */
-#country-code{
+#country-code {
     height: 55px;
     width: 89px;
     background-color: var(--seventh-col);
-    border-radius: 20px; 
+    border-radius: 20px;
     border: var(--border);
     color: var(--fourth-col);
     font-size: 21px;
@@ -1440,11 +1629,11 @@ legend {
     -webkit-appearance: none;
 }
 
-.mob-box{
+.mob-box {
     height: 55px;
     width: 859px;
     background-color: var(--seventh-col);
-    border-radius: 20px; 
+    border-radius: 20px;
     color: var(--fourth-col);
     font-size: 21px;
     padding-left: 20px;
@@ -1452,18 +1641,20 @@ legend {
     border: var(--border);
 }
 
-.stu-box-design2, .tech-box-design2{
+.stu-box-design2,
+.tech-box-design2 {
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
-    border-radius: 20px;   
-    color: var(--fourth-col); 
+    border-radius: 20px;
+    color: var(--fourth-col);
     font-size: 21px;
     padding-left: 20px;
     border: var(--border);
 }
 
-.stu-box-design3, .tech-box-design3{
+.stu-box-design3,
+.tech-box-design3 {
     height: 55px;
     width: 459px;
     background-color: var(--seventh-col);
@@ -1474,44 +1665,55 @@ legend {
     border: var(--border);
 }
 
-.stu-first-name, .tech-first-name{
+.stu-first-name,
+.tech-first-name {
     margin-left: 65px;
     margin-top: 50px;
 }
 
-.stu-last-name, .tech-last-name{
+.stu-last-name,
+.tech-last-name {
     margin-right: 65px;
     margin-top: 50px;
 }
 
-.stu-email, .tech-email,
-.stu-address1, .tech-address1,
-.stu-address2, .tech-address2,
-.stu-pin, .tech-pin,
-.stu-state, .tech-state,
-.stu-city, .tech-city,
-.stu-country, .tech-country,
-.stu-language, .tech-language{
+.stu-email,
+.tech-email,
+.stu-address1,
+.tech-address1,
+.stu-address2,
+.tech-address2,
+.stu-pin,
+.tech-pin,
+.stu-state,
+.tech-state,
+.stu-city,
+.tech-city,
+.stu-country,
+.tech-country,
+.stu-language,
+.tech-language {
     margin-top: 30px;
 }
 
-.stu-address, .tech-address{
+.stu-address,
+.tech-address {
     margin-top: 50px;
     margin-left: 83px;
 
 }
 
-.pin-state{
+.pin-state {
     margin-left: 27.7px;
 }
 
-.city-country{
+.city-country {
     margin-right: 27.7px;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  display: none;
+    display: none;
 }
 
 
@@ -1522,11 +1724,11 @@ input::-webkit-inner-spin-button {
     margin-top: 11px;
 }
 
-.radio{
+.radio {
     display: none;
 }
 
-.gen-label{
+.gen-label {
     color: var(--fourth-col);
     background-color: var(--seventh-col);
     cursor: pointer;
@@ -1535,30 +1737,32 @@ input::-webkit-inner-spin-button {
     font-size: 21px;
 }
 
-#male:checked ~ .label-1, 
-#female:checked ~ .label-2,
-#others:checked ~ .label-3{
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
     background-color: var(--fourth-col);
     color: var(--first-col);
 }
 
-.female, .others{
+.female,
+.others {
     margin-left: 1.5rem;
 }
 
 
 /* select languages */
 
-.stu-language, .tech-language{
+.stu-language,
+.tech-language {
     margin-left: 83px;
     padding-bottom: 70px;
 }
 
-.add-language{
+.add-language {
     padding-top: 1rem;
 }
 
-#select-items-button{
+#select-items-button {
     color: var(--first-col);
     background-color: var(--fourth-col);
     padding: 0.8rem 2rem;
@@ -1568,7 +1772,7 @@ input::-webkit-inner-spin-button {
     font-size: 21px;
 }
 
-.langlabel{
+.langlabel {
     background-color: var(--second-col);
     padding: 5px 10px;
     border-radius: 20px;
@@ -1582,14 +1786,16 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
 }
 
-.label input{
+.label input {
     margin-right: 8px;
 }
+
 .dropdown-label1 {
     font-weight: 600;
     font-size: 20px;
 }
-.language-dropdown{
+
+.language-dropdown {
     width: 30%;
     margin-left: 15px;
     align-items: center;
@@ -1605,13 +1811,14 @@ input::-webkit-inner-spin-button {
     border-radius: var(--border-50);
     transition: var(--transition);
 }
+
 .language-dropdown:focus {
     outline: none;
     border: 3px solid var(--second-col);
     box-shadow: var(--box-shadow);
 }
 
-.ok-btn{
+.ok-btn {
     background-color: var(--fourth-col);
     color: var(--first-col);
     padding: 0.4rem 0.8rem;
@@ -1625,23 +1832,26 @@ input::-webkit-inner-spin-button {
     align-items: center;
     transition: all 0.3s ease-in-out;
 }
+
 .ok-btn:hover {
     box-shadow: var(--box-shadow);
 }
 
-.proficiency{
+.proficiency {
     background-color: var(--second-col);
     padding: 10px;
     border-radius: 20px;
     align-items: center;
 }
-.proficiency-title{
+
+.proficiency-title {
     align-items: center;
     text-align: center;
     font-size: 18px;
     font-weight: 600;
 }
-.dropboxesproficiency{
+
+.dropboxesproficiency {
     margin: 10px;
 }
 
@@ -1664,7 +1874,7 @@ input::-webkit-inner-spin-button {
     max-width: 974px !important;
 }
 
-#selected-items-list div{
+#selected-items-list div {
     color: var(--fourth-col);
     background-color: var(--seventh-col);
     border-radius: 20px;
@@ -1678,7 +1888,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* end next button */
-.next-btn{
+.next-btn {
     font-size: 23px;
     font-weight: 500;
     /* border-radius: 20px; */
@@ -1694,14 +1904,14 @@ input::-webkit-inner-spin-button {
 /* company profile */
 
 
-.com-container{
-    width:1280px;
-    margin:0 auto;
+.com-container {
+    width: 1280px;
+    margin: 0 auto;
     background-color: var(--first-col);
     margin-top: 150px;
 }
 
-.com-header{
+.com-header {
     width: 1138px;
     margin: 0 auto;
     background-color: var(--first-col);
@@ -1711,7 +1921,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.com-hero-section{
+.com-hero-section {
     width: 1138px;
     margin: 0 auto;
     background-color: var(--second-col);
@@ -1719,63 +1929,64 @@ input::-webkit-inner-spin-button {
     margin-top: 75px;
 }
 
-.com-para-style1{
+.com-para-style1 {
     font-size: 23px;
     color: var(--fourth-col);
 
 }
 
-.com-para-style2{
+.com-para-style2 {
     font-size: 21px;
     color: var(--fourth-col);
 }
 
-.com-para{
+.com-para {
     font-size: 18px;
     color: var(--third-col);
 }
 
-.com-entry-boxes1{
+.com-entry-boxes1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.com-entry-boxes2, .com-link{
+.com-entry-boxes2,
+.com-link {
     margin-top: 30px;
     margin-left: 83px;
 }
 
-.com-entry-boxes3{
+.com-entry-boxes3 {
     display: flex;
     justify-content: space-evenly;
 }
 
-.com-box-design1{
+.com-box-design1 {
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
-    border-radius: 20px;   
-    color: var(--fourth-col); 
+    border-radius: 20px;
+    color: var(--fourth-col);
     font-size: 21px;
     padding-left: 20px;
     border: var(--border);
 }
 
-.com-email-box{
+.com-email-box {
     height: 55px;
     width: 974px;
     background-color: var(--seventh-col);
-    border-radius: 20px;   
-    color: var(--fourth-col); 
+    border-radius: 20px;
+    color: var(--fourth-col);
     font-size: 21px;
     padding-left: 20px;
     padding-top: 10px;
     border: var(--border);
 }
 
-.com-arr-date{
+.com-arr-date {
     display: flex;
     justify-content: space-between;
     height: 55px;
@@ -1789,13 +2000,13 @@ input::-webkit-inner-spin-button {
     border: var(--border);
 }
 
-.fa-calendar{
+.fa-calendar {
     color: var(--last-col);
     padding-right: 20px;
     padding-top: 7px;
 }
 
-.com-box-design2{
+.com-box-design2 {
     height: 55px;
     width: 459px;
     background-color: var(--seventh-col);
@@ -1806,37 +2017,41 @@ input::-webkit-inner-spin-button {
     border: var(--border);
 }
 
-.com-name{
+.com-name {
     margin-top: 50px;
 }
 
-.com-email, .com-address1, 
-.com-address2, .com-pin,
-.com-state, .com-city,
-.com-country, .com-about{
+.com-email,
+.com-address1,
+.com-address2,
+.com-pin,
+.com-state,
+.com-city,
+.com-country,
+.com-about {
     margin-top: 30px;
 }
 
-.com-address{
+.com-address {
     margin-top: 50px;
     margin-left: 83px;
 
 }
 
-.pin-state{
+.pin-state {
     margin-left: 27.7px;
 }
 
-.city-country{
+.city-country {
     margin-right: 27.7px;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  display: none;
+    display: none;
 }
 
-.com-about{
+.com-about {
     margin-left: 83px;
     padding-bottom: 70px;
 }
@@ -1848,11 +2063,11 @@ input::-webkit-inner-spin-button {
 /* student and techer and company view personal details  */
 
 
-.view-details{
+.view-details {
     padding-top: 13.5px;
 }
 
-.mob-code{
+.mob-code {
     display: flex;
 }
 
@@ -1863,14 +2078,14 @@ input::-webkit-inner-spin-button {
 /* student resume */
 
 
-.resume-container{
-    width:1280px;
-    margin:0 auto;
+.resume-container {
+    width: 1280px;
+    margin: 0 auto;
     background-color: var(--first-col);
     margin-top: 150px;
 }
 
-.resume-header{
+.resume-header {
     width: 1138px;
     margin: 0 auto;
     background-color: var(--first-col);
@@ -1880,18 +2095,16 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.resume-header-item{
+.resume-header-item {
     font-size: 60px;
     color: var(--sixth-col);
     font-weight: 600;
 }
 
-.resume-hero-section{
+.resume-hero-section {
     width: 1052px;
     margin: 0 auto;
     background-color: var(--second-col);
     border-radius: 30px;
     margin-top: 75px;
 }
-
-
