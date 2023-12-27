@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-page">
 
         <!-- leftside -->
-        <div class="left-side"><h1>WELCOME TO, <br><span class="title-name">CAREER CONNECT</span></h1></div>
+        <div class="left-side"><h1>LOGIN TO, <br><span class="title-name">YOUR PROFILE</span></h1></div>
 
         <!-- rightside -->
         <div class="right-side">
@@ -126,12 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
             </div>
         </form>
-
-            <!-- registration re-direct -->
-            <div class="gotoreg">
-                <p>Don't have an account?</p>
-                <a href="../LoginandRegister/register.php"><button class="btn">Register Here</button></a>
-            </div>
         </div>
     </div>
 
