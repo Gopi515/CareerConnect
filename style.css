@@ -47,6 +47,8 @@ html {
 /*-------Main landing page-------*/
 .navbar {
     display: flex;
+    position: fixed;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     background-color: var(--second-col);
@@ -79,9 +81,87 @@ html {
     box-shadow: var(--box-shadow);
 }
 
+/* the Register inner */
+#RegisterNav {
+    display: none;
+    margin-top: 50vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 35px;
+    border: 1px var(--fourth-col) solid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--second-col);
+    transition: all 0.3s ease-in-out;
+    z-index: 5;
+}
+
+.twooptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.regop {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+    background-color: white;
+    padding: 25px;
+    border-radius: 35px;
+    margin-right: 20px;
+}
+
+.regbtnclg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    width: fit-content;
+    font-weight: 500;
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 3px transparent solid;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+.regbtnclg:hover {
+    box-shadow: var(--box-shadow);
+    border: 3px var(--first-col) solid;
+}
+
+.closeRegIn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    font-weight: 700;
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 3px var(--fourth-col) solid;
+}
+
+.closeRegIn:hover {
+    box-shadow: var(--box-shadow);
+    background-color: rgb(255, 75, 75);
+    border: 3px var(--first-col) solid;
+}
+
 /* the login inner */
 #logInNav {
     position: absolute;
+    margin-top: 50vh;
     top: 50%;
     display: none;
     left: 50%;
