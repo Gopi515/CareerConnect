@@ -13,7 +13,7 @@
 header("Content-Type: text/html");
 ?>
 
-<body>
+<body class="mainLandingPage">
     <div class="navbar">
         <div class="navbar-brand">Career Connect</div>
         <div class="navbar-buttons">
@@ -29,9 +29,19 @@ header("Content-Type: text/html");
             </div>
 
             <!-- the admin page-->
-            <div class="navbar-button" onclick="openRegister()">Register your college</div>
+            <div class="navbar-button" onclick="openRegIn()">Register your college</div>
             <div id="RegisterNav">
-                
+                <div class="twooptions">
+                    <div class="regop optionone">
+                        <p>Want to register your college?</p>
+                        <div class="regbtnclg">Register college</div>
+                    </div>
+                    <div class="regop optiontwo">
+                        <p>Already have a registered account?</p>
+                        <div class="regbtnclg">Admin Login</div>
+                    </div>
+                </div>
+                <div class="closeRegIn" id="closeRegIn" onclick="closeRegIn()"><i class="fa-solid fa-xmark"></i></div>
             </div>
         </div>
     </div>
