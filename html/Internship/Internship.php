@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship</title>
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+</head>
+
 <!-- php -->
 
 <?php 
@@ -12,20 +22,11 @@ session_start();
      
         $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`) VALUES ('$internship_topic', '$internship_location', '$internship_duration');";
         mysqli_query($conn, $sql);
-        header("Location:../Internship/apply.php");
+        header("Location:../Internship/applyInternship.php");
     }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship/Job</title>
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-</head>
 <body>
     
     <!-- navbar -->
@@ -34,9 +35,9 @@ session_start();
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li id="button1" class="interJobbutton"><a href="../Internship/Internship.php">Internship</a></li>
-                    <li id="button2" class="interJobbutton"><a href="../Internship/job.php">Job</a></li>
-                    <li><a href="../internship/applied.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li id="button1" class="interJobbutton"><a href="#">Internship</a></li>
+                    <li id="button2" class="interJobbutton"><a href="../Job/job.php">Job</a></li>
+                    <li><a href="../Internship/appliedInternship.php"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
                 </ul>
@@ -179,8 +180,18 @@ session_start();
 </h3> -->
 
 
-    <!-- script -->
+  <!-- job page -->
+
+
+
+    <!-- <footer>
+
+    </footer> -->
+
+
+
     <script src="../../javaScripts/dropdown.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
+    <script src="../../javaScripts/buttonSwitch.js"></script>
 </body>
 </html>

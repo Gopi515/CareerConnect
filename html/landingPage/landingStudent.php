@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
+
+
 <body>
 
     <!-- welcome section -->
@@ -17,9 +19,9 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="../Internship/Internship.php">Internship</a></li>
-                    <li><a href="../Internship/job.php">Job</a></li>
-                    <li><a href="../internship/applied.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="../Internship/internship.php">Internship</a></li>
+                    <li><a href="../Job/job.php">Job</a></li>
+                    <li><a href="../Internship/appliedInternship.php"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="../profiles/student/viewStudentDetails.php"><i class="fas fa-user"></i></a></li>
                 </ul>
