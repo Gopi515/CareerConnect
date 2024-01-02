@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job</title>
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+</head>
 
 <!-- php -->
 
@@ -7,15 +16,6 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship/Job</title>
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-</head>
 <body>
     
     <!-- navbar -->
@@ -24,9 +24,9 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li id="button1" class="interJobbutton"><a href="../Internship/Internship.php">Internship</a></li>
-                    <li id="button2" class="interJobbutton"><a href="../Internship/job.php">Job</a></li>
-                    <li><a href="../internship/applied.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li id="button1" class="interJobbutton"><a href="../Internship/internship.php">Internship</a></li>
+                    <li id="button2" class="interJobbutton"><a href="#">Job</a></li>
+                    <li><a href="../Job/appliedJob.php"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <li><a href="#"><i class="fas fa-user"></i></a></li>
                     </ul>

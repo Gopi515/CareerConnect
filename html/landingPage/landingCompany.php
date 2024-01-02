@@ -20,8 +20,8 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="../Internship/Internship.php">Internship</a></li>
-                    <li><a href="../Internship/Internship.php">Job</a></li>
+                    <li><a href="../Internship/internship.php">Internship</a></li>
+                    <li><a href="../Job/job.php">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-window-restore"></i></a></li>
                     <div class="dropdownCompany">

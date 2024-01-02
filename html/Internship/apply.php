@@ -15,7 +15,7 @@
     echo
     "<script> alert('Application submitted successfully'); </script>";
 
-    header("Location:../Internship/Internship.php");
+    header("Location:../Internship/internship.php");
     
  }
 
@@ -37,7 +37,7 @@
 
 <!-- body -->
 <body>
-    <a href="../Internship/Internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
+    <a href="../Internship/internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
     <div class="applyHeading"><h1>Applying for Internship</h1></div>
 
     <form action="" method="POST">
