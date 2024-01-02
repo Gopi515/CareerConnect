@@ -2135,12 +2135,7 @@ input::-webkit-inner-spin-button {
     padding-bottom: 70px;
 }
 
-
-
-
-
 /* student and techer and company view personal details  */
-
 
 .view-details {
     padding-top: 13.5px;
@@ -2150,40 +2145,40 @@ input::-webkit-inner-spin-button {
     display: flex;
 }
 
-
-
-
-
 /* student resume */
-
-
 .resume-container {
-    width: 1280px;
-    margin: 0 auto;
-    background-color: var(--first-col);
-    margin-top: 150px;
-}
-
-.resume-header {
-    width: 1138px;
-    margin: 0 auto;
-    background-color: var(--first-col);
     display: flex;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--first-col);
+    margin-top: 100px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 30px;
 }
 
-.resume-header-item {
-    font-size: 60px;
-    color: var(--sixth-col);
+.reHone {
+    font-size: 40px;
+    color: var(--fourth-col);
     font-weight: 600;
 }
 
-.resume-hero-section {
-    width: 1052px;
-    margin: 0 auto;
-    background-color: var(--second-col);
-    border-radius: 30px;
-    margin-top: 75px;
+.notere p {
+    font-size: 15px;
+    color: #716636;
+    font-weight: 400;
+}
+
+.notere {
+    background-color: #fffaeb;
+    padding: 15px;
+    border: 1px solid #ffef85;
+    border-radius: 5px;
+}
+
+/*Resume Main container*/
+.resume-main {
+    padding: 50px;
+    border: 1px solid #777777;
+    border-radius: 5px;
 }
