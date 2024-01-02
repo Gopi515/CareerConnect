@@ -876,6 +876,12 @@ footer {
     transform: scale(1.1);
 }
 
+/* Internship view details */
+.detailsHeading{
+    color: var(--fourth-col);
+    font-size: 2.8rem;
+    text-align: center;
+}
 /*-------- job page --------*/
 .jobPage {
     height: 100%;
