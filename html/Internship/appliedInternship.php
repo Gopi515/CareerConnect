@@ -1,10 +1,16 @@
 <!-- php -->
 
 <?php 
-
+session_start();
     require_once '../../dbconnect.php';
 
-    $sql = "SELECT * FROM applied";
+    if (isset($_SESSION['mail'])){
+      $email = $_SESSION['mail'];
+    } else {
+      echo "<script>alert('Error: Session is not working.')</script>";
+    }
+
+    $sql = "SELECT * FROM applied WHERE `stu_email` = '$email'";
     $applied_internships = $conn->query($sql);
 
 ?>
