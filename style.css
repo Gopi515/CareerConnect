@@ -879,6 +879,7 @@ footer {
 }
 
 /* Internship view details */
+
 .detailsHeading{
     color: var(--fourth-col);
     font-size: 2.8rem;
@@ -1127,6 +1128,7 @@ footer {
     height: 3.2rem;
     border-radius: 50px;
 }
+
 /*required skills area*/
 .reqskills {
     margin-bottom: 20px;
@@ -2424,6 +2426,106 @@ input::-webkit-inner-spin-button {
 /*Resume Main container*/
 .resume-main {
     padding: 50px;
-    border: 1px solid #777777;
+    background-color: #f1f7fc;
+    border: 1px solid transparent;
     border-radius: 5px;
+    width: 65vw;
+}
+
+.realbasic {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.theTwo {
+    margin: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*Education part*/
+.reeducation {
+    padding: 10px;
+    margin: 20px;
+}
+
+.closeEdu {
+    position: absolute;
+    top: 24%;
+    right: 30%;
+    padding: 10px 15px;
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    font-weight: 700;
+    border-radius: var(--border-50);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 3px var(--first-col) solid;
+}
+
+@media screen and (max-width: 768px) {
+    .closeEdu {
+        right: 24%;
+    }
+}
+
+.closeEdu:hover {
+    box-shadow: var(--box-shadow);
+    background-color: rgb(255, 75, 75);
+    border: 3px var(--first-col) solid;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 50px auto;
+    margin-top: 25vh;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.addEduDetails {
+    cursor: pointer;
+    color: blue;
+    margin-bottom: 10px;
+}
+
+/* Add this CSS in your style sheet or in a style tag in your HTML file */
+.eduDetailItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.eduDetailItem strong {
+    color: #333;
+}
+
+.eduDetailItem button {
+    margin-top: 5px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.eduDetailItem button:hover {
+    background-color: #2980b9;
 }

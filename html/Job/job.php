@@ -11,8 +11,18 @@
 <!-- php -->
 
 <?php 
-
+session_start();
     require_once '../../dbconnect.php';
+
+    if(isset($_POST["applyJob"])){
+        $job_topic = $_POST["hidden_topic"];
+        $job_location = $_POST["hidden_location"];
+
+        $_SESSION['Job_topic'] = $job_topic;
+        $_SESSION['Job_loc'] = $job_location;
+    
+        header("Location:../Job/applyJob.php");
+    }
 
 ?>
 
@@ -141,11 +151,10 @@
 
                 <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>">
                 <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
-                <input type="hidden" name="hidden_experience" value="<?php echo $row["experience"]; ?>">
                 
 
                 <div class="buttonNextstep">
-                <a href="viewDetailsjob.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
+                    <a href="viewDetailsjob.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
                    <button class="applyButton" type="submit" name="applyJob">Apply</button>
                 </div>
                 </form>

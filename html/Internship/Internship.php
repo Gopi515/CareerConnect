@@ -14,14 +14,15 @@
 session_start();
     require '../../dbconnect.php';
 
-    if(isset($_POST["apply"])){
-        $internship_id = $_GET["id"];
+    if(isset($_POST["applyInternship"])){
         $internship_topic = $_POST["hidden_topic"];
         $internship_location = $_POST["hidden_location"];
         $internship_duration = $_POST["hidden_duration"];
-     
-        $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`) VALUES ('$internship_topic', '$internship_location', '$internship_duration');";
-        mysqli_query($conn, $sql);
+
+        $_SESSION['int_topic'] = $internship_topic;
+        $_SESSION['int_loc'] = $internship_location;
+        $_SESSION['int_dur'] = $internship_duration;
+    
         header("Location:../Internship/applyInternship.php");
     }
 
@@ -158,7 +159,7 @@ session_start();
 
                 <div class="buttonNextstep">
                     <a href="viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
-                   <button class="applyButton" type="submit" name="apply">Apply</button>
+                    <button class="applyButton" type="submit" name="apply">Apply</button>
                 </div>
                 </form>
             </div>
