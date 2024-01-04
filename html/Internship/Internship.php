@@ -14,7 +14,7 @@
 session_start();
     require '../../dbconnect.php';
 
-    if(isset($_POST["apply"])){
+    if(isset($_POST["applyInternship"])){
         $internship_topic = $_POST["hidden_topic"];
         $internship_location = $_POST["hidden_location"];
         $internship_duration = $_POST["hidden_duration"];
@@ -23,7 +23,7 @@ session_start();
         $_SESSION['int_loc'] = $internship_location;
         $_SESSION['int_dur'] = $internship_duration;
     
-        header("Location:../Internship/apply.php");
+        header("Location:../Internship/applyInternship.php");
     }
 
 ?>
@@ -159,7 +159,7 @@ session_start();
 
                 <div class="buttonNextstep">
                     <div class="details"><button>View Details</button></div>
-                   <button class="applyButton" type="submit" name="apply">Apply</button>
+                   <button class="applyButton" type="submit" name="applyInternship">Apply</button>
                 </div>
                 </form>
             </div>

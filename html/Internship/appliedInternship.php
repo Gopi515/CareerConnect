@@ -10,7 +10,7 @@ session_start();
       echo "<script>alert('Error: Session is not working.')</script>";
     }
 
-    $sql = "SELECT * FROM applied WHERE `stu_email` = '$email'";
+    $sql = "SELECT * FROM `internship_applied` WHERE `stu_email` = '$email'";
     $applied_internships = $conn->query($sql);
 
 ?>
