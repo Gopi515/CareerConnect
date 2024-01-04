@@ -676,7 +676,6 @@ footer {
     padding-top: 7%;
     color: var(--fourth-col);
 }
-
 .internshipCard .locationP {
     margin-top: 5%;
     margin-left: 7%;
@@ -709,9 +708,12 @@ footer {
     cursor: pointer;
 }
 
-.buttonNextstep .details button {
-    color: var(--fifth-col);
+.buttonNextstep .details{
+    text-decoration: none;
+    color: var(--third-col);
     background: none;
+    margin-top: 2%;
+    font-weight: 600;
 }
 
 .buttonNextstep .details button:hover {
@@ -881,13 +883,250 @@ footer {
     color: var(--fourth-col);
     font-size: 2.8rem;
     text-align: center;
+    margin-top: 3%;
 }
+.mainDetailscontainer{
+    position: absolute;
+    width: 75%;
+    height: 60%;
+    background-color: var(--second-col);
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.detailsContainerheading{
+    font-size: 1.9rem;
+    margin-left: 5%;
+    margin-top: 3%;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.detailsloaction{
+    margin-left: 5%;
+    font-size: 1.2rem;
+    margin-top: 3%;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.otherDetails{
+    margin-left: -12.5%;
+    font-size: 1.2rem;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+}
+.detailsStipend{
+    margin-left: -12%;
+}
+.detailsApplyby{
+    margin-left: -12%;
+}
+.otherDetails .detailsType i{
+    color: var(--fourth-col);
+}
+.otherDetails .detailsType{
+    color: var(--third-col);
+    font-weight: 500;
+}
+.otherDetails .detailsData{
+    font-size: 1.1rem;
+    color: var(--fourth-col);
+    font-weight: 500;
+    margin-top: 5%;
+}
+.noofApplicationdetails{
+    margin-left: 5%;
+    margin-top: 3%;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.detailsContaineroptions{
+    margin-left: 5%;
+    margin-top: 3%;
+    width: 150px;
+    color: var(--fourth-col);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.detailsContaineroptions .share{
+    margin-left: 5%;
+}
+.detailsContaineroptions .share:hover{
+    transform: translateY(-4px);
+}
+.detailsContaineroptions .bookmark:hover{
+    transform: translateY(-4px);
+}
+.companyAbout{
+    position: absolute;
+    width: 70%;
+    top: 95%;
+    left: 15%;
+}
+.companyAbout h3{
+    font-size: 1.7rem;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.companyAbout .companyWebsite{
+    font-size: 1.2rem;
+    color: var(--third-col);
+    cursor: pointer;
+    margin-top: 1%;
+}
+.companyAbout p{
+    font-size: 1.3rem;
+    color: var(--fourth-col);
+    margin-top: 1.5%;
+}
+.internshipAbout{
+    position: absolute;
+    width: 70%;
+    top: 126%;
+    left: 15%;
+}
+.internshipAbout h3{
+    font-size: 1.7rem;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.internshipAbout p{
+    margin-top: 2%;
+    font-size: 1.2rem;
+    color: var(--third-col);
+    font-weight: 500;
+}
+.internshipSkillsrequire{
+    position: absolute;
+    top: 165%;
+    left: 15%;
+}
+.internshipSkillsrequire h3{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.internshipSkillsrequire p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--third-col);
+    margin-top: 2%;
+}
+.internshipOpenings{
+    position: absolute;
+    top: 184%;
+    left: 15%;
+}
+.internshipOpenings h3{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.internshipOpenings p{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--third-col);
+}
+.detailsApplybutton{
+    text-decoration: none;
+    position: absolute;
+    margin-top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    width: 9rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: none;
+    color: var(--first-col);
+    background-color: var(--fourth-col);
+    font-size: 1.2rem;
+    text-align: center;
+    transition: 0.3s;
+}
+.detailsApplybutton:hover{
+    width: 9.2rem;
+    height: 3.2rem;
+    border-radius: 50px;
+}
+
 /*-------- job page --------*/
 .jobPage {
     height: 100%;
     width: 100%;
 }
-
+.internshipAbout2{
+    position: absolute;
+    width: 70%;
+    top: 170%;
+    left: 15%;
+}
+.internshipAbout2 h3{
+    font-size: 1.7rem;
+    color: var(--fourth-col);
+    font-weight: 500;
+}
+.internshipAbout2 p{
+    margin-top: 2%;
+    font-size: 1.2rem;
+    color: var(--third-col);
+    font-weight: 500;
+}
+.jobSkillsrequire{
+    position: absolute;
+    top: 227%;
+    left: 15%;
+}
+.jobSkillsrequire h3{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.jobSkillsrequire p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--third-col);
+    margin-top: 2%;
+}
+.jobOpenings{
+    position: absolute;
+    top: 242%;
+    left: 15%;
+}
+.jobOpenings h3{
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--fourth-col);
+}
+.jobOpenings p{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--third-col);
+}
+.detailsApplybuttonJob{
+    text-decoration: none;
+    position: absolute;
+    margin-top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    width: 9rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: none;
+    color: var(--first-col);
+    background-color: var(--fourth-col);
+    font-size: 1.2rem;
+    text-align: center;
+    transition: 0.3s;
+}
+.detailsApplybuttonJob:hover{
+    width: 9.2rem;
+    height: 3.2rem;
+    border-radius: 50px;
+}
 /*required skills area*/
 .reqskills {
     margin-bottom: 20px;
