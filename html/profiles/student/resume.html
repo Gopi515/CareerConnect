@@ -42,130 +42,18 @@
             <div class="resume-main">
                 <div class="realbasic">
                     <div class="rename">Name</div>
-                    <div class="remail">Email@gmail.com</div>
+                    <div class="remail">Email</div>
                     <div class="rephone">Phone</div>
-                    <div class="recity">City,State</div>
+                    <div class="recity">City</div>
                 </div>
                 <hr>
                 <div class="theTwo">
-                    <div class="resumeUID">
-                        <p class="reinnerUID">UID/ROLL NO.</p>
-                        <input type="text">
-                    </div>
-                    <div class="resumeDOB">
-                        <div class="reinnerDOB">Date of Birth</div>
-                        <input type="date">
-                    </div>
+                    <div class="resumeUID"></div>
                 </div>
                 <hr>
-                <!-- Education -->
                 <div>
                     <div class="reeducation">
                         <p>Education</p>
-                        <div id="XdetailsDisplay"></div>
-                        <div class="addEduDetails" onclick="openEduDetails()">+ Add Education Details</div>
-                    </div>
-
-                    <div class="modal" id="eduModal">
-                        <div class="modal-content">
-                            <div class="distinguisedEdu">
-                                <div class="secondary" onclick="openSecondaryDetails()">+ Add secondary (X) details
-                                </div>
-                                <div class="seniorSec" onclick="openSeniorSecDetails()">+ Add senior/ Higher secondary
-                                    (XII) details</div>
-                                <div class="diploma" onclick="openDiplomaDetails()">+ Add diploma details</div>
-                                <div class="gradPgrad" onclick="openGradPgradDetails()">+ Add graduation/ Post
-                                    graduation details</div>
-                                <div class="PhD" onclick="openPhDDetails()">+ Add PhD details</div>
-                                <div class="closeEdu" onclick="closeEdu()"><i class="fa-solid fa-xmark"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Secondary Details Modal -->
-                    <div class="modal" id="secondaryModal">
-                        <div class="modal-content">
-                            <div class="h1header">Secondary (X) details</div>
-                            <div class="Xstatus">
-                                <div>Current Status</div>
-                                <div class="XstatusOptions">
-                                    <div class="XstatusOption">
-                                        <input type="radio" name="Xstatus" id="Xstatus1" value="Pursuing">
-                                        <label for="Xstatus1">Pursuing</label>
-                                    </div>
-                                    <div class="XstatusOption">
-                                        <input type="radio" name="Xstatus" id="Xstatus2" value="Completed">
-                                        <label for="Xstatus2">Completed</label>
-                                    </div>
-                                </div>
-                                <div class="closeEdu" onclick="closeSecondaryDetails()"><i
-                                        class="fa-solid fa-xmark"></i>
-                                </div>
-                            </div>
-                            <div class="Xcompletionyear">
-                                <div>Year of Completion</div>
-                                <input type="month" />
-                            </div>
-                            <div class="Xboard">
-                                <div>Board</div>
-                                <input type="text" />
-                            </div>
-                            <div class="Xschool">
-                                <div>School</div>
-                                <input type="text" />
-                            </div>
-                            <div class="Xmarks">
-                                <div class="Xfullmarks">
-                                    <p>Enter the maximum marks:</p>
-                                    <input type="number" id="maxMarks" oninput="calculatePercentage()" />
-                                </div>
-                                <div class="Xmarksobtained">
-                                    <p>Enter the marks You obtained:</p>
-                                    <input type="number" id="marksObtained" oninput="calculatePercentage()" />
-                                </div>
-                                <div class="Xpercent">
-                                    <p>Percentage: <span id="Xpercentage">0%</span></p>
-                                </div>
-                            </div>
-
-                            <div class="Submit" onclick="updateSecondaryDetails()">Submit</div>
-                        </div>
-                    </div>
-
-                    <!-- Senior Secondary Details Modal -->
-                    <div class="modal" id="seniorSecModal">
-                        <div class="modal-content">
-                            <!-- Add your input fields and details for senior secondary education here -->
-                            <div class="closeEdu" onclick="closeSeniorSecDetails()"><i class="fa-solid fa-xmark"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Diploma Details Modal -->
-                    <div class="modal" id="diplomaModal">
-                        <div class="modal-content">
-                            <!-- Add your input fields and details for diploma here -->
-                            <div class="closeEdu" onclick="closeDiplomaDetails()"><i class="fa-solid fa-xmark"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Graduation/Post Graduation Details Modal -->
-                    <div class="modal" id="gradPgradModal">
-                        <div class="modal-content">
-                            <!-- Add your input fields and details for graduation/post graduation here -->
-                            <div class="closeEdu" onclick="closeGradPgradDetails()"><i class="fa-solid fa-xmark"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PhD Details Modal -->
-                    <div class="modal" id="PhDModal">
-                        <div class="modal-content">
-                            <!-- Add your input fields and details for PhD here -->
-                            <div class="closeEdu" onclick="closePhDDetails()"><i class="fa-solid fa-xmark"></i>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -174,9 +62,5 @@
     </div>
 
 </body>
-
-<!-- script -->
-<script src="../../../javaScripts/buttonPop.js"></script>
-<script src="../../../javaScripts/percentageCalc.js"></script>
 
 </html>
