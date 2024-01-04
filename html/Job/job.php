@@ -154,7 +154,7 @@ session_start();
                 
 
                 <div class="buttonNextstep">
-                    <div class="details"><button>View Details</button></div>
+                <a href="viewDetailsjob.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
                    <button class="applyButton" type="submit" name="applyJob">Apply</button>
                 </div>
                 </form>

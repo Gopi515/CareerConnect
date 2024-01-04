@@ -158,8 +158,7 @@ session_start();
                 
 
                 <div class="buttonNextstep">
-                    <div class="details"><button>View Details</button></div>
-                   <button class="applyButton" type="submit" name="applyInternship">Apply</button>
+
                 </div>
                 </form>
             </div>
