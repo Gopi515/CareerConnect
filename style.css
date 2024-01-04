@@ -2390,6 +2390,7 @@ input::-webkit-inner-spin-button {
     justify-content: space-evenly;
 }
 
+/*Education part*/
 .reeducation {
     padding: 10px;
     margin: 20px;
@@ -2397,8 +2398,8 @@ input::-webkit-inner-spin-button {
 
 .closeEdu {
     position: absolute;
-    top: 245px;
-    right: 455px;
+    top: 24%;
+    right: 30%;
     padding: 10px 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
@@ -2407,6 +2408,12 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     border: 3px var(--first-col) solid;
+}
+
+@media screen and (max-width: 768px) {
+    .closeEdu {
+        right: 24%;
+    }
 }
 
 .closeEdu:hover {
@@ -2429,18 +2436,41 @@ input::-webkit-inner-spin-button {
     background-color: #fff;
     padding: 20px;
     margin: 50px auto;
-    margin-top: 35vh;
+    margin-top: 25vh;
     width: 50%;
     max-width: 600px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* */
-
-
 .addEduDetails {
     cursor: pointer;
     color: blue;
     margin-bottom: 10px;
+}
+
+/* Add this CSS in your style sheet or in a style tag in your HTML file */
+.eduDetailItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.eduDetailItem strong {
+    color: #333;
+}
+
+.eduDetailItem button {
+    margin-top: 5px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.eduDetailItem button:hover {
+    background-color: #2980b9;
 }
