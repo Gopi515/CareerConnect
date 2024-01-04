@@ -95,7 +95,7 @@
             </div>
 
 
-            <a href="../Internship/apply.php" class="detailsApplybuttonJob">Apply</a>
+            <a href="../Internship/applyInternship.php" class="detailsApplybuttonJob">Apply</a>
             <?php
         }
     }
