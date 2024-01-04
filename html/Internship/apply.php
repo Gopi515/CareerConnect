@@ -1,39 +1,23 @@
 <!-- php -->
 <?php
-    session_start();
-    require '../../dbconnect.php';
+ require '../../dbconnect.php';
 
-    if (isset($_POST["submit"])){
-        $cover_letter = $_POST['cover_letter'];
-        $availability = $_POST['availability'];
-        $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
-        $assessment = $_POST['assessment'];
+ if (isset($_POST["submit"])){
+    $cover_letter = $_POST['cover_letter'];
+    $availability = $_POST['availability'];
+    $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
+    $assessment = $_POST['assessment'];
 
-        $query = "INSERT INTO application_details (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
-        mysqli_query($conn, $query);
+    $query = "INSERT INTO application_details (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
+    mysqli_query($conn, $query);
 
-        if (isset($_SESSION['int_topic']) && ($_SESSION['int_loc']) && ($_SESSION['int_dur']) && ($_SESSION['mail'])){
-            $internship_topic = $_SESSION['int_topic'];
-            $internship_location = $_SESSION['int_loc'];
-            $internship_duration = $_SESSION['int_dur'];
-            $email = $_SESSION['mail'];
+ 
+    echo
+    "<script> alert('Application submitted successfully'); </script>";
 
-            $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`, `stu_email`) VALUES ('$internship_topic', '$internship_location', '$internship_duration', '$email')";
-            mysqli_query($conn, $sql);
-
-            unset($_SESSION['int_topic']);
-            unset($_SESSION['int_loc']);
-            unset($_SESSION['int_dur']);
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
-
-        echo
-        "<script> alert('Application submitted successfully'); </script>";
-
-        header("Location:../Internship/internship.php");
+    header("Location:../Internship/internship.php");
     
-    }
+ }
 
 ?>
 
