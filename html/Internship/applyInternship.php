@@ -9,7 +9,7 @@
         $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
         $assessment = $_POST['assessment'];
 
-        $query = "INSERT INTO application_details (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
+        $query = "INSERT INTO `internship_application_details` (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
         mysqli_query($conn, $query);
 
         if (isset($_SESSION['int_topic']) && ($_SESSION['int_loc']) && ($_SESSION['int_dur']) && ($_SESSION['mail'])){
@@ -18,7 +18,7 @@
             $internship_duration = $_SESSION['int_dur'];
             $email = $_SESSION['mail'];
 
-            $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`, `stu_email`) VALUES ('$internship_topic', '$internship_location', '$internship_duration', '$email')";
+            $sql = "INSERT INTO `internship_applied` (`profile`, `location`, `duration`, `stu_email`) VALUES ('$internship_topic', '$internship_location', '$internship_duration', '$email')";
             mysqli_query($conn, $sql);
 
             unset($_SESSION['int_topic']);
@@ -47,7 +47,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-    <title>Apply</title>
+    <title>Apply Internship</title>
 </head>
 
 

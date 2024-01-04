@@ -42,18 +42,86 @@
             <div class="resume-main">
                 <div class="realbasic">
                     <div class="rename">Name</div>
-                    <div class="remail">Email</div>
+                    <div class="remail">Email@gmail.com</div>
                     <div class="rephone">Phone</div>
-                    <div class="recity">City</div>
+                    <div class="recity">City,State</div>
                 </div>
                 <hr>
                 <div class="theTwo">
-                    <div class="resumeUID"></div>
+                    <div class="resumeUID">
+                        <p class="reinnerUID">UID/ROLL NO.</p>
+                        <input type="text">
+                    </div>
+                    <div class="resumeDOB">
+                        <div class="reinnerDOB">Date of Birth</div>
+                        <input type="date">
+                    </div>
                 </div>
                 <hr>
+                <!-- Education -->
                 <div>
                     <div class="reeducation">
                         <p>Education</p>
+                        <div class="addEduDetails" onclick="openEduDetails()">+ Add Education Details</div>
+                    </div>
+
+                    <div class="modal" id="eduModal">
+                        <div class="modal-content">
+                            <div class="distinguisedEdu">
+                                <div class="secondary" onclick="openSecondaryDetails()">+ Add secondary details</div>
+                                <div class="seniorSec" onclick="openSeniorSecDetails()">+ Add senior/ Higher secondary
+                                    details</div>
+                                <div class="diploma" onclick="openDiplomaDetails()">+ Add diploma details</div>
+                                <div class="gradPgrad" onclick="openGradPgradDetails()">+ Add graduation/ Post
+                                    graduation details</div>
+                                <div class="PhD" onclick="openPhDDetails()">+ Add PhD details</div>
+                                <div class="closeEdu" onclick="closeEdu()"><i class="fa-solid fa-xmark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Details Modal -->
+                    <div class="modal" id="secondaryModal">
+                        <div class="modal-content">
+                            <!-- Add your input fields and details for secondary education here -->
+                            <div class="closeEdu" onclick="closeSecondaryDetails()"><i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Senior Secondary Details Modal -->
+                    <div class="modal" id="seniorSecModal">
+                        <div class="modal-content">
+                            <!-- Add your input fields and details for senior secondary education here -->
+                            <div class="closeEdu" onclick="closeSeniorSecDetails()"><i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diploma Details Modal -->
+                    <div class="modal" id="diplomaModal">
+                        <div class="modal-content">
+                            <!-- Add your input fields and details for diploma here -->
+                            <div class="closeEdu" onclick="closeDiplomaDetails()"><i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graduation/Post Graduation Details Modal -->
+                    <div class="modal" id="gradPgradModal">
+                        <div class="modal-content">
+                            <!-- Add your input fields and details for graduation/post graduation here -->
+                            <div class="closeEdu" onclick="closeGradPgradDetails()"><i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PhD Details Modal -->
+                    <div class="modal" id="PhDModal">
+                        <div class="modal-content">
+                            <!-- Add your input fields and details for PhD here -->
+                            <div class="closeEdu" onclick="closePhDDetails()"><i class="fa-solid fa-xmark"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,5 +130,8 @@
     </div>
 
 </body>
+
+<!-- script -->
+<script src="../../../javaScripts/buttonPop.js"></script>
 
 </html>

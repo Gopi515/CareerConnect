@@ -9,21 +9,19 @@
         $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
         $assessment = $_POST['assessment'];
 
-        $query = "INSERT INTO application_details (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
+        $query = "INSERT INTO `job_application_details` (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
         mysqli_query($conn, $query);
 
-        if (isset($_SESSION['int_topic']) && ($_SESSION['int_loc']) && ($_SESSION['int_dur']) && ($_SESSION['mail'])){
-            $internship_topic = $_SESSION['int_topic'];
-            $internship_location = $_SESSION['int_loc'];
-            $internship_duration = $_SESSION['int_dur'];
+        if (isset($_SESSION['Job_topic']) && ($_SESSION['Job_loc']) && ($_SESSION['mail'])){
+            $job_topic = $_SESSION['Job_topic'];
+            $job_location = $_SESSION['Job_loc'];
             $email = $_SESSION['mail'];
 
-            $sql = "INSERT INTO `applied` (`profile`, `location`, `duration`, `stu_email`) VALUES ('$internship_topic', '$internship_location', '$internship_duration', '$email')";
+            $sql = "INSERT INTO `job_applied` (`profile`, `location`, `stu_email`) VALUES ('$job_topic', '$job_location', '$email')";
             mysqli_query($conn, $sql);
 
-            unset($_SESSION['int_topic']);
-            unset($_SESSION['int_loc']);
-            unset($_SESSION['int_dur']);
+            unset($_SESSION['Job_topic']);
+            unset($_SESSION['Job_loc']);
         } else {
             echo "<script>alert('Error: Session is not working.')</script>";
         }
@@ -31,7 +29,7 @@
         echo
         "<script> alert('Application submitted successfully'); </script>";
 
-        header("Location:../Internship/internship.php");
+        header("Location:../Job/job.php");
     
     }
 
@@ -47,14 +45,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-    <title>Apply</title>
+    <title>Apply Job</title>
 </head>
 
 
 <!-- body -->
 <body>
-    <a href="../Internship/internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
-    <div class="applyHeading"><h1>Applying for Internship</h1></div>
+    <a href="../Job/job.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
+    <div class="applyHeading"><h1>Applying for Job</h1></div>
 
     <form action="" method="POST">
     <div class="coverLetter">
