@@ -50,18 +50,18 @@
                 <div class="theTwo">
                     <div class="resumeUID">
                         <p class="reinnerUID">UID/ROLL NO.</p>
-                        <input type="text">
+                        <input class="inpreinnerUID" type="text">
                     </div>
                     <div class="resumeDOB">
                         <div class="reinnerDOB">Date of Birth</div>
-                        <input type="date">
+                        <input class="inpreinnerDOB" type="date">
                     </div>
                 </div>
                 <hr>
                 <!-- Education -->
                 <div>
                     <div class="reeducation">
-                        <p>Education</p>
+                        <p class="someheading">Education</p>
                         <div id="XdetailsDisplay"></div>
                         <div class="addEduDetails" onclick="openEduDetails()">+ Add/Update Education Details</div>
                     </div>
@@ -69,17 +69,23 @@
                     <div class="modal" id="eduModal">
                         <div class="modal-content">
                             <div class="distinguisedEdu">
-                                <div class="secondary" onclick="openSecondaryDetails()">+ Add/Update secondary (X)
+                                <div class="secondary eddetais" onclick="openSecondaryDetails()">+ Add/Update secondary
+                                    (X)
                                     details
                                 </div>
-                                <div class="seniorSec" onclick="openSeniorSecDetails()">+ Add/Update senior/ Higher
+                                <div class="seniorSec eddetais" onclick="openSeniorSecDetails()">+ Add/Update senior/
+                                    Higher
                                     secondary
                                     (XII) details</div>
-                                <div class="diploma" onclick="openDiplomaDetails()">+ Add/Update diploma details</div>
-                                <div class="gradPgrad" onclick="openGradPgradDetails()">+ Add/Update graduation/ Post
+                                <div class="diploma eddetais" onclick="openDiplomaDetails()">+ Add/Update diploma
+                                    details</div>
+                                <div class="gradPgrad eddetais" onclick="openGradPgradDetails()">+ Add/Update
+                                    graduation/ Post
                                     graduation details</div>
-                                <div class="PhD" onclick="openPhDDetails()">+ Add/Update PhD details</div>
-                                <div class="closeEdu" onclick="closeEdu()"><i class="fa-solid fa-xmark"></i></div>
+                                <div class="PhD eddetais" onclick="openPhDDetails()">+ Add/Update PhD details</div>
+                                <div>
+                                    <div class="closeEdu" onclick="closeEdu()"><i class="fa-solid fa-xmark"></i></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -87,9 +93,9 @@
                     <!-- Secondary Details Modal -->
                     <div class="modal" id="secondaryModal">
                         <div class="modal-content">
-                            <div class="h1header">Secondary (X) details</div>
+                            <div class="h1header Xdetails">Secondary (X) details</div>
                             <div class="Xstatus">
-                                <div>Current Status</div>
+                                <div class="currentStatus">Current Status</div>
                                 <div class="XstatusOptions">
                                     <div class="XstatusOption">
                                         <input type="radio" name="Xstatus" id="Xstatus1" value="Pursuing">
@@ -129,8 +135,9 @@
                                     <p>Percentage: <span id="Xpercentage">0%</span></p>
                                 </div>
                             </div>
-
-                            <div class="Submit" onclick="updateSecondaryDetails()">Submit</div>
+                            <div class="fullline">
+                                <div class="SubmitX" onclick="updateSecondaryDetails()">Submit</div>
+                            </div>
                         </div>
                     </div>
 
