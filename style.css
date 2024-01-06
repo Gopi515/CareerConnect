@@ -676,6 +676,7 @@ footer {
     padding-top: 7%;
     color: var(--fourth-col);
 }
+
 .internshipCard .locationP {
     margin-top: 5%;
     margin-left: 7%;
@@ -708,7 +709,7 @@ footer {
     cursor: pointer;
 }
 
-.buttonNextstep .details{
+.buttonNextstep .details {
     text-decoration: none;
     color: var(--third-col);
     background: none;
@@ -880,13 +881,14 @@ footer {
 
 /* Internship view details */
 
-.detailsHeading{
+.detailsHeading {
     color: var(--fourth-col);
     font-size: 2.8rem;
     text-align: center;
     margin-top: 3%;
 }
-.mainDetailscontainer{
+
+.mainDetailscontainer {
     position: absolute;
     width: 75%;
     height: 60%;
@@ -895,21 +897,24 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.detailsContainerheading{
+
+.detailsContainerheading {
     font-size: 1.9rem;
     margin-left: 5%;
     margin-top: 3%;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.detailsloaction{
+
+.detailsloaction {
     margin-left: 5%;
     font-size: 1.2rem;
     margin-top: 3%;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.otherDetails{
+
+.otherDetails {
     margin-left: -12.5%;
     font-size: 1.2rem;
     margin-top: 3%;
@@ -917,32 +922,39 @@ footer {
     justify-content: space-around;
     font-weight: 500;
 }
-.detailsStipend{
+
+.detailsStipend {
     margin-left: -12%;
 }
-.detailsApplyby{
+
+.detailsApplyby {
     margin-left: -12%;
 }
-.otherDetails .detailsType i{
+
+.otherDetails .detailsType i {
     color: var(--fourth-col);
 }
-.otherDetails .detailsType{
+
+.otherDetails .detailsType {
     color: var(--third-col);
     font-weight: 500;
 }
-.otherDetails .detailsData{
+
+.otherDetails .detailsData {
     font-size: 1.1rem;
     color: var(--fourth-col);
     font-weight: 500;
     margin-top: 5%;
 }
-.noofApplicationdetails{
+
+.noofApplicationdetails {
     margin-left: 5%;
     margin-top: 3%;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.detailsContaineroptions{
+
+.detailsContaineroptions {
     margin-left: 5%;
     margin-top: 3%;
     width: 150px;
@@ -951,86 +963,103 @@ footer {
     cursor: pointer;
     transition: 0.3s;
 }
-.detailsContaineroptions .share{
+
+.detailsContaineroptions .share {
     margin-left: 5%;
 }
-.detailsContaineroptions .share:hover{
+
+.detailsContaineroptions .share:hover {
     transform: translateY(-4px);
 }
-.detailsContaineroptions .bookmark:hover{
+
+.detailsContaineroptions .bookmark:hover {
     transform: translateY(-4px);
 }
-.companyAbout{
+
+.companyAbout {
     position: absolute;
     width: 70%;
     top: 95%;
     left: 15%;
 }
-.companyAbout h3{
+
+.companyAbout h3 {
     font-size: 1.7rem;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.companyAbout .companyWebsite{
+
+.companyAbout .companyWebsite {
     font-size: 1.2rem;
     color: var(--third-col);
     cursor: pointer;
     margin-top: 1%;
 }
-.companyAbout p{
+
+.companyAbout p {
     font-size: 1.3rem;
     color: var(--fourth-col);
     margin-top: 1.5%;
 }
-.internshipAbout{
+
+.internshipAbout {
     position: absolute;
     width: 70%;
     top: 126%;
     left: 15%;
 }
-.internshipAbout h3{
+
+.internshipAbout h3 {
     font-size: 1.7rem;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.internshipAbout p{
+
+.internshipAbout p {
     margin-top: 2%;
     font-size: 1.2rem;
     color: var(--third-col);
     font-weight: 500;
 }
-.internshipSkillsrequire{
+
+.internshipSkillsrequire {
     position: absolute;
     top: 165%;
     left: 15%;
 }
-.internshipSkillsrequire h3{
+
+.internshipSkillsrequire h3 {
     font-size: 1.7rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.internshipSkillsrequire p{
+
+.internshipSkillsrequire p {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--third-col);
     margin-top: 2%;
 }
-.internshipOpenings{
+
+.internshipOpenings {
     position: absolute;
     top: 184%;
     left: 15%;
 }
-.internshipOpenings h3{
+
+.internshipOpenings h3 {
     font-size: 1.7rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.internshipOpenings p{
+
+.internshipOpenings p {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--third-col);
 }
-.detailsApplybutton{
+
+.detailsApplybutton {
     text-decoration: none;
     position: absolute;
     margin-top: 95%;
@@ -1047,7 +1076,8 @@ footer {
     text-align: center;
     transition: 0.3s;
 }
-.detailsApplybutton:hover{
+
+.detailsApplybutton:hover {
     width: 9.2rem;
     height: 3.2rem;
     border-radius: 50px;
@@ -1058,55 +1088,65 @@ footer {
     height: 100%;
     width: 100%;
 }
-.internshipAbout2{
+
+.internshipAbout2 {
     position: absolute;
     width: 70%;
     top: 170%;
     left: 15%;
 }
-.internshipAbout2 h3{
+
+.internshipAbout2 h3 {
     font-size: 1.7rem;
     color: var(--fourth-col);
     font-weight: 500;
 }
-.internshipAbout2 p{
+
+.internshipAbout2 p {
     margin-top: 2%;
     font-size: 1.2rem;
     color: var(--third-col);
     font-weight: 500;
 }
-.jobSkillsrequire{
+
+.jobSkillsrequire {
     position: absolute;
     top: 227%;
     left: 15%;
 }
-.jobSkillsrequire h3{
+
+.jobSkillsrequire h3 {
     font-size: 1.7rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.jobSkillsrequire p{
+
+.jobSkillsrequire p {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--third-col);
     margin-top: 2%;
 }
-.jobOpenings{
+
+.jobOpenings {
     position: absolute;
     top: 242%;
     left: 15%;
 }
-.jobOpenings h3{
+
+.jobOpenings h3 {
     font-size: 1.7rem;
     font-weight: 500;
     color: var(--fourth-col);
 }
-.jobOpenings p{
+
+.jobOpenings p {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--third-col);
 }
-.detailsApplybuttonJob{
+
+.detailsApplybuttonJob {
     text-decoration: none;
     position: absolute;
     margin-top: 120%;
@@ -1123,7 +1163,8 @@ footer {
     text-align: center;
     transition: 0.3s;
 }
-.detailsApplybuttonJob:hover{
+
+.detailsApplybuttonJob:hover {
     width: 9.2rem;
     height: 3.2rem;
     border-radius: 50px;
@@ -2426,7 +2467,7 @@ input::-webkit-inner-spin-button {
 /*Resume Main container*/
 .resume-main {
     padding: 50px;
-    background-color: #f1f7fc;
+    background-color: #e6f4ff;
     border: 1px solid transparent;
     border-radius: 5px;
     width: 65vw;
@@ -2454,7 +2495,7 @@ input::-webkit-inner-spin-button {
 .closeEdu {
     position: absolute;
     top: 24%;
-    right: 30%;
+    right: 24.5%;
     padding: 10px 15px;
     background-color: var(--fourth-col);
     color: var(--first-col);
@@ -2488,20 +2529,37 @@ input::-webkit-inner-spin-button {
 }
 
 .modal-content {
-    background-color: #fff;
+    background: #fff;
     padding: 20px;
     margin: 50px auto;
     margin-top: 25vh;
     width: 50%;
-    max-width: 600px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 35px 35px 68px 0px rgba(46, 46, 46, 0.5), inset -12px -12px 16px 0px rgba(101, 101, 101, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
 }
 
 .addEduDetails {
     cursor: pointer;
-    color: blue;
+    color: rgb(0, 140, 255);
+    font-weight: 600;
     margin-bottom: 10px;
+}
+
+.someheading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--last-col);
+}
+
+.distinguisedEdu {
+    margin: 15px 0 15px 15px;
+}
+
+.eddetais {
+    font-weight: 600;
+    color: var(--fourth-col);
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
 /* Add this CSS in your style sheet or in a style tag in your HTML file */
@@ -2528,4 +2586,83 @@ input::-webkit-inner-spin-button {
 
 .eduDetailItem button:hover {
     background-color: #2980b9;
+}
+
+/*UID and DOB*/
+.resumeUID,
+.resumeDOB {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.reinnerUID,
+.reinnerDOB {
+    color: var(--last-col);
+    font-weight: 500;
+}
+
+.inpreinnerUID,
+.inpreinnerDOB {
+    margin-left: 10px;
+    color: var(--last-col);
+    font-weight: 500;
+    background-color: var(--fifth-col);
+    color: #fff;
+    border: var(--border);
+    border-radius: var(--border-50);
+    outline: none;
+    padding: 10px;
+}
+
+/* inner details */
+.h1header {
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    color: var(--fourth-col);
+    font-weight: 600;
+}
+
+.currentStatus {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.XstatusOptions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 250px;
+}
+
+.fullline {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.SubmitX {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    border: 3px solid var(--fourth-col);
+    border-radius: var(--border-50);
+    cursor: pointer;
+    padding: 7px 12px;
+    width: 125px;
+    text-align: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.SubmitX:hover {
+    box-shadow: var(--box-shadow);
+    border: 3px solid var(--first-col);
 }
