@@ -31,14 +31,14 @@ function updateSecondaryDetails() {
   let completionYear = formatDate(completionYearInput.value);
   let board = document.querySelector(".Xboard input").value;
   let school = document.querySelector(".Xschool input").value;
-  let maxMarks = document.getElementById("maxMarks").value;
-  let marksObtained = document.getElementById("marksObtained").value;
+  let maxMarks = document.getElementById("XmaxMarks").value;
+  let marksObtained = document.getElementById("XmarksObtained").value;
   let percentage = document.getElementById("Xpercentage").innerText;
 
   let detailId = "secondaryDetails";
 
   let secondaryDetailsString =
-    `<div id="${detailId}" class="eduDetailItem">` +
+    `<div id="${detailId}" class="XeduDetailItem">` +
     "<strong>Secondary (X) Details</strong><br>" +
     "Status: " +
     status +
@@ -77,9 +77,9 @@ function deleteSecondaryDetails(detailId) {
   }
 }
 
-function calculatePercentage() {
-  let maxMarks = document.getElementById("maxMarks").value;
-  let marksObtained = document.getElementById("marksObtained").value;
+function XcalculatePercentage() {
+  let maxMarks = document.getElementById("XmaxMarks").value;
+  let marksObtained = document.getElementById("XmarksObtained").value;
 
   let percentage = (marksObtained / maxMarks) * 100;
   document.getElementById("Xpercentage").innerText =

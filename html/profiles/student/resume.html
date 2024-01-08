@@ -63,6 +63,7 @@
                     <div class="reeducation">
                         <p class="someheading">Education</p>
                         <div id="XdetailsDisplay"></div>
+                        <div id="XIIdetailsDisplay"></div>
                         <div class="addEduDetails" onclick="openEduDetails()">+ Add/Update Education Details</div>
                     </div>
 
@@ -125,11 +126,11 @@
                             <div class="Xmarks">
                                 <div class="Xfullmarks">
                                     <p>Enter the maximum marks:</p>
-                                    <input type="number" id="maxMarks" oninput="calculatePercentage()" />
+                                    <input type="number" id="XmaxMarks" oninput="XcalculatePercentage()" />
                                 </div>
                                 <div class="Xmarksobtained">
                                     <p>Enter the marks You obtained:</p>
-                                    <input type="number" id="marksObtained" oninput="calculatePercentage()" />
+                                    <input type="number" id="XmarksObtained" oninput="XcalculatePercentage()" />
                                 </div>
                                 <div class="Xpercent">
                                     <p>Percentage: <span id="Xpercentage">0%</span></p>
@@ -144,8 +145,50 @@
                     <!-- Senior Secondary Details Modal -->
                     <div class="modal" id="seniorSecModal">
                         <div class="modal-content">
-                            <!-- Add your input fields and details for senior secondary education here -->
-                            <div class="closeEdu" onclick="closeSeniorSecDetails()"><i class="fa-solid fa-xmark"></i>
+                            <div class="h1header XIIdetails">Senior/Higher Secondary (XII) details</div>
+                            <div class="XIIstatus">
+                                <div class="currentStatus">Current Status</div>
+                                <div class="XIIstatusOptions">
+                                    <div class="XIIstatusOption">
+                                        <input type="radio" name="XIIstatus" id="XIIstatus1" value="Pursuing">
+                                        <label for="XIIstatus1">Pursuing</label>
+                                    </div>
+                                    <div class="XIIstatusOption">
+                                        <input type="radio" name="XIIstatus" id="XIIstatus2" value="Completed">
+                                        <label for="XIIstatus2">Completed</label>
+                                    </div>
+                                </div>
+                                <div class="closeEdu" onclick="closeSeniorSecDetails()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+                            <div class="XIIcompletionyear">
+                                <div>Year of Completion</div>
+                                <input type="month" />
+                            </div>
+                            <div class="XIIboard">
+                                <div>Board</div>
+                                <input type="text" />
+                            </div>
+                            <div class="XIIschool">
+                                <div>School</div>
+                                <input type="text" />
+                            </div>
+                            <div class="XIImarks">
+                                <div class="XIIfullmarks">
+                                    <p>Enter the maximum marks:</p>
+                                    <input type="number" id="XIImaxMarks" oninput="XIIcalculatePercentage()" />
+                                </div>
+                                <div class="XIImarksobtained">
+                                    <p>Enter the marks You obtained:</p>
+                                    <input type="number" id="XIImarksObtained" oninput="XIIcalculatePercentage()" />
+                                </div>
+                                <div class="XIIpercent">
+                                    <p>Percentage: <span id="XIIpercentage">0%</span></p>
+                                </div>
+                            </div>
+                            <div class="fullline">
+                                <div class="SubmitXII" onclick="updateSeniorSecDetails()">Submit</div>
                             </div>
                         </div>
                     </div>
@@ -186,6 +229,7 @@
 
 <!-- script -->
 <script src="../../../javaScripts/buttonPop.js"></script>
-<script src="../../../javaScripts/secondary.js"></script>
+<script src="../../../javaScripts/education/secondary.js"></script>
+<script src="../../../javaScripts/education/seniorSecondary.js"></script>
 
 </html>
