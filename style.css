@@ -2526,6 +2526,19 @@ input::-webkit-inner-spin-button {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeContent 0.2s ease-in-out;
+}
+
+@keyframes fadeContent {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-content {
@@ -2562,19 +2575,24 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-/* Add this CSS in your style sheet or in a style tag in your HTML file */
-.eduDetailItem {
+.XeduDetailItem,
+.XIIeduDetailItem {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
     background-color: #f9f9f9;
 }
 
-.eduDetailItem strong {
+.XeduDetailItem strong {
     color: #333;
 }
 
-.eduDetailItem button {
+.XIIeduDetailItem strong {
+    color: #333;
+}
+
+.XeduDetailItem button,
+.XIIeduDetailItem button {
     margin-top: 5px;
     background-color: #3498db;
     color: #fff;
@@ -2584,7 +2602,8 @@ input::-webkit-inner-spin-button {
     transition: background-color 0.3s;
 }
 
-.eduDetailItem button:hover {
+.XeduDetailItem button:hover,
+.XIIeduDetailItem button:hover {
     background-color: #2980b9;
 }
 
@@ -2630,7 +2649,8 @@ input::-webkit-inner-spin-button {
     font-weight: 600;
 }
 
-.XstatusOptions {
+.XstatusOptions,
+.XIIstatusOptions {
     display: flex;
     justify-content: space-between;
     max-width: 250px;
@@ -2644,7 +2664,8 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.SubmitX {
+.SubmitX,
+.SubmitXII {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -2662,7 +2683,19 @@ input::-webkit-inner-spin-button {
     transition: all 0.3s ease-in-out;
 }
 
-.SubmitX:hover {
+.SubmitX:hover,
+.SubmitXII:hover {
     box-shadow: var(--box-shadow);
     border: 3px solid var(--first-col);
+}
+
+/*the delete btn*/
+.edubtn {
+    padding: 10px 0;
+    background-color: red;
+    border-radius: var(--border-50);
+    color: var(--first-col);
+    cursor: pointer;
+    text-align: center;
+    max-width: 75px;
 }
