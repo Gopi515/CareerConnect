@@ -64,6 +64,10 @@
                         <p class="someheading">Education</p>
                         <div id="XdetailsDisplay"></div>
                         <div id="XIIdetailsDisplay"></div>
+                        <div id="diplomadetailsDisplay"></div>
+                        <div id="graddetailsDisplay"></div>
+                        <div id="PhDdetailsDisplay"></div>
+
                         <div class="addEduDetails" onclick="openEduDetails()">+ Add/Update Education Details</div>
                     </div>
 
@@ -196,7 +200,52 @@
                     <!-- Diploma Details Modal -->
                     <div class="modal" id="diplomaModal">
                         <div class="modal-content">
-                            <!-- Add your input fields and details for diploma here -->
+                            <div class="h1header diplomadetails">Diploma details</div>
+                            <div class="diplomastatus">
+                                <div class="currentStatus">Current Status</div>
+                                <div class="diplomastatusOptions">
+                                    <div class="diplomastatusOption">
+                                        <input type="radio" name="diplomastatus" id="diplomastatus1" value="Pursuing">
+                                        <label for="diplomastatus1">Pursuing</label>
+                                    </div>
+                                    <div class="diplomastatusOption">
+                                        <input type="radio" name="diplomastatus" id="diplomastatus2" value="Completed">
+                                        <label for="diplomastatus2">Completed</label>
+                                    </div>
+                                </div>
+                                <div class="closeEdu" onclick="closediplomaDetails()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+                            <div class="diplomacompletionyear">
+                                <div>Year of Completion</div>
+                                <input type="month" />
+                            </div>
+                            <div class="diplomaboard">
+                                <div>Board</div>
+                                <input type="text" />
+                            </div>
+                            <div class="diplomaschool">
+                                <div>School</div>
+                                <input type="text" />
+                            </div>
+                            <div class="diplomamarks">
+                                <div class="diplomafullmarks">
+                                    <p>Enter the maximum marks:</p>
+                                    <input type="number" id="diplomamaxMarks" oninput="diplomacalculatePercentage()" />
+                                </div>
+                                <div class="diplomamarksobtained">
+                                    <p>Enter the marks You obtained:</p>
+                                    <input type="number" id="diplomamarksObtained"
+                                        oninput="diplomacalculatePercentage()" />
+                                </div>
+                                <div class="diplomapercent">
+                                    <p>Percentage: <span id="diplomapercentage">0%</span></p>
+                                </div>
+                            </div>
+                            <div class="fullline">
+                                <div class="Submitdiploma" onclick="updatediplomaDetails()">Submit</div>
+                            </div>
                             <div class="closeEdu" onclick="closeDiplomaDetails()"><i class="fa-solid fa-xmark"></i>
                             </div>
                         </div>
@@ -205,7 +254,51 @@
                     <!-- Graduation/Post Graduation Details Modal -->
                     <div class="modal" id="gradPgradModal">
                         <div class="modal-content">
-                            <!-- Add your input fields and details for graduation/post graduation here -->
+                            <div class="h1header graddetails">Diploma details</div>
+                            <div class="gradstatus">
+                                <div class="currentStatus">Current Status</div>
+                                <div class="gradstatusOptions">
+                                    <div class="gradstatusOption">
+                                        <input type="radio" name="gradstatus" id="gradstatus1" value="Pursuing">
+                                        <label for="gradstatus1">Pursuing</label>
+                                    </div>
+                                    <div class="gradstatusOption">
+                                        <input type="radio" name="gradstatus" id="gradstatus2" value="Completed">
+                                        <label for="gradstatus2">Completed</label>
+                                    </div>
+                                </div>
+                                <div class="closeEdu" onclick="closegradDetails()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+                            <div class="gradcompletionyear">
+                                <div>Year of Completion</div>
+                                <input type="month" />
+                            </div>
+                            <div class="gradboard">
+                                <div>Board</div>
+                                <input type="text" />
+                            </div>
+                            <div class="gradschool">
+                                <div>School</div>
+                                <input type="text" />
+                            </div>
+                            <div class="gradmarks">
+                                <div class="gradfullmarks">
+                                    <p>Enter the maximum marks:</p>
+                                    <input type="number" id="gradmaxMarks" oninput="gradcalculatePercentage()" />
+                                </div>
+                                <div class="gradmarksobtained">
+                                    <p>Enter the marks You obtained:</p>
+                                    <input type="number" id="gradmarksObtained" oninput="gradcalculatePercentage()" />
+                                </div>
+                                <div class="gradpercent">
+                                    <p>Percentage: <span id="gradpercentage">0%</span></p>
+                                </div>
+                            </div>
+                            <div class="fullline">
+                                <div class="Submitgrad" onclick="updategradDetails()">Submit</div>
+                            </div>
                             <div class="closeEdu" onclick="closeGradPgradDetails()"><i class="fa-solid fa-xmark"></i>
                             </div>
                         </div>
@@ -214,11 +307,58 @@
                     <!-- PhD Details Modal -->
                     <div class="modal" id="PhDModal">
                         <div class="modal-content">
-                            <!-- Add your input fields and details for PhD here -->
+                            <div class="h1header PhDdetails">PhD details</div>
+                            <div class="PhDstatus">
+                                <div class="currentStatus">Current Status</div>
+                                <div class="PhDstatusOptions">
+                                    <div class="PhDstatusOption">
+                                        <input type="radio" name="PhDstatus" id="PhDstatus1" value="Pursuing">
+                                        <label for="PhDstatus1">Pursuing</label>
+                                    </div>
+                                    <div class="PhDstatusOption">
+                                        <input type="radio" name="PhDstatus" id="PhDstatus2" value="Completed">
+                                        <label for="PhDstatus2">Completed</label>
+                                    </div>
+                                </div>
+                                <div class="closeEdu" onclick="closePhDDetails()">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+                            <div class="PhDcompletionyear">
+                                <div>Year of Completion</div>
+                                <input type="month" />
+                            </div>
+                            <div class="PhDboard">
+                                <div>Board</div>
+                                <input type="text" />
+                            </div>
+                            <div class="PhDschool">
+                                <div>School</div>
+                                <input type="text" />
+                            </div>
+                            <div class="PhDmarks">
+                                <div class="PhDfullmarks">
+                                    <p>Enter the maximum marks:</p>
+                                    <input type="number" id="PhDmaxMarks" oninput="PhDcalculatePercentage()" />
+                                </div>
+                                <div class="PhDmarksobtained">
+                                    <p>Enter the marks You obtained:</p>
+                                    <input type="number" id="PhDmarksObtained" oninput="PhDcalculatePercentage()" />
+                                </div>
+                                <div class="PhDpercent">
+                                    <p>Percentage: <span id="PhDpercentage">0%</span></p>
+                                </div>
+                            </div>
+                            <div class="fullline">
+                                <div class="SubmitPhD" onclick="updatePhDDetails()">Submit</div>
+                            </div>
                             <div class="closeEdu" onclick="closePhDDetails()"><i class="fa-solid fa-xmark"></i>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <!-- asdasd -->
                 </div>
             </div>
         </div>
@@ -231,5 +371,8 @@
 <script src="../../../javaScripts/buttonPop.js"></script>
 <script src="../../../javaScripts/education/secondary.js"></script>
 <script src="../../../javaScripts/education/seniorSecondary.js"></script>
+<script src="../../../javaScripts/education/diploma.js"></script>
+<script src="../../../javaScripts/education/grad.js"></script>
+<script src="../../../javaScripts/education/phd.js"></script>
 
 </html>

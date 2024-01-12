@@ -23,23 +23,25 @@ function getMonthName(monthValue) {
   return months[monthValue - 1];
 }
 
-function updateSecondaryDetails() {
-  let status = document.querySelector('input[name="Xstatus"]:checked').value;
+function updatediplomaDetails() {
+  let status = document.querySelector(
+    'input[name="diplomastatus"]:checked'
+  ).value;
   let completionYearInput = document.querySelector(
-    '.Xcompletionyear input[type="month"]'
+    '.diplomacompletionyear input[type="month"]'
   );
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".Xboard input").value;
-  let school = document.querySelector(".Xschool input").value;
-  let maxMarks = document.getElementById("XmaxMarks").value;
-  let marksObtained = document.getElementById("XmarksObtained").value;
-  let percentage = document.getElementById("Xpercentage").innerText;
+  let board = document.querySelector(".diplomaboard input").value;
+  let school = document.querySelector(".diplomaschool input").value;
+  let maxMarks = document.getElementById("diplomamaxMarks").value;
+  let marksObtained = document.getElementById("diplomamarksObtained").value;
+  let percentage = document.getElementById("diplomapercentage").innerText;
 
-  let detailId = "secondaryDetails";
+  let detailId = "diplomaDetails";
 
-  let secondaryDetailsString =
-    `<div id="${detailId}" class="XeduDetailItem">` +
-    "<strong>Secondary (X) Details</strong><br>" +
+  let diplomaDetailsString =
+    `<div id="${detailId}" class="diplomaeduDetailItem">` +
+    "<strong>Diploma Details</strong><br>" +
     "Status: " +
     status +
     "<br>" +
@@ -61,15 +63,16 @@ function updateSecondaryDetails() {
     "Percentage: " +
     percentage +
     "<br>" +
-    `<div class="edubtn" onclick="deleteSecondaryDetails('${detailId}')">Delete</div>` +
+    `<div class="edubtn" onclick="deletediplomaDetails('${detailId}')">Delete</div>` +
     "<br><br></div>";
 
-  document.getElementById("XdetailsDisplay").innerHTML = secondaryDetailsString;
+  document.getElementById("diplomadetailsDisplay").innerHTML =
+    diplomaDetailsString;
 
-  closeSecondaryDetails();
+  closeDiplomaDetails();
 }
 
-function deleteSecondaryDetails(detailId) {
+function deletediplomaDetails(detailId) {
   let detailElement = document.getElementById(detailId);
   if (detailElement) {
     detailElement.remove();
@@ -77,18 +80,18 @@ function deleteSecondaryDetails(detailId) {
   }
 }
 
-function XcalculatePercentage() {
-  let maxMarks = document.getElementById("XmaxMarks").value;
-  let marksObtained = document.getElementById("XmarksObtained").value;
+function diplomacalculatePercentage() {
+  let maxMarks = document.getElementById("diplomamaxMarks").value;
+  let marksObtained = document.getElementById("diplomamarksObtained").value;
 
   let percentage = (marksObtained / maxMarks) * 100;
-  document.getElementById("Xpercentage").innerText =
+  document.getElementById("diplomapercentage").innerText =
     percentage.toFixed(2) + "%";
 }
-function XcalculatePercentage() {
-  let maxMarksInput = document.getElementById("XmaxMarks");
-  let marksObtainedInput = document.getElementById("XmarksObtained");
-  let percentageDisplay = document.getElementById("Xpercentage");
+function diplomacalculatePercentage() {
+  let maxMarksInput = document.getElementById("diplomamaxMarks");
+  let marksObtainedInput = document.getElementById("diplomamarksObtained");
+  let percentageDisplay = document.getElementById("diplomapercentage");
 
   let maxMarks = parseFloat(maxMarksInput.value);
   let marksObtained = parseFloat(marksObtainedInput.value);
