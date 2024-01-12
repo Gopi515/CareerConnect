@@ -23,23 +23,23 @@ function getMonthName(monthValue) {
   return months[monthValue - 1];
 }
 
-function updateSeniorSecDetails() {
-  let status = document.querySelector('input[name="XIIstatus"]:checked').value;
+function updatePhDDetails() {
+  let status = document.querySelector('input[name="PhDstatus"]:checked').value;
   let completionYearInput = document.querySelector(
-    '.XIIcompletionyear input[type="month"]'
+    '.PhDcompletionyear input[type="month"]'
   );
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".XIIboard input").value;
-  let school = document.querySelector(".XIIschool input").value;
-  let maxMarks = document.getElementById("XIImaxMarks").value;
-  let marksObtained = document.getElementById("XIImarksObtained").value;
-  let percentage = document.getElementById("XIIpercentage").innerText;
+  let board = document.querySelector(".PhDboard input").value;
+  let school = document.querySelector(".PhDschool input").value;
+  let maxMarks = document.getElementById("PhDmaxMarks").value;
+  let marksObtained = document.getElementById("PhDmarksObtained").value;
+  let percentage = document.getElementById("PhDpercentage").innerText;
 
-  let detailId = "SeniorSecDetails";
+  let detailId = "PhDDetails";
 
-  let seniorSecDetailsString =
-    `<div id="${detailId}" class="XIIeduDetailItem">` +
-    "<strong>Senior/Higher Secondary (XII) Details</strong><br>" +
+  let PhDDetailsString =
+    `<div id="${detailId}" class="PhDeduDetailItem">` +
+    "<strong>PhD Details</strong><br>" +
     "Status: " +
     status +
     "<br>" +
@@ -61,16 +61,15 @@ function updateSeniorSecDetails() {
     "Percentage: " +
     percentage +
     "<br>" +
-    `<div class="edubtn" onclick="deleteSeniorSecDetails('${detailId}')">Delete</div>` +
+    `<div class="edubtn" onclick="deletePhDDetails('${detailId}')">Delete</div>` +
     "<br><br></div>";
 
-  document.getElementById("XIIdetailsDisplay").innerHTML =
-    seniorSecDetailsString;
+  document.getElementById("PhDdetailsDisplay").innerHTML = PhDDetailsString;
 
-  closeSeniorSecDetails();
+  closePhDDetails();
 }
 
-function deleteSeniorSecDetails(detailId) {
+function deletePhDDetails(detailId) {
   let detailElement = document.getElementById(detailId);
   if (detailElement) {
     detailElement.remove();
@@ -78,10 +77,18 @@ function deleteSeniorSecDetails(detailId) {
   }
 }
 
-function XIIcalculatePercentage() {
-  let maxMarksInput = document.getElementById("XIImaxMarks");
-  let marksObtainedInput = document.getElementById("XIImarksObtained");
-  let percentageDisplay = document.getElementById("XIIpercentage");
+function PhDcalculatePercentage() {
+  let maxMarks = document.getElementById("PhDmaxMarks").value;
+  let marksObtained = document.getElementById("PhDmarksObtained").value;
+
+  let percentage = (marksObtained / maxMarks) * 100;
+  document.getElementById("PhDpercentage").innerText =
+    percentage.toFixed(2) + "%";
+}
+function PhDcalculatePercentage() {
+  let maxMarksInput = document.getElementById("PhDmaxMarks");
+  let marksObtainedInput = document.getElementById("PhDmarksObtained");
+  let percentageDisplay = document.getElementById("PhDpercentage");
 
   let maxMarks = parseFloat(maxMarksInput.value);
   let marksObtained = parseFloat(marksObtainedInput.value);

@@ -23,23 +23,23 @@ function getMonthName(monthValue) {
   return months[monthValue - 1];
 }
 
-function updateSeniorSecDetails() {
-  let status = document.querySelector('input[name="XIIstatus"]:checked').value;
+function updategradDetails() {
+  let status = document.querySelector('input[name="gradstatus"]:checked').value;
   let completionYearInput = document.querySelector(
-    '.XIIcompletionyear input[type="month"]'
+    '.gradcompletionyear input[type="month"]'
   );
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".XIIboard input").value;
-  let school = document.querySelector(".XIIschool input").value;
-  let maxMarks = document.getElementById("XIImaxMarks").value;
-  let marksObtained = document.getElementById("XIImarksObtained").value;
-  let percentage = document.getElementById("XIIpercentage").innerText;
+  let board = document.querySelector(".gradboard input").value;
+  let school = document.querySelector(".gradschool input").value;
+  let maxMarks = document.getElementById("gradmaxMarks").value;
+  let marksObtained = document.getElementById("gradmarksObtained").value;
+  let percentage = document.getElementById("gradpercentage").innerText;
 
-  let detailId = "SeniorSecDetails";
+  let detailId = "gradDetails";
 
-  let seniorSecDetailsString =
-    `<div id="${detailId}" class="XIIeduDetailItem">` +
-    "<strong>Senior/Higher Secondary (XII) Details</strong><br>" +
+  let gradDetailsString =
+    `<div id="${detailId}" class="gradeduDetailItem">` +
+    "<strong>graduation/Post Graduation Details</strong><br>" +
     "Status: " +
     status +
     "<br>" +
@@ -61,16 +61,15 @@ function updateSeniorSecDetails() {
     "Percentage: " +
     percentage +
     "<br>" +
-    `<div class="edubtn" onclick="deleteSeniorSecDetails('${detailId}')">Delete</div>` +
+    `<div class="edubtn" onclick="deletegradDetails('${detailId}')">Delete</div>` +
     "<br><br></div>";
 
-  document.getElementById("XIIdetailsDisplay").innerHTML =
-    seniorSecDetailsString;
+  document.getElementById("graddetailsDisplay").innerHTML = gradDetailsString;
 
-  closeSeniorSecDetails();
+  closeGradPgradDetails();
 }
 
-function deleteSeniorSecDetails(detailId) {
+function deletegradDetails(detailId) {
   let detailElement = document.getElementById(detailId);
   if (detailElement) {
     detailElement.remove();
@@ -78,10 +77,18 @@ function deleteSeniorSecDetails(detailId) {
   }
 }
 
-function XIIcalculatePercentage() {
-  let maxMarksInput = document.getElementById("XIImaxMarks");
-  let marksObtainedInput = document.getElementById("XIImarksObtained");
-  let percentageDisplay = document.getElementById("XIIpercentage");
+function gradcalculatePercentage() {
+  let maxMarks = document.getElementById("gradmaxMarks").value;
+  let marksObtained = document.getElementById("gradmarksObtained").value;
+
+  let percentage = (marksObtained / maxMarks) * 100;
+  document.getElementById("gradpercentage").innerText =
+    percentage.toFixed(2) + "%";
+}
+function gradcalculatePercentage() {
+  let maxMarksInput = document.getElementById("gradmaxMarks");
+  let marksObtainedInput = document.getElementById("gradmarksObtained");
+  let percentageDisplay = document.getElementById("gradpercentage");
 
   let maxMarks = parseFloat(maxMarksInput.value);
   let marksObtained = parseFloat(marksObtainedInput.value);

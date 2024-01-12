@@ -2575,8 +2575,12 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+/* ----------- */
 .XeduDetailItem,
-.XIIeduDetailItem {
+.XIIeduDetailItem,
+.diplomaeduDetailItem,
+.gradeduDetailItem,
+.PhDeduDetailItem {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
@@ -2591,8 +2595,23 @@ input::-webkit-inner-spin-button {
     color: #333;
 }
 
+.diplomaeduDetailItem strong {
+    color: #333;
+}
+
+.gradeduDetailItem strong {
+    color: #333;
+}
+
+.PhDeduDetailItem strong {
+    color: #333;
+}
+
 .XeduDetailItem button,
-.XIIeduDetailItem button {
+.XIIeduDetailItem button,
+.diplomaDetailItem button,
+.gradeduDetailItem button,
+.PhDeduDetailItem button {
     margin-top: 5px;
     background-color: #3498db;
     color: #fff;
@@ -2603,7 +2622,10 @@ input::-webkit-inner-spin-button {
 }
 
 .XeduDetailItem button:hover,
-.XIIeduDetailItem button:hover {
+.XIIeduDetailItem button:hover,
+.diplomaDetailItem button:hover,
+.gradeduDetailItem button:hover,
+.PhDeduDetailItem button:hover {
     background-color: #2980b9;
 }
 
@@ -2650,7 +2672,10 @@ input::-webkit-inner-spin-button {
 }
 
 .XstatusOptions,
-.XIIstatusOptions {
+.XIIstatusOptions,
+.diplomastatusOptions,
+.gradstatusOptions,
+.PhDstatusOptions {
     display: flex;
     justify-content: space-between;
     max-width: 250px;
@@ -2665,7 +2690,10 @@ input::-webkit-inner-spin-button {
 }
 
 .SubmitX,
-.SubmitXII {
+.SubmitXII,
+.Submitdiploma,
+.Submitgrad,
+.SubmitPhD {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -2684,7 +2712,10 @@ input::-webkit-inner-spin-button {
 }
 
 .SubmitX:hover,
-.SubmitXII:hover {
+.SubmitXII:hover,
+.Submitdiploma:hover,
+.Submitgrad:hover,
+.SubmitPhD:hover {
     box-shadow: var(--box-shadow);
     border: 3px solid var(--first-col);
 }
