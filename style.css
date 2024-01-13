@@ -1750,6 +1750,27 @@ legend {
     box-shadow: var(--box-shadow);
 }
 
+/* domain */
+.addDomainelement{
+    padding-bottom: 3%;
+}
+.addDomainelement p{
+    color: var(--fourth-col);
+    font-weight: 700;
+}
+.addDomainelement button{
+    width: 10% !important;
+    padding: 15px !important;
+    text-align: center !important;
+    border-radius: var(--border-50) !important;
+    font-weight: 700;
+    margin-left: 0px !important;
+    font-size: 13.33px !important;
+    color: var(--last-col) !important;
+    background-color: var(--seventh-col) !important;
+    border: none;
+}
+
 /* Style for the duration selection */
 .duraptionpart {
     margin-bottom: 20px;
