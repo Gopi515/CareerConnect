@@ -24,7 +24,6 @@ function getMonthName(monthValue) {
 }
 
 function updateSecondaryDetails() {
-  let status = document.querySelector('input[name="Xstatus"]:checked').value;
   let completionYearInput = document.querySelector(
     '.Xcompletionyear input[type="month"]'
   );
@@ -40,8 +39,6 @@ function updateSecondaryDetails() {
   let secondaryDetailsString =
     `<div id="${detailId}" class="XeduDetailItem">` +
     "<strong>Secondary (X) Details</strong><br>" +
-    "Status: " +
-    status +
     "<br>" +
     "Year of Completion: " +
     completionYear +
