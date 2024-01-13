@@ -25,12 +25,17 @@ function getMonthName(monthValue) {
 
 function updategradDetails() {
   let status = document.querySelector('input[name="gradstatus"]:checked').value;
+  let startingYearInput = document.querySelector(
+    '.gradstartyear input[type="month"]'
+  );
   let completionYearInput = document.querySelector(
     '.gradcompletionyear input[type="month"]'
   );
+  let startingYear = formatDate(startingYearInput.value);
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".gradboard input").value;
   let school = document.querySelector(".gradschool input").value;
+  let degree = document.querySelector(".gradDegree input").value;
+  let stream = document.querySelector(".gradStream input").value;
   let maxMarks = document.getElementById("gradmaxMarks").value;
   let marksObtained = document.getElementById("gradmarksObtained").value;
   let percentage = document.getElementById("gradpercentage").innerText;
@@ -43,14 +48,20 @@ function updategradDetails() {
     "Status: " +
     status +
     "<br>" +
+    "Starting Year: " +
+    startingYear +
+    "<br>" +
     "Year of Completion: " +
     completionYear +
     "<br>" +
-    "Board: " +
-    board +
-    "<br>" +
-    "School: " +
+    "College: " +
     school +
+    "<br>" +
+    "Degree: " +
+    degree +
+    "<br>" +
+    "Stream: " +
+    stream +
     "<br>" +
     "Maximum Marks: " +
     maxMarks +

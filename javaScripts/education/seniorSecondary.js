@@ -24,7 +24,6 @@ function getMonthName(monthValue) {
 }
 
 function updateSeniorSecDetails() {
-  let status = document.querySelector('input[name="XIIstatus"]:checked').value;
   let completionYearInput = document.querySelector(
     '.XIIcompletionyear input[type="month"]'
   );
@@ -40,8 +39,6 @@ function updateSeniorSecDetails() {
   let seniorSecDetailsString =
     `<div id="${detailId}" class="XIIeduDetailItem">` +
     "<strong>Senior/Higher Secondary (XII) Details</strong><br>" +
-    "Status: " +
-    status +
     "<br>" +
     "Year of Completion: " +
     completionYear +

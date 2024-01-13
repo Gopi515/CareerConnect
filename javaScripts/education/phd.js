@@ -25,12 +25,16 @@ function getMonthName(monthValue) {
 
 function updatePhDDetails() {
   let status = document.querySelector('input[name="PhDstatus"]:checked').value;
+  let startingYearInput = document.querySelector(
+    '.PhDstartyear input[type="month"]'
+  );
   let completionYearInput = document.querySelector(
     '.PhDcompletionyear input[type="month"]'
   );
+  let startingYear = formatDate(startingYearInput.value);
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".PhDboard input").value;
   let school = document.querySelector(".PhDschool input").value;
+  let stream = document.querySelector(".PhDstream input").value;
   let maxMarks = document.getElementById("PhDmaxMarks").value;
   let marksObtained = document.getElementById("PhDmarksObtained").value;
   let percentage = document.getElementById("PhDpercentage").innerText;
@@ -43,14 +47,17 @@ function updatePhDDetails() {
     "Status: " +
     status +
     "<br>" +
+    "Starting Year: " +
+    startingYear +
+    "<br>" +
     "Year of Completion: " +
     completionYear +
     "<br>" +
-    "Board: " +
-    board +
-    "<br>" +
-    "School: " +
+    "College: " +
     school +
+    "<br>" +
+    "Stream: " +
+    stream +
     "<br>" +
     "Maximum Marks: " +
     maxMarks +

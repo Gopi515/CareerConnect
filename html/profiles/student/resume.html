@@ -100,17 +100,6 @@
                         <div class="modal-content">
                             <div class="h1header Xdetails">Secondary (X) details</div>
                             <div class="Xstatus">
-                                <div class="currentStatus">Current Status</div>
-                                <div class="XstatusOptions">
-                                    <div class="XstatusOption">
-                                        <input type="radio" name="Xstatus" id="Xstatus1" value="Pursuing">
-                                        <label for="Xstatus1">Pursuing</label>
-                                    </div>
-                                    <div class="XstatusOption">
-                                        <input type="radio" name="Xstatus" id="Xstatus2" value="Completed">
-                                        <label for="Xstatus2">Completed</label>
-                                    </div>
-                                </div>
                                 <div class="closeEdu" onclick="closeSecondaryDetails()"><i
                                         class="fa-solid fa-xmark"></i>
                                 </div>
@@ -151,17 +140,6 @@
                         <div class="modal-content">
                             <div class="h1header XIIdetails">Senior/Higher Secondary (XII) details</div>
                             <div class="XIIstatus">
-                                <div class="currentStatus">Current Status</div>
-                                <div class="XIIstatusOptions">
-                                    <div class="XIIstatusOption">
-                                        <input type="radio" name="XIIstatus" id="XIIstatus1" value="Pursuing">
-                                        <label for="XIIstatus1">Pursuing</label>
-                                    </div>
-                                    <div class="XIIstatusOption">
-                                        <input type="radio" name="XIIstatus" id="XIIstatus2" value="Completed">
-                                        <label for="XIIstatus2">Completed</label>
-                                    </div>
-                                </div>
                                 <div class="closeEdu" onclick="closeSeniorSecDetails()">
                                     <i class="fa-solid fa-xmark"></i>
                                 </div>
@@ -217,17 +195,21 @@
                                     <i class="fa-solid fa-xmark"></i>
                                 </div>
                             </div>
+                            <div class="diplomastartyear">
+                                <div>Year of start</div>
+                                <input type="month" />
+                            </div>
                             <div class="diplomacompletionyear">
                                 <div>Year of Completion</div>
                                 <input type="month" />
                             </div>
-                            <div class="diplomaboard">
-                                <div>Board</div>
+                            <div class="diplomaschool">
+                                <div>College</div>
                                 <input type="text" />
                             </div>
-                            <div class="diplomaschool">
-                                <div>School</div>
-                                <input type="text" />
+                            <div class="diplomastream">
+                                <div>Stream</div>
+                                <input type="text" placeholder="E.g.: Electrical" />
                             </div>
                             <div class="diplomamarks">
                                 <div class="diplomafullmarks">
@@ -254,7 +236,7 @@
                     <!-- Graduation/Post Graduation Details Modal -->
                     <div class="modal" id="gradPgradModal">
                         <div class="modal-content">
-                            <div class="h1header graddetails">Diploma details</div>
+                            <div class="h1header graddetails">Graduation/Post Graduation details</div>
                             <div class="gradstatus">
                                 <div class="currentStatus">Current Status</div>
                                 <div class="gradstatusOptions">
@@ -271,17 +253,25 @@
                                     <i class="fa-solid fa-xmark"></i>
                                 </div>
                             </div>
+                            <div class="gradstartyear">
+                                <div>Year of Start</div>
+                                <input type="month" />
+                            </div>
                             <div class="gradcompletionyear">
                                 <div>Year of Completion</div>
                                 <input type="month" />
                             </div>
-                            <div class="gradboard">
-                                <div>Board</div>
-                                <input type="text" />
-                            </div>
                             <div class="gradschool">
-                                <div>School</div>
-                                <input type="text" />
+                                <div>College</div>
+                                <input type="text" placeholder="E.g.: NITMAS" />
+                            </div>
+                            <div class="gradDegree">
+                                <div>Degree</div>
+                                <input type="text" placeholder="E.g.: E.g.: B.Tech" />
+                            </div>
+                            <div class="gradStream">
+                                <div>Stream</div>
+                                <input type="text" placeholder="E.g.: CSE" />
                             </div>
                             <div class="gradmarks">
                                 <div class="gradfullmarks">
@@ -324,17 +314,21 @@
                                     <i class="fa-solid fa-xmark"></i>
                                 </div>
                             </div>
+                            <div class="PhDstartyear">
+                                <div>Year of Start</div>
+                                <input type="month" />
+                            </div>
                             <div class="PhDcompletionyear">
                                 <div>Year of Completion</div>
                                 <input type="month" />
                             </div>
-                            <div class="PhDboard">
-                                <div>Board</div>
+                            <div class="PhDschool">
+                                <div>College</div>
                                 <input type="text" />
                             </div>
-                            <div class="PhDschool">
-                                <div>School</div>
-                                <input type="text" />
+                            <div class="PhDstream">
+                                <div>Stream</div>
+                                <input type="text" placeholder="E.g.: Commerce & Bussiness Studies" />
                             </div>
                             <div class="PhDmarks">
                                 <div class="PhDfullmarks">
@@ -357,6 +351,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div>
                     <!-- asdasd -->
                 </div>

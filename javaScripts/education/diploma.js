@@ -27,12 +27,16 @@ function updatediplomaDetails() {
   let status = document.querySelector(
     'input[name="diplomastatus"]:checked'
   ).value;
+  let startingYearInput = document.querySelector(
+    '.diplomastartyear input[type="month"]'
+  );
   let completionYearInput = document.querySelector(
     '.diplomacompletionyear input[type="month"]'
   );
+  let startingYear = formatDate(startingYearInput.value);
   let completionYear = formatDate(completionYearInput.value);
-  let board = document.querySelector(".diplomaboard input").value;
   let school = document.querySelector(".diplomaschool input").value;
+  let stream = document.querySelector(".diplomastream input").value;
   let maxMarks = document.getElementById("diplomamaxMarks").value;
   let marksObtained = document.getElementById("diplomamarksObtained").value;
   let percentage = document.getElementById("diplomapercentage").innerText;
@@ -45,14 +49,17 @@ function updatediplomaDetails() {
     "Status: " +
     status +
     "<br>" +
+    "Starting Year: " +
+    startingYear +
+    "<br>" +
     "Year of Completion: " +
     completionYear +
     "<br>" +
-    "Board: " +
-    board +
-    "<br>" +
-    "School: " +
+    "Collage: " +
     school +
+    "<br>" +
+    "Stream: " +
+    stream +
     "<br>" +
     "Maximum Marks: " +
     maxMarks +
