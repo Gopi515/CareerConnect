@@ -108,20 +108,22 @@ session_start();
 
     <!-- job listings -->
     <div class="internshipContainer">
-        <h2>
-         643 Total  jobs
-        </h2>
 
-        <div class="internshipOrder">
         <?php
 
         $query = "SELECT * FROM `job` ORDER BY id ASC";
         $result = mysqli_query($conn, $query);
+        $count = mysqli_num_rows($result);
 
-        if(mysqli_num_rows($result)>0){
-         while($row = mysqli_fetch_array($result)){
+        if($count>0){
+        while($row = mysqli_fetch_array($result)){
 
         ?>
+        <h2>
+            <?php echo $count.' Total  jobs'; ?> 
+        </h2>
+
+        <div class="internshipOrder">
 
         <div class="internshipCard internshipCard1">
 
