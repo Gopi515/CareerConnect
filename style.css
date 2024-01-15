@@ -1751,14 +1751,16 @@ legend {
 }
 
 /* domain */
-.addDomainelement{
+.addDomainelement {
     padding-bottom: 3%;
 }
-.addDomainelement p{
+
+.addDomainelement p {
     color: var(--fourth-col);
     font-weight: 700;
 }
-.addDomainelement button{
+
+.addDomainelement button {
     width: 10% !important;
     padding: 15px !important;
     text-align: center !important;
@@ -2751,3 +2753,15 @@ input::-webkit-inner-spin-button {
     text-align: center;
     max-width: 75px;
 }
+
+/*Work Experience*/
+.workExp,
+.POR,
+.train-course,
+.projects,
+.skills,
+.Achievements {
+    margin: 30px;
+}
+
+/*Position of responsibility*/
