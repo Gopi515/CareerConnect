@@ -38,8 +38,6 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
       !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
       !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
 
-        if (isset($_SESSION['last_id'])) {
-            $id = $_SESSION['last_id'];
         
             $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
             $result = mysqli_query($conn,$checkmobile);
@@ -50,22 +48,21 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit;
             }
 
-            $insertdata = "INSERT INTO `com_personal_details`(`id`, `name`, `email`, `phone_code`, `phone_no`,
+            
+            $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+            $find = $conn->query($query);
+            while($row = mysqli_fetch_assoc($find)){
+                $com_id = $row["com_id"];
+            }
+
+
+            $insertdata = "`com_personal_details`(`com_id`, `name`, `email`, `phone_code`, `phone_no`,
             `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
-            VALUES ('$id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
+            VALUES ('$com_id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
             '$pincode','$city','$state','$country','$website','$about')";
 
             $smt = mysqli_query($conn, $insertdata);
-
-            if ($smt) {
-                $_SESSION['mail'] = $email;
-            }
-
-            unset($_SESSION['last_id']);
              
-        } else {
-            echo "<script>alert('Error: Session in not working.');</script>";
-        }
 
         if ($smt) {
             header("location: ../../landingPage/landingCompany.php");
