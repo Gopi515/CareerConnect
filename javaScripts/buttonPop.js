@@ -57,3 +57,11 @@ function openPhDDetails() {
 function closePhDDetails() {
   document.getElementById("PhDModal").style.display = "none";
 }
+
+function openInternshipDetails() {
+  document.getElementById("Internshipdetails").style.display = "block";
+}
+
+function closeInternshipDetails() {
+  document.getElementById("Internshipdetails").style.display = "none";
+}
