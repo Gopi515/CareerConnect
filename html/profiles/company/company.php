@@ -33,6 +33,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $country = htmlspecialchars($_POST['country']); 
     $website = htmlspecialchars($_POST['website']); 
     $about = htmlspecialchars($_POST['about']);
+    $com_id = $_POST['company_id'];
     
    if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
       !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
@@ -48,18 +49,16 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit;
             }
 
-            
-            $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-            $find = $conn->query($query);
-            while($row = mysqli_fetch_assoc($find)){
-                $com_id = $row["com_id"];
-            }
 
+            $insertdata = "INSERT INTO `com_personal_details` 
+            (`com_id`, `name`, `email`, `phone_code`, `phone_no`, 
+             `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, 
+             `c_website`, `c_about`) 
+            VALUES 
+            ('$com_id','$name','$email','$countrycode','$mobilenumber',
+             '$arrivaldate','$address1','$address2','$pincode',
+             '$city','$state','$country','$website','$about')";
 
-            $insertdata = "`com_personal_details`(`com_id`, `name`, `email`, `phone_code`, `phone_no`,
-            `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
-            VALUES ('$com_id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
-            '$pincode','$city','$state','$country','$website','$about')";
 
             $smt = mysqli_query($conn, $insertdata);
              
@@ -251,6 +250,30 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                    
                 </div>
+
+
+                <!-- for storing the data of company id temporary -->
+                <?php
+                    if (isset($_SESSION['mail'])) {
+                        $email = $_SESSION['mail'];
+                    } else {
+                        echo "<script>alert('Error: Session is not working.')</script>";
+                    }
+
+                    $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+                    $find = mysqli_query($conn, $query);
+        
+                    if(mysqli_num_rows($find)>0){
+                        while($row = mysqli_fetch_array($find)){
+                ?>
+
+                <input type="hidden" name="company_id" value="<?php echo $row['com_id']; ?>">
+
+                <?php
+
+                    }
+                    }
+                ?>
 
 
             </div>

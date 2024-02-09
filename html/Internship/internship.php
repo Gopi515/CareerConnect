@@ -166,7 +166,7 @@ session_start();
             <?php
 
                 }
-            }
+                }
             ?>
         </div>
 
