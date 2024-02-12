@@ -65,3 +65,11 @@ function openInternshipDetails() {
 function closeInternshipDetails() {
   document.getElementById("Internshipdetails").style.display = "none";
 }
+
+function openJobDetails() {
+  document.getElementById("Jobdetails").style.display = "block";
+}
+
+function closeJobDetails() {
+  document.getElementById("Jobdetails").style.display = "none";
+}

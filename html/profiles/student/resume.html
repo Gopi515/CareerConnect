@@ -352,6 +352,8 @@
                     </div>
                 </div>
                 <hr>
+
+                <!-- Work Experience -->
                 <div class="workExp">
                     <p class="someheading">Work Experience</p>
                     <div class="iorjdetails">
@@ -359,6 +361,7 @@
                         <div class="indetails" onclick="openJobDetails()">+ Add Job details</div>
                     </div>
                 </div>
+                <!-- Internship details -->
                 <div id="Internshipdetails">
                     <div class="boxinternship">
                         <div class="topinternship">
@@ -380,7 +383,7 @@
                                     <p>Start Date</p>
                                     <input type="date">
                                 </div>
-                                <div class="internshipedate">
+                                <div class="internshipdate">
                                     <p>End Date</p>
                                     <input type="date">
                                     <div>
@@ -402,7 +405,52 @@
                     <div class="closeEdu" onclick="closeInternshipDetails()"><i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
-
+                <!-- Job details -->
+                <div>
+                    <div id="Jobdetails">
+                        <div class="boxjob">
+                            <div class="topjob">
+                                <p>Job Details</p>
+                            </div>
+                            <div class="middlejob">
+                                <p class="jobProfile">Profile</p>
+                                <input class="jobinput" type="text" placeholder="e.g. Web Development">
+                                <p class="jobOrg">Organisation</p>
+                                <input class="jobinput" type="text" placeholder="e.g. CareerConnect">
+                                <p class="jobLocation">Location</p>
+                                <input class="jobinput" type="text" placeholder="e.g. Kolkata">
+                                <div class="workFromHome">
+                                    <input type="checkbox" id="workFromHomeCheck">
+                                    <label for="workFromHomeCheck">Is work from home</label>
+                                </div>
+                                <div class="jobDuration">
+                                    <div class="jobsdate">
+                                        <p>Start Date</p>
+                                        <input type="date">
+                                    </div>
+                                    <div class="jobedate">
+                                        <p>End Date</p>
+                                        <input type="date">
+                                        <div>
+                                            <input type="checkbox" id="Currentlyworkingcheck">
+                                            <label for="Currentlyworking">Currently working here</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jobDescription">
+                                    <p class="jobDes">Description<span class="needsfade">(Optional)</span></p>
+                                    <input class="jobinputBig" type="text"
+                                        placeholder="Mention key Responsibility withing 250 char">
+                                </div>
+                            </div>
+                            <div class="endJob">
+                                <div class="jobsave">Add</div>
+                            </div>
+                        </div>
+                        <div class="closeEdu" onclick="closeJobDetails()"><i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <div class="POR">
                     <p class="someheading">Positions of Responsibility</p>
