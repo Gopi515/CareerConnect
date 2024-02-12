@@ -2717,7 +2717,8 @@ input::-webkit-inner-spin-button {
 .Submitdiploma,
 .Submitgrad,
 .SubmitPhD,
-.internshipsave {
+.internshipsave,
+.jobsave {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -2740,7 +2741,8 @@ input::-webkit-inner-spin-button {
 .Submitdiploma:hover,
 .Submitgrad:hover,
 .SubmitPhD:hover,
-.internshipsave:hover {
+.internshipsave:hover,
+.jobsave:hover {
     box-shadow: var(--box-shadow);
     border: 3px solid var(--first-col);
 }
@@ -2773,7 +2775,8 @@ input::-webkit-inner-spin-button {
 }
 
 /*Internship experience*/
-#Internshipdetails {
+#Internshipdetails,
+#Jobdetails {
     display: none;
     position: fixed;
     top: 0;
@@ -2784,7 +2787,8 @@ input::-webkit-inner-spin-button {
     animation: fadeContent 0.2s ease-in-out;
 }
 
-.boxinternship {
+.boxinternship,
+.boxjob {
     background: #fff;
     padding: 20px;
     margin: 50px auto;
@@ -2795,20 +2799,25 @@ input::-webkit-inner-spin-button {
 }
 
 /*internship*/
-.topinternship {
+.topinternship,
+.topjob {
     font-size: 23px;
     font-weight: 600;
     text-align: center;
     color: var(--fourth-col);
 }
 
-.endInternship {
+.endInternship,
+.endJob {
     display: flex;
     justify-content: center;
     width: 100%;
     text-align: center;
     align-items: center
 }
+
+/* job */
+
 
 
 /*Position of responsibility*/
