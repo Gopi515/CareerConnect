@@ -29,7 +29,7 @@
                         <div class="dropdown-content" id="dropdownOptionsPost">
                             <a href="../profiles/company/addinternship.php" onclick="selectOption('Post Internship')">Post Internship</a>
                             <a href="../profiles/company/addjob.php" onclick="selectOption('Post Job')">Post Job</a>
-                          </div>
+                        </div>
                     </li>
                 </div>
                 </ul>

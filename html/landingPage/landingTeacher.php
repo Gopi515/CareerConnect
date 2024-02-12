@@ -21,7 +21,11 @@
                     <li><a href="../Job/job.php">Job</a></li>
                     <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
-                    <li><a href="../profiles/teacher/viewTeacherDetails.php"><i class="fas fa-user"></i></a></li>
+                    <li><a href="../profiles/teacher/viewTeacherDetails.php"><i class="fas fa-user"onclick="showDropdown()" id="postOptions"></i></a>
+                        <div class="dropdown-content" id="dropdownOptionsPost">
+                            <a href="" onclick="selectOption('Post Internship')">Add question</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </nav>

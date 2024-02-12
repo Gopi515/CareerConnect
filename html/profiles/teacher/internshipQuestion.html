@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship questions</title>
+    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+</head>
+<body>
+    <h1 class="interQuestionhead">Add Questions</h1>
+    <form action="../../../php/teacher/teacherInternshipQuestion.php" method="post">
+        <div class="interQuestion">
+            <label for="question">Question</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <div class="interQuestion">
+            <label for="option">Option 1</label>
+            <input type="text" id="option" name="option" required>
+        </div>
+        <div class="interQuestion">
+            <label for="option">Option 2</label>
+            <input type="text" id="option" name="option" required>
+        </div>
+        <div class="interQuestion">
+            <label for="option">Option 3</label>
+            <input type="text" id="option" name="option" required>
+        </div>
+        <div class="interQuestion">
+            <label for="option">Option 4</label>
+            <input type="text" id="option" name="option" required>
+        </div>
+        <div class="interQuestion">
+            <label for="answer">Right answer</label>
+            <input type="text" id="answer" name="answer" required>
+        </div>
+        
+        <div class="addDomainelement">
+            <p>Add Domain*</p>
+            <button id="add-element-btn">Add +</button>
+
+            <div id="popup-container">
+              <span class="popup-close" onclick="closePopup()">×</span>
+              <input type="text" id="search-bar" placeholder="Search element...">
+              <ul id="element-list"></ul>
+              <button id="add-button" onclick="addElement()">Add</button>
+            </div>
+            </div>
+
+        <div class="interQuestion">
+            <input type="submit" value="Add">
+        </div>
+</body>
+</html>

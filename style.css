@@ -1882,7 +1882,15 @@ legend {
     color: var(--fourth-col);
 }
 
+/* -------------teacher add question ----------- */
 
+.interQuestionhead{
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+    color: var(--fourth-col);
+    font-weight: 600;
+}
 
 
 
