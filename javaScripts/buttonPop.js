@@ -73,3 +73,11 @@ function openJobDetails() {
 function closeJobDetails() {
   document.getElementById("Jobdetails").style.display = "none";
 }
+
+function openPOR() {
+  document.getElementById("PORmain").style.display = "block";
+}
+
+function closePOR() {
+  document.getElementById("PORmain").style.display = "none";
+}

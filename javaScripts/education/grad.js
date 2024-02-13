@@ -31,8 +31,23 @@ function updategradDetails() {
   let completionYearInput = document.querySelector(
     '.gradcompletionyear input[type="month"]'
   );
-  let startingYear = formatDate(startingYearInput.value);
-  let completionYear = formatDate(completionYearInput.value);
+  let startingYear = new Date(startingYearInput.value);
+  let completionYear = new Date(completionYearInput.value);
+
+  // Calculating the minimum completion year
+  let minCompletionYear = new Date(startingYear);
+  minCompletionYear.setFullYear(minCompletionYear.getFullYear() + 1);
+
+  // Checking if completion year is before the minimum completion year
+  if (completionYear < minCompletionYear) {
+    completionYearInput.classList.add("error");
+    alert("Completion year must be at least 1 year after the starting year");
+    return;
+  } else {
+    completionYearInput.classList.remove("error");
+  }
+  startingYear = formatDate(startingYearInput.value);
+  completionYear = formatDate(completionYearInput.value);
   let school = document.querySelector(".gradschool input").value;
   let degree = document.querySelector(".gradDegree input").value;
   let stream = document.querySelector(".gradStream input").value;

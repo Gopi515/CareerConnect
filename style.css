@@ -1884,7 +1884,7 @@ legend {
 
 /* -------------teacher add question ----------- */
 
-.interQuestionhead{
+.interQuestionhead {
     font-size: 40px;
     align-items: center;
     text-align: center;
@@ -2607,6 +2607,10 @@ input::-webkit-inner-spin-button {
 }
 
 /* ----------- */
+.error {
+    border-color: red;
+}
+
 .XeduDetailItem,
 .XIIeduDetailItem,
 .diplomaeduDetailItem,
@@ -2726,7 +2730,8 @@ input::-webkit-inner-spin-button {
 .Submitgrad,
 .SubmitPhD,
 .internshipsave,
-.jobsave {
+.jobsave,
+.PORsave {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -2750,7 +2755,8 @@ input::-webkit-inner-spin-button {
 .Submitgrad:hover,
 .SubmitPhD:hover,
 .internshipsave:hover,
-.jobsave:hover {
+.jobsave:hover,
+.PORsave:hover {
     box-shadow: var(--box-shadow);
     border: 3px solid var(--first-col);
 }
@@ -2784,7 +2790,8 @@ input::-webkit-inner-spin-button {
 
 /*Internship experience*/
 #Internshipdetails,
-#Jobdetails {
+#Jobdetails,
+#PORmain {
     display: none;
     position: fixed;
     top: 0;
@@ -2796,7 +2803,8 @@ input::-webkit-inner-spin-button {
 }
 
 .boxinternship,
-.boxjob {
+.boxjob,
+.boxPOR {
     background: #fff;
     padding: 20px;
     margin: 50px auto;
@@ -2808,7 +2816,8 @@ input::-webkit-inner-spin-button {
 
 /*internship*/
 .topinternship,
-.topjob {
+.topjob,
+.PORheading {
     font-size: 23px;
     font-weight: 600;
     text-align: center;
@@ -2816,7 +2825,8 @@ input::-webkit-inner-spin-button {
 }
 
 .endInternship,
-.endJob {
+.endJob,
+.endPOR {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -2829,3 +2839,14 @@ input::-webkit-inner-spin-button {
 
 
 /*Position of responsibility*/
+.PORdescription {
+    outline: none;
+    border: var(--border);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    padding: 10px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+    max-height: 300px;
+}
