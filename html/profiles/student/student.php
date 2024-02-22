@@ -11,71 +11,71 @@
 
 <!-- php  -->
 <?php
-session_start();
-require '../../../dbconnect.php';
+    session_start();
+    require '../../../dbconnect.php';
 
-if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $firstname = htmlspecialchars($_POST['firstname']);
-    $lastname = htmlspecialchars($_POST['lastname']);
-    if (isset($_SESSION['mail'])) {
-        $email = $_SESSION['mail'];
-    } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
-    }
-    $countrycode = $_POST['countrycode'];
-    $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
-    $address1 = htmlspecialchars($_POST['address1']);
-    $address2 = htmlspecialchars($_POST['adderss2']);
-    $pincode = htmlspecialchars($_POST['pincode']);
-    $city = htmlspecialchars($_POST['city']);
-    $state = htmlspecialchars($_POST['state']);
-    $country = htmlspecialchars($_POST['country']); 
-    $gender = $_POST['gender']; 
-    $language = $_POST['language'];
-    // to convert array to string in php we use implode
-    $lang = implode(",",$language);
-    
-   if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) && 
-      !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) && 
-      !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)) {
-
-
-            $checkmobile = "SELECT * FROM `stu_personal_details` WHERE `phone_no` = '$mobilenumber'";
-            $result = mysqli_query($conn,$checkmobile);
-            $count = mysqli_num_rows($result);
-
-            if ($count != 0) {
-                header("location: ./student.php");
-                exit;
-            }
-
-            $query = "SELECT id AS stu_id FROM student WHERE email = '$email'";
-            $find = $conn->query($query);
-            while($row = mysqli_fetch_assoc($find)){
-                $stu_id = $row['stu_id'];
-            }
-
-            $insertdata = "INSERT INTO `stu_personal_details`(`stu_id`, `F_name`, `L_name`, `email`, `phone_code`,
-            `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
-            VALUES ('$stu_id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2',
-            '$pincode','$city','$state','$country','$gender','$lang')";
-
-            $smt = mysqli_query($conn, $insertdata);
-
-
-        if ($smt) {
-            header("location: ../../landingPage/landingStudent.php");
-            exit;
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $lastname = htmlspecialchars($_POST['lastname']);
+        if (isset($_SESSION['mail'])) {
+            $email = $_SESSION['mail'];
         } else {
-            echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
-            error_log("Database error: " . mysqli_error($conn));
+            echo "<script>alert('Error: Session is not working.')</script>";
         }
+        $countrycode = $_POST['countrycode'];
+        $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
+        $address1 = htmlspecialchars($_POST['address1']);
+        $address2 = htmlspecialchars($_POST['adderss2']);
+        $pincode = htmlspecialchars($_POST['pincode']);
+        $city = htmlspecialchars($_POST['city']);
+        $state = htmlspecialchars($_POST['state']);
+        $country = htmlspecialchars($_POST['country']); 
+        $gender = $_POST['gender']; 
+        $language = $_POST['language'];
+        // to convert array to string in php we use implode
+        $lang = implode(",",$language);
+        
+    if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) && 
+        !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) && 
+        !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)) {
 
-    } else {
-        echo "<script>alert('Error: Please enter all the field.')</script>";
-    }
-} 
+
+                $checkmobile = "SELECT * FROM `stu_personal_details` WHERE `phone_no` = '$mobilenumber'";
+                $result = mysqli_query($conn,$checkmobile);
+                $count = mysqli_num_rows($result);
+
+                if ($count != 0) {
+                    header("location: ./student.php");
+                    exit;
+                }
+
+                $query = "SELECT id AS stu_id FROM student WHERE email = '$email'";
+                $find = $conn->query($query);
+                while($row = mysqli_fetch_assoc($find)){
+                    $stu_id = $row['stu_id'];
+                }
+
+                $insertdata = "INSERT INTO `stu_personal_details`(`stu_id`, `F_name`, `L_name`, `email`, `phone_code`,
+                `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
+                VALUES ('$stu_id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2',
+                '$pincode','$city','$state','$country','$gender','$lang')";
+
+                $smt = mysqli_query($conn, $insertdata);
+
+
+            if ($smt) {
+                header("location: ../../landingPage/landingStudent.php");
+                exit;
+            } else {
+                echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+                error_log("Database error: " . mysqli_error($conn));
+            }
+
+        } else {
+            echo "<script>alert('Error: Please enter all the field.')</script>";
+        }
+    } 
 ?>
 
 <body>
@@ -130,12 +130,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p class="stu-para-style1">Email*</p>
                         <div class="stu-email-box">
                             <?php 
-                            if (isset($_SESSION['mail'])) {
-                                $email = $_SESSION['mail'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $email; 
+                                if (isset($_SESSION['mail'])) {
+                                    $email = $_SESSION['mail'];
+                                } else {
+                                    echo "<script>alert('Error: Session is not working.')</script>";
+                                }
+                                echo $email; 
                             ?>
                         </div>
 

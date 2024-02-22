@@ -118,11 +118,11 @@ session_start();
         <div class="internshipOrder">
             <?php
 
-            $query = "SELECT * FROM `internships` ORDER BY id ASC";
-            $result = mysqli_query($conn, $query);
+                $query = "SELECT * FROM `internships` ORDER BY id ASC";
+                $result = mysqli_query($conn, $query);
 
-            if(mysqli_num_rows($result)>0){
-                while($row = mysqli_fetch_array($result)){
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_array($result)){
 
             ?>
             <div class="internshipCard internshipCard1">

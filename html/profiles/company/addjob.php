@@ -17,39 +17,39 @@
 
 <!-- php here -->
 <?php
-require '../../../dbconnect.php';
+    require '../../../dbconnect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check for empty values
-    $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-    $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
-    $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
-    $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
-    $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
-    $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
-    $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
-    $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
-    $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
-    $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Check for empty values
+        $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
+        $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
+        $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
+        $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
+        $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
+        $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
+        $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
+        $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
+        $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
+        $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
 
-    try {
-        $sql = "INSERT INTO job (topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            $sql = "INSERT INTO job (topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $stmt = mysqli_prepare($conn, $sql);
+            $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "sssssssssi", $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings);
+            mysqli_stmt_bind_param($stmt, "sssssssssi", $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings);
 
-        mysqli_stmt_execute($stmt);
+            mysqli_stmt_execute($stmt);
 
-        mysqli_stmt_close($stmt);
+            mysqli_stmt_close($stmt);
 
-        header('Location: ../../landingPage/landingCompany.php');
-        exit;
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
+            header('Location: ../../landingPage/landingCompany.php');
+            exit;
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
-}
 ?>
 
 

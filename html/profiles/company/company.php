@@ -11,75 +11,75 @@
 
 <!-- php  -->
 <?php
-session_start();
-require '../../../dbconnect.php';
+    session_start();
+    require '../../../dbconnect.php';
 
-if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = htmlspecialchars($_POST['name']);
-    if (isset($_SESSION['mail'])) {
-        $email = $_SESSION['mail'];
-    } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
-    }
-    $countrycode = $_POST['countrycode'];
-    $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
-    $arrivaldate = date('Y-m-d');
-    $address1 = htmlspecialchars($_POST['address1']);
-    $address2 = htmlspecialchars($_POST['adderss2']);
-    $pincode = htmlspecialchars($_POST['pincode']);
-    $city = htmlspecialchars($_POST['city']);
-    $state = htmlspecialchars($_POST['state']);
-    $country = htmlspecialchars($_POST['country']); 
-    $website = htmlspecialchars($_POST['website']); 
-    $about = htmlspecialchars($_POST['about']);
-    
-   if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
-      !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
-      !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
-
-        
-            $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
-            $result = mysqli_query($conn,$checkmobile);
-            $count = mysqli_num_rows($result);
-
-            if ($count != 0) {
-                header("location: ./company.php");
-                exit;
-            }
-
-
-            $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-            $find = $conn->query($query);
-            if(mysqli_num_rows($find)>0){
-                while($row = mysqli_fetch_array($find)){
-                    $com_id = $row["com_id"];
-                }
-            }
-
-
-            $insertdata = "INSERT INTO `com_personal_details`(`com_id`, `name`, `email`, `phone_code`, `phone_no`,
-            `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
-            VALUES ('$com_id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
-            '$pincode','$city','$state','$country','$website','$about')";
-
-            $smt = mysqli_query($conn, $insertdata);
-             
-
-        if ($smt) {
-            header("location: ../../landingPage/landingCompany.php");
-            exit;
+        $name = htmlspecialchars($_POST['name']);
+        if (isset($_SESSION['mail'])) {
+            $email = $_SESSION['mail'];
         } else {
-            echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
-            error_log("Database error: " . mysqli_error($conn));
+            echo "<script>alert('Error: Session is not working.')</script>";
+        }
+        $countrycode = $_POST['countrycode'];
+        $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
+        $arrivaldate = date('Y-m-d');
+        $address1 = htmlspecialchars($_POST['address1']);
+        $address2 = htmlspecialchars($_POST['adderss2']);
+        $pincode = htmlspecialchars($_POST['pincode']);
+        $city = htmlspecialchars($_POST['city']);
+        $state = htmlspecialchars($_POST['state']);
+        $country = htmlspecialchars($_POST['country']); 
+        $website = htmlspecialchars($_POST['website']); 
+        $about = htmlspecialchars($_POST['about']);
+        
+    if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
+        !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
+        !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
+
+            
+                $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
+                $result = mysqli_query($conn,$checkmobile);
+                $count = mysqli_num_rows($result);
+
+                if ($count != 0) {
+                    header("location: ./company.php");
+                    exit;
+                }
+
+
+                $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+                $find = $conn->query($query);
+                if(mysqli_num_rows($find)>0){
+                    while($row = mysqli_fetch_array($find)){
+                        $com_id = $row["com_id"];
+                    }
+                }
+
+
+                $insertdata = "INSERT INTO `com_personal_details`(`com_id`, `name`, `email`, `phone_code`, `phone_no`,
+                `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
+                VALUES ('$com_id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
+                '$pincode','$city','$state','$country','$website','$about')";
+
+                $smt = mysqli_query($conn, $insertdata);
+                
+
+            if ($smt) {
+                header("location: ../../landingPage/landingCompany.php");
+                exit;
+            } else {
+                echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+                error_log("Database error: " . mysqli_error($conn));
+            }
+
+        } else {
+            echo "<script>alert('Error: Please enter all the field.')</script>";
         }
 
-    } else {
-        echo "<script>alert('Error: Please enter all the field.')</script>";
-    }
 
-
-} 
+    } 
 
 ?>
 
@@ -135,12 +135,12 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <p class="com-para-style1">Email*</p>
                         <div class="com-email-box">
                             <?php 
-                            if (isset($_SESSION['mail'])) {
-                                $email = $_SESSION['mail'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $email; 
+                                if (isset($_SESSION['mail'])) {
+                                    $email = $_SESSION['mail'];
+                                } else {
+                                    echo "<script>alert('Error: Session is not working.')</script>";
+                                }
+                                echo $email; 
                             ?>
                         </div>
 
