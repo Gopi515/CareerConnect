@@ -53,6 +53,7 @@ html {
     align-items: center;
     background-color: var(--second-col);
     padding: 15px;
+    top: 0px;
 }
 
 .navbar-brand {
@@ -179,6 +180,25 @@ html {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--fourth-col);
+}
+
+.LoginInterface {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Tlogin,
+.Slogin,
+.Clogin {
+    width: 300px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+    background-color: white;
+    padding: 25px;
+    border-radius: 35px;
+    margin-right: 20px;
+
 }
 
 .linkingLogIn {
