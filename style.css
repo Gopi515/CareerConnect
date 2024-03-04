@@ -2293,6 +2293,11 @@ input::-webkit-inner-spin-button {
 .addDomainelement .hidePopup {
   display: none;
 }
+<<<<<<< Updated upstream
+=======
+.addDomainelement .addSkillbutton {
+}
+>>>>>>> Stashed changes
 
 /* company profile */
 
