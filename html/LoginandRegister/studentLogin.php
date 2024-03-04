@@ -47,14 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         if (password_verify($password, $row['pass'])) {
                             // Redirect based on the role
                             switch ($role) {
-                                case 'teacher':
-                                    header("location: ../landingPage/landingTeacher.php");
-                                    break;
                                 case 'student':
                                     header("location: ../landingPage/landingStudent.php");
-                                    break;
-                                case 'company':
-                                    header("location: ../landingPage/landingCompany.php");
                                     break;
                                 default:
                                     echo "<script>alert('Error: Unknown role.');</script>";
@@ -90,42 +84,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- rightside -->
         <div class="right-side">
-        <form action="login.php" method="POST">
-            <!-- for the re-direct -->
-            <div class="select-box">
-                <p class="selecttext">Please select your role:</p>
-                <div class="selectrole">
-                    <select class="roles" name="role" id="roles">
-                        <option class="drpdwn" value="default">Select a role</option>
-                        <option class="drpdwn" value="teacher">Teacher</option>
-                        <option class="drpdwn" value="student">Student</option>
-                        <option class="drpdwn" value="company">Company</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- entries -->
-            <div class="withsubmit">
-                <div class="inputboxes">
-                    <p class="inphead user-name">User Name</p>
-                    <input name="username" class="pleasebox" type="text" placeholder="Enter your username">
-                        
-                    <p class="inphead email">Email</p>
-                    <input name="email" class="pleasebox" type="email" placeholder="Enter the email">
-                        
-                    <p class="inphead password">Password</p>
-                    <div id="foreye" class="password-container logincont">
-                        <input name="password" required class="pwrdl" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
-                        <span class="eye-iconl" onclick="togglePassword()">
-                            <i class="far fa-eye"></i>
-                        </span>
+            <form action="login.php" method="POST">
+                <!-- for the re-direct -->
+                <div class="select-box">
+                    <p class="selecttext">You are logging in as:</p>
+                    <div class="selectrole">
+                        <select class="roles" name="role" id="roles">
+                            <option class="drpdwn" value="student">Student</option>
+                        </select>
                     </div>
                 </div>
-                <div class="subdiv">
-                    <button class="btn submit" id="submitButton" onclick="submitSelection()">Login</button>
+
+                <!-- entries -->
+                <div class="withsubmit">
+                    <div class="inputboxes">
+                        <p class="inphead user-name">User Name</p>
+                        <input name="username" class="pleasebox" type="text" placeholder="Enter your username">
+                            
+                        <p class="inphead email">Email</p>
+                        <input name="email" class="pleasebox" type="email" placeholder="Enter the email">
+                            
+                        <p class="inphead password">Password</p>
+                        <div id="foreye" class="password-container logincont">
+                            <input name="password" required class="pwrdl" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
+                            <span class="eye-iconl" onclick="togglePassword()">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="subdiv">
+                        <button class="btn submit" id="submitButton" onclick="submitSelection()">Login</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
         </div>
     </div>
 

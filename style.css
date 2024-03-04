@@ -55,6 +55,7 @@ html {
   align-items: center;
   background-color: var(--second-col);
   padding: 15px;
+  top: 0px;
 }
 
 .navbar-brand {
@@ -181,6 +182,25 @@ html {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--fourth-col);
+}
+
+.LoginInterface {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Tlogin,
+.Slogin,
+.Clogin {
+  width: 300px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--fourth-col);
+  background-color: white;
+  padding: 25px;
+  border-radius: 35px;
+  margin-right: 20px;
+
 }
 
 .linkingLogIn {
@@ -509,11 +529,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -523,7 +543,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1263,26 +1283,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1302,31 +1313,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2128,9 +2127,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -2293,16 +2292,6 @@ input::-webkit-inner-spin-button {
 .addDomainelement .hidePopup {
   display: none;
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-.addDomainelement .addSkillbutton {
-}
->>>>>>> Stashed changes
-=======
-.addDomainelement .addSkillbutton {
-}
->>>>>>> Stashed changes
 
 /* company profile */
 
