@@ -4,7 +4,7 @@
 
     <!-- metas -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=], initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- title -->
     <title>Landing Company</title>
@@ -20,23 +20,24 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="../Internship/internship.php">Internship</a></li>
-                    <li><a href="../Job/job.php">Job</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-window-restore"></i></a></li>
-                    <div class="dropdownCompany">
-                    <li><a href="../profiles/company/viewCompanyDetails.php"><i class="fas fa-user" onclick="showDropdown()" id="postOptions"></i></a>
-                        <div class="dropdown-content" id="dropdownOptionsPost">
-                            <a href="../profiles/company/addinternship.php" onclick="selectOption('Post Internship')">Post Internship</a>
-                            <a href="../profiles/company/addjob.php" onclick="selectOption('Post Job')">Post Job</a>
-                        </div>
-                    </li>
-                </div>
+                    <div class="dropdown">
+                        <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/company/viewCompanyDetails.php">View Profile</a>
+                                <a href="">Edit Profile</a>
+                                <a href="../profiles/company/addinternship.php">Post Internship</a>
+                                <a href="../profiles/company/addjob.php">Post Job</a>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <script src="../../javaScripts/dropdown.js"></script>
+    <!-- <script src="../../javaScripts/dropdown.js"></script> -->
+    <script src="../../javaScripts/showDropdown.js"></script>
+
 </body>
 </html>

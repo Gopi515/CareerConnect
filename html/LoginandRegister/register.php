@@ -152,11 +152,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </form>
-
-            <div class="gotolog">
-                <p>Already have an account?</p>
-                <a href="../LoginandRegister/login.php"><button class="btn">Login Here</button></a>
-            </div>
         </div>
     </div>
 
