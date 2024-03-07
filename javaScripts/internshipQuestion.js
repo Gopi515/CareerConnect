@@ -93,7 +93,7 @@ function openPopup() {
     elementDiv.classList.add("element");
     elementDiv.innerHTML = `
         <span>${element}</span>
-        <button onclick="addElement('${element}')">+</button>
+        <div onclick="addElement('${element}')">+</div>
       `;
     elementsContainer.appendChild(elementDiv);
   });
@@ -113,11 +113,15 @@ function addElement(element) {
     const elementDiv = document.createElement("div");
     elementDiv.classList.add("addedElement");
     elementDiv.innerHTML = `
-        ${element}
-        <span class="removeButton" onclick="removeElement(this)">X</span>
-      `;
+      ${element}
+      <span class="removeButton" onclick="removeElement(this)">X</span>
+    `;
     addedElementsContainer.appendChild(elementDiv);
     addedElements.push(element);
+
+    // Updating the value of the existing hidden input field
+    document.getElementById("addedSkillsInput").value =
+      JSON.stringify(addedElements);
   } else {
     alert("Element already added!");
   }
