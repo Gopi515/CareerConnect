@@ -782,6 +782,11 @@ footer {
 }
 
 /* apply page */
+
+.applicationForm {
+  overflow-x: hidden;
+  height: 170%;
+}
 .goBack {
   margin-left: 5%;
 }
@@ -893,14 +898,16 @@ footer {
   background-color: var(--seventh-col);
   color: var();
 }
-
+.takeTest {
+  transform: translate(12%, 130%);
+}
 .internshipApplybtn {
   position: absolute;
   display: flex;
   text-align: center;
   justify-content: center;
   left: 45%;
-  top: 125%;
+  top: 165%;
   padding: 10px 10px;
   width: 10rem;
   border-radius: 50px;

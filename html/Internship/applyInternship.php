@@ -56,7 +56,8 @@
     <a href="../Internship/internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
     <div class="applyHeading"><h1>Applying for Internship</h1></div>
 
-    <form action="" method="POST">
+    <form action="" method="POST" class="applicationForm">
+        
     <div class="coverLetter">
         <h2>Cover Letter</h2>
         <h3>Why should you be hired for this role?</h3>
@@ -89,9 +90,24 @@
             <input type="text" placeholder="Enter text..." name="assessment">
         </div>
 
+        <div class="assesment takeTest">
+            <h2>Take Test</h2>
+            <p>In the next step you'll be facing 10 multiple choice questions based on the internship/job you are applying for. If you able to score 70% marks (7 correct out of 10 questions), then your application will be sucessfully submitted otherwise you can take the test again.
+            <br>
+            <br>
+            Good luck
+            </p>
+        </div>
 
-        <button class="internshipApplybtn" type="submit" name="submit">Submit</button>
+
+        <button class="internshipApplybtn" type="submit" name="submit" onclick="redirectToAnotherPage()">Submit</button>
         </form>
 
+
+        <script>
+            function redirectToAnotherPage() {
+            window.location.href = "testInternship.html";
+            }
+        </script>
 </body>
 </html>
