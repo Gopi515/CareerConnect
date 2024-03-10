@@ -65,8 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_stmt_execute($stmt);
 
                 if ($stmt) {
-                    $id = mysqli_insert_id( $conn );
-                    $_SESSION['last_id'] = $id;
                     $_SESSION['mail'] = $email;
                 }
 

@@ -292,7 +292,7 @@ html {
 }
 
 .nav-links li a:hover,
-.nav-links li a.active {
+.nav-links li a:active {
   color: var(--first-col);
   background: var(--fourth-col);
   font-size: 1.2rem;

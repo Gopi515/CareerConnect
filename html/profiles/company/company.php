@@ -34,9 +34,9 @@
         $website = htmlspecialchars($_POST['website']); 
         $about = htmlspecialchars($_POST['about']);
         
-    if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
-        !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
-        !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
+            if(!empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) && 
+                !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) && 
+                !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)) {
 
             
                 $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
@@ -64,6 +64,10 @@
                 '$pincode','$city','$state','$country','$website','$about')";
 
                 $smt = mysqli_query($conn, $insertdata);
+
+                if ($stm) {
+                    $_SESSION['mail'] = $email;
+                }
                 
 
             if ($smt) {

@@ -106,7 +106,7 @@
 
         <script>
             function redirectToAnotherPage() {
-            window.location.href = "testInternship.html";
+            window.location.href = "testInternship.php";
             }
         </script>
 </body>

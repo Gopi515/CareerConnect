@@ -17,6 +17,7 @@
 
 <!-- php here -->
 <?php
+    session_start();
     require '../../../dbconnect.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,14 +32,27 @@
         $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
         $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
         $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+        if (isset($_SESSION['mail'])) {
+        $email = $_SESSION['mail'];
+        } else {
+            echo "<script>alert('Error: Session is not working.')</script>";
+        }
+
+        $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+        $find = $conn->query($query);
+        if(mysqli_num_rows($find)>0){
+            while($row = mysqli_fetch_array($find)){
+                $com_id = $row["com_id"];
+            }
+        }
 
         try {
-            $sql = "INSERT INTO job (topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO job (com_id, topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings, com_email)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = mysqli_prepare($conn, $sql);
 
-            mysqli_stmt_bind_param($stmt, "sssssssssi", $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings);
+            mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings, $email);
 
             mysqli_stmt_execute($stmt);
 

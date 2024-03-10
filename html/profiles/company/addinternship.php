@@ -18,6 +18,7 @@
 
 <!-- php here -->
 <?php
+session_start();
 require '../../../dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,14 +32,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
     $certificate = isset($_POST['certificate']) ? 1 : 0;
     $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+    if (isset($_SESSION['mail'])) {
+        $email = $_SESSION['mail'];
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
+
+    $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+    $find = $conn->query($query);
+    if(mysqli_num_rows($find)>0){
+        while($row = mysqli_fetch_array($find)){
+            $com_id = $row["com_id"];
+        }
+    }
 
     try {
-        $sql = "INSERT INTO internships (topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO internships (com_id, topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "sssssssssi", $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $requiredSkills, $aboutInternship, $certificate, $openings);
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $requiredSkills, $aboutInternship, $certificate, $openings, $email);
 
         mysqli_stmt_execute($stmt);
 
@@ -50,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $e->getMessage();
     }
 }
+
 ?>
 
 
@@ -71,8 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-             <!-- domain -->
-             <div class="addDomainelement">
+             <!-- <div class="addDomainelement">
                 <p>Add Domain*</p>
                 <button id="add-element-btn">Add +</button>
     
@@ -82,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <ul id="element-list"></ul>
                   <button id="add-button" onclick="addElement()">Add</button>
                 </div>
-              </div>
+              </div> -->
 
 
             <div class="category">
@@ -227,6 +241,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/label.js"></script>
     <script src="../../../javaScripts/selectLanguage.js"></script>
     <script src="../../../javaScripts/requiredSkills.js"></script>
-    <script src="../../../javaScripts/addDomain.js"></script>
+    <!-- <script src="../../../javaScripts/addDomain.js"></script> -->
 </body>
 </html>

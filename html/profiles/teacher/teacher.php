@@ -32,16 +32,15 @@
         $state = htmlspecialchars($_POST['state']);
         $country = htmlspecialchars($_POST['country']); 
         $gender = $_POST['gender']; 
-        $language = $_POST['language'];
+        // $language = $_POST['language'];
         // to convert array to string in php we use implode
-        $lang = implode(",",$language);
+        // $lang = implode(",",$language);
         
     if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) && 
         !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) && 
-        !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)) {
+        !empty($state) && !empty($city) && !empty($country) && !empty($gender)) {
 
-            if (isset($_SESSION['last_id'])) {
-                $id = $_SESSION['last_id'];
+
 
                 $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
                 $result = mysqli_query($conn,$checkmobile);
@@ -51,19 +50,26 @@
                     header("location: ./teacher.php");
                     exit;
                 }
+
+
+                $query = "SELECT id AS tech_id FROM teacher WHERE email = '$email'";
+                $find = $conn->query($query);
+                if(mysqli_num_rows($find)>0){
+                    while($row = mysqli_fetch_array($find)){
+                        $tech_id = $row["tech_id"];
+                    }
+                }
+
             
-                $insertdata = "INSERT INTO `tech_personal_details`(`id`, `F_name`, `L_name`, `email`,
-                `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
-                VALUES ('$id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2','$pincode',
-                '$city','$state','$country','$gender','$lang')";
+                $insertdata = "INSERT INTO `tech_personal_details`(`tech_id`, `F_name`, `L_name`, `email`,
+                `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`) 
+                VALUES ('$tech_id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2','$pincode',
+                '$city','$state','$country','$gender')";
 
                 $smt = mysqli_query($conn, $insertdata);
 
-                unset($_SESSION['last_id']);
-                
-            } else {
-                echo "<script>alert('Error: Session in not working.');</script>";
-            }
+
+
 
             if ($smt) {
                 header("location: ../../landingPage/landingTeacher.php");

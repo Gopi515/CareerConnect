@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         if (password_verify($password, $row['pass'])) {
                             // Redirect based on the role
                             switch ($role) {
-                                case 'teacher':
+                                case 'company':
                                     header("location: ../landingPage/landingCompany.php");
                                     break;
                                 default:
