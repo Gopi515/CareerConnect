@@ -1,37 +1,37 @@
 <?php
-require '../../../dbconnect.php';
+  require '../../../dbconnect.php';
 
-if (isset($_POST["submitQuestion"])) {
-  $questionName = $_POST["question"];
-  $option1 = $_POST["option1"];
-  $option2 = $_POST["option2"];
-  $option3 = $_POST["option3"];
-  $option4 = $_POST["option4"];
-  $correctOption = $_POST["answer"];
+  if (isset($_POST["submitQuestion"])) {
+    $questionName = $_POST["question"];
+    $option1 = $_POST["option1"];
+    $option2 = $_POST["option2"];
+    $option3 = $_POST["option3"];
+    $option4 = $_POST["option4"];
+    $correctOption = $_POST["answer"];
 
-  // Retrieving and decode the added skills array
-  $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+    // Retrieving and decode the added skills array
+    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
 
-  if ($addedSkillsArray === null) {
-      echo "Error decoding addedSkills JSON: " . json_last_error_msg();
-      exit;
+    if ($addedSkillsArray === null) {
+        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+        exit;
+    }
+
+    // Combining skills into a comma-separated string
+    $skillsString = implode(', ', $addedSkillsArray);
+
+    // Inserting data into the MySQL table for questions
+    $query = "INSERT INTO internship_question (question, option_one, option_two, option_three, option_four, right_option, skills) 
+              VALUES ('$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+      echo "<script>alert('Question added successfully')</script>";
+    } else {
+      echo "Error: " . mysqli_error($conn);
+    }
   }
-
-  // Combining skills into a comma-separated string
-  $skillsString = implode(', ', $addedSkillsArray);
-
-  // Inserting data into the MySQL table for questions
-  $query = "INSERT INTO internship_question (question, option_one, option_two, option_three, option_four, right_option, skills) 
-            VALUES ('$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
-
-  $result = mysqli_query($conn, $query);
-
-  if ($result) {
-    echo "<script>alert('Question added successfully')</script>";
-  } else {
-    echo "Error: " . mysqli_error($conn);
-  }
-}
 ?>
 
 

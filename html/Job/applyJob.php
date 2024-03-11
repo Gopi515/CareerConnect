@@ -9,19 +9,33 @@
         $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
         $assessment = $_POST['assessment'];
 
-        $query = "INSERT INTO `job_application_details` (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
-        mysqli_query($conn, $query);
-
-        if (isset($_SESSION['Job_topic']) && ($_SESSION['Job_loc']) && ($_SESSION['mail'])){
+        if (isset($_SESSION['Job_topic']) && ($_SESSION['Job_loc']) && ($_SESSION['mail']) && ($_SESSION['job_com_id']) && ($_SESSION['job_com_email']) && ($_SESSION['job_id'])){
             $job_topic = $_SESSION['Job_topic'];
             $job_location = $_SESSION['Job_loc'];
             $email = $_SESSION['mail'];
+            $job_com_id = $_SESSION['job_com_id'];
+            $job_com_email = $_SESSION['job_com_email'];
+            $job_id = $_SESSION['job_id'];
 
-            $sql = "INSERT INTO `job_applied` (`profile`, `location`, `stu_email`) VALUES ('$job_topic', '$job_location', '$email')";
+            $search = "SELECT id AS stu_id FROM student WHERE email = '$email'";
+            $find = $conn->query($search);
+            if(mysqli_num_rows($find)>0){
+                while($row = mysqli_fetch_array($find)){
+                    $stu_id = $row["stu_id"];
+                }
+            }
+
+            $query = "INSERT INTO `job_application_details` (cover_letter, availability, availability_spec, assessment, com_email, com_id, job_id, stu_email, stu_id) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment', '$job_com_email', '$job_com_id', '$job_id', '$email', '$stu_id')";
+            mysqli_query($conn, $query);
+
+            $sql = "INSERT INTO `job_applied` (`job_id`, `profile`, `location`, `stu_id`, `stu_email`, `com_id`, `com_email`) VALUES ('$job_id', '$job_topic', '$job_location', '$stu_id', '$email', '$job_com_id', '$job_com_email')";
             mysqli_query($conn, $sql);
 
             unset($_SESSION['Job_topic']);
             unset($_SESSION['Job_loc']);
+            unset($_SESSION['job_com_id']);
+            unset($_SESSION['job_com_email']);
+            unset($_SESSION['job_id']);
         } else {
             echo "<script>alert('Error: Session is not working.')</script>";
         }

@@ -16,7 +16,6 @@ session_start();
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,18 +38,16 @@ session_start();
       <div class="appliedInternshipheading">
         <h2 class="appliedProfile">PROFILE</h2>
         <h2 class="appliedLocation">LOCATION</h2>
-        <h2 class="appliedDuration">DURATION</h2>
         <h2>NUMBER OF APPLICANTS</h2>
         <h2>APPLICATION STATUS</h2>
       </div>
 
     <?php
-         while($row = mysqli_fetch_assoc($applied_internships)){
+         while($row = mysqli_fetch_assoc($applied_jobs)){
     ?>
       <div class="appliedInternshipitems">
         <h2 class="appliedProfile"><?php echo $row["profile"]; ?> </h2>
         <h2 class="appliedLocation"><?php echo $row["location"]; ?> </h2>
-        <h2 class="appliedDuration"><?php echo $row["duration"]; ?> </h2>
         <h2>1</h2>
         <h2 class="appliedStatus">Applied</h2>
       </div>

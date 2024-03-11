@@ -9,21 +9,35 @@
         $availability_spec = ($availability === 'No') ? $_POST['availability_spec'] : null;
         $assessment = $_POST['assessment'];
 
-        $query = "INSERT INTO `internship_application_details` (cover_letter, availability, availability_spec, assessment) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment')";
-        mysqli_query($conn, $query);
-
-        if (isset($_SESSION['int_topic']) && ($_SESSION['int_loc']) && ($_SESSION['int_dur']) && ($_SESSION['mail'])){
+        if (isset($_SESSION['int_topic']) && ($_SESSION['int_loc']) && ($_SESSION['int_dur']) && ($_SESSION['mail']) && ($_SESSION['int_com_id']) && ($_SESSION['int_com_email']) && ($_SESSION['int_id'])){
             $internship_topic = $_SESSION['int_topic'];
             $internship_location = $_SESSION['int_loc'];
             $internship_duration = $_SESSION['int_dur'];
             $email = $_SESSION['mail'];
+            $internship_com_id = $_SESSION['int_com_id'];
+            $internship_com_email = $_SESSION['int_com_email'];
+            $internship_int_id = $_SESSION['int_id'];
 
-            $sql = "INSERT INTO `internship_applied` (`profile`, `location`, `duration`, `stu_email`) VALUES ('$internship_topic', '$internship_location', '$internship_duration', '$email')";
+            $search = "SELECT id AS stu_id FROM student WHERE email = '$email'";
+            $find = $conn->query($search);
+            if(mysqli_num_rows($find)>0){
+                while($row = mysqli_fetch_array($find)){
+                    $stu_id = $row["stu_id"];
+                }
+            }
+
+            $query = "INSERT INTO `internship_application_details` (cover_letter, availability, availability_spec, assessment, com_email, com_id, internship_id, stu_email, stu_id) VALUES ('$cover_letter', '$availability', '$availability_spec', '$assessment', '$internship_com_email', '$internship_com_id', '$internship_int_id', '$email', '$stu_id')";
+            mysqli_query($conn, $query);
+
+            $sql = "INSERT INTO `internship_applied` (`internship_id`, `profile`, `location`, `duration`, `stu_id`, `stu_email`, `com_id`, `com_email`) VALUES ('$internship_int_id', '$internship_topic', '$internship_location', '$internship_duration', '$stu_id', '$email', '$internship_com_id', '$internship_com_email')";
             mysqli_query($conn, $sql);
 
             unset($_SESSION['int_topic']);
             unset($_SESSION['int_loc']);
             unset($_SESSION['int_dur']);
+            unset($_SESSION['int_com_id']);
+            unset($_SESSION['int_com_email']);
+            unset($_SESSION['int_id']);
         } else {
             echo "<script>alert('Error: Session is not working.')</script>";
         }
@@ -56,7 +70,7 @@
     <a href="../Internship/internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
     <div class="applyHeading"><h1>Applying for Internship</h1></div>
 
-    <form action="" method="POST" class="applicationForm">
+    <form action="#" method="POST" class="applicationForm">
         
     <div class="coverLetter">
         <h2>Cover Letter</h2>
@@ -101,13 +115,15 @@
 
 
         <button class="internshipApplybtn" type="submit" name="submit" onclick="redirectToAnotherPage()">Submit</button>
+        <!-- onclick="redirectToAnotherPage()" -->
+
         </form>
 
 
-        <script>
+        <!-- <script>
             function redirectToAnotherPage() {
             window.location.href = "testInternship.php";
             }
-        </script>
+        </script> -->
 </body>
 </html>

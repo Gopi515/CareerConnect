@@ -15,7 +15,6 @@
     require '../../../dbconnect.php';
 
     if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         if (isset($_SESSION['mail'])) {
@@ -67,8 +66,6 @@
                 '$city','$state','$country','$gender')";
 
                 $smt = mysqli_query($conn, $insertdata);
-
-
 
 
             if ($smt) {

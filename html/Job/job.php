@@ -15,11 +15,17 @@ session_start();
     require_once '../../dbconnect.php';
 
     if(isset($_POST["applyJob"])){
-        $job_topic = $_POST["hidden_topic"];
+        $job_topic = $_POST["hidden_Topic"];
         $job_location = $_POST["hidden_location"];
+        $job_com_id = $_POST["hidden_com_id"];
+        $job_com_email = $_POST["hidden_com_email"];
+        $job_id = $_POST["hidden_job_id"];
 
         $_SESSION['Job_topic'] = $job_topic;
         $_SESSION['Job_loc'] = $job_location;
+        $_SESSION['job_com_id'] = $job_com_id;
+        $_SESSION['job_com_email'] = $job_com_email;
+        $_SESSION['job_id'] = $job_id;
     
         header("Location:../Job/applyJob.php");
     }
@@ -36,9 +42,18 @@ session_start();
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton"><a href="../Internship/internship.php">Internship</a></li>
                     <li id="button2" class="interJobbutton"><a href="#">Job</a></li>
-                    <li><a href="../Job/appliedJob.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
-                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+                    <div class="dropdown">
+                        <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
+                                <a href="#">Edit Profile</a>
+                                <a href="../Internship/appliedInternship.php">Applied Internship</a>
+                                <a href="../Job/appliedJob.php">Applied Job</a>
+                            </div>
+                        </li>
+                    </div>
                     </ul>
                 </div>
         </nav>
@@ -127,7 +142,7 @@ session_start();
 
         <div class="internshipCard internshipCard1">
 
-            <form action="" method="POST">
+            <form action="Job.php?action=add&id=<?php echo $row["id"]?>" method="POST">
                 <h1>  <?php echo $row["Topic"]; ?>  </h1>
                 <div class="locationP">
                 <i class="fa-solid fa-location-dot"></i> 
@@ -153,6 +168,9 @@ session_start();
 
                 <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>">
                 <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
+                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>">
+                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>">
+                <input type="hidden" name="hidden_job_id" value="<?php echo $row["id"]; ?>">
                 
 
                 <div class="buttonNextstep">
@@ -184,7 +202,8 @@ session_start();
 
    <!-- script -->
     <script src="../../javaScripts/dropdown.js"></script>
-    <script src="../../javaScripts/inputDisable.js"></script>   
+    <script src="../../javaScripts/inputDisable.js"></script>
+    <script src="../../javaScripts/showDropdown.js"></script>   
 
 
 </body>

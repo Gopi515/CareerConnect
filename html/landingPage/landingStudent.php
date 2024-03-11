@@ -21,9 +21,18 @@
                 <ul class="nav-links">
                     <li><a href="../Internship/internship.php">Internship</a></li>
                     <li><a href="../Job/job.php">Job</a></li>
-                    <li><a href="../Internship/appliedInternship.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
-                    <li><a href="../profiles/student/viewStudentDetails.php"><i class="fas fa-user"></i></a></li>
+                    <div class="dropdown">
+                        <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
+                                <a href="#">Edit Profile</a>
+                                <a href="../Internship/appliedInternship.php">Applied Internship</a>
+                                <a href="../Job/appliedJob.php">Applied Job</a>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>
@@ -193,4 +202,5 @@
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../../javaScripts/slider.js"></script>
+    <script src="../../javaScripts/showDropdown.js"></script>
 </body>

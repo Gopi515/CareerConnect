@@ -18,10 +18,17 @@ session_start();
         $internship_topic = $_POST["hidden_topic"];
         $internship_location = $_POST["hidden_location"];
         $internship_duration = $_POST["hidden_duration"];
+        $internship_com_id = $_POST["hidden_com_id"];
+        $internship_com_email = $_POST["hidden_com_email"];
+        $internship_int_id = $_POST["hidden_int_id"];
+
 
         $_SESSION['int_topic'] = $internship_topic;
         $_SESSION['int_loc'] = $internship_location;
         $_SESSION['int_dur'] = $internship_duration;
+        $_SESSION['int_com_id'] = $internship_com_id;
+        $_SESSION['int_com_email'] = $internship_com_email;
+        $_SESSION['int_id'] = $internship_int_id;
     
         header("Location:../Internship/applyInternship.php");
     }
@@ -38,9 +45,18 @@ session_start();
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton"><a href="#">Internship</a></li>
                     <li id="button2" class="interJobbutton"><a href="../Job/job.php">Job</a></li>
-                    <li><a href="../Internship/appliedInternship.php"><i class="fas fa-bookmark"></i></a></li>
+                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                     <li><a href="#"><i class="fas fa-message"></i></a></li>
-                    <li><a href="#"><i class="fas fa-user"></i></a></li>
+                    <div class="dropdown">
+                        <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
+                                <a href="#">Edit Profile</a>
+                                <a href="../Internship/appliedInternship.php">Applied Internship</a>
+                                <a href="../Job/appliedJob.php">Applied Job</a>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>
@@ -155,6 +171,9 @@ session_start();
                 <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>">
                 <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
                 <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>">
+                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>">
+                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>">
+                <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>">
                 
 
                 <div class="buttonNextstep">
@@ -194,5 +213,6 @@ session_start();
     <script src="../../javaScripts/dropdown.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
     <script src="../../javaScripts/buttonSwitch.js"></script>
+    <script src="../../javaScripts/showDropdown.js"></script>
 </body>
 </html>

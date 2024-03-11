@@ -17,60 +17,60 @@
 
 <!-- the php part -->
 <?php
-session_start();
-require '../../dbconnect.php';
+    session_start();
+    require '../../dbconnect.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
 
-    if (empty($username) || empty($email) || empty($password)) {
-        echo "<script>alert('Error: Username, email, and password are all required.');</script>";
-    } else {
-        if (isset($_POST['role'])) {
-            $role = $_POST['role'];
+        if (empty($username) || empty($email) || empty($password)) {
+            echo "<script>alert('Error: Username, email, and password are all required.');</script>";
+        } else {
+            if (isset($_POST['role'])) {
+                $role = $_POST['role'];
 
-            if (empty($role)) {
-                echo "<script>alert('Error: Please select a role.');</script>";
-            } else {
-                function loginUser($conn, $role, $username, $email, $password)
-                {
-                    $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = '$username' AND `email` = '$email'";
-                    $result = mysqli_query($conn, $sql);
+                if (empty($role)) {
+                    echo "<script>alert('Error: Please select a role.');</script>";
+                } else {
+                    function loginUser($conn, $role, $username, $email, $password)
+                    {
+                        $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = '$username' AND `email` = '$email'";
+                        $result = mysqli_query($conn, $sql);
 
-                    if ($result) {
-                        $_SESSION['mail'] = $email;
-                    }
+                        if ($result) {
+                            $_SESSION['mail'] = $email;
+                        }
 
-                    if ($row = mysqli_fetch_assoc($result)) {
-                        if (password_verify($password, $row['pass'])) {
-                            // Redirect based on the role
-                            switch ($role) {
-                                case 'student':
-                                    header("location: ../landingPage/landingStudent.php");
-                                    break;
-                                default:
-                                    echo "<script>alert('Error: Unknown role.');</script>";
-                                    break;
+                        if ($row = mysqli_fetch_assoc($result)) {
+                            if (password_verify($password, $row['pass'])) {
+                                // Redirect based on the role
+                                switch ($role) {
+                                    case 'student':
+                                        header("location: ../landingPage/landingStudent.php");
+                                        break;
+                                    default:
+                                        echo "<script>alert('Error: Unknown role.');</script>";
+                                        break;
+                                }
+                            } else {
+                                echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
                             }
                         } else {
-                            echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
+                            echo "<script>alert('Error: Case-sensitive username or you have selected a different role.');</script>";
                         }
-                    } else {
-                        echo "<script>alert('Error: Case-sensitive username or you have selected a different role.');</script>";
                     }
-                }
 
-                if ($role == 'teacher' || $role == 'student' || $role == 'company') {
-                    loginUser($conn, $role, $username, $email, $password);
-                } else {
-                    echo "<script>alert('Error: Invalid role selected.');</script>";
+                    if ($role == 'teacher' || $role == 'student' || $role == 'company') {
+                        loginUser($conn, $role, $username, $email, $password);
+                    } else {
+                        echo "<script>alert('Error: Invalid role selected.');</script>";
+                    }
                 }
             }
         }
     }
-}
 ?>
 
 
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- rightside -->
         <div class="right-side">
-            <form action="login.php" method="POST">
+            <form action="studentLogin.php" method="POST">
                 <!-- for the re-direct -->
                 <div class="select-box">
                     <p class="selecttext">You are logging in as:</p>
