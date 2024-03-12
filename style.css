@@ -2350,11 +2350,160 @@ input::-webkit-inner-spin-button {
 }
 
 /* ---------internship question--------- */
-
-.addDomainelement .hidePopup {
-  display: none;
+.interQuestionhead {
+  font-size: 40px;
+  align-items: center;
+  text-align: center;
+  color: var(--fourth-col);
+  font-weight: 800;
+  margin-top: 2%;
 }
 
+#questionForm {
+  width: 85%;
+  margin: 2% auto;
+  padding: 30px 50px;
+  background-color: var(--second-col);
+  border-radius: var(--border-50);
+  box-shadow: var(--box-shadow);
+}
+.interQuestion {
+  margin-top: 3%;
+  display: grid;
+}
+.interQuestion label {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--fourth-col);
+  margin-left: 10px;
+}
+.interQuestion input {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border: var(--border);
+  border-radius: var(--border-50);
+  background-color: var(--seventh-col);
+  color: var(--fourth-col);
+  transition: var(--transition);
+}
+.interQuestion input:focus {
+  outline: none;
+  border: 3px solid var(--second-col);
+  box-shadow: var(--box-shadow);
+}
+.addDomainelement {
+  margin-top: 3%;
+}
+.addquestionSkillbutton:hover {
+  box-shadow: var(--box-shadow);
+  transition: 0.3s;
+}
+.addDomainelement p {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--fourth-col);
+  margin-left: 10px;
+}
+.addDomainelement .addquestionSkillbutton {
+  width: 10%;
+  padding: 15px;
+  text-align: center;
+  border-radius: var(--border-50);
+  font-weight: 700;
+  margin-left: 0px;
+  font-size: 13.33px;
+  color: var(--last-col);
+  background-color: var(--seventh-col);
+  cursor: pointer;
+  border: none;
+}
+.addDomainelement .hidePopup {
+  width: 100%;
+  height: 30%;
+  margin-top: 2%;
+  border-radius: 20px;
+  background-color: var(--seventh-col);
+  display: none;
+}
+.hidePopup input {
+  background-color: var(--second-col);
+  width: 90%;
+  margin: 2% 2%;
+}
+.hidePopup .closeContainerbutton {
+  width: 40px;
+  height: 40px;
+  background-color: var(--fourth-col);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: -65px;
+  left: 84%;
+}
+.closeContainerbutton #closeButton {
+  color: var(--first-col);
+  font-size: 28px;
+  cursor: pointer;
+}
+.closeContainerbutton:hover {
+  margin-top: -68px;
+  box-shadow: var(--box-shadow);
+  transition: 0.3s;
+}
+.hidePopup #elementsContainer {
+  width: 95%;
+  height: 70%;
+  margin: 0 auto;
+  padding: 5% 5%;
+  border-radius: 20px;
+  background-color: var(--second-col);
+  justify-content: center;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  border: 10px solid var(--second-col);
+}
+.hidePopup #elementsContainer .element {
+  padding: 18px 25px;
+  border-radius: 20px;
+  margin: 5px;
+  background-color: var(--seventh-col);
+  display: flex;
+}
+.hidePopup #elementsContainer span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fourth-col);
+}
+.hidePopup #elementsContainer div {
+  margin-left: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.interQuestion .interQuestionbutton {
+  margin: 3% auto;
+  width: 20%;
+}
+.interQuestion button {
+  padding: 12px;
+  width: 100%;
+  border-radius: var(--border-50);
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--first-col);
+  background-color: var(--fourth-col);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.interQuestion button:hover {
+  transition: 0.3s linear;
+  box-shadow: var(--box-shadow);
+}
 /* company profile */
 
 .com-container {
