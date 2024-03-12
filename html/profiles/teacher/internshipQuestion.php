@@ -34,7 +34,6 @@
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,38 +43,42 @@
   <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>"/>
 </head>
 <body>
+
+<!-- heading -->
 <h1 class="interQuestionhead">Add Questions</h1>
+
+<!-- form -->
 <form action="" method="post" id="questionForm">
   <div class="interQuestion">
 
     <!-- question -->
     <div class="interQuestion">
       <label for="question">Question</label>
-      <input type="text" id="question" name="question" required/>
+      <input type="text" id="question" name="question" placeholder="Type question here..."required/>
     </div>
 
     <!-- options -->
     <div class="interQuestion">
       <label for="option1">Option 1</label>
-      <input type="text" id="option" name="option1" required/>
+      <input type="text" id="option" name="option1" placeholder="Type option 1 here..."required/>
     </div>
     <div class="interQuestion">
       <label for="option2">Option 2</label>
-      <input type="text" id="option" name="option2" required/>
+      <input type="text" id="option" name="option2" placeholder="Type option 2 here..."required/>
     </div>
     <div class="interQuestion">
       <label for="option3">Option 3</label>
-      <input type="text" id="option" name="option3" required/>
+      <input type="text" id="option" name="option3" placeholder="Type option 3 here..."required/>
     </div>
     <div class="interQuestion">
       <label for="option4">Option 4</label>
-      <input type="text" id="option" name="option4" required/>
+      <input type="text" id="option" name="option4" placeholder="Type option 4 here..." required/>
     </div>
 
     <!-- right answer -->
     <div class="interQuestion">
       <label for="answer">Right answer</label>
-      <input type="text" id="answer" name="answer" required/>
+      <input type="text" id="answer" name="answer" placeholder="Type the right option here..."required/>
     </div>
 
     <!-- skills -->
@@ -85,31 +88,34 @@
           id="addskillButton"
           onclick="openPopup()"
           class="addquestionSkillbutton"
-          style="cursor: pointer"
       >
         Add
       </div>
 
+      <!-- popup container -->
       <div id="popupContainer" class="hidePopup">
         <input
             type="text"
             id="searchBar"
-            placeholder="Search"
+            placeholder="Search..."
             oninput="filterElements()"
         />
-        <span id="closeButton" onclick="closePopup()">X</span>
 
-        <div id="elementsContainer"></div>
+        <div class="closeContainerbutton">
+        <span id="closeButton" onclick="closePopup()">×</span>
+        </div>
+
+        <div id="elementsContainer" class="elementsContainer"></div>
       </div>
 
       <div id="addedElements" name="internshipSkills">
       
-      <input type="hidden" id="addedSkillsInput" name="addedSkills" />
+      <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
       </div>
       
     </div>
 
-    <div class="interQuestion">
+    <div class="interQuestionbutton">
       <button type="submit" value="submit" name="submitQuestion"> submit question</button>
     </div>
   </div>
