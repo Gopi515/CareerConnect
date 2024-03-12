@@ -17,53 +17,53 @@
 
 <!-- php here -->
 <?php
-    session_start();
-    require '../../../dbconnect.php';
+session_start();
+require '../../../dbconnect.php';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check for empty values
-        $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-        $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
-        $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
-        $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
-        $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
-        $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
-        $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
-        $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
-        $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
-        $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
-        if (isset($_SESSION['mail'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check for empty values
+    $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
+    $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
+    $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
+    $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
+    $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
+    $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
+    $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
+    $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
+    $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
+    $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+    if (isset($_SESSION['mail'])) {
         $email = $_SESSION['mail'];
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
 
-        $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-        $find = $conn->query($query);
-        if(mysqli_num_rows($find)>0){
-            while($row = mysqli_fetch_array($find)){
-                $com_id = $row["com_id"];
-            }
-        }
-
-        try {
-            $sql = "INSERT INTO job (com_id, topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings, com_email)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-            $stmt = mysqli_prepare($conn, $sql);
-
-            mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings, $email);
-
-            mysqli_stmt_execute($stmt);
-
-            mysqli_stmt_close($stmt);
-
-            header('Location: ../../landingPage/landingCompany.php');
-            exit;
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
+    $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+    $find = $conn->query($query);
+    if (mysqli_num_rows($find) > 0) {
+        while ($row = mysqli_fetch_array($find)) {
+            $com_id = $row["com_id"];
         }
     }
+
+    try {
+        $sql = "INSERT INTO job (com_id, topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings, com_email)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_prepare($conn, $sql);
+
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings, $email);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+
+        header('Location: ../../landingPage/landingCompany.php');
+        exit;
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 ?>
 
 
@@ -228,5 +228,6 @@
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
     <script src="../../../javaScripts/selectLanguage.js"></script>
+    <script src="../../../javaScripts/requiredSkills.js"></script>
 </body>
 </html>
