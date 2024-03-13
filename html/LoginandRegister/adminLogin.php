@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- titles -->
-    <title>CareerConnect-Login</title>
+    <title>CareerConnect - Admin Login</title>
 
     <!-- linking -->
     <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
@@ -44,11 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
 
                     if ($row = mysqli_fetch_assoc($result)) {
-                        if (password_verify($password, $row['pass'])) {
-                            // Redirect based on the role
+                        if (password_verify($password, $row['adminpass'])) {
                             switch ($role) {
-                                case 'teacher':
-                                    header("location: ../landingPage/landingTeacher.php");
+                                case 'admin':
+                                    header("location: ../profiles/admin/admin.php");
                                     break;
                                 default:
                                     echo "<script>alert('Error: Unknown role.');</script>";
@@ -62,13 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
 
-                switch ($role) {
-                    case 'teacher':
-                        loginUser($conn, $role, $username, $email, $password);
-                        break;
-                    default:
-                        echo "<script>alert('Error: Invalid role selected.');</script>";
-                        break;
+                if ($role == 'admin') {
+                    loginUser($conn, $role, $username, $email, $password);
+                } else {
+                    echo "<script>alert('Error: Invalid role selected.');</script>";
                 }
             }
         }
@@ -87,13 +83,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- rightside -->
         <div class="right-side">
-            <form action="teacherLogin.php" method="POST">
+            <form action="adminLogin.php" method="POST">
                 <!-- for the re-direct -->
                 <div class="select-box">
                     <p class="selecttext">You are logging in as:</p>
                     <div class="selectrole">
                         <select class="roles" name="role" id="roles">
-                            <option class="drpdwn" value="teacher">Teacher</option>
+                            <option class="drpdwn" value="admin">Admin</option>
                         </select>
                     </div>
                 </div>
@@ -109,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             
                         <p class="inphead password">Password</p>
                         <div id="foreye" class="password-container logincont">
-                            <input onpaste="return false;" autocomplete="off" name="password" required class="pwrdl" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
+                            <input name="password" required onpaste="return false;" autocomplete="off" class="pwrdl" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password please" oninput="setCustomValidity('')">
                             <span class="eye-iconl" onclick="togglePassword()">
                                 <i class="far fa-eye"></i>
                             </span>

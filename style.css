@@ -117,30 +117,6 @@ html {
   margin-right: 20px;
 }
 
-.regbtnclg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: #fff;
-  width: fit-content;
-  font-weight: 500;
-  border-radius: var(--border-50);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border: 3px transparent solid;
-  margin-left: auto;
-  margin-right: auto;
-  text-decoration: none;
-}
-
-.regbtnclg:hover {
-  box-shadow: var(--box-shadow);
-  border: 3px var(--first-col) solid;
-}
-
 .closeRegIn {
   position: absolute;
   top: 10px;
@@ -206,7 +182,8 @@ html {
   text-decoration: none;
 }
 
-.buttonInnerLog {
+.buttonInnerLog,
+.regbtnclg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,7 +202,12 @@ html {
   text-decoration: none;
 }
 
-.buttonInnerLog:hover {
+.adminreg {
+  text-decoration: none;
+}
+
+.buttonInnerLog:hover,
+.regbtnclg:hover {
   box-shadow: var(--box-shadow);
   border: 3px var(--first-col) solid;
 }
@@ -422,8 +404,6 @@ footer {
   margin-top: 170%;
 }
 
-/* company landing page */
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -534,11 +514,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -548,7 +528,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -753,22 +733,26 @@ footer {
 .internshipContainer .pageNumbers {
   margin: 7% auto;
 }
+
 .internshipContainer .pagination {
   display: flex;
   margin: 0 auto;
   align-items: center;
   justify-content: space-around;
 }
+
 .pagination a {
   text-decoration: none;
   padding: 7px 15px;
 }
+
 /* apply page */
 
 .applicationForm {
   overflow-x: hidden;
   height: 170%;
 }
+
 .goBack {
   margin-left: 5%;
 }
@@ -880,9 +864,11 @@ footer {
   background-color: var(--seventh-col);
   color: var();
 }
+
 .takeTest {
   transform: translate(12%, 130%);
 }
+
 .internshipApplybtn {
   position: absolute;
   display: flex;
@@ -1306,26 +1292,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1345,31 +1322,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -1381,10 +1346,11 @@ footer {
 }
 
 /*------------Login Page------------*/
-.login-page {
+.login-page,
+.divideradmin {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   justify-content: space-between;
   position: absolute;
   display: inline-flex;
@@ -1481,7 +1447,8 @@ span {
 }
 
 /*writting box*/
-.pleasebox {
+.pleasebox,
+.aregboxes input {
   width: 100%;
   background-color: var(--seventh-col);
   border: var(--border);
@@ -1492,7 +1459,8 @@ span {
   transition: var(--transition);
 }
 
-.pleasebox:focus {
+.pleasebox:focus,
+.aregboxes input:focus {
   outline: none;
   border: 3px solid var(--second-col);
   box-shadow: var(--box-shadow);
@@ -2171,9 +2139,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -2349,16 +2317,19 @@ input::-webkit-inner-spin-button {
   border-radius: var(--border-50);
   box-shadow: var(--box-shadow);
 }
+
 .interQuestion {
   margin-top: 3%;
   display: grid;
 }
+
 .interQuestion label {
   font-size: 20px;
   font-weight: bold;
   color: var(--fourth-col);
   margin-left: 10px;
 }
+
 .interQuestion input {
   width: 100%;
   padding: 15px;
@@ -2369,24 +2340,29 @@ input::-webkit-inner-spin-button {
   color: var(--fourth-col);
   transition: var(--transition);
 }
+
 .interQuestion input:focus {
   outline: none;
   border: 3px solid var(--second-col);
   box-shadow: var(--box-shadow);
 }
+
 .addDomainelement {
   margin-top: 3%;
 }
+
 .addquestionSkillbutton:hover {
   box-shadow: var(--box-shadow);
   transition: 0.3s;
 }
+
 .addDomainelement p {
   font-size: 20px;
   font-weight: bold;
   color: var(--fourth-col);
   margin-left: 10px;
 }
+
 .addDomainelement .addquestionSkillbutton {
   width: 10%;
   padding: 15px;
@@ -2400,6 +2376,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   border: none;
 }
+
 .addDomainelement .hidePopup {
   width: 100%;
   height: 400px;
@@ -2408,11 +2385,13 @@ input::-webkit-inner-spin-button {
   background-color: var(--seventh-col);
   display: none;
 }
+
 .hidePopup input {
   background-color: var(--second-col);
   width: 90%;
   margin: 2% 2%;
 }
+
 .hidePopup .closeContainerbutton {
   width: 40px;
   height: 40px;
@@ -2424,20 +2403,24 @@ input::-webkit-inner-spin-button {
   margin-top: -65px;
   left: 84%;
 }
+
 .closeContainerbutton #closeButton {
   color: var(--first-col);
   font-size: 28px;
   cursor: pointer;
 }
+
 .closeContainerbutton:hover {
   margin-top: -68px;
   box-shadow: var(--box-shadow);
   transition: 0.3s;
 }
+
 .hidePopup .testCase1 {
   display: flex;
   height: 250px;
 }
+
 .hidePopup #elementsContainer {
   width: 95%;
   height: 100%;
@@ -2452,6 +2435,7 @@ input::-webkit-inner-spin-button {
   padding: 10px;
   border: 10px solid var(--second-col);
 }
+
 .hidePopup #elementsContainer .element {
   height: 60px;
 
@@ -2461,20 +2445,24 @@ input::-webkit-inner-spin-button {
   background-color: var(--seventh-col);
   display: flex;
 }
+
 .hidePopup #elementsContainer span {
   font-size: 15px;
   font-weight: 500;
   color: var(--fourth-col);
 }
+
 .hidePopup #elementsContainer div {
   margin-left: 15px;
   font-size: 18px;
   cursor: pointer;
 }
+
 .interQuestion .interQuestionbutton {
   margin: 3% auto;
   width: 20%;
 }
+
 .interQuestion button {
   padding: 12px;
   width: 100%;
@@ -2487,10 +2475,12 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   transition: var(--transition);
 }
+
 .interQuestion button:hover {
   transition: 0.3s linear;
   box-shadow: var(--box-shadow);
 }
+
 /* company profile */
 
 .com-container {
@@ -3041,6 +3031,7 @@ input::-webkit-inner-spin-button {
   min-height: 200px;
   max-height: 300px;
 }
+
 #addedElements {
   display: flex;
   flex-wrap: wrap;
@@ -3048,6 +3039,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   margin-top: 20px;
 }
+
 .addedElement {
   padding: 18px 25px;
   align-items: center;
@@ -3058,4 +3050,45 @@ input::-webkit-inner-spin-button {
   margin: 10px;
   font-size: 19px;
   cursor: pointer;
+}
+
+/* admin registration */
+.adminentryarea {
+  background-color: var(--first-col);
+  padding: 25px 30px;
+  border-radius: 25px;
+}
+
+.adminentryarea p {
+  color: var(--sixth-col);
+  font-weight: 600;
+}
+
+
+.adminReg {
+  margin: 100px;
+  padding: 25px;
+  width: 40%;
+  background-color: var(--second-col);
+  border-radius: 50px;
+}
+
+.areginput .adminpass {
+  width: 85%;
+}
+
+.adminREGbutton {
+  display: flex;
+  margin: 20px;
+  margin-bottom: -10px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.testingsomething {
+  margin-left: 100px;
+  font-size: 35px;
+  font-weight: 800;
 }

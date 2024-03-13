@@ -10,7 +10,7 @@
 </head>
 
 <?php
-    header("Content-Type: text/html");
+header("Content-Type: text/html");
 ?>
 
 <body class="mainLandingPage">
@@ -57,11 +57,15 @@
                 <div class="twooptions">
                     <div class="regop optionone">
                         <p>Want to register your college?</p>
-                        <div class="regbtnclg">Register college</div>
+                        <a class="adminreg" href="../LoginandRegister/adminRegister.php">
+                            <div class="regbtnclg">Register college</div>
+                        </a>
                     </div>
                     <div class="regop optiontwo">
                         <p>Already have a registered account?</p>
-                        <div class="regbtnclg">Admin Login</div>
+                        <a class="adminreg" href="../LoginandRegister/adminLogin.php">
+                            <div class="regbtnclg">Admin Login</div>
+                        </a>
                     </div>
                 </div>
                 <div class="closeRegIn" id="closeRegIn" onclick="closeRegIn()"><i class="fa-solid fa-xmark"></i></div>
@@ -69,9 +73,6 @@
             </div>
         </div>
     </navbar>
-    <div class="temp">
-        Have some power mate
-    </div>
 
     <script src="../../javaScripts/buttonPop.js"></script>
 </body>
