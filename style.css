@@ -2481,6 +2481,26 @@ input::-webkit-inner-spin-button {
   box-shadow: var(--box-shadow);
 }
 
+#addedElements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.addedElement {
+  padding: 18px 25px;
+  align-items: center;
+  text-align: center;
+  color: var(--fourth-col);
+  background-color: var(--seventh-col);
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 19px;
+  cursor: pointer;
+}
+
 /* company profile */
 
 .com-container {
@@ -3030,26 +3050,6 @@ input::-webkit-inner-spin-button {
   max-width: 100%;
   min-height: 200px;
   max-height: 300px;
-}
-
-#addedElements {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.addedElement {
-  padding: 18px 25px;
-  align-items: center;
-  text-align: center;
-  color: var(--fourth-col);
-  background-color: var(--seventh-col);
-  border-radius: 20px;
-  margin: 10px;
-  font-size: 19px;
-  cursor: pointer;
 }
 
 /* admin registration */

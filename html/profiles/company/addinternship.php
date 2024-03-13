@@ -23,6 +23,7 @@ require '../../../dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
+    
     $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
     $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
     $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
