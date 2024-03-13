@@ -30,7 +30,35 @@ session_start();
         header("Location:../Job/applyJob.php");
     }
 
+
+    
+$internshipsPerPage = 5;
+
+// Determine the current page
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $currentPage = (int)$_GET['page'];
+} else {
+    $currentPage = 1;
+}
+
+// Calculate the offset for the SQL query
+$offset = ($currentPage - 1) * $internshipsPerPage;
+
+// Retrieve the total number of internships
+$queryTotal = "SELECT COUNT(*) AS total FROM `job`";
+$resultTotal = mysqli_query($conn, $queryTotal);
+$rowTotal = mysqli_fetch_assoc($resultTotal);
+$totalInternships = $rowTotal['total'];
+
+// Calculate the total number of pages
+$totalPages = ceil($totalInternships / $internshipsPerPage);
+
+// Modify the SQL query to retrieve internships for the current page
+$query = "SELECT * FROM `job` ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
+$result = mysqli_query($conn, $query);
+$count = mysqli_num_rows($result);
 ?>
+
 
 <body>
     
@@ -125,21 +153,15 @@ session_start();
     <div class="internshipContainer">
 
         <?php
-
-        $query = "SELECT * FROM `job` ORDER BY id ASC";
-        $result = mysqli_query($conn, $query);
-        $count = mysqli_num_rows($result);
-
         if($count>0){
-        while($row = mysqli_fetch_array($result)){
-
         ?>
-        <h2>
-            <?php echo $count.' Total  jobs'; ?> 
-        </h2>
+        
+        <h2><?php echo $totalInternships . ' Total Jobs'; ?></h2> <!-- Display total jobs -->
 
         <div class="internshipOrder">
-
+            <?php
+             while($row = mysqli_fetch_array($result)){
+            ?>
         <div class="internshipCard internshipCard1">
 
             <form action="Job.php?action=add&id=<?php echo $row["id"]?>" method="POST">
@@ -179,25 +201,47 @@ session_start();
                 </div>
                 </form>
             </div>
-
-        <?php
-
-        }
-        }
-        ?>
+            <?php
+            }
+            ?>
         </div>
+        
+      <h2 class="pageNumbers"><?php echo "Page $currentPage of $totalPages"; ?></h2> <!-- Display current page -->
+        
+        <!-- Pagination navigation -->
+        <div class="pagination">
+            <?php if ($currentPage > 1) : ?>
+                <a href="?page=<?php echo $currentPage - 1; ?>">&lt;</a>
+            <?php endif; ?>
+            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                <a <?php echo ($i === $currentPage) ? 'class="active"' : ''; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+            <?php endfor; ?>
+            <?php if ($currentPage < $totalPages) : ?>
+                <a href="?page=<?php echo $currentPage + 1; ?>">&gt;</a>
+            <?php endif; ?>
+        </div>
+        <?php
+         if($count > 0) {
+    } else {
+        echo "<p>No jobs found.</p>";
+    }
+    ?>
+        <?php
+    }
+    ?>
+</div>
 
-        <!-- <h3>
-            1/206
-        </h3> -->
-    </div>
 
-    </div>
+
  </div>
+  </div>
 
-    <!-- <footer>
 
-    </footer> -->
+
+
+    <footer>
+
+    </footer>
 
 
    <!-- script -->

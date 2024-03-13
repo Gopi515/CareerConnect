@@ -400,9 +400,8 @@ html {
 footer {
   width: 100%;
   height: 10rem;
-  position: relative;
   background-color: var(--seventh-col);
-  transform: translateY(150rem);
+  margin-top: 170%;
 }
 
 .dropdown {
@@ -457,21 +456,21 @@ footer {
 .internshipSection {
   height: 100%;
   width: 100%;
-  min-height: 370vh;
+  height: auto;
 }
 
 .filterContainer {
-  height: 30%;
+  height: 650px;
   width: 30%;
   background-color: var(--second-col);
-  transform: translate(20%, 28%);
+  transform: translate(20%, 28.5%);
   justify-content: center;
   display: flex;
 }
 
 .filterContainer .filter {
   color: var(--fourth-col);
-  margin-top: 6%;
+  margin-top: 12%;
 }
 
 .filterContainer .filter h1 {
@@ -626,11 +625,10 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
   width: 57%;
   background: none;
   transform: translate(70%);
-  height: 110rem;
+  height: auto;
   top: 30%;
 }
 
@@ -650,7 +648,6 @@ footer {
 .internshipContainer .internshipOrder {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
 }
 
 .internshipOrder .internshipCard {
@@ -731,6 +728,22 @@ footer {
   font-size: 1.2rem;
   color: var(--fourth-col);
   font-weight: 600;
+}
+
+.internshipContainer .pageNumbers {
+  margin: 7% auto;
+}
+
+.internshipContainer .pagination {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 7px 15px;
 }
 
 /* apply page */
