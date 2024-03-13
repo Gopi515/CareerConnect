@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-             <!-- <div class="addDomainelement">
+             <div class="addDomainelement">
                 <p>Add Domain*</p>
                 <button id="add-element-btn">Add +</button>
     
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <ul id="element-list"></ul>
                   <button id="add-button" onclick="addElement()">Add</button>
                 </div>
-              </div> -->
+              </div>
 
 
             <div class="category">
@@ -241,6 +241,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/label.js"></script>
     <script src="../../../javaScripts/selectLanguage.js"></script>
     <script src="../../../javaScripts/requiredSkills.js"></script>
-    <!-- <script src="../../../javaScripts/addDomain.js"></script> -->
+    <script src="../../../javaScripts/addDomain.js"></script>
 </body>
 </html>
