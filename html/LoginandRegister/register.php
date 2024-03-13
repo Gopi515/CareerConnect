@@ -86,8 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             registerUser($conn, 'student', $username, $password, $email, $cpassword);
         } elseif ($roles == 'company') {
             registerUser($conn, 'company', $username, $password, $email, $cpassword);
-        }
-        else {
+        } else {
             echo "<script>alert('Error: Please select a role first')</script>";
         }
     }
@@ -132,14 +131,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                             <p class="inphead password">Password</p>
                             <div id="foreye" class="password-container">
-                                <input name="password" required class="pwrd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Create Password" oninput="setCustomValidity('')">
+                                <input name="password" onpaste="return false;" autocomplete="off" required class="pwrd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Create Password" oninput="setCustomValidity('')">
                                 <span class="eye-icon" onclick="togglePassword()">
                                     <i class="far fa-eye"></i>
                                 </span>
                             </div>
 
                             <p class="inphead password">Repeat Password</p>
-                            <input name="cpassword" required class="pleasebox" type="password"
+                            <input onpaste="return false;" autocomplete="off" name="cpassword" required class="pleasebox" type="password"
                                 placeholder="Retype password please">
                         </div>
                     </div>
