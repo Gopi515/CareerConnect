@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="internshipOpenings">
-                <h3>Numder of openings</h3>
+                <h3>Number of openings</h3>
                 <p><?php echo $row["openings"]; ?></p>
                 </div>
 
