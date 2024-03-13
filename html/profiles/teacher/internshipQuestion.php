@@ -105,7 +105,7 @@
         <span id="closeButton" onclick="closePopup()">×</span>
         </div>
 
-        <div id="elementsContainer" class="elementsContainer"></div>
+        <div class="testCase1"><div id="elementsContainer" class="elementsContainer"></div></div>
       </div>
 
       <div id="addedElements" name="internshipSkills">

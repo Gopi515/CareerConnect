@@ -168,12 +168,12 @@ session_start();
                 </div>
 
                 <!-- for storing the data of applied internship temporary -->
-                <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>">
-                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
-                <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>">
-                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>">
-                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>">
-                <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>">
+                <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>" style="display: none;">
                 
 
                 <div class="buttonNextstep">

@@ -303,7 +303,7 @@
 
     </div>
 
-    <script src="../../../javaScripts/selectLanguage.js"></script>
+    <script src="../../../javaScripts/teacherLang.js"></script>
 </body>
 </html>
 

@@ -166,11 +166,11 @@ session_start();
                     </div>
                 </div>
 
-                <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>">
-                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>">
-                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>">
-                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>">
-                <input type="hidden" name="hidden_job_id" value="<?php echo $row["id"]; ?>">
+                <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
+                <input type="hidden" name="hidden_job_id" value="<?php echo $row["id"]; ?>" style="display: none;">
                 
 
                 <div class="buttonNextstep">
