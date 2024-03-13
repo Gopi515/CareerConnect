@@ -81,24 +81,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="addinternship.php" method="POST">
             <!-- Topic of the Internship -->
             <div class="topic">
-                <p class="Internship-topic">Topic of the Internship</p>
+                <p class="Internship-topic">Topic of the Internship*</p>
                 <input type="text" name="topic" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer" required>
             </div>
 
 
-             <div class="addDomainelement">
+            <!-- <div class="addDomainelement">
                 <p>Add Domain*</p>
                 <button id="add-element-btn">Add +</button>
-    
+        
                 <div id="popup-container">
-                  <span class="popup-close" onclick="closePopup()">×</span>
-                  <input type="text" id="search-bar" placeholder="Search element...">
-                  <ul id="element-list"></ul>
-                  <button id="add-button" onclick="addElement()">Add</button>
+                    <span class="popup-close" onclick="closePopup()">×</span>
+                    <input type="text" id="search-bar" placeholder="Search element...">
+                    <ul id="element-list"></ul>
+                    <button id="add-button" onclick="addElement()">Add</button>
                 </div>
-              </div>
+            </div> -->
 
+            <!-- Add Domain -->
+            <div class="addDomainelement">
+                <p>Add Domain*</p>
+                <div id="addskillButton" onclick="openPopup()" class="addquestionSkillbutton">Add</div>
 
+                <!-- popup container -->
+                <div id="popupContainer" class="hidePopup">
+
+                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
+
+                    <div class="closeContainerbutton">
+                    <span id="closeButton" onclick="closePopup()">×</span>
+                    </div>
+
+                    <div class="testCase1">
+                    <div id="elementsContainer" class="elementsContainer"></div>
+                    </div>
+
+                </div>
+
+                <div id="addedElements" name="internshipSkills">
+                    <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+                </div>
+      
+            </div>
+
+            <!-- Select the job type -->
             <div class="category">
                 <legend>Select the job type*</legend>
     
@@ -140,73 +166,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" name="applyby" class="date" required>
             </div>
             
-            <!-- language -->
-            <div class="reqskills">
-                <p class="reqskills-para">Required Skills*</p>
-                <div id="selected-items">
-                    <div id="selected-items-list"></div>
+            <!-- Add Required Skills -->
+            <div class="addDomainelement">
+                <p>Add Required Skills*</p>
+                <div id="addskillButton" onclick="openPopup()" class="addquestionSkillbutton">Add</div>
+
+                <!-- popup container -->
+                <div id="popupContainer" class="hidePopup">
+
+                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
+
+                    <div class="closeContainerbutton">
+                    <span id="closeButton" onclick="closePopup()">×</span>
+                    </div>
+
+                    <div class="testCase1">
+                    <div id="elementsContainer" class="elementsContainer"></div>
+                    </div>
+
                 </div>
 
-                <div class="addsk">
-                    <div id="select-items-button" class="select-add-skill" onclick="showMenu()">Add</div>
-                    <div id="languages" class="languages">
-                        <div class="checkbox-div">
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="html" id="HTML">
-                                <label for="HTML">HTML</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="css" id="CSS">
-                                <label for="CSS">CSS</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="javascript" id="JavaScript">
-                                <label for="JavaScript">JavaScript</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="php" id="PHP">
-                                <label for="PHP">PHP</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="mysql" id="MySQL">
-                                <label for="MySQL">MySQL</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="react" id="React">
-                                <label for="React">React</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="blender" id="Blender">
-                                <label for="Blender">Blender</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="maya" id="Maya">
-                                <label for="Maya">Maya</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="photoshop" id="photoshop">
-                                <label for="photoshop">Adobe Photoshop</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="aftereffect" id="AfterEffect">
-                                <label for="AfterEffect">Adobe AfterEffect</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="nodejs" id="nodeJS">
-                                <label for="nodeJS">node.js</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="nextjs" id="nextJS">
-                                <label for="nextJS">next.js</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="oracle" id="Oracle">
-                                <label for="Oracle">Oracle Database</label>
-                            </div>
-                        </div>
-                        <div onclick="addToSelected()" class="add-btn">Add</div>
-                    </div>
-                </div>    
+                <div id="addedElements" name="internshipSkills">
+                    <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+                </div>
+            
             </div>
 
             <!-- Information about the internship -->
@@ -239,8 +222,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/selectLanguage.js"></script>
-    <script src="../../../javaScripts/requiredSkills.js"></script>
-    <script src="../../../javaScripts/addDomain.js"></script>
+    <!-- <script src="../../../javaScripts/selectLanguage.js"></script> -->
+    <!-- <script src="../../../javaScripts/requiredSkills.js"></script> -->
+    <!-- <script src="../../../javaScripts/addDomain.js"></script> -->
+    <script src="../../../javaScripts/addInternshipDomain.js"></script>
+    <script src="../../../javaScripts/internshipQuestion.js"></script>
 </body>
 </html>
