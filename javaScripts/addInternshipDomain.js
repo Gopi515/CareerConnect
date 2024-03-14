@@ -181,7 +181,7 @@ const elements = [
 
 let addedElements = [];
 
-function openPopup() {
+function opendomainPopup() {
   const popupContainer = document.getElementById("popupContainer");
   const elementsContainer = document.getElementById("elementsContainer");
 
@@ -213,7 +213,7 @@ function addElement(element) {
     elementDiv.classList.add("addedElement");
     elementDiv.innerHTML = `
       ${element}
-      <span class="removeButton" onclick="removeElement(this)">X</span>
+      <span class="removeButton" onclick="removeElement(this)">×</span>
     `;
     addedElementsContainer.appendChild(elementDiv);
     addedElements.push(element);
