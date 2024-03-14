@@ -134,15 +134,15 @@ $count = mysqli_num_rows($result);
         <label class="inputBox inputBoxDuration">
             <p>Years of experience</p>
             <div class="dropdown">
-                <input type="text" id="option4Inputjob" onclick="showDropdown()" placeholder="Select years of experience">
+                <input type="text" id="option4Inputjob" onclick="showJobdropdown()" placeholder="Select years of experience">
                 <div class="dropdown-content" id="dropdownoptionsJob">
-                  <a href="#" onclick="selectOption('freser')">Fresher</a>
-                  <a href="#" onclick="selectOption('1 year')">1 year</a>
-                  <a href="#" onclick="selectOption('2 years')">2 years</a>
-                  <a href="#" onclick="selectOption('3 years')">3 years</a>
-                  <a href="#" onclick="selectOption('4 years')">4 years</a>
-                  <a href="#" onclick="selectOption('5 years')">5 years</a>
-                  <a href="#" onclick="selectOption('5+ years')">5+ years</a>
+                  <a href="#" onclick="selectJoboption('freser')">Fresher</a>
+                  <a href="#" onclick="selectJoboption('1 year')">1 year</a>
+                  <a href="#" onclick="selectJoboption('2 years')">2 years</a>
+                  <a href="#" onclick="selectJoboption('3 years')">3 years</a>
+                  <a href="#" onclick="selectJoboption('4 years')">4 years</a>
+                  <a href="#" onclick="selectJoboption('5 years')">5 years</a>
+                  <a href="#" onclick="selectJoboption('5+ years')">5+ years</a>
                 </div>
               </div>
         </label>
@@ -246,10 +246,10 @@ $count = mysqli_num_rows($result);
 
 
    <!-- script -->
-    <script src="../../javaScripts/dropdown.js"></script>
+    <script src="../../javaScripts/dropdownforJob.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
     <script src="../../javaScripts/showDropdown.js"></script>   
-
+    <script src="../../javaScripts/inputValidation.js"></script>
 
 </body>
 </html>
