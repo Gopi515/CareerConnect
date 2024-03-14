@@ -23,7 +23,6 @@ require '../../../dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-    
     $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
     $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
     $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
@@ -86,33 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" name="topic" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer" required>
             </div>
 
-
-            <!-- Add Domain -->
-            <div class="addDomainelement">
-                <p>Add Domain*</p>
-                <div id="adddomainButton" onclick="opendomainPopup()" class="addquestionSkillbutton">Add</div>
-
-                <!-- popup container -->
-                <div id="popupContainer" class="hidePopup">
-
-                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
-
-                    <div class="closeContainerbutton">
-                    <span id="closeButton" onclick="closePopup()">×</span>
-                    </div>
-
-                    <div class="testCase1">
-                    <div id="elementsContainer" class="elementsContainer"></div>
-                    </div>
-
-                </div>
-
-                <div id="addedElements" name="internshipSkills">
-                    <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-                </div>
-      
-            </div>
-
             <!-- Select the job type -->
             <div class="category">
                 <legend>Select the job type*</legend>
@@ -156,27 +128,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <!-- Add Required Skills -->
-           <div class="addDomainelement">
-      <p>Add Skills*</p>
-      <div id="addskillButton" onclick="openskillPopuptwo()" class="addquestionSkillbutton">Add</div>
+            <div class="addDomainelement">
+                <p>Add Required Skills*</p>
+                <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
 
-      <!-- popup container -->
-      <div id="popupskillContainertwo" class="hidePopup">
-        <input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/>
+                <!-- popup container -->
+                <div id="popupskillContainer" class="hidePopup">
+                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
 
-        <div class="closeContainerbutton">
-        <span id="closeButton" onclick="closePopup()">×</span>
-        </div>
+                    <div class="closeContainerbutton">
+                    <span id="closeButton" onclick="closePopup()">×</span>
+                    </div>
 
-        <div class="testCase1"><div id="elementsskillContainertwo" class="elementsContainer"></div></div>
-      </div>
+                    <div class="testCase1"><div id="elementsskillContainer" class="elementsContainer"></div></div>
+                </div>
 
-      <div id="addedElements" name="internshipSkills">
+                <div id="addedElements" name="internshipSkills">
+                
+                <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+                </div>
       
-      <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-      </div>
-      
-    </div>
+            </div>
 
             <!-- Information about the internship -->
             <div class="internabout">
@@ -208,7 +180,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/addInternshipDomain.js"></script>
-    <script src="../../../javaScripts/skillsforaddingInternship.js"></script>
+    <script src="../../../javaScripts/internshipQuestion.js"></script>
 </body>
 </html>
