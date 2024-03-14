@@ -28,7 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
     $stipend = !empty($_POST["stipend"]) ? $_POST["stipend"] : "";
     $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
-    $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
+
+      // Retrieving and decode the added skills array
+    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+
+    if ($addedSkillsArray === null) {
+        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+        exit;
+    }
+
+    // Combining skills into a comma-separated string
+    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+
     $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
     $certificate = isset($_POST['certificate']) ? 1 : 0;
     $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
@@ -52,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $requiredSkills, $aboutInternship, $certificate, $openings, $email);
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString , $aboutInternship, $certificate, $openings, $email);
 
         mysqli_stmt_execute($stmt);
 
