@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="aregboxes">
                             <p>Password</p>
                             <div id="foreye" class="areginput">
-                                <input name="adminpassword"  required class="adminpass" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Create Password" oninput="setCustomValidity('')">
+                                <input name="adminpassword"  required onpaste="return false;" autocomplete="off" class="adminpass" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Create Password" oninput="setCustomValidity('')">
                                 <span class="eye-icon" onclick="togglePassword()">
                                     <i class="far fa-eye"></i>
                                 </span>
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="aregboxes">
                             <p>Confirm Password</p>
-                            <div class="areginput"><input  type="password" name="confirmpassword" placeholder="Confirm Password" required></div>
+                            <div class="areginput"><input  type="password" onpaste="return false;" autocomplete="off" name="confirmpassword" placeholder="Confirm Password" required></div>
                         </div>
                     </div>
                     

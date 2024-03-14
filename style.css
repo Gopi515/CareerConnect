@@ -514,11 +514,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -528,7 +528,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1292,26 +1292,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1331,31 +1322,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2160,9 +2139,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -2457,6 +2436,7 @@ input::-webkit-inner-spin-button {
   padding: 10px;
   border: 10px solid var(--second-col);
 }
+
 .hidePopup #elementsContainer .element {
   height: 60px;
 
@@ -3184,4 +3164,29 @@ input::-webkit-inner-spin-button {
   margin-left: 100px;
   font-size: 35px;
   font-weight: 800;
+}
+
+.regallclosebtn {
+  position: absolute;
+  padding: 5px 18px;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  font-weight: 700;
+  border-radius: var(--border-50);
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 3px var(--first-col) solid;
+}
+
+@media screen and (max-width: 768px) {
+  .regallclosebtn {
+    right: 24%;
+  }
+}
+
+.regallclosebtn:hover {
+  box-shadow: var(--box-shadow);
+  background-color: var(--fifth-col);
+  border: 3px var(--first-col) solid;
 }

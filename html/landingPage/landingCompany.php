@@ -25,7 +25,7 @@
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="../profiles/company/viewCompanyDetails.php">View Profile</a>
-                                <a href="">Edit Profile</a>
+                                <a href="../profiles/company/company.php">Edit Profile Details</a>
                                 <a href="../profiles/company/addinternship.php">Post Internship</a>
                                 <a href="../profiles/company/addjob.php">Post Job</a>
                             </div>

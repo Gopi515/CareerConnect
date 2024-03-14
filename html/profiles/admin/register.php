@@ -11,15 +11,14 @@
     <title>CareerConnect-Register</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 
 </head>
 
 <!-- php -->
 <?php
-session_start();
-require '../../dbconnect.php';
+require '../../../dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -69,8 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
 
                 if ($stmt) {
-                    header("location: ../profiles/$role/$role.php");
-                    exit;
+                    echo "<script>alert('$role has been successfully added. You will be redirected to the register page now.');</script>";
                 } else {
                     echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
                     error_log("Database error: " . mysqli_error($conn));
@@ -100,6 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- The main box -->
         <div class="right-side">
+        <a href="admin.php"><div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div></a>
+
 
             <!-- heading -->
             <h2 class="title">Register Page</h2>
@@ -153,8 +153,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <!-- scripts -->
-    <script src="../../javaScripts/theeye.js"></script>
-    <script src="../../javaScripts/passvalidation.js"></script>
+    <script src="../../../javaScripts/theeye.js"></script>
+    <script src="../../../javaScripts/passvalidation.js"></script>
 </body>
 
 </html>
