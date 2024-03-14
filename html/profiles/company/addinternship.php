@@ -23,13 +23,23 @@ require '../../../dbconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-    
     $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
     $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
     $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
     $stipend = !empty($_POST["stipend"]) ? $_POST["stipend"] : "";
     $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
-    $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
+
+      // Retrieving and decode the added skills array
+    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+
+    if ($addedSkillsArray === null) {
+        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+        exit;
+    }
+
+    // Combining skills into a comma-separated string
+    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+
     $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
     $certificate = isset($_POST['certificate']) ? 1 : 0;
     $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
@@ -53,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $requiredSkills, $aboutInternship, $certificate, $openings, $email);
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString , $aboutInternship, $certificate, $openings, $email);
 
         mysqli_stmt_execute($stmt);
 
@@ -84,33 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="topic">
                 <p class="Internship-topic">Topic of the Internship*</p>
                 <input type="text" name="topic" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer" required>
-            </div>
-
-
-            <!-- Add Domain -->
-            <div class="addDomainelement">
-                <p>Add Domain*</p>
-                <div id="adddomainButton" onclick="opendomainPopup()" class="addquestionSkillbutton">Add</div>
-
-                <!-- popup container -->
-                <div id="popupContainer" class="hidePopup">
-
-                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
-
-                    <div class="closeContainerbutton">
-                    <span id="closeButton" onclick="closePopup()">×</span>
-                    </div>
-
-                    <div class="testCase1">
-                    <div id="elementsContainer" class="elementsContainer"></div>
-                    </div>
-
-                </div>
-
-                <div id="addedElements" name="internshipSkills">
-                    <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-                </div>
-      
             </div>
 
             <!-- Select the job type -->
@@ -156,27 +139,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <!-- Add Required Skills -->
-           <div class="addDomainelement">
-      <p>Add Skills*</p>
-      <div id="addskillButton" onclick="openskillPopuptwo()" class="addquestionSkillbutton">Add</div>
+            <div class="addDomainelement">
+                <p>Add Required Skills*</p>
+                <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
 
-      <!-- popup container -->
-      <div id="popupskillContainertwo" class="hidePopup">
-        <input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/>
+                <!-- popup container -->
+                <div id="popupskillContainer" class="hidePopup">
+                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
 
-        <div class="closeContainerbutton">
-        <span id="closeButton" onclick="closePopup()">×</span>
-        </div>
+                    <div class="closeContainerbutton">
+                    <span id="closeButton" onclick="closePopup()">×</span>
+                    </div>
 
-        <div class="testCase1"><div id="elementsskillContainertwo" class="elementsContainer"></div></div>
-      </div>
+                    <div class="testCase1"><div id="elementsskillContainer" class="elementsContainer"></div></div>
+                </div>
 
-      <div id="addedElements" name="internshipSkills">
+                <div id="addedElements" name="internshipSkills">
+                
+                <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+                </div>
       
-      <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-      </div>
-      
-    </div>
+            </div>
 
             <!-- Information about the internship -->
             <div class="internabout">
@@ -208,7 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/addInternshipDomain.js"></script>
-    <script src="../../../javaScripts/skillsforaddingInternship.js"></script>
+    <script src="../../../javaScripts/internshipQuestion.js"></script>
 </body>
 </html>

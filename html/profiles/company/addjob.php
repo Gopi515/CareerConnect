@@ -28,7 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
     $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
     $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
-    $requiredSkills = isset($_POST["languages"]) ? implode(", ", $_POST["languages"]) : "No skills required";
+
+     // Retrieving and decode the added skills array
+    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+
+    if ($addedSkillsArray === null) {
+        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+        exit;
+    }
+
+    // Combining skills into a comma-separated string
+    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+
     $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
     $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
     $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
@@ -52,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $requiredSkills, $aboutJob, $additionalInfo, $openings, $email);
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $skillsString, $aboutJob, $additionalInfo, $openings, $email);
 
         mysqli_stmt_execute($stmt);
 
@@ -124,77 +135,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" name="applyby" class="date" required>
             </div>
             
-            <!-- language -->
-            <div class="reqskills">
+            <!-- Add Required Skills -->
+            <div class="addDomainelement">
+                <p>Add Required Skills*</p>
+                <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
 
+                <!-- popup container -->
+                <div id="popupskillContainer" class="hidePopup">
+                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
 
-                <p class="reqskills-para">Required Skills*</p>
+                    <div class="closeContainerbutton">
+                    <span id="closeButton" onclick="closePopup()">×</span>
+                    </div>
 
-
-                <div id="selected-items" class="selected-items">
-                    <div id="selected-items-list" class="selected-items-list"></div>
+                    <div class="testCase1"><div id="elementsskillContainer" class="elementsContainer"></div></div>
                 </div>
 
-                <div class="addsk">
-                    <div id="select-items-button" class="select-add-skill" onclick="showMenu()">Add</div>
-                    <div id="languages" class="languages">
-                        <div class="checkbox-div">
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="html" id="HTML">
-                                <label for="HTML">HTML</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="css" id="CSS">
-                                <label for="CSS">CSS</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="javascript" id="JavaScript">
-                                <label for="JavaScript">JavaScript</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="php" id="PHP">
-                                <label for="PHP">PHP</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="mysql" id="MySQL">
-                                <label for="MySQL">MySQL</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="react" id="React">
-                                <label for="React">React</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="blender" id="Blender">
-                                <label for="Blender">Blender</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="maya" id="Maya">
-                                <label for="Maya">Maya</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="photoshop" id="photoshop">
-                                <label for="photoshop">Adobe Photoshop</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="aftereffect" id="AfterEffect">
-                                <label for="AfterEffect">Adobe AfterEffect</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="nodejs" id="nodeJS">
-                                <label for="nodeJS">node.js</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="nextjs" id="nextJS">
-                                <label for="nextJS">next.js</label>
-                            </div>
-                            <div class="label">
-                                <input type="checkbox" name="languages[]" value="oracle" id="Oracle">
-                                <label for="Oracle">Oracle Database</label>
-                            </div>
-                        </div>
-                        <div onclick="addToSelected()" class="add-btn">Add</div>
-                    </div>
-                </div>    
+                <div id="addedElements" name="internshipSkills">
+                
+                <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+                </div>
+      
             </div>
 
             <!-- Information about the Job -->
@@ -227,7 +188,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/selectLanguage.js"></script>
-    <script src="../../../javaScripts/requiredSkills.js"></script>
+    <script src="../../../javaScripts/internshipQuestion.js"></script>
 </body>
 </html>

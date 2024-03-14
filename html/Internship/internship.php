@@ -91,7 +91,7 @@ $count = mysqli_num_rows($result);
     <!-- internship page -->
     <div class="internshipPage" id="card1">
     <div class="internshipSection">
-
+    <a href="../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
     <!-- filter section -->
     <div class="filterContainer">
       <div class="filter">

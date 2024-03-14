@@ -49,6 +49,8 @@
             while($row = mysqli_fetch_assoc($student_details)){
         ?>
 
+        <a href="../../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+
         <!-- main container -->
         <form action="#" method="POST"  class="stu-container">
             

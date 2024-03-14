@@ -463,7 +463,7 @@ footer {
   height: 650px;
   width: 30%;
   background-color: var(--second-col);
-  transform: translate(20%, 28.5%);
+  transform: translate(20%, 27.5%);
   justify-content: center;
   display: flex;
 }
@@ -629,7 +629,7 @@ footer {
   background: none;
   transform: translate(70%);
   height: auto;
-  top: 30%;
+  top: 18%;
 }
 
 .internshipContainer h2 {

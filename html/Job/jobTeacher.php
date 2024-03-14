@@ -75,10 +75,8 @@ $count = mysqli_num_rows($result);
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
-                                <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
+                                <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
                                 <a href="#">Edit Profile</a>
-                                <a href="../Internship/appliedInternship.php">Applied Internship</a>
-                                <a href="../Job/appliedJob.php">Applied Job</a>
                             </div>
                         </li>
                     </div>
@@ -92,6 +90,7 @@ $count = mysqli_num_rows($result);
     <!-- job page -->
     <div class="jobPage" id="card2">
     <div class="internshipSection">
+    <a href="../landingPage/landingTeacher.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
     <!-- filter section -->
     <div class="filterContainer">

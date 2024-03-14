@@ -52,6 +52,8 @@
             while($row = mysqli_fetch_assoc($company_details)){
         ?>
 
+        <a href="../../landingPage/landingCompany.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+
         <!-- main container -->
         <form action="#" method="POST"  class="com-container">
 
