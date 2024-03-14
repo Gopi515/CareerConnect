@@ -252,5 +252,6 @@ $count = mysqli_num_rows($result);
     <script src="../../javaScripts/inputDisable.js"></script>
     <script src="../../javaScripts/buttonSwitch.js"></script>
     <script src="../../javaScripts/showDropdown.js"></script>
+    <script src="../../javaScripts/inputValidation.js"></script>
 </body>
 </html>
