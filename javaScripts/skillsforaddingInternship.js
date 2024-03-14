@@ -82,9 +82,11 @@ const elements = [
 
 let addedElements = [];
 
-function openskillPopup() {
-  const popupContainer = document.getElementById("popupskillContainer");
-  const elementsContainer = document.getElementById("elementsskillContainer");
+function openskillPopuptwo() {
+  const popupContainer = document.getElementById("popupskillContainertwo");
+  const elementsContainer = document.getElementById(
+    "elementsskillContainertwo"
+  );
 
   elementsContainer.innerHTML = "";
 
@@ -103,7 +105,7 @@ function openskillPopup() {
 }
 
 function closePopup() {
-  const popupContainer = document.getElementById("popupskillContainer");
+  const popupContainer = document.getElementById("popupskillContainertwo");
   popupContainer.style.display = "none";
 }
 
@@ -138,7 +140,9 @@ function removeElement(elementSpan) {
 
 function filterElements() {
   const searchInput = document.getElementById("searchBar").value.toLowerCase();
-  const elementsContainer = document.getElementById("elementsskillContainer");
+  const elementsContainer = document.getElementById(
+    "elementsskillContainertwo"
+  );
   const elementsList = elementsContainer.getElementsByClassName("element");
 
   Array.from(elementsList).forEach((element) => {

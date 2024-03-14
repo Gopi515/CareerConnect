@@ -87,22 +87,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
-            <!-- <div class="addDomainelement">
-                <p>Add Domain*</p>
-                <button id="add-element-btn">Add +</button>
-        
-                <div id="popup-container">
-                    <span class="popup-close" onclick="closePopup()">×</span>
-                    <input type="text" id="search-bar" placeholder="Search element...">
-                    <ul id="element-list"></ul>
-                    <button id="add-button" onclick="addElement()">Add</button>
-                </div>
-            </div> -->
-
             <!-- Add Domain -->
             <div class="addDomainelement">
                 <p>Add Domain*</p>
-                <div id="addskillButton" onclick="openPopup()" class="addquestionSkillbutton">Add</div>
+                <div id="adddomainButton" onclick="opendomainPopup()" class="addquestionSkillbutton">Add</div>
 
                 <!-- popup container -->
                 <div id="popupContainer" class="hidePopup">
@@ -168,30 +156,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <!-- Add Required Skills -->
-            <div class="addDomainelement">
-                <p>Add Required Skills*</p>
-                <div id="addskillButton" onclick="openPopup()" class="addquestionSkillbutton">Add</div>
+           <div class="addDomainelement">
+      <p>Add Skills*</p>
+      <div id="addskillButton" onclick="openskillPopuptwo()" class="addquestionSkillbutton">Add</div>
 
-                <!-- popup container -->
-                <div id="popupContainer" class="hidePopup">
+      <!-- popup container -->
+      <div id="popupskillContainertwo" class="hidePopup">
+        <input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/>
 
-                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
+        <div class="closeContainerbutton">
+        <span id="closeButton" onclick="closePopup()">×</span>
+        </div>
 
-                    <div class="closeContainerbutton">
-                    <span id="closeButton" onclick="closePopup()">×</span>
-                    </div>
+        <div class="testCase1"><div id="elementsskillContainertwo" class="elementsContainer"></div></div>
+      </div>
 
-                    <div class="testCase1">
-                    <div id="elementsContainer" class="elementsContainer"></div>
-                    </div>
-
-                </div>
-
-                <div id="addedElements" name="internshipSkills">
-                    <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-                </div>
-            
-            </div>
+      <div id="addedElements" name="internshipSkills">
+      
+      <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
+      </div>
+      
+    </div>
 
             <!-- Information about the internship -->
             <div class="internabout">
@@ -223,10 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <!-- <script src="../../../javaScripts/selectLanguage.js"></script> -->
-    <!-- <script src="../../../javaScripts/requiredSkills.js"></script> -->
-    <!-- <script src="../../../javaScripts/addDomain.js"></script> -->
     <script src="../../../javaScripts/addInternshipDomain.js"></script>
-    <script src="../../../javaScripts/internshipQuestion.js"></script>
+    <script src="../../../javaScripts/skillsforaddingInternship.js"></script>
 </body>
 </html>

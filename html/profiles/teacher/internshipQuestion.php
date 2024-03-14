@@ -84,17 +84,17 @@
     <!-- skills -->
     <div class="addDomainelement">
       <p>Add Skills*</p>
-      <div id="addskillButton" onclick="openPopup()" class="addquestionSkillbutton">Add</div>
+      <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
 
       <!-- popup container -->
-      <div id="popupContainer" class="hidePopup">
+      <div id="popupskillContainer" class="hidePopup">
         <input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/>
 
         <div class="closeContainerbutton">
         <span id="closeButton" onclick="closePopup()">×</span>
         </div>
 
-        <div class="testCase1"><div id="elementsContainer" class="elementsContainer"></div></div>
+        <div class="testCase1"><div id="elementsskillContainer" class="elementsContainer"></div></div>
       </div>
 
       <div id="addedElements" name="internshipSkills">

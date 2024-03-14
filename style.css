@@ -514,11 +514,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -528,7 +528,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1292,17 +1292,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1322,19 +1331,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2139,9 +2160,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -2421,6 +2442,7 @@ input::-webkit-inner-spin-button {
   height: 250px;
 }
 
+/* for domains */
 .hidePopup #elementsContainer {
   width: 95%;
   height: 100%;
@@ -2435,7 +2457,6 @@ input::-webkit-inner-spin-button {
   padding: 10px;
   border: 10px solid var(--second-col);
 }
-
 .hidePopup #elementsContainer .element {
   height: 60px;
 
@@ -2453,6 +2474,79 @@ input::-webkit-inner-spin-button {
 }
 
 .hidePopup #elementsContainer div {
+  margin-left: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* for skills */
+.hidePopup #elementsskillContainer {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5% 5%;
+  border-radius: 20px;
+  background-color: var(--second-col);
+  justify-content: center;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  border: 10px solid var(--second-col);
+}
+
+.hidePopup #elementsskillContainer .element {
+  height: 60px;
+  padding: 18px 25px;
+  border-radius: 20px;
+  margin: 5px;
+  background-color: var(--seventh-col);
+  display: flex;
+}
+
+.hidePopup #elementsskillContainer span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fourth-col);
+}
+
+.hidePopup #elementsskillContainer div {
+  margin-left: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.hidePopup #elementsskillContainertwo {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5% 5%;
+  border-radius: 20px;
+  background-color: var(--second-col);
+  justify-content: center;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  border: 10px solid var(--second-col);
+}
+
+.hidePopup #elementsskillContainertwo .element {
+  height: 60px;
+  padding: 18px 25px;
+  border-radius: 20px;
+  margin: 5px;
+  background-color: var(--seventh-col);
+  display: flex;
+}
+
+.hidePopup #elementsskillContainertwo span {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fourth-col);
+}
+
+.hidePopup #elementsskillContainertwo div {
   margin-left: 15px;
   font-size: 18px;
   cursor: pointer;
@@ -3063,7 +3157,6 @@ input::-webkit-inner-spin-button {
   color: var(--sixth-col);
   font-weight: 600;
 }
-
 
 .adminReg {
   margin: 100px;
