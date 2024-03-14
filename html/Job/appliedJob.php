@@ -1,17 +1,17 @@
 <!-- php -->
 
-<?php 
+<?php
 session_start();
-    require_once '../../dbconnect.php';
+require_once '../../dbconnect.php';
 
-    if (isset($_SESSION['mail'])){
-      $email = $_SESSION['mail'];
-    } else {
-      echo "<script>alert('Error: Session is not working.')</script>";
-    }
+if (isset($_SESSION['mail'])) {
+  $email = $_SESSION['mail'];
+} else {
+  echo "<script>alert('Error: Session is not working.')</script>";
+}
 
-    $sql = "SELECT * FROM `job_applied` WHERE `stu_email` = '$email'";
-    $applied_jobs = $conn->query($sql);
+$sql = "SELECT * FROM `job_applied` WHERE `stu_email` = '$email'";
+$applied_jobs = $conn->query($sql);
 
 ?>
 
@@ -43,16 +43,16 @@ session_start();
       </div>
 
     <?php
-         while($row = mysqli_fetch_assoc($applied_jobs)){
-    ?>
-      <div class="appliedInternshipitems">
-        <h2 class="appliedProfile"><?php echo $row["profile"]; ?> </h2>
-        <h2 class="appliedLocation"><?php echo $row["location"]; ?> </h2>
-        <h2>1</h2>
-        <h2 class="appliedStatus">Applied</h2>
-      </div>
+    while ($row = mysqli_fetch_assoc($applied_jobs)) {
+      ?>
+        <div class="appliedInternshipitems">
+          <h2 class="appliedProfile"><?php echo $row["profile"]; ?> </h2>
+          <h2 class="appliedLocation"><?php echo $row["location"]; ?> </h2>
+          <h2>1</h2>
+          <h2 class="appliedStatus">Applied</h2>
+        </div>
 
-    <?php
+      <?php
 
     }
     ?>
