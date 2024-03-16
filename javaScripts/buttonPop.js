@@ -81,3 +81,12 @@ function openPOR() {
 function closePOR() {
   document.getElementById("PORmain").style.display = "none";
 }
+
+function openLogOut() {
+  document.getElementById("logOutPop").style.display = "flex";
+  document.getElementById("blurBackground").style.display = "block";
+}
+function closeLogOut() {
+  document.getElementById("logOutPop").style.display = "none";
+  document.getElementById("blurBackground").style.display = "none";
+}
