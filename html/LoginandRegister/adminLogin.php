@@ -41,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     if ($result) {
                         $_SESSION['mail'] = $email;
+                        $_SESSION['user_name'] = $username;
                     }
+
 
                     if ($row = mysqli_fetch_assoc($result)) {
                         if (password_verify($password, $row['adminpass'])) {

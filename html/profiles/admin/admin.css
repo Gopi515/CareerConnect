@@ -320,3 +320,86 @@
     color: var(--first-col);
     transition: transform 0.3s ease;
 }
+
+/*LogOut*/
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 149;
+}
+
+#logOutPop {
+    display: none;
+    margin-top: 50vh;
+    position: fixed;
+    font-size: larger;
+    font-weight: 600;
+    color: var(--first-col);
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 35px;
+    border: 1px var(--second-col) solid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fourth-col);
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease-in-out;
+    z-index: 150;
+}
+
+#logOutPop .log-out-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#logOutPop .log-out-buttons .choice {
+    padding: var(--padding-btn);
+    border-radius: 15px;
+    border: 3px solid var(--first-col);
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#logOutPop .log-out-buttons .choice:hover {
+    background-color: var(--first-col);
+    color: var(--fourth-col);
+    border-radius: var(--border-50);
+}
+
+.profile-details .bx-log-out:hover {
+    background-color: rgb(255, 61, 61);
+    border-radius: var(--border-50);
+    border: 2px solid var(--first-col);
+}
+
+#logOutPop #closeLogout {
+    position: absolute;
+    background-color: var(--fourth-col);
+    border-radius: var(--border-50);
+    border: 3px var(--first-col) solid;
+    top: -10px;
+    right: -10px;
+    padding: 3px 8px;
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--first-col);
+    transition: all 0.3s ease-in-out;
+}
+
+#logOutPop #closeLogout:hover {
+    background-color: rgb(255, 61, 61);
+    color: var(--first-col);
+    border-radius: var(--border-50);
+    border: 3px var(--fourth-col) solid;
+}
