@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin Settings</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
@@ -23,7 +23,7 @@ require '../../../dbconnect.php';
             <span class="logo_name">CareerConnect</span>
         </div>
         <ul class="nav-links">
-            <li  style="background-color:#0362ff;">
+            <li>
                 <a href="admin.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link_name">Dashboard</span>
@@ -51,7 +51,7 @@ require '../../../dbconnect.php';
                     <span class="link_name">Register IDs</span>
                 </a>
             </li>
-            <li>
+            <li style="background-color:#0362ff;">
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Setting</span>
@@ -93,7 +93,21 @@ require '../../../dbconnect.php';
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
         <div class="home-content">
-            <span class="text">Admin Main Page</span>
+            <span class="text">Settings</span>
+        </div>
+        <div class="admin-Settings">
+            <div class="boxes GS">
+                <div>General Settings</div>
+                <p>Edit Profile, Logo customisation, personal details,...</p>
+            </div>
+            <div class="boxes TP">
+                <div>Terms and Policy</div>
+                <p>Manage terms of service, privacy policy, and other legal documents.</p>
+            </div>
+            <div class="boxes HD">
+                <div>Help Desk</div>
+                <p>Contact with technical team, FAQs,...</p>
+            </div>
         </div>
     </section>
 
