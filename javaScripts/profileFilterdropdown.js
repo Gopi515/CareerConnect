@@ -200,13 +200,14 @@ const dropdownItems = [
   "XCODE",
   "YOUTUBE ADS",
   "ZBRUSH",
-]; // Sample dropdown items
+];
 let selectedItems = [];
 
 const searchBar = document.getElementById("option1Input");
 const dropdown = document.getElementById("dropdownFilterprofile");
 const tagContainer = document.getElementById("tag-container");
 
+// search function
 searchBar.addEventListener("input", function () {
   const searchString = searchBar.value.toLowerCase();
   const filteredItems = dropdownItems.filter((item) =>
@@ -215,17 +216,26 @@ searchBar.addEventListener("input", function () {
   renderDropdown(filteredItems);
 });
 
+// onclicking outside it disappears
+document.body.addEventListener("click", function (event) {
+  if (!dropdown.contains(event.target) && event.target !== searchBar) {
+    dropdown.style.display = "none";
+  }
+});
+
 function renderDropdown(items) {
   if (items.length === 0) {
     dropdown.style.display = "none";
     return;
   }
 
+  // adding class to call it in css for dropdown items
   dropdown.innerHTML = "";
   items.forEach((item) => {
     const option = document.createElement("div");
     option.textContent = item;
     option.classList.add("dropdown-item");
+    option.style.cursor = "pointer";
     option.addEventListener("click", () => selectItem(item));
     dropdown.appendChild(option);
   });
