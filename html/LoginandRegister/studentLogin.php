@@ -62,10 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
 
-                if ($role == 'teacher' || $role == 'student' || $role == 'company') {
-                    loginUser($conn, $role, $username, $email, $password);
-                } else {
-                    echo "<script>alert('Error: Invalid role selected.');</script>";
+                switch ($role) {
+                    case 'student':
+                        loginUser($conn, $role, $username, $email, $password);
+                        break;
+                    default:
+                        echo "<script>alert('Error: Invalid role selected.');</script>";
+                        break;
                 }
             }
         }
