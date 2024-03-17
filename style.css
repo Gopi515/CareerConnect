@@ -593,6 +593,52 @@ footer {
 .filterContainer .inputBoxDuration {
   top: 74%;
 }
+.inputBox #dropdownFilterprofile {
+  width: 15rem;
+  height: 200px;
+  overflow: auto;
+  display: none;
+  position: relative;
+  background-color: var(--first-col);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 0px 0px 20px 20px;
+}
+.inputBox #dropdownFilterprofile .dropdown-item {
+  cursor: pointer;
+  color: var(--last-col);
+  padding: 5px 12px;
+  display: block;
+  border-radius: 5px;
+}
+.inputBox #dropdownFilterprofile .dropdown-item:hover {
+  background-color: var(--seventh-col);
+}
+.inputBox #tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 15rem;
+  background-color: transparent;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--third-col);
+}
+#tag-container .tag {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+#tag-container .tag span {
+  margin-right: 5px;
+}
+#tag-container .tag button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 
 .inputBoxDuration .dropdown {
   position: relative;

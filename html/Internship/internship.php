@@ -124,7 +124,9 @@ $count = mysqli_num_rows($result);
         <!-- inputbox -->
         <label class="inputBox">
             <p>Profile</p>
-            <input type="text" placeholder="e.g. Web Development" id="option1Input">
+            <input type="text" id="option1Input" placeholder="Search...">
+            <div id="dropdownFilterprofile"></div>
+            <div id="tag-container"></div>
         </label>
         <label class="inputBox inputBoxlocation">
             <p>Location</p>
@@ -265,8 +267,9 @@ $count = mysqli_num_rows($result);
     <script src="../../javaScripts/inputDisable.js"></script>
     <script src="../../javaScripts/buttonSwitch.js"></script>
     <script src="../../javaScripts/showDropdown.js"></script>
-    <script src="../../javaScripts/inputValidation.js"></script>
     <script src="../../javaScripts/buttonPop.js"></script>
     <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
+    <!-- <script src="../../javaScripts/inputValidation.js"></script> -->
+    <script src="../../javaScripts/profileFilterdropdown.js"></script>
 </body>
 </html>
