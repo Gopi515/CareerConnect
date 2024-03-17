@@ -31,17 +31,15 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $state = htmlspecialchars($_POST['state']);
     $country = htmlspecialchars($_POST['country']);
     $gender = $_POST['gender'];
-    // $language = $_POST['language'];
+    $language = $_POST['language'];
     // to convert array to string in php we use implode
-    // $lang = implode(",",$language);
+    $lang = implode(",",$language);
 
     if (
         !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
         !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-        !empty($state) && !empty($city) && !empty($country) && !empty($gender)
+        !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)
     ) {
-
-
 
         $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
         $result = mysqli_query($conn, $checkmobile);
@@ -63,9 +61,9 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
         $insertdata = "INSERT INTO `tech_personal_details`(`tech_id`, `F_name`, `L_name`, `email`,
-                `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`) 
+                `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
                 VALUES ('$tech_id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2','$pincode',
-                '$city','$state','$country','$gender')";
+                '$city','$state','$country','$gender','$lang')";
 
         $smt = mysqli_query($conn, $insertdata);
 

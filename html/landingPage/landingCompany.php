@@ -28,6 +28,7 @@
                                 <a href="../profiles/company/company.php">Edit Profile Details</a>
                                 <a href="../profiles/company/addinternship.php">Post Internship</a>
                                 <a href="../profiles/company/addjob.php">Post Job</a>
+                                <a onclick="openLogOut()">Log Out</a>
                             </div>
                         </li>
                     </div>
@@ -36,8 +37,23 @@
         </nav>
     </header>
 
+    <section class="home-section">
+        <div id="blurBackground" class="blur-background" style="display: none;"></div>
+        <div id="logOutPop">
+            <div class="log-out-content">
+                <div class="log-out-text">Are you sure you want to log out?</div>
+                <div class="log-out-buttons">
+                    <div class="choice yes" onclick="logOut()">Yes</div>
+                    <div class="choice no" onclick="closeLogOut()">No</div>
+                </div>
+            </div>
+            <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
+        </div>
+    </section>
+
     <!-- <script src="../../javaScripts/dropdown.js"></script> -->
     <script src="../../javaScripts/showDropdown.js"></script>
-
+    <script src="../../javaScripts/buttonPop.js"></script>
+    <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
 </body>
 </html>

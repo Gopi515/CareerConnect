@@ -104,7 +104,6 @@ require '../../../dbconnect.php';
     <script src="../../../javaScripts/sideBar.js"></script>
     <script src="../../../javaScripts/buttonPop.js"></script>
     <script src="../../../javaScripts/adminLogOut.js"></script>
-
 </body>
 
 </html>

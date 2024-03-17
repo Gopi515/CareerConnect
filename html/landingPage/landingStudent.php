@@ -9,8 +9,6 @@
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-
-
 <body>
 
     <!-- welcome section -->
@@ -30,6 +28,7 @@
                                 <a href="../profiles/student/student.php">Edit Profile Details</a>
                                 <a href="../Internship/appliedInternship.php">Applied Internship</a>
                                 <a href="../Job/appliedJob.php">Applied Job</a>
+                                <a onclick="openLogOut()">Log Out</a>
                             </div>
                         </li>
                     </div>
@@ -193,14 +192,26 @@
               </div>
         </div>
     </div>
+    <section class="home-section">
+        <div id="blurBackground" class="blur-background" style="display: none;"></div>
+        <div id="logOutPop">
+            <div class="log-out-content">
+                <div class="log-out-text">Are you sure you want to log out?</div>
+                <div class="log-out-buttons">
+                    <div class="choice yes" onclick="logOut()">Yes</div>
+                    <div class="choice no" onclick="closeLogOut()">No</div>
+                </div>
+            </div>
+            <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
+        </div>
+    </section>
 
-
-    
     <footer></footer>
-
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../../javaScripts/slider.js"></script>
     <script src="../../javaScripts/showDropdown.js"></script>
+    <script src="../../javaScripts/buttonPop.js"></script>
+    <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
 </body>

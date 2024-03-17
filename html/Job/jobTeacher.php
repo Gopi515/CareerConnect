@@ -77,6 +77,7 @@ $count = mysqli_num_rows($result);
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
                                 <a href="#">Edit Profile</a>
+                                <a onclick="openLogOut()">Log Out</a>
                             </div>
                         </li>
                     </div>
@@ -235,7 +236,19 @@ $count = mysqli_num_rows($result);
   </div>
 
 
-
+    <section class="home-section">
+        <div id="blurBackground" class="blur-background" style="display: none;"></div>
+        <div id="logOutPop">
+            <div class="log-out-content">
+                <div class="log-out-text">Are you sure you want to log out?</div>
+                <div class="log-out-buttons">
+                    <div class="choice yes" onclick="logOut()">Yes</div>
+                    <div class="choice no" onclick="closeLogOut()">No</div>
+                </div>
+            </div>
+            <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
+        </div>
+    </section>
 
     <footer>
 
@@ -245,8 +258,8 @@ $count = mysqli_num_rows($result);
    <!-- script -->
     <script src="../../javaScripts/dropdown.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
-    <script src="../../javaScripts/showDropdown.js"></script>   
-
-
+    <script src="../../javaScripts/showDropdown.js"></script>
+    <script src="../../javaScripts/buttonPop.js"></script>
+    <script src="../../javaScripts/landingInternshipJobLogout.js"></script>   
 </body>
 </html>

@@ -426,6 +426,7 @@ footer {
   text-decoration: none;
   display: block;
   font-size: 0.9rem !important;
+  cursor: pointer;
 }
 
 .dropdown-content a:hover {
@@ -514,11 +515,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -528,7 +529,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1294,17 +1295,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1324,19 +1334,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2141,9 +2163,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -3191,4 +3213,87 @@ input::-webkit-inner-spin-button {
   box-shadow: var(--box-shadow);
   background-color: var(--fifth-col);
   border: 3px var(--first-col) solid;
+}
+
+/*LogOut*/
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  z-index: 1999;
+}
+
+#logOutPop {
+  display: none;
+  margin-top: 50vh;
+  position: fixed;
+  font-size: larger;
+  font-weight: 600;
+  color: var(--first-col);
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 35px;
+  border: 1px var(--second-col) solid;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fourth-col);
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease-in-out;
+  z-index: 2999;
+}
+
+#logOutPop .log-out-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#logOutPop .log-out-buttons .choice {
+  padding: var(--padding-btn);
+  border-radius: 15px;
+  border: 3px solid var(--first-col);
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#logOutPop .log-out-buttons .choice:hover {
+  background-color: var(--first-col);
+  color: var(--fourth-col);
+  border-radius: var(--border-50);
+}
+
+.profile-details .bx-log-out:hover {
+  background-color: rgb(255, 61, 61);
+  border-radius: var(--border-50);
+  border: 2px solid var(--first-col);
+}
+
+#logOutPop #closeLogout {
+  position: absolute;
+  background-color: var(--fourth-col);
+  border-radius: var(--border-50);
+  border: 3px var(--first-col) solid;
+  top: -10px;
+  right: -10px;
+  padding: 3px 8px;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--first-col);
+  transition: all 0.3s ease-in-out;
+}
+
+#logOutPop #closeLogout:hover {
+  background-color: rgb(255, 61, 61);
+  color: var(--first-col);
+  border-radius: var(--border-50);
+  border: 3px var(--fourth-col) solid;
 }
