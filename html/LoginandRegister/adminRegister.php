@@ -34,6 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_stmt_bind_param($stmt, "ssiss", $username, $email, $collegeId, $collegeName, $HASH);
         mysqli_stmt_execute($stmt);
 
+        if ($stmt) {
+            $_SESSION['mail'] = $email;
+        }
+
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             header("location: ../profiles/admin/admin.php");
             exit();

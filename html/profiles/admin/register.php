@@ -64,10 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 mysqli_stmt_execute($stmt);
 
                 if ($stmt) {
-                    $_SESSION['mail'] = $email;
-                }
-
-                if ($stmt) {
                     echo "<script>alert('$role has been successfully added. You will be redirected to the register page now.');</script>";
                 } else {
                     echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
