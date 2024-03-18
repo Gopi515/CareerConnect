@@ -203,22 +203,29 @@ const dropdownItems = [
 ];
 let selectedItems = [];
 
-const searchBar = document.getElementById("option1Input");
+const searchBars = document.querySelectorAll("#option1Input, #option1Inputjob");
 const dropdown = document.getElementById("dropdownFilterprofile");
 const tagContainer = document.getElementById("tag-container");
 
-// search function
-searchBar.addEventListener("input", function () {
-  const searchString = searchBar.value.toLowerCase();
-  const filteredItems = dropdownItems.filter((item) =>
-    item.toLowerCase().includes(searchString)
-  );
-  renderDropdown(filteredItems);
+// Add event listeners to all search bars
+searchBars.forEach((searchBar) => {
+  searchBar.addEventListener("input", function () {
+    const searchString = searchBar.value.toLowerCase();
+    const filteredItems = dropdownItems.filter((item) =>
+      item.toLowerCase().includes(searchString)
+    );
+    renderDropdown(filteredItems);
+  });
 });
 
 // onclicking outside it disappears
 document.body.addEventListener("click", function (event) {
-  if (!dropdown.contains(event.target) && event.target !== searchBar) {
+  if (
+    !dropdown.contains(event.target) &&
+    !Array.from(searchBars).some((searchBar) =>
+      searchBar.contains(event.target)
+    )
+  ) {
     dropdown.style.display = "none";
   }
 });
@@ -247,7 +254,9 @@ function selectItem(item) {
     selectedItems.push(item);
     renderTags();
   }
-  searchBar.value = "";
+  searchBars.forEach((searchBar) => {
+    searchBar.value = "";
+  });
   dropdown.style.display = "none";
 }
 

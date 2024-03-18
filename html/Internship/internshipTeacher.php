@@ -130,6 +130,8 @@
         <label class="inputBox">
             <p>Profile</p>
             <input type="text" placeholder="e.g. Web Development" id="option1Input">
+            <div id="dropdownFilterprofile"></div>
+            <div id="tag-container"></div>
         </label>
         <label class="inputBox inputBoxlocation">
             <p>Location</p>
@@ -271,5 +273,6 @@
     <script src="../../javaScripts/showDropdown.js"></script>
     <script src="../../javaScripts/buttonPop.js"></script>
     <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
+    <script src="../../javaScripts/profileFilterdropdown.js"></script>
 </body>
 </html>
