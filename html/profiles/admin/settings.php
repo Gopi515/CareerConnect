@@ -46,7 +46,7 @@ require '../../../dbconnect.php';
             </li>
 
             <li>
-                <a href="register.php">
+                <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
                 </a>
@@ -96,18 +96,18 @@ require '../../../dbconnect.php';
             <span class="text">Settings</span>
         </div>
         <div class="admin-Settings">
-            <div class="boxes GS">
+            <a class="boxes GS" href="settings/generalSettings.php">
                 <div>General Settings</div>
                 <p>Edit Profile, Logo customisation, personal details,...</p>
-            </div>
-            <div class="boxes TP">
+            </a>
+            <a class="boxes TP" href="something.php">
                 <div>Terms and Policy</div>
                 <p>Manage terms of service, privacy policy, and other legal documents.</p>
-            </div>
-            <div class="boxes HD">
+            </a>
+            <a class="boxes HD" href="something.php">
                 <div>Help Desk</div>
                 <p>Contact with technical team, FAQs,...</p>
-            </div>
+            </a>
         </div>
     </section>
 

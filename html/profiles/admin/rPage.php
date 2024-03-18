@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin Register</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
@@ -23,7 +23,7 @@ require '../../../dbconnect.php';
             <span class="logo_name">CareerConnect</span>
         </div>
         <ul class="nav-links">
-            <li  style="background-color:#0362ff;">
+            <li>
                 <a href="admin.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link_name">Dashboard</span>
@@ -45,7 +45,7 @@ require '../../../dbconnect.php';
                 </ul>
             </li>
 
-            <li>
+            <li style="background-color:#0362ff;">
                 <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
@@ -93,7 +93,25 @@ require '../../../dbconnect.php';
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
         <div class="home-content">
-            <span class="text">Admin Main Page</span>
+            <span class="text">Register Page</span>
+        </div>
+        <div class="admin-Settings">
+            <a class="boxes CR" href="something.php">
+                <div>Company Register</div>
+                <p>Mass register company using xlsx sheet</p>
+            </a>
+            <a class="boxes SR" href="something.php">
+                <div>Student Register</div>
+                <p>Mass register student using xlsx sheet</p>
+            </a>
+            <a class="boxes TR" href="something.php">
+                <div>Teacher Register</div>
+                <p>Mass register Teacher using xlsx sheet</p>
+            </a>
+            <a class="boxes IR" href="registration/register.php">
+                <div>Individual Register</div>
+                <p>Enter Company, Student or Teacher one by one.</p>
+            </a>
         </div>
     </section>
 

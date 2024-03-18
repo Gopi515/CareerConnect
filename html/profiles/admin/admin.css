@@ -331,13 +331,14 @@
 .boxes {
     position: relative;
     flex: 1 0 calc(33.33% - 20px);
-    margin: 10px;
+    margin: 10px 10px 100px 10px;
     background-color: #f0f0f0;
     border: 5px solid var(--first-col);
     box-sizing: border-box;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
     border-radius: 25px;
+    text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
@@ -353,7 +354,7 @@
     color: var(--first-col);
     letter-spacing: 1px;
     background-color: var(--fourth-col);
-    padding: 5px;
+    padding: 10px;
     border-radius: var(--border-50);
 }
 
