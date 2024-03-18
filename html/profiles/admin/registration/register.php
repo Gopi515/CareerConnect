@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/adminLogin.php");
+        header("Location: ../../../LoginandRegister/adminLogin.php");
     }
 ?>
 
@@ -30,26 +30,12 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $email = $_POST['email'];
-    } else {
-        echo "<script>alert('Error: Password and password confirmation are required.');</script>";
-        // For further error handling or redirect the user as needed.
-        exit;
-    }
 
-    if (isset ($_POST['password']) && isset ($_POST['cpassword'])) {
-        $password = $_POST['password'];
-        $cpassword = $_POST['cpassword'];
-    } else {
-        echo "<script>alert('Error: Password and password confirmation are required.');</script>";
-        // For further error handling or redirect the user as needed.
-        exit;
-    }
-
-    if (isset ($_POST['role'])) {
-        $roles = $_POST['role'];
-
-        if (empty ($roles)) {
-            echo "<script>alert('Error: Please select a role.');</script>";
+        if (isset($_POST['password']) && isset($_POST['cpassword'])) {
+            $password = $_POST['password'];
+            $cpassword = $_POST['cpassword'];
+        } else {
+            echo "<script>alert('Error: Password and password confirmation are required.');</script>";
             // For further error handling or redirect the user as needed.
             exit;
         }
@@ -85,7 +71,9 @@
                     mysqli_stmt_execute($stmt);
 
                     if ($stmt) {
+                        header("location: ./register.php");
                         echo "<script>alert('$role has been successfully added. You will be redirected to the register page now.');</script>";
+                        exit;
                     } else {
                         echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
                         error_log("Database error: " . mysqli_error($conn));
@@ -101,7 +89,8 @@
                 registerUser($conn, 'student', $username, $password, $email, $cpassword);
             } elseif ($roles == 'company') {
                 registerUser($conn, 'company', $username, $password, $email, $cpassword);
-            } else {
+            }
+            else {
                 echo "<script>alert('Error: Please select a role first')</script>";
             }
         }

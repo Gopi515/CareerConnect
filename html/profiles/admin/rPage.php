@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../../LoginandRegister/adminLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +17,7 @@
 </head>
 
 <?php
-session_start();
-require '../../../dbconnect.php';
+    require '../../../dbconnect.php';
 ?>
 
 <body>
