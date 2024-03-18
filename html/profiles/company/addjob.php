@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../../LoginandRegister/companyLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,64 +24,63 @@
 
 <!-- php here -->
 <?php
-session_start();
-require '../../../dbconnect.php';
+    require '../../../dbconnect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check for empty values
-    $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-    $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
-    $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
-    $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
-    $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
-    $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Check for empty values
+        $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
+        $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
+        $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
+        $experience = !empty($_POST["experience"]) ? $_POST["experience"] : "";
+        $CTC = !empty($_POST["CTC"]) ? $_POST["CTC"] : "";
+        $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
 
-     // Retrieving and decode the added skills array
-    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+        // Retrieving and decode the added skills array
+        $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
 
-    if ($addedSkillsArray === null) {
-        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
-        exit;
-    }
+        if ($addedSkillsArray === null) {
+            echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+            exit;
+        }
 
-    // Combining skills into a comma-separated string
-    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+        // Combining skills into a comma-separated string
+        $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
 
-    $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
-    $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
-    $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
-    if (isset($_SESSION['mail'])) {
-        $email = $_SESSION['mail'];
-    } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
-    }
+        $aboutJob = !empty($_POST["about_job"]) ? $_POST["about_job"] : "";
+        $additionalInfo = !empty($_POST["additionalinfo"]) ? $_POST["additionalinfo"] : "";
+        $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+        if (isset($_SESSION['mail'])) {
+            $email = $_SESSION['mail'];
+        } else {
+            echo "<script>alert('Error: Session is not working.')</script>";
+        }
 
-    $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-    $find = $conn->query($query);
-    if (mysqli_num_rows($find) > 0) {
-        while ($row = mysqli_fetch_array($find)) {
-            $com_id = $row["com_id"];
+        $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+        $find = $conn->query($query);
+        if (mysqli_num_rows($find) > 0) {
+            while ($row = mysqli_fetch_array($find)) {
+                $com_id = $row["com_id"];
+            }
+        }
+
+        try {
+            $sql = "INSERT INTO job (com_id, topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings, com_email)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            $stmt = mysqli_prepare($conn, $sql);
+
+            mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $skillsString, $aboutJob, $additionalInfo, $openings, $email);
+
+            mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+
+            header('Location: ../../landingPage/landingCompany.php');
+            exit;
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
     }
-
-    try {
-        $sql = "INSERT INTO job (com_id, topic, work_location, location_name, experience, CTC, apply_by, required_skills, about_job, additional_info, openings, com_email)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        $stmt = mysqli_prepare($conn, $sql);
-
-        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $experience, $CTC, $applyBy, $skillsString, $aboutJob, $additionalInfo, $openings, $email);
-
-        mysqli_stmt_execute($stmt);
-
-        mysqli_stmt_close($stmt);
-
-        header('Location: ../../landingPage/landingCompany.php');
-        exit;
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
 ?>
 
 

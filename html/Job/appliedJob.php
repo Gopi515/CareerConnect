@@ -1,20 +1,9 @@
-<!-- php -->
-
-<?php
-session_start();
-require_once '../../dbconnect.php';
-
-if (isset($_SESSION['mail'])) {
-  $email = $_SESSION['mail'];
-} else {
-  echo "<script>alert('Error: Session is not working.')</script>";
-}
-
-$sql = "SELECT * FROM `job_applied` WHERE `stu_email` = '$email'";
-$applied_jobs = $conn->query($sql);
-
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/studentLogin.php");
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +14,23 @@ $applied_jobs = $conn->query($sql);
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
     <title>Applied Job</title>
 </head>
+
+<!-- php -->
+
+<?php
+    require_once '../../dbconnect.php';
+
+    if (isset($_SESSION['mail'])) {
+      $email = $_SESSION['mail'];
+    } else {
+      echo "<script>alert('Error: Session is not working.')</script>";
+    }
+
+    $sql = "SELECT * FROM `job_applied` WHERE `stu_email` = '$email'";
+    $applied_jobs = $conn->query($sql);
+
+?>
+
 <body>
     <div class="appliedInternship">
     

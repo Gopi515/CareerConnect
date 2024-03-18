@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/companyLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +20,7 @@
     <link rel="stylesheet" href="../../style.css">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>    
 </head>
+
 <body>
     <!-- welcome section -->
     <header>

@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/studentLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,53 +18,52 @@
 <!-- php -->
 
 <?php
-session_start();
-require '../../dbconnect.php';
+    require '../../dbconnect.php';
 
-if (isset($_POST["applyInternship"])) {
-    $internship_topic = $_POST["hidden_topic"];
-    $internship_location = $_POST["hidden_location"];
-    $internship_duration = $_POST["hidden_duration"];
-    $internship_com_id = $_POST["hidden_com_id"];
-    $internship_com_email = $_POST["hidden_com_email"];
-    $internship_int_id = $_POST["hidden_int_id"];
+    if (isset($_POST["applyInternship"])) {
+        $internship_topic = $_POST["hidden_topic"];
+        $internship_location = $_POST["hidden_location"];
+        $internship_duration = $_POST["hidden_duration"];
+        $internship_com_id = $_POST["hidden_com_id"];
+        $internship_com_email = $_POST["hidden_com_email"];
+        $internship_int_id = $_POST["hidden_int_id"];
 
-    $_SESSION['int_topic'] = $internship_topic;
-    $_SESSION['int_loc'] = $internship_location;
-    $_SESSION['int_dur'] = $internship_duration;
-    $_SESSION['int_com_id'] = $internship_com_id;
-    $_SESSION['int_com_email'] = $internship_com_email;
-    $_SESSION['int_id'] = $internship_int_id;
+        $_SESSION['int_topic'] = $internship_topic;
+        $_SESSION['int_loc'] = $internship_location;
+        $_SESSION['int_dur'] = $internship_duration;
+        $_SESSION['int_com_id'] = $internship_com_id;
+        $_SESSION['int_com_email'] = $internship_com_email;
+        $_SESSION['int_id'] = $internship_int_id;
 
-    header("Location:../Internship/applyInternship.php");
-}
+        header("Location:../Internship/applyInternship.php");
+    }
 
 
-$internshipsPerPage = 5;
+    $internshipsPerPage = 5;
 
-// Determine the current page
-if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-    $currentPage = (int)$_GET['page'];
-} else {
-    $currentPage = 1;
-}
+    // Determine the current page
+    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $currentPage = (int)$_GET['page'];
+    } else {
+        $currentPage = 1;
+    }
 
-// Calculate the offset for the SQL query
-$offset = ($currentPage - 1) * $internshipsPerPage;
+    // Calculate the offset for the SQL query
+    $offset = ($currentPage - 1) * $internshipsPerPage;
 
-// Retrieve the total number of internships
-$queryTotal = "SELECT COUNT(*) AS total FROM `internships`";
-$resultTotal = mysqli_query($conn, $queryTotal);
-$rowTotal = mysqli_fetch_assoc($resultTotal);
-$totalInternships = $rowTotal['total'];
+    // Retrieve the total number of internships
+    $queryTotal = "SELECT COUNT(*) AS total FROM `internships`";
+    $resultTotal = mysqli_query($conn, $queryTotal);
+    $rowTotal = mysqli_fetch_assoc($resultTotal);
+    $totalInternships = $rowTotal['total'];
 
-// Calculate the total number of pages
-$totalPages = ceil($totalInternships / $internshipsPerPage);
+    // Calculate the total number of pages
+    $totalPages = ceil($totalInternships / $internshipsPerPage);
 
-// Modify the SQL query to retrieve internships for the current page
-$query = "SELECT * FROM `internships` ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
-$result = mysqli_query($conn, $query);
-$count = mysqli_num_rows($result);
+    // Modify the SQL query to retrieve internships for the current page
+    $query = "SELECT * FROM `internships` ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
+    $result = mysqli_query($conn, $query);
+    $count = mysqli_num_rows($result);
 ?>
 
 

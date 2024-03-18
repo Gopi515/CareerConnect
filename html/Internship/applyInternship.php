@@ -1,6 +1,24 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/studentLogin.php");
+    }
+?>
+
+<!-- head -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+    <title>Apply Internship</title>
+</head>
+
 <!-- php -->
 <?php
-    session_start();
     require '../../dbconnect.php';
 
     if (isset($_POST["submit"])){
@@ -50,20 +68,6 @@
     }
 
 ?>
-
-
-<!-- head -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-    <title>Apply Internship</title>
-</head>
-
 
 <!-- body -->
 <body>

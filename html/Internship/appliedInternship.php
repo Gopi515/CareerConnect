@@ -1,7 +1,23 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/studentLogin.php");
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+    <title>Applied Internship</title>
+</head>
+
 <!-- php -->
 
 <?php 
-session_start();
     require_once '../../dbconnect.php';
 
     if (isset($_SESSION['mail'])){
@@ -15,15 +31,6 @@ session_start();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-    <title>Applied Internship</title>
-</head>
 <body>
     <div class="appliedInternship">
     

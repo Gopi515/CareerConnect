@@ -1,3 +1,19 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../../LoginandRegister/teacherLogin.php");
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship questions</title>
+  <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>"/>
+</head>
+
 <?php
   require '../../../dbconnect.php';
 
@@ -34,14 +50,6 @@
   }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Internship questions</title>
-  <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>"/>
-</head>
 <body>
 
 <!-- heading -->

@@ -1,3 +1,20 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/teacherLogin.php");
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+    <title>Job details</title>
+</head>
+
 <!-- php -->
 <?php
     include_once("../../dbconnect.php");
@@ -12,17 +29,6 @@
     $result=$conn->query($sql_query);
 ?>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-    <title>Job details</title>
-</head>
 <body style="height: 290vh;">
     
     <a href="../Job/jobTeacher.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 48px; margin-top: 5.6%; margin-left: 8%;"></i></a>

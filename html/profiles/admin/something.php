@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../../LoginandRegister/adminLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +15,7 @@
 </head>
 
 <?php
-header("Content-Type: text/html");
+    header("Content-Type: text/html");
 ?>
 
 <body>

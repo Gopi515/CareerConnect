@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../LoginandRegister/studentLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,52 +18,51 @@
 <!-- php -->
 
 <?php
-session_start();
-require_once '../../dbconnect.php';
+    require_once '../../dbconnect.php';
 
-if (isset($_POST["applyJob"])) {
-    $job_topic = $_POST["hidden_Topic"];
-    $job_location = $_POST["hidden_location"];
-    $job_com_id = $_POST["hidden_com_id"];
-    $job_com_email = $_POST["hidden_com_email"];
-    $job_id = $_POST["hidden_job_id"];
+    if (isset($_POST["applyJob"])) {
+        $job_topic = $_POST["hidden_Topic"];
+        $job_location = $_POST["hidden_location"];
+        $job_com_id = $_POST["hidden_com_id"];
+        $job_com_email = $_POST["hidden_com_email"];
+        $job_id = $_POST["hidden_job_id"];
 
-    $_SESSION['Job_topic'] = $job_topic;
-    $_SESSION['Job_loc'] = $job_location;
-    $_SESSION['job_com_id'] = $job_com_id;
-    $_SESSION['job_com_email'] = $job_com_email;
-    $_SESSION['job_id'] = $job_id;
+        $_SESSION['Job_topic'] = $job_topic;
+        $_SESSION['Job_loc'] = $job_location;
+        $_SESSION['job_com_id'] = $job_com_id;
+        $_SESSION['job_com_email'] = $job_com_email;
+        $_SESSION['job_id'] = $job_id;
 
-    header("Location:../Job/applyJob.php");
-}
-
+        header("Location:../Job/applyJob.php");
+    }
 
 
-$internshipsPerPage = 5;
 
-// Determine the current page
-if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-    $currentPage = (int) $_GET['page'];
-} else {
-    $currentPage = 1;
-}
+    $internshipsPerPage = 5;
 
-// Calculate the offset for the SQL query
-$offset = ($currentPage - 1) * $internshipsPerPage;
+    // Determine the current page
+    if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+        $currentPage = (int) $_GET['page'];
+    } else {
+        $currentPage = 1;
+    }
 
-// Retrieve the total number of internships
-$queryTotal = "SELECT COUNT(*) AS total FROM `job`";
-$resultTotal = mysqli_query($conn, $queryTotal);
-$rowTotal = mysqli_fetch_assoc($resultTotal);
-$totalInternships = $rowTotal['total'];
+    // Calculate the offset for the SQL query
+    $offset = ($currentPage - 1) * $internshipsPerPage;
 
-// Calculate the total number of pages
-$totalPages = ceil($totalInternships / $internshipsPerPage);
+    // Retrieve the total number of internships
+    $queryTotal = "SELECT COUNT(*) AS total FROM `job`";
+    $resultTotal = mysqli_query($conn, $queryTotal);
+    $rowTotal = mysqli_fetch_assoc($resultTotal);
+    $totalInternships = $rowTotal['total'];
 
-// Modify the SQL query to retrieve internships for the current page
-$query = "SELECT * FROM `job` ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
-$result = mysqli_query($conn, $query);
-$count = mysqli_num_rows($result);
+    // Calculate the total number of pages
+    $totalPages = ceil($totalInternships / $internshipsPerPage);
+
+    // Modify the SQL query to retrieve internships for the current page
+    $query = "SELECT * FROM `job` ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
+    $result = mysqli_query($conn, $query);
+    $count = mysqli_num_rows($result);
 ?>
 
 
