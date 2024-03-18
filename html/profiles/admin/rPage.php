@@ -1,23 +1,17 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/adminLogin.php");
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Settings</title>
+    <title>Admin Register</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
 <?php
-    require '../../../dbconnect.php';
+session_start();
+require '../../../dbconnect.php';
 ?>
 
 <body>
@@ -51,13 +45,13 @@
                 </ul>
             </li>
 
-            <li>
+            <li style="background-color:#0362ff;">
                 <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
                 </a>
             </li>
-            <li style="background-color:#0362ff;">
+            <li>
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Setting</span>
@@ -99,20 +93,24 @@
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
         <div class="home-content">
-            <span class="text">Settings</span>
+            <span class="text">Register Page</span>
         </div>
         <div class="admin-Settings">
-            <a class="boxes GS" href="settings/generalSettings.php">
-                <div>General Settings</div>
-                <p>Edit Profile, Logo customisation, personal details,...</p>
+            <a class="boxes CR" href="something.php">
+                <div>Company Register</div>
+                <p>Mass register company using xlsx sheet</p>
             </a>
-            <a class="boxes TP" href="something.php">
-                <div>Terms and Policy</div>
-                <p>Manage terms of service, privacy policy, and other legal documents.</p>
+            <a class="boxes SR" href="something.php">
+                <div>Student Register</div>
+                <p>Mass register student using xlsx sheet</p>
             </a>
-            <a class="boxes HD" href="something.php">
-                <div>Help Desk</div>
-                <p>Contact with technical team, FAQs,...</p>
+            <a class="boxes TR" href="something.php">
+                <div>Teacher Register</div>
+                <p>Mass register Teacher using xlsx sheet</p>
+            </a>
+            <a class="boxes IR" href="registration/register.php">
+                <div>Individual Register</div>
+                <p>Enter Company, Student or Teacher one by one.</p>
             </a>
         </div>
     </section>
@@ -121,7 +119,6 @@
     <script src="../../../javaScripts/sideBar.js"></script>
     <script src="../../../javaScripts/buttonPop.js"></script>
     <script src="../../../javaScripts/adminLogOut.js"></script>
-
 </body>
 
 </html>

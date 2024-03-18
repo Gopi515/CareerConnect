@@ -18,24 +18,38 @@
     <title>CareerConnect-Register</title>
 
     <!-- linking -->
-    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 
 </head>
 
 <!-- php -->
 <?php
-    require '../../../dbconnect.php';
+    require '../../../../dbconnect.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
         $email = $_POST['email'];
+    } else {
+        echo "<script>alert('Error: Password and password confirmation are required.');</script>";
+        // For further error handling or redirect the user as needed.
+        exit;
+    }
 
-        if (isset($_POST['password']) && isset($_POST['cpassword'])) {
-            $password = $_POST['password'];
-            $cpassword = $_POST['cpassword'];
-        } else {
-            echo "<script>alert('Error: Password and password confirmation are required.');</script>";
+    if (isset ($_POST['password']) && isset ($_POST['cpassword'])) {
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+    } else {
+        echo "<script>alert('Error: Password and password confirmation are required.');</script>";
+        // For further error handling or redirect the user as needed.
+        exit;
+    }
+
+    if (isset ($_POST['role'])) {
+        $roles = $_POST['role'];
+
+        if (empty ($roles)) {
+            echo "<script>alert('Error: Please select a role.');</script>";
             // For further error handling or redirect the user as needed.
             exit;
         }
@@ -101,7 +115,7 @@
 
         <!-- The main box -->
         <div class="right-side">
-        <a href="admin.php"><div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div></a>
+        <a href="../rPage.php"><div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div></a>
 
 
             <!-- heading -->
@@ -161,4 +175,3 @@
 </body>
 
 </html>
-

@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
@@ -52,7 +52,7 @@
             </li>
 
             <li>
-                <a href="register.php">
+                <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
                 </a>
