@@ -123,19 +123,28 @@ $count = mysqli_num_rows($result);
 
         <!-- inputbox -->
         <label class="inputBox">
+
+        <!-- profile -->
             <p>Profile</p>
-            <input type="text" id="option1Input" placeholder="Search...">
+            <input type="text" id="option1Input" placeholder="e.g. Web Development">
             <div id="dropdownFilterprofile"></div>
             <div id="tag-container"></div>
         </label>
+
+        <!-- location -->
         <label class="inputBox inputBoxlocation">
             <p>Location</p>
-            <input type="text" placeholder="e.g. Delhi" id="option2Input">
+            <input type="text" placeholder="e.g. Delhi" id="option2Input" onclick="showDropdown()" oninput="filterOptions()">
+            <!-- <div class="dropdown-contentLocation" id="dropdownoptionslocation"> -->
         </label>
+
+        <!-- date -->
         <label class="inputBox inputBoxDate">
             <p>Starting from (or after)</p>
             <input type="date" placeholder="Choose Date" id="option3Input">
         </label>
+
+        <!-- duration -->
         <label class="inputBox inputBoxDuration">
             <p>Max.duration(months)</p>
             <div class="dropdown">
@@ -271,5 +280,6 @@ $count = mysqli_num_rows($result);
     <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
     <!-- <script src="../../javaScripts/inputValidation.js"></script> -->
     <script src="../../javaScripts/profileFilterdropdown.js"></script>
+    <script src="../../javaScripts/dropdownForlocation.js"></script>
 </body>
 </html>
