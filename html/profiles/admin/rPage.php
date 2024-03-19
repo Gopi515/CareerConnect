@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/adminLogin.php");
-    }
+<?php
+session_start();
+if (!isset ($_SESSION['mail'])) {
+    header("Location: ../../LoginandRegister/adminLogin.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,87 @@
 </head>
 
 <?php
-    require '../../../dbconnect.php';
+require '../../../dbconnect.php';
+if (isset ($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $studentfilename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $studentfile = fopen($studentfilename, "r");
+
+        while (($studentgetData = fgetcsv($studentfile, 10000, ",")) !== FALSE) {
+            $studentsql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
+                values ('" . $studentgetData[0] . "','" . $studentgetData[1] . "','" . $studentgetData[2] . "')";
+            $studentresult = mysqli_query($conn, $studentsql);
+            if (!isset ($studentresult)) {
+                echo "<script type=\"text/javascript\">
+                    alert(\"Invalid File:Please Upload CSV File.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
+                    alert(\"CSV File has been successfully Imported.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            }
+        }
+
+        fclose($studentfile);
+    }
+}
+
+if (isset ($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $teacherfilename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $teacherfile = fopen($teacherfilename, "r");
+
+        while (($teachergetData = fgetcsv($teacherfile, 10000, ",")) !== FALSE) {
+            $teachersql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
+                values ('" . $teachergetData[0] . "','" . $teachergetData[1] . "','" . $teachergetData[2] . "')";
+            $teacherresult = mysqli_query($conn, $teachersql);
+            if (!isset ($teacherresult)) {
+                echo "<script type=\"text/javascript\">
+                    alert(\"Invalid File:Please Upload CSV File.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
+                    alert(\"CSV File has been successfully Imported.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            }
+        }
+
+        fclose($teacherfile);
+    }
+}
+
+if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $companyfilename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $companyfile = fopen($companyfilename, "r");
+
+        while (($companygetData = fgetcsv($companyfile, 10000, ",")) !== FALSE) {
+            $companysql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
+                values ('" . $companygetData[0] . "','" . $companygetData[1] . "','" . $companygetData[2] . "')";
+            $companyresult = mysqli_query($conn, $companysql);
+            if (!isset ($companyresult)) {
+                echo "<script type=\"text/javascript\">
+                    alert(\"Invalid File:Please Upload CSV File.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
+                    alert(\"CSV File has been successfully Imported.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            }
+        }
+
+        fclose($companyfile);
+    }
+}
 ?>
 
 <body>
@@ -101,19 +181,74 @@
         <div class="home-content">
             <span class="text">Register Page</span>
         </div>
+
+       <!-- Comapany Register  -->
         <div class="admin-Settings">
-            <a class="boxes CR" href="something.php">
-                <div>Company Register</div>
+            <a id="uploadLink" class="boxes CR" href="#">
+                <div onclick="openxlsxC()">Company Register</div>
                 <p>Mass register company using xlsx sheet</p>
             </a>
-            <a class="boxes SR" href="something.php">
-                <div>Student Register</div>
+            <form action="#" method="post" name="company_excel" enctype="multipart/form-data">
+                <div id="uploadModal" class="modal">
+                    <div class="modal-content">
+                        <div id="closemodal" onclick="closexlsxC()"><i class='bx bx-x'></i></div>
+                        <h2>Upload File</h2>
+                        <div id="dropArea">
+                            <p>Drag and drop file here or click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required>
+                            <label for="file" id="fileLabel">Choose File</label>
+                        </div>
+                        <div id="uploadResult"></div>
+                        <button type="submit" id="submit" name="company_mass_data">Upload</button>
+                        <span id="fileName"></span>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Student register -->
+            <a id="uploadLink" class="boxes CR" href="#">
+                <div onclick="openxlsxS()">Student Register</div>
                 <p>Mass register student using xlsx sheet</p>
             </a>
-            <a class="boxes TR" href="something.php">
-                <div>Teacher Register</div>
+            <form action="#" method="post" name="student_excel" enctype="multipart/form-data">
+                <div id="uploadModal" class="modal">
+                    <div class="modal-content">
+                        <div id="closemodal" onclick="closexlsxS()"><i class='bx bx-x'></i></div>
+                        <h2>Upload File</h2>
+                        <div id="dropArea">
+                            <p>Drag and drop file here or click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required>
+                            <label for="file" id="fileLabel">Choose File</label>
+                        </div>
+                        <div id="uploadResult"></div>
+                        <button type="submit" id="submit" name="student_mass_data">Upload</button>
+                        <span id="fileName"></span>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Teacher register -->
+            <a id="uploadLink" class="boxes CR" href="#">
+                <div onclick="openxlsxT()">Teacher Register</div>
                 <p>Mass register Teacher using xlsx sheet</p>
             </a>
+            <form action="#" method="post" name="teacher_excel" enctype="multipart/form-data">
+                <div id="uploadModal" class="modal">
+                    <div class="modal-content">
+                        <div id="closemodal" onclick="closexlsxT()"><i class='bx bx-x'></i></div>
+                        <h2>Upload File</h2>
+                        <div id="dropArea">
+                            <p>Drag and drop file here or click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required>
+                            <label for="file" id="fileLabel">Choose File</label>
+                        </div>
+                        <div id="uploadResult"></div>
+                        <button type="submit" id="submit" name="teacher_mass_data">Upload</button>
+                        <span id="fileName"></span>
+                    </div>
+                </div>
+            </form>
+
             <a class="boxes IR" href="registration/register.php">
                 <div>Individual Register</div>
                 <p>Enter Company, Student or Teacher one by one.</p>
@@ -125,6 +260,7 @@
     <script src="../../../javaScripts/sideBar.js"></script>
     <script src="../../../javaScripts/buttonPop.js"></script>
     <script src="../../../javaScripts/adminLogOut.js"></script>
+    <script src="../../../javaScripts/uploadFile.js"></script>
 </body>
 
 </html>
