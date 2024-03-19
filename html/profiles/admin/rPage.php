@@ -17,87 +17,90 @@ if (!isset ($_SESSION['mail'])) {
 </head>
 
 <?php
-require '../../../dbconnect.php';
-if (isset ($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $studentfilename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $studentfile = fopen($studentfilename, "r");
-
-        while (($studentgetData = fgetcsv($studentfile, 10000, ",")) !== FALSE) {
-            $studentsql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
-                values ('" . $studentgetData[0] . "','" . $studentgetData[1] . "','" . $studentgetData[2] . "')";
-            $studentresult = mysqli_query($conn, $studentsql);
-            if (!isset ($studentresult)) {
-                echo "<script type=\"text/javascript\">
+    require '../../../dbconnect.php';
+    if(isset($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        $filename=$_FILES["file"]["tmp_name"];    
+        if($_FILES["file"]["size"] > 0){
+            $file = fopen($filename, "r");
+            
+            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+                $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
+                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
+                $result = mysqli_query($conn, $sql);
+                if(!isset($result)){
+                    echo "<script type=\"text/javascript\">
                     alert(\"Invalid File:Please Upload CSV File.\");
                     window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
+                    </script>";    
+                }
+                else {
+                    echo "<script type=\"text/javascript\">
                     alert(\"CSV File has been successfully Imported.\");
                     window.location = \"rPage.php\"
                     </script>";
+                }
             }
+          
+            fclose($file);  
         }
-
-        fclose($studentfile);
     }
-}
 
-if (isset ($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $teacherfilename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $teacherfile = fopen($teacherfilename, "r");
-
-        while (($teachergetData = fgetcsv($teacherfile, 10000, ",")) !== FALSE) {
-            $teachersql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
-                values ('" . $teachergetData[0] . "','" . $teachergetData[1] . "','" . $teachergetData[2] . "')";
-            $teacherresult = mysqli_query($conn, $teachersql);
-            if (!isset ($teacherresult)) {
-                echo "<script type=\"text/javascript\">
+    if(isset($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        $filename=$_FILES["file"]["tmp_name"];    
+        if($_FILES["file"]["size"] > 0){
+            $file = fopen($filename, "r");
+            
+            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+                $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
+                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
+                $result = mysqli_query($conn, $sql);
+                if(!isset($result)){
+                    echo "<script type=\"text/javascript\">
                     alert(\"Invalid File:Please Upload CSV File.\");
                     window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
+                    </script>";    
+                }
+                else {
+                    echo "<script type=\"text/javascript\">
                     alert(\"CSV File has been successfully Imported.\");
                     window.location = \"rPage.php\"
                     </script>";
+                }
             }
+          
+            fclose($file);  
         }
-
-        fclose($teacherfile);
     }
-}
 
-if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $companyfilename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $companyfile = fopen($companyfilename, "r");
-
-        while (($companygetData = fgetcsv($companyfile, 10000, ",")) !== FALSE) {
-            $companysql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
-                values ('" . $companygetData[0] . "','" . $companygetData[1] . "','" . $companygetData[2] . "')";
-            $companyresult = mysqli_query($conn, $companysql);
-            if (!isset ($companyresult)) {
-                echo "<script type=\"text/javascript\">
+    if(isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        $filename=$_FILES["file"]["tmp_name"];    
+        if($_FILES["file"]["size"] > 0){
+            $file = fopen($filename, "r");
+            
+            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+                $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
+                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
+                $result = mysqli_query($conn, $sql);
+                if(!isset($result)){
+                    echo "<script type=\"text/javascript\">
                     alert(\"Invalid File:Please Upload CSV File.\");
                     window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
+                    </script>";    
+                }
+                else {
+                    echo "<script type=\"text/javascript\">
                     alert(\"CSV File has been successfully Imported.\");
                     window.location = \"rPage.php\"
                     </script>";
+                }
             }
+          
+            fclose($file);  
         }
-
-        fclose($companyfile);
-    }
-}
+    } 
 ?>
 
 <body>
@@ -186,7 +189,7 @@ if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST")
         <div class="admin-Settings">
             <a id="uploadLink" class="boxes CR" href="#">
                 <div onclick="openxlsxC()">Company Register</div>
-                <p>Mass register company using xlsx sheet</p>
+                <p>Mass register company using CSV file</p>
             </a>
             <form action="#" method="post" name="company_excel" enctype="multipart/form-data">
                 <div id="uploadModal" class="modal">
@@ -208,7 +211,7 @@ if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST")
             <!-- Student register -->
             <a id="uploadLink" class="boxes CR" href="#">
                 <div onclick="openxlsxS()">Student Register</div>
-                <p>Mass register student using xlsx sheet</p>
+                <p>Mass register student using CSV file</p>
             </a>
             <form action="#" method="post" name="student_excel" enctype="multipart/form-data">
                 <div id="uploadModal" class="modal">
@@ -230,7 +233,7 @@ if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST")
             <!-- Teacher register -->
             <a id="uploadLink" class="boxes CR" href="#">
                 <div onclick="openxlsxT()">Teacher Register</div>
-                <p>Mass register Teacher using xlsx sheet</p>
+                <p>Mass register Teacher using CSV file</p>
             </a>
             <form action="#" method="post" name="teacher_excel" enctype="multipart/form-data">
                 <div id="uploadModal" class="modal">
