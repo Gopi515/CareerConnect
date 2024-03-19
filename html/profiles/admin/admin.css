@@ -379,6 +379,119 @@
     transform: translateY(0);
 }
 
+/*dropxlsx*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 150;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    text-align: right;
+    border-radius: 25px;
+}
+
+#closemodal {
+    position: absolute;
+    top: 235px;
+    right: 388px;
+    background-color: var(--fourth-col);
+    border-radius: var(--border-50);
+    border: 3px var(--first-col) solid;
+    padding: 1px 7px;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--first-col);
+    transition: all 0.3s ease-in-out;
+}
+
+#closemodal:hover,
+#closemodal:focus {
+    background-color: rgb(255, 61, 61);
+    color: var(--first-col);
+    border-radius: var(--border-50);
+}
+
+/* Modal header */
+.modal-content h2 {
+    color: var(--fourth-col);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Drop area styling */
+#dropArea {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#dropArea p {
+    opacity: 0.7;
+}
+
+/* Input file styling */
+#file {
+    display: none;
+}
+
+#fileLabel {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--fourth-col);
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--fourth-col);
+    margin-top: 20px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+#fileLabel:hover {
+    background-color: var(--fourth-col);
+    border-radius: 15px;
+    color: var(--first-col);
+}
+
+/* Upload result message */
+#uploadResult {
+    margin-bottom: 20px;
+}
+
+/* Upload button styling */
+#submit {
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#submit:hover {
+    background-color: var(--sixth-col);
+    box-shadow: var(--box-shadow);
+}
+
+
 /*LogOut*/
 .blur-background {
     position: fixed;

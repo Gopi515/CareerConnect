@@ -90,3 +90,21 @@ function closeLogOut() {
   document.getElementById("logOutPop").style.display = "none";
   document.getElementById("blurBackground").style.display = "none";
 }
+function openxlsxC() {
+  document.getElementById("uploadModal").style.display = "block";
+}
+function closexlsxC() {
+  document.getElementById("uploadModal").style.display = "none";
+}
+function openxlsxS() {
+  document.getElementById("uploadModal").style.display = "block";
+}
+function closexlsxS() {
+  document.getElementById("uploadModal").style.display = "none";
+}
+function openxlsxT() {
+  document.getElementById("uploadModal").style.display = "block";
+}
+function closexlsxT() {
+  document.getElementById("uploadModal").style.display = "none";
+}
