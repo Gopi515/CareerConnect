@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!isset ($_SESSION['mail'])) {
-    header("Location: ../../LoginandRegister/adminLogin.php");
-}
+    session_start();
+    if (!isset ($_SESSION['mail'])) {
+        header("Location: ../../LoginandRegister/adminLogin.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,87 +17,143 @@ if (!isset ($_SESSION['mail'])) {
 </head>
 
 <?php
-require '../../../dbconnect.php';
-if (isset ($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    require '../../../dbconnect.php';
+    if(isset($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        $filename = $_FILES["file"]["tmp_name"];
+        $file_extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
-    $filename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $file = fopen($filename, "r");
+        // Check if the file extension is CSV
+        if($file_extension === 'csv'){
+            if($_FILES["file"]["size"] > 0){
+                $file = fopen($filename, "r");
 
-        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-            $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
-                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
-            $result = mysqli_query($conn, $sql);
-            if (!isset ($result)) {
-                echo "<script type=\"text/javascript\">
-                    alert(\"Invalid File:Please Upload CSV File.\");
-                    window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"rPage.php\"
-                    </script>";
+                while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+
+                    $username = $getData[0];
+                    $password = $getData[1];
+                    $HASH = password_hash($password, PASSWORD_DEFAULT);
+                    $email = $getData[2];
+
+                    $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
+                    values ('$username','$HASH','$email')";
+                    $result = mysqli_query($conn, $sql);
+
+                    if(!isset($result)){
+                        echo "<script type=\"text/javascript\">
+                        alert(\"Invalid File:Please Upload CSV File.\");
+                        window.location = \"rPage.php\"
+                        </script>";    
+                    }
+                    else {
+                        echo "<script type=\"text/javascript\">
+                        alert(\"CSV File has been successfully Imported.\");
+                        window.location = \"rPage.php\"
+                        </script>";
+                    }
+                }
+
+                fclose($file);  
             }
+        } else {
+            // Display error message for invalid file type
+            echo "<script type=\"text/javascript\">
+            alert(\"Invalid File Type: Please Upload CSV File.\");
+            window.location = \"rPage.php\"
+            </script>";
         }
-
-        fclose($file);
     }
-}
 
-if (isset ($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $filename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $file = fopen($filename, "r");
+    if(isset($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        $filename = $_FILES["file"]["tmp_name"];
+        $file_extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
-        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-            $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
-                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
-            $result = mysqli_query($conn, $sql);
-            if (!isset ($result)) {
-                echo "<script type=\"text/javascript\">
-                    alert(\"Invalid File:Please Upload CSV File.\");
-                    window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"rPage.php\"
-                    </script>";
+        // Check if the file extension is CSV
+        if($file_extension === 'csv'){
+            if($_FILES["file"]["size"] > 0){
+                $file = fopen($filename, "r");
+
+                while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+
+                    $username = $getData[0];
+                    $password = $getData[1];
+                    $HASH = password_hash($password, PASSWORD_DEFAULT);
+                    $email = $getData[2];
+
+                    $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
+                    values ('$username','$HASH','$email')";
+                    $result = mysqli_query($conn, $sql);
+
+                    if(!isset($result)){
+                        echo "<script type=\"text/javascript\">
+                        alert(\"Invalid File:Please Upload CSV File.\");
+                        window.location = \"rPage.php\"
+                        </script>";    
+                    }
+                    else {
+                        echo "<script type=\"text/javascript\">
+                        alert(\"CSV File has been successfully Imported.\");
+                        window.location = \"rPage.php\"
+                        </script>";
+                    }
+                }
+
+                fclose($file);  
             }
+        } else {
+            // Display error message for invalid file type
+            echo "<script type=\"text/javascript\">
+            alert(\"Invalid File Type: Please Upload CSV File.\");
+            window.location = \"rPage.php\"
+            </script>";
         }
-
-        fclose($file);
     }
-}
+ 
 
-if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
+        $filename = $_FILES["file"]["tmp_name"];
+        $file_extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 
-    $filename = $_FILES["file"]["tmp_name"];
-    if ($_FILES["file"]["size"] > 0) {
-        $file = fopen($filename, "r");
+        // Check if the file extension is CSV
+        if($file_extension === 'csv'){
+            if($_FILES["file"]["size"] > 0){
+                $file = fopen($filename, "r");
 
-        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-            $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
-                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
-            $result = mysqli_query($conn, $sql);
-            if (!isset ($result)) {
-                echo "<script type=\"text/javascript\">
-                    alert(\"Invalid File:Please Upload CSV File.\");
-                    window.location = \"rPage.php\"
-                    </script>";
-            } else {
-                echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"rPage.php\"
-                    </script>";
+                while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+
+                    $username = $getData[0];
+                    $password = $getData[1];
+                    $HASH = password_hash($password, PASSWORD_DEFAULT);
+                    $email = $getData[2];
+
+                    $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
+                    values ('$username','$HASH','$email')";
+                    $result = mysqli_query($conn, $sql);
+
+                    if(!isset($result)){
+                        echo "<script type=\"text/javascript\">
+                        alert(\"Invalid File:Please Upload CSV File.\");
+                        window.location = \"rPage.php\"
+                        </script>";    
+                    }
+                    else {
+                        echo "<script type=\"text/javascript\">
+                        alert(\"CSV File has been successfully Imported.\");
+                        window.location = \"rPage.php\"
+                        </script>";
+                    }
+                }
+
+                fclose($file);  
             }
+        } else {
+            // Display error message for invalid file type
+            echo "<script type=\"text/javascript\">
+            alert(\"Invalid File Type: Please Upload CSV File.\");
+            window.location = \"rPage.php\"
+            </script>";
         }
-
-        fclose($file);
     }
-}
 ?>
 
 <body>
