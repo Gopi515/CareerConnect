@@ -1,41 +1,6 @@
-// Handle file upload
-const dropArea = document.getElementById("dropArea");
+// Handle file upload and submit form on button click
 const fileInput = document.getElementById("fileInput");
 const form = document.forms.company_excel;
-
-["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, preventDefaults, false);
-});
-
-function preventDefaults(e) {
-  e.preventDefault();
-  e.stopPropagation();
-}
-
-["dragenter", "dragover"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, highlight, false);
-});
-
-["dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, unhighlight, false);
-});
-
-function highlight() {
-  dropArea.classList.add("highlight");
-}
-
-function unhighlight() {
-  dropArea.classList.remove("highlight");
-}
-
-dropArea.addEventListener("drop", handleDrop, false);
-
-function handleDrop(e) {
-  const dt = e.dataTransfer;
-  const files = dt.files;
-
-  handleFiles(files);
-}
 
 fileInput.addEventListener("change", function () {
   const files = this.files;
@@ -65,8 +30,3 @@ function uploadFile(file) {
 document.getElementById("submitBtn").addEventListener("click", function () {
   form.submit();
 });
-
-// Close modal function
-function closexlsxC() {
-  document.getElementById("uploadModal").style.display = "none";
-}

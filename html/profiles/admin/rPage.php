@@ -17,90 +17,87 @@ if (!isset ($_SESSION['mail'])) {
 </head>
 
 <?php
-    require '../../../dbconnect.php';
-    if(isset($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        $filename=$_FILES["file"]["tmp_name"];    
-        if($_FILES["file"]["size"] > 0){
-            $file = fopen($filename, "r");
-            
-            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
-                $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
-                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
-                $result = mysqli_query($conn, $sql);
-                if(!isset($result)){
-                    echo "<script type=\"text/javascript\">
-                    alert(\"Invalid File:Please Upload CSV File.\");
-                    window.location = \"rPage.php\"
-                    </script>";    
-                }
-                else {
-                    echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"rPage.php\"
-                    </script>";
-                }
-            }
-          
-            fclose($file);  
-        }
-    }
+require '../../../dbconnect.php';
+if (isset ($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if(isset($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        $filename=$_FILES["file"]["tmp_name"];    
-        if($_FILES["file"]["size"] > 0){
-            $file = fopen($filename, "r");
-            
-            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
-                $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
-                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
-                $result = mysqli_query($conn, $sql);
-                if(!isset($result)){
-                    echo "<script type=\"text/javascript\">
-                    alert(\"Invalid File:Please Upload CSV File.\");
-                    window.location = \"rPage.php\"
-                    </script>";    
-                }
-                else {
-                    echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"rPage.php\"
-                    </script>";
-                }
-            }
-          
-            fclose($file);  
-        }
-    }
+    $filename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $file = fopen($filename, "r");
 
-    if(isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        $filename=$_FILES["file"]["tmp_name"];    
-        if($_FILES["file"]["size"] > 0){
-            $file = fopen($filename, "r");
-            
-            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
-                $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
-                values ('".$getData[0]."','".$getData[1]."','".$getData[2]."')";
-                $result = mysqli_query($conn, $sql);
-                if(!isset($result)){
-                    echo "<script type=\"text/javascript\">
+        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`) 
+                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
+            $result = mysqli_query($conn, $sql);
+            if (!isset ($result)) {
+                echo "<script type=\"text/javascript\">
                     alert(\"Invalid File:Please Upload CSV File.\");
                     window.location = \"rPage.php\"
-                    </script>";    
-                }
-                else {
-                    echo "<script type=\"text/javascript\">
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
                     alert(\"CSV File has been successfully Imported.\");
                     window.location = \"rPage.php\"
                     </script>";
-                }
             }
-          
-            fclose($file);  
         }
-    } 
+
+        fclose($file);
+    }
+}
+
+if (isset ($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $filename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $file = fopen($filename, "r");
+
+        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`) 
+                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
+            $result = mysqli_query($conn, $sql);
+            if (!isset ($result)) {
+                echo "<script type=\"text/javascript\">
+                    alert(\"Invalid File:Please Upload CSV File.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
+                    alert(\"CSV File has been successfully Imported.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            }
+        }
+
+        fclose($file);
+    }
+}
+
+if (isset ($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $filename = $_FILES["file"]["tmp_name"];
+    if ($_FILES["file"]["size"] > 0) {
+        $file = fopen($filename, "r");
+
+        while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`) 
+                values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "')";
+            $result = mysqli_query($conn, $sql);
+            if (!isset ($result)) {
+                echo "<script type=\"text/javascript\">
+                    alert(\"Invalid File:Please Upload CSV File.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            } else {
+                echo "<script type=\"text/javascript\">
+                    alert(\"CSV File has been successfully Imported.\");
+                    window.location = \"rPage.php\"
+                    </script>";
+            }
+        }
+
+        fclose($file);
+    }
+}
 ?>
 
 <body>
@@ -192,14 +189,13 @@ if (!isset ($_SESSION['mail'])) {
                 <p>Mass register company using CSV file</p>
             </a>
             <form action="#" method="post" name="company_excel" enctype="multipart/form-data">
-                <div id="uploadModal" class="modal">
+                <div id="uploadModalC" class="modal">
                     <div class="modal-content">
                         <div id="closemodal" onclick="closexlsxC()"><i class='bx bx-x'></i></div>
-                        <h2>Upload File</h2>
+                        <h2>Upload Company File</h2>
                         <div id="dropArea">
-                            <p>Drag and drop file here or click choose file button to browse</p>
-                            <input type="file" name="file" id="file" class="input-large" required>
-                            <label for="file" id="fileLabel">Choose File</label>
+                            <p>Click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
                         </div>
                         <div id="uploadResult"></div>
                         <button type="submit" id="submit" name="company_mass_data">Upload</button>
@@ -214,14 +210,13 @@ if (!isset ($_SESSION['mail'])) {
                 <p>Mass register student using CSV file</p>
             </a>
             <form action="#" method="post" name="student_excel" enctype="multipart/form-data">
-                <div id="uploadModal" class="modal">
+                <div id="uploadModalS" class="modal">
                     <div class="modal-content">
                         <div id="closemodal" onclick="closexlsxS()"><i class='bx bx-x'></i></div>
-                        <h2>Upload File</h2>
+                        <h2>Upload Student File</h2>
                         <div id="dropArea">
-                            <p>Drag and drop file here or click choose file button to browse</p>
-                            <input type="file" name="file" id="file" class="input-large" required>
-                            <label for="file" id="fileLabel">Choose File</label>
+                            <p>Click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
                         </div>
                         <div id="uploadResult"></div>
                         <button type="submit" id="submit" name="student_mass_data">Upload</button>
@@ -236,14 +231,13 @@ if (!isset ($_SESSION['mail'])) {
                 <p>Mass register Teacher using CSV file</p>
             </a>
             <form action="#" method="post" name="teacher_excel" enctype="multipart/form-data">
-                <div id="uploadModal" class="modal">
+                <div id="uploadModalT" class="modal">
                     <div class="modal-content">
                         <div id="closemodal" onclick="closexlsxT()"><i class='bx bx-x'></i></div>
-                        <h2>Upload File</h2>
+                        <h2>Upload Teacher File</h2>
                         <div id="dropArea">
-                            <p>Drag and drop file here or click choose file button to browse</p>
-                            <input type="file" name="file" id="file" class="input-large" required>
-                            <label for="file" id="fileLabel">Choose File</label>
+                            <p>Click choose file button to browse</p>
+                            <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
                         </div>
                         <div id="uploadResult"></div>
                         <button type="submit" id="submit" name="teacher_mass_data">Upload</button>

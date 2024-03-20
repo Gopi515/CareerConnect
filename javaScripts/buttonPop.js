@@ -91,20 +91,20 @@ function closeLogOut() {
   document.getElementById("blurBackground").style.display = "none";
 }
 function openxlsxC() {
-  document.getElementById("uploadModal").style.display = "block";
+  document.getElementById("uploadModalC").style.display = "block";
 }
 function closexlsxC() {
-  document.getElementById("uploadModal").style.display = "none";
+  document.getElementById("uploadModalC").style.display = "none";
 }
 function openxlsxS() {
-  document.getElementById("uploadModal").style.display = "block";
+  document.getElementById("uploadModalS").style.display = "block";
 }
 function closexlsxS() {
-  document.getElementById("uploadModal").style.display = "none";
+  document.getElementById("uploadModalS").style.display = "none";
 }
 function openxlsxT() {
-  document.getElementById("uploadModal").style.display = "block";
+  document.getElementById("uploadModalT").style.display = "block";
 }
 function closexlsxT() {
-  document.getElementById("uploadModal").style.display = "none";
+  document.getElementById("uploadModalT").style.display = "none";
 }
