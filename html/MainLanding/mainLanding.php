@@ -20,8 +20,7 @@ header("Content-Type: text/html");
 
             <!-- the login -->
             <div class="navbar-button" onclick="openLogIn()">Log in</div>
-
-            <div class="overlay" id="overlay"></div>
+            <div class="overlay" id="overlay" style="display: none;"></div>
             <div class="logInNav" id="logInNav">
                 <div class="LoginInterface">
                     <div class="Tlogin">
@@ -55,6 +54,7 @@ header("Content-Type: text/html");
 
             <!-- the admin page-->
             <div class="navbar-button" onclick="openRegIn()">Register your college</div>
+            <div class="overlay" id="overlay" style="display: none;"></div>
             <div id="RegisterNav">
                 <div class="twooptions">
                     <div class="regop optionone">
