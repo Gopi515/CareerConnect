@@ -85,16 +85,17 @@ html {
   box-shadow: var(--box-shadow);
 }
 
-.navbar-buttons .overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: none;
+  z-index: 50;
 }
+
 /* the Register inner */
 #RegisterNav {
   display: none;
@@ -110,7 +111,7 @@ html {
   align-items: center;
   background-color: var(--second-col);
   transition: all 0.3s ease-in-out;
-  z-index: 5;
+  z-index: 100;
 }
 
 .twooptions {
@@ -163,6 +164,7 @@ html {
   align-items: center;
   background-color: var(--second-col);
   transition: all 0.3s ease-in-out;
+  z-index: 100;
 }
 
 .logInNav p {
@@ -255,11 +257,13 @@ html {
   text-align: center;
   padding-top: 6%;
 }
+
 .welcomeNote h1 {
   font-size: 50px;
   font-weight: 700;
   color: var(--fourth-col);
 }
+
 .welcomeNote p {
   padding-top: 1%;
   font-size: 23px;
@@ -273,11 +277,13 @@ html {
   text-align: center;
   margin-top: 10%;
 }
+
 .servicesContainer h2 {
   font-size: 30px;
   font-weight: 700;
   color: var(--fourth-col);
 }
+
 .servicesContainer .serviceAll {
   margin-top: 8%;
   text-align: left;
@@ -290,11 +296,13 @@ html {
   color: var(--third-col);
   margin-left: 3%;
 }
+
 .serviceAll .servicecardsAll {
   display: flex;
   justify-content: space-around;
   margin-top: 2%;
 }
+
 .servicecardsAll .serviceCard {
   width: 30%;
   padding: 20px;
@@ -302,41 +310,45 @@ html {
   border-radius: 20px;
   box-shadow: var(--box-shadow);
 }
+
 .serviceCard .imagePart {
   width: 350px;
   height: 300px;
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
+
 .serviceCard .imagePart img {
   width: 150px;
   height: 200px;
   margin-top: 13%;
 }
+
 .serviceCard .textPart {
   width: 350px;
   height: 150px;
   margin: 0 auto;
 }
+
 .serviceCard .textPart h3 {
   color: var(--fourth-col);
   padding-top: 6%;
 }
+
 .serviceCard .textPart p {
   color: var(--third-col);
   padding-top: 2%;
   font-weight: 600;
 }
+
 .serviceAll .serviceButtons {
   margin: 5% auto;
   width: 400px;
@@ -344,12 +356,14 @@ html {
   justify-content: center;
   padding: 10px;
 }
+
 .serviceButtons button {
   width: 120px;
   height: 37px;
   margin: 10px;
   cursor: pointer;
 }
+
 .serviceButtons .serviceRegister {
   background-color: var(--fourth-col);
   color: var(--first-col);
@@ -364,6 +378,7 @@ html {
   box-shadow: 0 0 10px var(--fourth-col);
   transform: scale(1.05);
 }
+
 .serviceButtons .serviceLogin {
   background-color: transparent;
   color: var(--fourth-col);
@@ -405,20 +420,24 @@ html {
   flex-direction: column;
   padding-top: 3%;
 }
+
 .companyMarquee h2 {
   font-size: 25px;
   font-weight: 700;
   color: var(--third-col);
 }
+
 .companyMarquee .companyMarqueeslide {
   width: 900px;
   height: 150px;
   margin-top: 50px;
 }
+
 .companyMarqueeslide img {
   width: 170px;
   padding: 50px;
 }
+
 .universityMarquee {
   margin-top: 5%;
 }
@@ -427,9 +446,11 @@ html {
   width: 170px;
   padding: 50px;
 }
+
 .footerMainlanding {
   margin-top: 200px;
 }
+
 /*------landing page------*/
 
 /* navbar */
@@ -713,11 +734,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -727,7 +748,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -791,6 +812,7 @@ footer {
 .filterContainer .inputBoxDuration {
   top: 74%;
 }
+
 .inputBox #dropdownFilterprofile {
   width: 15rem;
   height: 200px;
@@ -802,6 +824,7 @@ footer {
   z-index: 1;
   border-radius: 0px 0px 20px 20px;
 }
+
 .inputBox #dropdownFilterprofile .dropdown-item {
   cursor: pointer;
   color: var(--last-col);
@@ -809,9 +832,11 @@ footer {
   display: block;
   border-radius: 5px;
 }
+
 .inputBox #dropdownFilterprofile .dropdown-item:hover {
   background-color: var(--seventh-col);
 }
+
 .inputBox #tag-container {
   display: flex;
   flex-wrap: wrap;
@@ -821,6 +846,7 @@ footer {
   border-radius: 10px;
   border: 1px solid var(--third-col);
 }
+
 #tag-container .tag {
   background-color: #f0f0f0;
   border-radius: 5px;
@@ -829,9 +855,11 @@ footer {
   display: flex;
   align-items: center;
 }
+
 #tag-container .tag span {
   margin-right: 5px;
 }
+
 #tag-container .tag button {
   background-color: transparent;
   border: none;
@@ -1539,26 +1567,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1578,31 +1597,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2407,9 +2414,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
