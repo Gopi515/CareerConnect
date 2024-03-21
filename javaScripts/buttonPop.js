@@ -1,15 +1,23 @@
 function openLogIn() {
+  document.getElementById("overlay").style.display = "block";
   document.getElementById("logInNav").style.display = "block";
 }
+
 function closeLogIn() {
+  document.getElementById("overlay").style.display = "none";
   document.getElementById("logInNav").style.display = "none";
 }
+
 function openRegIn() {
+  document.getElementById("overlay").style.display = "block";
   document.getElementById("RegisterNav").style.display = "block";
 }
+
 function closeRegIn() {
+  document.getElementById("overlay").style.display = "none";
   document.getElementById("RegisterNav").style.display = "none";
 }
+
 function openEduDetails() {
   document.getElementById("eduModal").style.display = "block";
 }

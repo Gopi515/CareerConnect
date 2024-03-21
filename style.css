@@ -56,6 +56,7 @@ html {
   background-color: var(--second-col);
   padding: 15px;
   top: 0px;
+  z-index: 999;
 }
 
 .navbar-brand {
@@ -84,6 +85,16 @@ html {
   box-shadow: var(--box-shadow);
 }
 
+.navbar-buttons .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+}
 /* the Register inner */
 #RegisterNav {
   display: none;
@@ -232,6 +243,193 @@ html {
   border: 3px var(--first-col) solid;
 }
 
+.mainlangidingContent {
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+}
+
+/* welcomenote */
+.mainlangidingContent .welcomeNote {
+  width: 100%;
+  text-align: center;
+  padding-top: 6%;
+}
+.welcomeNote h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: var(--fourth-col);
+}
+.welcomeNote p {
+  padding-top: 1%;
+  font-size: 23px;
+  color: var(--third-col);
+  font-weight: 600;
+}
+
+/* service listing */
+
+.servicesContainer {
+  text-align: center;
+  margin-top: 10%;
+}
+.servicesContainer h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--fourth-col);
+}
+.servicesContainer .serviceAll {
+  margin-top: 8%;
+  text-align: left;
+}
+
+/* studen service */
+.servicesContainer .serviceStudent h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--third-col);
+  margin-left: 3%;
+}
+.serviceAll .servicecardsAll {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+.servicecardsAll .serviceCard {
+  width: 30%;
+  padding: 20px;
+  background-color: var(--second-col);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+}
+.serviceCard .imagePart {
+  width: 350px;
+  height: 300px;
+  border: none;
+  border-radius: 15px;
+  margin: 0 auto;
+  background: linear-gradient(
+    -45deg,
+    var(--fourth-col),
+    var(--third-col),
+    var(--third-col),
+    var(--fourth-col)
+  );
+  display: flex;
+  justify-content: center;
+}
+.serviceCard .imagePart img {
+  width: 150px;
+  height: 200px;
+  margin-top: 13%;
+}
+.serviceCard .textPart {
+  width: 350px;
+  height: 150px;
+  margin: 0 auto;
+}
+.serviceCard .textPart h3 {
+  color: var(--fourth-col);
+  padding-top: 6%;
+}
+.serviceCard .textPart p {
+  color: var(--third-col);
+  padding-top: 2%;
+  font-weight: 600;
+}
+.serviceAll .serviceButtons {
+  margin: 5% auto;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.serviceButtons button {
+  width: 120px;
+  height: 37px;
+  margin: 10px;
+  cursor: pointer;
+}
+.serviceButtons .serviceRegister {
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.serviceButtons .serviceRegister:hover {
+  box-shadow: 0 0 10px var(--fourth-col);
+  transform: scale(1.05);
+}
+.serviceButtons .serviceLogin {
+  background-color: transparent;
+  color: var(--fourth-col);
+  border: 2px solid var(--fourth-col);
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.serviceButtons .serviceLogin:hover {
+  box-shadow: 0 0 10px var(--fourth-col);
+  transform: scale(1.05);
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  border: none;
+}
+
+/* company service */
+.servicesContainer .serviceCompany h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--third-col);
+  margin-left: 3%;
+}
+
+/* university service */
+.servicesContainer .serviceUniversity h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--third-col);
+  margin-left: 3%;
+}
+
+.companyMarquee {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 3%;
+}
+.companyMarquee h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--third-col);
+}
+.companyMarquee .companyMarqueeslide {
+  width: 900px;
+  height: 150px;
+  margin-top: 50px;
+}
+.companyMarqueeslide img {
+  width: 170px;
+  padding: 50px;
+}
+.universityMarquee {
+  margin-top: 5%;
+}
+
+.universityMarquee img {
+  width: 170px;
+  padding: 50px;
+}
+.footerMainlanding {
+  margin-top: 200px;
+}
 /*------landing page------*/
 
 /* navbar */
