@@ -2574,6 +2574,17 @@ input::-webkit-inner-spin-button {
   margin-bottom: 100px;
 }
 
+.nexti-btn {
+  font-size: 23px;
+  font-weight: 500;
+  /* border-radius: 20px; */
+  padding: 1rem 2.5rem;
+  margin-top: 45px;
+  margin-left: 920px;
+  margin-bottom: 50px;
+}
+
+
 /* ---------internship question--------- */
 .interQuestionhead {
   font-size: 40px;
