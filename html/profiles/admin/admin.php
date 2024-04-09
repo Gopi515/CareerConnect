@@ -1,8 +1,21 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/adminLogin.php");
+<?php
+session_start();
+if (!isset($_SESSION['mail'])) {
+    header("Location: ../../LoginandRegister/adminLogin.php");
+}
+
+$initials = '';
+if (isset($_SESSION['user_name'])) {
+    $username = $_SESSION['user_name'];
+    // Extracting initials
+    $words = explode(' ', $username);
+    foreach ($words as $word) {
+        $initials .= $word[0];
     }
+} else {
+    // Handle error if session is not working
+    echo "<script>alert('Error: Session is not working.')</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +30,7 @@
 </head>
 
 <?php
-    require '../../../dbconnect.php';
+require '../../../dbconnect.php';
 ?>
 
 <body>
@@ -65,13 +78,13 @@
             </li>
             <li>
                 <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="/assets/image.png" alt="profileImg">
+                    <div class="profile-content">                        
+                        <div class="logo"><?php echo strtoupper($initials); ?></div>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">
                         <?php
-                        if (isset ($_SESSION['user_name'])) {
+                        if (isset($_SESSION['user_name'])) {
                             $username = $_SESSION['user_name'];
                         } else {
                             echo "<script>alert('Error: Session is not working.')</script>";
