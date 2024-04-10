@@ -16,38 +16,39 @@
 </head>
 
 <?php
-session_start();
-require '../../dbconnect.php';
+    session_start();
+    require '../../dbconnect.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $collegeId = $_POST['collegeId'];
-    $collegeName = $_POST['collegeName'];
-    $adminpassword = $_POST['adminpassword'];
-    $confirmpassword = $_POST['confirmpassword'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $collegeId = $_POST['collegeId'];
+        $collegeName = $_POST['collegeName'];
+        $adminpassword = $_POST['adminpassword'];
+        $confirmpassword = $_POST['confirmpassword'];
 
-    if ($adminpassword == $confirmpassword) {
-        $HASH = password_hash($adminpassword, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `admin` (`user_name`, `email`, `college_id`, `college_name`, `adminpass`) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssiss", $username, $email, $collegeId, $collegeName, $HASH);
-        mysqli_stmt_execute($stmt);
+        if ($adminpassword == $confirmpassword) {
+            $HASH = password_hash($adminpassword, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `admin` (`user_name`, `email`, `college_id`, `college_name`, `adminpass`) VALUES (?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "ssiss", $username, $email, $collegeId, $collegeName, $HASH);
+            mysqli_stmt_execute($stmt);
 
-        if ($stmt) {
-            $_SESSION['mail'] = $email;
-        }
+            if ($stmt) {
+                $_SESSION['mail'] = $email;
+                $_SESSION['user_name'] = $username;
+            }
 
-        if (mysqli_stmt_affected_rows($stmt) > 0) {
-            header("location: ../profiles/admin/admin.php");
-            exit();
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                header("location: ../profiles/admin/admin.php");
+                exit();
+            } else {
+                echo "<script>alert('Error: Admin registration failed.');</script>";
+            }
         } else {
-            echo "<script>alert('Error: Admin registration failed.');</script>";
+            echo "<script>alert('Error: Password and password confirmation do not match.');</script>";
         }
-    } else {
-        echo "<script>alert('Error: Password and password confirmation do not match.');</script>";
     }
-}
 ?>
 
 
