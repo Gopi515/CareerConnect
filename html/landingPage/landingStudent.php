@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../LoginandRegister/studentLogin.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['mail'])) {
+  header("Location: ../LoginandRegister/studentLogin.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +33,7 @@
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
                                 <a href="../profiles/student/student.php">Edit Profile Details</a>
+                                <a href="../profiles/student/resume.php">Resume/CV builder</a>
                                 <a href="../Internship/appliedInternship.php">Applied Internship</a>
                                 <a href="../Job/appliedJob.php">Applied Job</a>
                                 <a onclick="openLogOut()">Log Out</a>
