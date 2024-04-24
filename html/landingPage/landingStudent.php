@@ -33,7 +33,7 @@ if (!isset($_SESSION['mail'])) {
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="../profiles/student/student.php">Create Profile</a>
                                 <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
-                                <a href="../profiles/student/student.php">Edit Profile Details</a>
+                                <a href="../profiles/student/updateStudentDetails.php">Update Profile</a>
                                 <a href="../profiles/student/resume.php">Resume/CV builder</a>
                                 <a href="../Internship/appliedInternship.php">Applied Internship</a>
                                 <a href="../Job/appliedJob.php">Applied Job</a>
