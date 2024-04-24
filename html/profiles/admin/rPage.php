@@ -185,15 +185,14 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                 <div class="icon-link">
                     <a href="#">
                         <i class='bx bx-collection'></i>
-                        <span class="link_name">Category</span>
+                        <span class="link_name">Lists</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Category</a></li>
-                    <li><a href="something.php">1st one</a></li>
-                    <li><a href="something.php">2nd one</a></li>
-                    <li><a href="something.php">3rd one</a></li>
+                    <li><a href="https://example.com/">Student's List</a></li>
+                    <li><a href="https://example.com/">Teacher's List</a></li>
+                    <li><a href="https://example.com/">Company's List</a></li>
                 </ul>
             </li>
 
