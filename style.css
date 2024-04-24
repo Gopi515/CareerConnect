@@ -551,11 +551,94 @@ html {
   display: inline-flex;
   width: 30%;
   height: 85%;
-  background: var(--fourth-col);
+  background: #87c2f8;
   margin: 10px;
-  border-radius: 2rem;
+  border-radius: 10px;
+  padding: 15px 15px;
 }
-
+.swiper-slide .cards .cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.swiper-slide .cards .imageCard {
+  width: 94%;
+  height: 165px;
+  margin-top: 10px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide .cards .imageCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide .cards .infos {
+  margin-top: 15px;
+  color: var(--first-col);
+}
+.swiper-slide .cards .infos .activeHire {
+  display: flex;
+  margin-left: 14px;
+  width: 135px;
+  justify-content: space-around;
+  border: 2px solid var(--fourth-col);
+  border-radius: 5px;
+  font-size: 13px;
+}
+.swiper-slide .cards .infos .locationP {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-left: 14px;
+  width: 152px;
+}
+.swiper-slide .cards .infos .locationP i {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.swiper-slide .cards .infos .stipendP {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4px;
+  margin-left: 12px;
+  width: 215px;
+  font-size: 14px;
+}
+.swiper-slide .cards .infos .stipendP i {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.swiper-slide .cards .infos a {
+  text-decoration: none;
+  font-size: 14px;
+  padding: 2px 4px;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 4px;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  width: 110px;
+  justify-content: center;
+  border-radius: 50px;
+}
+.infos .activeHire i {
+  margin-top: 3px;
+  color: var(--fourth-col);
+  font-weight: 800;
+}
+.infos h2 {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 14px;
+  text-align: left;
+  font-size: 18px;
+  width: 95%;
+}
 .swiper .swiper-btn {
   height: 20px;
   width: 20px;
@@ -2622,27 +2705,6 @@ input::-webkit-inner-spin-button {
   margin-top: 45px;
   margin-left: 920px;
   margin-bottom: 50px;
-}
-
-.submit-btn {
-  font-size: 23px;
-  font-weight: 500;
-  /* border-radius: 20px; */
-  padding: 1rem 2.5rem;
-  margin-top: 45px;
-  margin-left: 1035px;
-  margin-bottom: 40px;
-}
-
-.update-ar-a {
-  text-decoration: none;
-  color: var(--first-col);
-  background-color: var(--fourth-col);
-  font-size: 23px;
-  font-weight: 500;
-  border-radius: 50px;
-  padding: 1rem 2.5rem;
-  margin-left: 1035px;
 }
 
 /* ---------internship question--------- */

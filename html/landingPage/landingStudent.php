@@ -89,28 +89,251 @@ if (!isset($_SESSION['mail'])) {
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <div class="card10 cards">
-                    <!-- <div class="infos">
+                      
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/frontendDevelopment.png" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
                         <h2>Android Teaching Assistance (Virtual)</h2>
                         <div class="locationP">
                         <i class="fa-solid fa-location-dot"></i> 
-
                         <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
 
-                      </div>
-                      </div> -->
+                        <a href="">View details ></a>
                     </div>
-                    <div class="card11 cards"></div>
-                    <div class="card12 cards"></div>
+                    </div>
+
+                    </div>
+
+                    <div class="card11 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/fullStack.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="card12 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/backend.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
                  </div>
                   <div class="swiper-slide">
-                    <div class="card13 cards"></div>
-                    <div class="card14 cards"></div>
-                    <div class="card15 cards"></div>
+                    <div class="card13 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/iosApp.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="card14 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/blender.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+                    
+
+                    </div>
+                    <div class="card15 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/wordpress.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="card16 cards"></div>
-                    <div class="card17 cards"></div>
-                    <div class="card18 cards"></div>
+                    <div class="card16 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/finance.webp" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="card17 cards">
+
+                    <div class="cardContent">
+                    <div class="imageCard">
+                    <img src="../../assets/fundraising.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="card18 cards">
+
+                    
+                    <div class="cardContent">
+                    <div class="imageCard cardLastOne">
+                    <img src="../../assets/offerte_Job.jpg" alt="">
+                    </div>
+                    <!-- internship details -->
+                  
+                    <div class="infos">
+                        <h2>Explore More Internships</h2>
+                        <a href="">Explore ></a>
+                    </div>
+                    </div>
+
+                    </div>
                   </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -120,32 +343,6 @@ if (!isset($_SESSION['mail'])) {
         </div>
 
 
-        <!-- Internship wit job offer section -->
-        <div class="Internship-job-off">
-            <h1>Internships with job offer</h1>
-            <div class="swiper mySwiper swiper-intJbOff">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="card19 cards"></div>
-                    <div class="card20 cards"></div>
-                    <div class="card21 cards"></div>
-                 </div>
-                  <div class="swiper-slide">
-                    <div class="card22 cards"></div>
-                    <div class="card23 cards"></div>
-                    <div class="card24 cards"></div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="card25 cards"></div>
-                    <div class="card26 cards"></div>
-                    <div class="card27 cards"></div>
-                  </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-        </div>
 
         <!-- Jobs section -->
         <div class="Job">
