@@ -1729,7 +1729,7 @@ footer {
 /*------------Login Page------------*/
 .login-page,
 .divideradmin {
-  background-image: url('assets/bgimg.jpeg');
+  background-image: url("assets/bgimg.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -2705,6 +2705,27 @@ input::-webkit-inner-spin-button {
   margin-top: 45px;
   margin-left: 920px;
   margin-bottom: 50px;
+}
+
+.submit-btn {
+  font-size: 23px;
+  font-weight: 500;
+  /* border-radius: 20px; */
+  padding: 1rem 2.5rem;
+  margin-top: 45px;
+  margin-left: 1035px;
+  margin-bottom: 40px;
+}
+
+.update-ar-a {
+  text-decoration: none;
+  color: var(--first-col);
+  background-color: var(--fourth-col);
+  font-size: 23px;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  margin-left: 1035px;
 }
 
 /* ---------internship question--------- */
