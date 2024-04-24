@@ -1646,6 +1646,10 @@ footer {
 /*------------Login Page------------*/
 .login-page,
 .divideradmin {
+  background-image: url('assets/bgimg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
   width: 100%;
   overflow: hidden;
