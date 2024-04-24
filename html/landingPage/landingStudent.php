@@ -31,8 +31,9 @@
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/student/student.php">Create Profile</a>
                                 <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
-                                <a href="../profiles/student/student.php">Edit Profile Details</a>
+                                <a href="../profiles/student/updateStudentDetails.php">Update Profile</a>
                                 <a href="../Internship/appliedInternship.php">Applied Internship</a>
                                 <a href="../Job/appliedJob.php">Applied Job</a>
                                 <a onclick="openLogOut()">Log Out</a>
@@ -53,7 +54,7 @@
 
         <!-- trending section -->
         <div class="trending">
-            <h1>Trending on careerConnect &#128293;</h1>
+            <h1>Trending on CareerConnect &#128293;</h1>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">

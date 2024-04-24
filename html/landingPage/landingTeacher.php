@@ -52,7 +52,7 @@
 
         <!-- trending section -->
         <div class="trending">
-            <h1>Trending on careerConnect &#128293;</h1>
+            <h1>Trending on CareerConnect &#128293;</h1>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
