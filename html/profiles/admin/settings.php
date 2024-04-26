@@ -57,9 +57,9 @@ require '../../../dbconnect.php';
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="https://example.com/">Student's List</a></li>
-                    <li><a href="https://example.com/">Teacher's List</a></li>
-                    <li><a href="https://example.com/">Company's List</a></li>
+                    <li><a href="list/studentlist.php">Student's List</a></li>
+                    <li><a href="list/teacherlist.php">Teacher's List</a></li>
+                    <li><a href="list/companylist.php">Company's List</a></li>
                 </ul>
             </li>
 
