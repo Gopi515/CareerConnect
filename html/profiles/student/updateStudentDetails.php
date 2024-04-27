@@ -142,17 +142,7 @@
 
                     <div class="stu-email">
                         <p class="stu-para-style1">Email*</p>
-                        <div class="stu-email-box">
-                            <?php
-                            if (isset($_SESSION['mail'])) {
-                                $email = $_SESSION['mail'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $email;
-                            ?>
-                        </div>
-
+                        <div class="stu-email-box"><?php echo $row["email"];?></div>
                     </div>
 
                 </div>
@@ -265,7 +255,7 @@
         </form>
 
         <?php
-
+        
             }
         ?>
 

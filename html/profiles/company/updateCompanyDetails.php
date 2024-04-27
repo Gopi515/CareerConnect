@@ -10,16 +10,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company profile</title>
+    <title>Update Your Details</title>
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- php  -->
-<?php
+<?php 
     require '../../../dbconnect.php';
 
-    if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_SESSION['mail'])){
+        $email = $_SESSION['mail'];
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
+    $sql = "SELECT * FROM `com_personal_details` WHERE `email` = '$email'";
+    $company_details = $conn->query($sql);
+
+    if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $name = htmlspecialchars($_POST['name']);
         if (isset($_SESSION['mail'])) {
@@ -29,7 +36,6 @@
         }
         $countrycode = $_POST['countrycode'];
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
-        $arrivaldate = date('Y-m-d');
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
         $pincode = htmlspecialchars($_POST['pincode']);
@@ -41,34 +47,33 @@
 
         if (
             !empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) &&
-            !empty($arrivaldate) && !empty($address1) && !empty($address2) && !empty($pincode) &&
+            !empty($address1) && !empty($address2) && !empty($pincode) &&
             !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)
         ) {
 
 
-            $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
-            $result = mysqli_query($conn, $checkmobile);
-            $count = mysqli_num_rows($result);
+            // $checkmobile = "SELECT * FROM `com_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            // $result = mysqli_query($conn, $checkmobile);
+            // $count = mysqli_num_rows($result);
 
-            if ($count != 0) {
-                header("location: ./company.php");
-                exit;
-            }
+            // if ($count != 0) {
+            //     header("location: ./company.php");
+            //     exit;
+            // }
 
-            $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-            $find = $conn->query($query);
-            if (mysqli_num_rows($find) > 0) {
-                while ($row = mysqli_fetch_array($find)) {
-                    $com_id = $row["com_id"];
-                }
-            }
+            // $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+            // $find = $conn->query($query);
+            // if (mysqli_num_rows($find) > 0) {
+            //     while ($row = mysqli_fetch_array($find)) {
+            //         $com_id = $row["com_id"];
+            //     }
+            // }
 
-            $insertdata = "INSERT INTO `com_personal_details`(`com_id`, `name`, `email`, `phone_code`, `phone_no`,
-                    `DOA`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `c_website`, `c_about`) 
-                    VALUES ('$com_id','$name','$email','$countrycode','$mobilenumber','$arrivaldate','$address1','$address2',
-                    '$pincode','$city','$state','$country','$website','$about')";
+            $updatedata = "UPDATE `com_personal_details` SET `name` = '$name', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
+                    `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `city` = '$city', `state` = '$state', 
+                    `country` = '$country', `c_website` = '$website', `c_about` = '$about' WHERE `email` = '$email'";
 
-            $smt = mysqli_query($conn, $insertdata);
+            $smt = mysqli_query($conn, $updatedata);
 
             if ($smt) {
                 header("location: ../../landingPage/landingCompany.php");
@@ -105,7 +110,13 @@
 
             </div>
 
+
         </nav>
+
+        <?php
+            while($row = mysqli_fetch_assoc($company_details)){
+        ?>
+
         <a href="../../landingPage/landingCompany.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
@@ -113,8 +124,7 @@
 
             <!-- header -->
             <div class="com-header">
-                <p class="header-item1">Hi there!</p>
-                <p class="header-item2">Let's get started</p>
+
             </div>
 
             <!-- entry boxes -->
@@ -125,10 +135,8 @@
 
                     <div class="com-name">
                         <p class="com-para-style1">Company name*</p>
-                        <input name="name" type="text" placeholder="Enter the name" class="com-box-design1" required>
+                        <input name="name" type="text" placeholder="Enter the name" value="<?php echo $row["name"];?>" class="com-box-design1" required>
                     </div>
-
-
                 </div>
 
                 <!-- email  -->
@@ -136,17 +144,7 @@
 
                     <div class="com-email">
                         <p class="com-para-style1">Email*</p>
-                        <div class="com-email-box">
-                            <?php
-                            if (isset($_SESSION['mail'])) {
-                                $email = $_SESSION['mail'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $email;
-                            ?>
-                        </div>
-
+                        <div class="com-email-box"><?php echo $row["email"];?></div>
                     </div>
 
                 </div>
@@ -166,7 +164,7 @@
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input name="mobilenumber" type="tel" placeholder="0000000000" class="mob-box" pattern="\d{10}" maxlength="10" required>
+                    <input name="mobilenumber" type="tel" placeholder="0000000000" value="<?php echo $row["phone_no"];?>" class="mob-box" pattern="\d{10}" maxlength="10" required>
 
                 </div>
 
@@ -176,7 +174,7 @@
                     <div class="com-arrival">
                         <p class="com-para-style1">Date of Arrival*</p>
                         <div class="com-arr-date">
-                        <?php echo date('Y-m-d');?>
+                        <?php echo $row["DOA"];?>
                         </div>
                     </div>
 
@@ -193,12 +191,12 @@
 
                     <div class="com-address1">
                         <p class="com-para-style2">Address1*</p>
-                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="com-box-design1" required>
+                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" value="<?php echo $row["addr1"];?>" class="com-box-design1" required>
                     </div>
 
                     <div class="com-address2">
                         <p class="com-para-style2">Address2*</p>
-                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="com-box-design1" required>
+                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" value="<?php echo $row["addr2"];?>" class="com-box-design1" required>
                     </div>
 
                 </div>
@@ -209,12 +207,12 @@
 
                         <div class="com-pin">
                             <p class="com-para-style2">Pin*</p>
-                            <input name="pincode" type="number" placeholder="Enter pin" class="com-box-design2" required>
+                            <input name="pincode" type="number" placeholder="Enter pin" value="<?php echo $row["pin"];?>" class="com-box-design2" required>
                         </div>
 
                         <div class="com-state">
                             <p class="com-para-style2">State*</p>
-                            <input name="state" type="text" placeholder="Enter state" class="com-box-design2" required>
+                            <input name="state" type="text" placeholder="Enter state" value="<?php echo $row["state"];?>" class="com-box-design2" required>
                         </div>
 
                     </div>
@@ -223,12 +221,12 @@
 
                         <div class="com-city">
                             <p class="com-para-style2">City*</p>
-                            <input name="city" type="text" placeholder="Enter city" class="com-box-design2" required>
+                            <input name="city" type="text" placeholder="Enter city" value="<?php echo $row["city"];?>" class="com-box-design2" required>
                         </div>
 
                         <div class="com-country">
                             <p class="com-para-style2">Country*</p>
-                            <input name="country" type="text" placeholder="Enter country" class="com-box-design2" required>
+                            <input name="country" type="text" placeholder="Enter country" value="<?php echo $row["country"];?>" class="com-box-design2" required>
                         </div>
 
                     </div>
@@ -240,7 +238,7 @@
                 <div class="com-link">
                     <p class="com-para-style1">Company website*</p>
                     <div>
-                        <input  name="website" type="url" placeholder="Enter the link of your website" class="com-box-design1" required>
+                        <input  name="website" type="url" placeholder="Enter the link of your website" value="<?php echo $row["c_website"];?>" class="com-box-design1" required>
                     </div>
                 </div>
 
@@ -252,21 +250,24 @@
 
                     <p class="com-para-style1">About*</p>
                     <div>
-                        <input  name="about" type="text" placeholder="Write about your company" class="com-box-design1" required>
+                        <input  name="about" type="text" placeholder="Write about your company" value="<?php echo $row["c_about"];?>" class="com-box-design1" required>
                     </div>
                    
                 </div>
-
-
 
             </div>
 
           
             <!-- end next button  -->
-            <button value="submit" name="submit" class="btn next-btn">Next</button>
+            <button value="update" name="update" class="btn submit-btn">Submit</button>
+
 
         </form>
 
+        <?php
+
+            }
+        ?>
 
     </div>
 

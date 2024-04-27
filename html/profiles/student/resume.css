@@ -598,13 +598,14 @@ textarea {
   border-radius: none;
   border: none;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 16px;
   padding: 1.2rem 1.6rem;
   font-family: inherit;
   width: 100%;
   outline: 0;
   transition: var(--transition);
   background-color: var(--clr-seventh);
+  color: var(--clr-dark);
 }
 
 .skill {

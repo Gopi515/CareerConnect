@@ -15,8 +15,6 @@
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-
-
 <?php 
     require '../../../dbconnect.php';
 
@@ -29,7 +27,6 @@
     $company_details = $conn->query($sql);
 
 ?>
-
 
 <body>
 
@@ -59,7 +56,7 @@
         <a href="../../landingPage/landingCompany.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
-        <form action="#" method="POST"  class="com-container">
+        <form action="#" method="POST"  class="com-view-container">
 
             <!-- header -->
             <div class="com-header">
@@ -115,7 +112,7 @@
                     <div class="com-arrival">
                         <p class="com-para-style1">Date of Arrival</p>
                         <div class="com-arr-date">
-                        <?php echo $row["DOA"];?><i class="fa-regular fa-calendar"></i>
+                        <?php echo $row["DOA"];?>
                         </div>
                     </div>
 
@@ -157,7 +154,7 @@
 
                         <div class="com-state">
                             <p class="com-para-style2">State</p>
-                            <div class="com-box-design2 view-details"><?php echo $row["state"]; ?></div>
+                            <div class="com-box-design2 view-details"><?php echo $row["state"];?></div>
                         </div>
 
                     </div>
@@ -166,12 +163,12 @@
 
                         <div class="com-city">
                             <p class="com-para-style2">City</p>
-                            <div class="com-box-design2 view-details"><?php echo $row["city"]; ?></div>
+                            <div class="com-box-design2 view-details"><?php echo $row["city"];?></div>
                         </div>
 
                         <div class="com-country">
                             <p class="com-para-style2">Country</p>
-                            <div class="com-box-design2 view-details"><?php echo $row["country"]; ?></div>
+                            <div class="com-box-design2 view-details"><?php echo $row["country"];?></div>
                         </div>
 
                     </div>
@@ -183,19 +180,19 @@
                 <div class="com-link">
                     <p class="com-para-style1">Company website</p>
                     <div>
-                        <div class="com-box-design1 view-details"> <?php echo $row["c_website"]; ?></div>
+                        <div class="com-box-design1 view-details"><?php echo $row["c_website"];?></div>
                     </div>
                 </div>
 
 
                 <!-- about section -->
 
-                <div class="com-about">
+                <div class="com-about com-view-about">
 
 
                     <p class="com-para-style1">About</p>
                     <div>
-                        <div class="com-box-design1 view-details"><?php echo $row["c_about"]; ?></div>
+                        <div class="com-box-design1 view-details"><?php echo $row["c_about"];?></div>
                     </div>
                    
                 </div>
@@ -205,6 +202,7 @@
 
           
             <!-- end next button  -->
+            <a href="../company/updateCompanyDetails.php" class="update-ar-a" >Update</a>
 
 
         </form>

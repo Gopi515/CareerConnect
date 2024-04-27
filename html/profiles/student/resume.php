@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['mail'])){
+        header("Location: ../../LoginandRegister/studentLogin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,13 +20,25 @@
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-<?php
-header("Content-Type: text/html");
+<?php 
+    require '../../../dbconnect.php';
+
+    if (isset($_SESSION['mail'])){
+        $email = $_SESSION['mail'];
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
+    $sql = "SELECT * FROM `stu_personal_details` WHERE `email` = '$email'";
+    $student_details = $conn->query($sql);
 ?>
 
 <body>
 
     <a href="../../landingPage/landingStudent.php" class="goBack"><i class="back-button fa-regular fa-circle-left"></i></a>
+
+    <?php
+        while($row = mysqli_fetch_assoc($student_details)){
+    ?>
 
     <section class="heading-main">
         <div class="main-topic">
@@ -39,7 +58,7 @@ header("Content-Type: text/html");
                             <div class="cols-3">
                                 <div class="form-elem">
                                     <label for="" class="form-label">First Name</label>
-                                    <input name="firstname" type="text" class="form-control firstname" id=""
+                                    <input name="firstname" type="text" value="<?php echo $row["F_name"];?>" class="form-control firstname" id=""
                                         onkeyup="generateCV()" placeholder="e.g. John">
                                     <span class="form-text"></span>
                                 </div>
@@ -52,7 +71,7 @@ header("Content-Type: text/html");
                                 </div>
                                 <div class="form-elem">
                                     <label for="" class="form-label">Last Name</label>
-                                    <input name="lastname" type="text" class="form-control lastname" id=""
+                                    <input name="lastname" type="text" value="<?php echo $row["L_name"];?>" class="form-control lastname" id=""
                                         onkeyup="generateCV()" placeholder="e.g. Doe">
                                     <span class="form-text"></span>
                                 </div>
@@ -81,13 +100,13 @@ header("Content-Type: text/html");
                             <div class="cols-3">
                                 <div class="form-elem">
                                     <label for="" class="form-label">Email</label>
-                                    <input name="email" type="text" class="form-control email" id=""
+                                    <input name="email" type="text" value="<?php echo $row["email"];?>" class="form-control email" id=""
                                         onkeyup="generateCV()" placeholder="e.g. johndoe@gmail.com">
                                     <span class="form-text"></span>
                                 </div>
                                 <div class="form-elem">
                                     <label for="" class="form-label">Phone No:</label>
-                                    <input name="phoneno" type="text" class="form-control phoneno" id=""
+                                    <input name="phoneno" type="text" value="<?php echo $row["phone_no"];?>" class="form-control phoneno" id=""
                                         onkeyup="generateCV()" placeholder="e.g. 8899112233, 567-654-002">
                                     <span class="form-text"></span>
                                 </div>
@@ -428,8 +447,10 @@ header("Content-Type: text/html");
         </div>
     </section>
 
+    <?php
 
-
+        }
+    ?>
 
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.4.js"

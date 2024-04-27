@@ -56,7 +56,7 @@
         <a href="../../landingPage/landingTeacher.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
-        <form action="#" method="POST"  class="tech-container">
+        <form action="#" method="POST"  class="tech-view-container">
             
             <!-- header -->
             <div class="tech-header">
@@ -175,7 +175,7 @@
 
                 <!-- select languages -->
 
-                <div class="tech-language">
+                <div class="tech-language tech-view-language">
                    
                 </div>
 
@@ -185,6 +185,7 @@
 
           
             <!-- end next button  -->
+            <a href="../teacher/updateTeacherDetails.php" class="update-ar-a" >Update</a>
 
 
         </form>

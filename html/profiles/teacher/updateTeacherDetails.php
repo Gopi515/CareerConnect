@@ -10,17 +10,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher profile</title>
+    <title>Update Your Details</title>
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
-    
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- php  -->
-<?php
+<?php 
     require '../../../dbconnect.php';
 
-    if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_SESSION['mail'])){
+        $email = $_SESSION['mail'];
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
+    $sql = "SELECT * FROM `tech_personal_details` WHERE `email` = '$email'";
+    $teacher_details = $conn->query($sql);
+
+    if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         if (isset($_SESSION['mail'])) {
@@ -47,31 +53,30 @@
             !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)
         ) {
 
-            $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
-            $result = mysqli_query($conn, $checkmobile);
-            $count = mysqli_num_rows($result);
+            // $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            // $result = mysqli_query($conn, $checkmobile);
+            // $count = mysqli_num_rows($result);
 
-            if ($count != 0) {
-                header("location: ./teacher.php");
-                exit;
-            }
-
-
-            $query = "SELECT id AS tech_id FROM teacher WHERE email = '$email'";
-            $find = $conn->query($query);
-            if (mysqli_num_rows($find) > 0) {
-                while ($row = mysqli_fetch_array($find)) {
-                    $tech_id = $row["tech_id"];
-                }
-            }
+            // if ($count != 0) {
+            //     header("location: ./teacher.php");
+            //     exit;
+            // }
 
 
-            $insertdata = "INSERT INTO `tech_personal_details`(`tech_id`, `F_name`, `L_name`, `email`,
-                    `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `languages`) 
-                    VALUES ('$tech_id','$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2','$pincode',
-                    '$city','$state','$country','$gender','$lang')";
+            // $query = "SELECT id AS tech_id FROM teacher WHERE email = '$email'";
+            // $find = $conn->query($query);
+            // if (mysqli_num_rows($find) > 0) {
+            //     while ($row = mysqli_fetch_array($find)) {
+            //         $tech_id = $row["tech_id"];
+            //     }
+            // }
 
-            $smt = mysqli_query($conn, $insertdata);
+
+            $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
+                    `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
+                    `country` = '$country', `gender` = '$gender', `language` = '$lang' WHERE `email` = '$email'";
+
+            $smt = mysqli_query($conn, $updatedata);
 
 
             if ($smt) {
@@ -85,8 +90,6 @@
         } else {
             echo "<script>alert('Error: Please enter all the field.')</script>";
         }
-
-
     }
 
 ?>
@@ -109,16 +112,22 @@
 
             </div>
 
+
         </nav>
+
+        <?php
+            while($row = mysqli_fetch_assoc($teacher_details)){
+        ?>
+
         <a href="../../landingPage/landingTeacher.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+
         <!-- main container -->
         <form action="#" method="POST"  class="tech-container">
             
             <!-- header -->
             <div class="tech-header">
                 
-                <p class="header-item1">Hi there!</p>
-                <p class="header-item2">Let's get started</p>
+
             </div>
 
             <!-- entry boxes -->
@@ -128,12 +137,12 @@
 
                     <div class="tech-first-name">
                         <p class="tech-para-style1">First name*</p>
-                        <input name="firstname" type="text" placeholder="Enter first name" class="tech-box-design1" required>
+                        <input name="firstname" type="text" placeholder="Enter first name" value="<?php echo $row["F_name"];?>" class="tech-box-design1" required>
                     </div>
 
                     <div class="tech-last-name">
                         <p class= "tech-para-style1">Last name*</p>
-                        <input name="lastname" type="text" placeholder="Enter last name" class="tech-box-design1" required>
+                        <input name="lastname" type="text" placeholder="Enter last name" value="<?php echo $row["L_name"];?>" class="tech-box-design1" required>
                     </div>
 
                 </div>
@@ -142,16 +151,7 @@
 
                     <div class="tech-email">
                         <p class="tech-para-style1">Email*</p>
-                        <div class="tech-email-box">
-                            <?php
-                            if (isset($_SESSION['mail'])) {
-                                $email = $_SESSION['mail'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $email;
-                            ?>
-                        </div>
+                        <div class="tech-email-box"><?php echo $row["email"];?></div>
 
                     </div>
 
@@ -171,7 +171,7 @@
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input name="mobilenumber" type="tel" placeholder="0000000000" class="mob-box" pattern="\d{10}" maxlength="10" required>
+                    <input name="mobilenumber" type="tel" placeholder="0000000000" value="<?php echo $row["phone_no"];?>" class="mob-box" pattern="\d{10}" maxlength="10" required>
 
                 </div>
 
@@ -184,12 +184,12 @@
 
                     <div class="tech-address1">
                         <p class="tech-para-style2">Address1*</p>
-                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="tech-box-design2" required>
+                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" value="<?php echo $row["addr1"];?>" class="tech-box-design2" required>
                     </div>
 
                     <div class="tech-address2">
                         <p class="tech-para-style2">Address2*</p>
-                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="tech-box-design2" required>
+                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" value="<?php echo $row["addr2"];?>" class="tech-box-design2" required>
                     </div>
 
                 </div>
@@ -200,12 +200,12 @@
 
                         <div class="tech-pin">
                             <p class="tech-para-style2">Pin*</p>
-                            <input name="pincode" type="number" placeholder="Enter pin" class="tech-box-design3" required>
+                            <input name="pincode" type="number" placeholder="Enter pin" value="<?php echo $row["pin"];?>" class="tech-box-design3" required>
                         </div>
 
                         <div class="tech-state">
                             <p class="tech-para-style2">State*</p>
-                            <input name="state" type="text" placeholder="Enter state" class="tech-box-design3" required>
+                            <input name="state" type="text" placeholder="Enter state" value="<?php echo $row["state"];?>" class="tech-box-design3" required>
                         </div>
 
                     </div>
@@ -214,12 +214,12 @@
 
                         <div class="tech-city">
                             <p class="tech-para-style2">City*</p>
-                            <input name="city" type="text" placeholder="Enter city" class="tech-box-design3" required>
+                            <input name="city" type="text" placeholder="Enter city" value="<?php echo $row["city"];?>" class="tech-box-design3" required>
                         </div>
 
                         <div class="tech-country">
                             <p class="tech-para-style2">Country*</p>
-                            <input name="country" type="text" placeholder="Enter country" class="tech-box-design3" required>
+                            <input name="country" type="text" placeholder="Enter country" value="<?php echo $row["country"];?>" class="tech-box-design3" required>
                         </div>
 
                     </div>
@@ -302,14 +302,18 @@
 
           
             <!-- end next button  -->
-            <button value="submit" name="submit" class="btn next-btn">Next</button>
+            <button value="update" name="update" class="btn submit-btn">Submit</button>
+
 
         </form>
 
+        <?php
+
+            }
+        ?>
 
     </div>
 
     <script src="../../../javaScripts/teacherLang.js"></script>
 </body>
 </html>
-

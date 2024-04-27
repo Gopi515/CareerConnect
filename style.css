@@ -721,7 +721,7 @@ footer {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 20px 20px 20px 20px;
-  transform: translate(-35%, 16%);
+  transform: translate(-30%, 8%);
 }
 
 .dropdown-content a {
@@ -2544,12 +2544,14 @@ input::-webkit-inner-spin-button {
   padding-bottom: 70px;
 }
 
-.stu-view-language {
+.stu-view-language,
+.tech-view-language {
   margin-bottom: 50px;
   margin-top: 0px;
 }
 
-.stu-view-container {
+.stu-view-container,
+.tech-view-container {
   width: 1280px;
   margin: 0 auto;
   background-color: var(--first-col);
@@ -3013,6 +3015,14 @@ input::-webkit-inner-spin-button {
   margin-top: 150px;
 }
 
+.com-view-container {
+  width: 1280px;
+  margin: 0 auto;
+  background-color: var(--first-col);
+  margin-top: 150px;
+  margin-bottom: 40px;
+}
+
 .com-header {
   width: 1138px;
   margin: 0 auto;
@@ -3101,12 +3111,6 @@ input::-webkit-inner-spin-button {
   border: var(--border);
 }
 
-.fa-calendar {
-  color: var(--last-col);
-  padding-right: 20px;
-  padding-top: 7px;
-}
-
 .com-box-design2 {
   height: 55px;
   width: 459px;
@@ -3154,6 +3158,11 @@ input::-webkit-inner-spin-button {
 .com-about {
   margin-left: 83px;
   padding-bottom: 70px;
+  margin-bottom: 50px;
+}
+
+.com-view-about {
+  margin-bottom: 50px;
 }
 
 /* student and techer and company view personal details  */

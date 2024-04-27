@@ -26,7 +26,6 @@
     }
     $sql = "SELECT * FROM `stu_personal_details` WHERE `email` = '$email'";
     $student_details = $conn->query($sql);
-
 ?>
 
 <body>
@@ -89,10 +88,7 @@
 
                     <div class="stu-email">
                         <p class="stu-para-style1">Email</p>
-                        <div class="stu-email-box">
-                            <?php echo $row["email"];?>
-                        </div>
-
+                        <div class="stu-email-box"><?php echo $row["email"];?></div>
                     </div>
 
                 </div>
@@ -172,16 +168,12 @@
                 <!-- gender button -->
 
                 
-                
-
 
                 <!-- select languages -->
 
                 <div class="stu-language stu-view-language">
                    
                 </div>
-
-
 
             </div>
 
