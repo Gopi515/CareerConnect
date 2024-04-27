@@ -42,7 +42,7 @@ require '../../../dbconnect.php';
             <span class="logo_name">CareerConnect</span>
         </div>
         <ul class="nav-links">
-            <li  style="background-color:#0362ff;">
+            <li style="background-color:#0362ff;">
                 <a href="admin.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="link_name">Dashboard</span>
@@ -57,9 +57,9 @@ require '../../../dbconnect.php';
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="https://example.com/">Student's List</a></li>
-                    <li><a href="https://example.com/">Teacher's List</a></li>
-                    <li><a href="https://example.com/">Company's List</a></li>
+                    <li><a href="list/studentlist.php">Student's List</a></li>
+                    <li><a href="list/teacherlist.php">Teacher's List</a></li>
+                    <li><a href="list/companylist.php">Company's List</a></li>
                 </ul>
             </li>
 
@@ -77,19 +77,21 @@ require '../../../dbconnect.php';
             </li>
             <li>
                 <div class="profile-details">
-                    <div class="profile-content">                        
-                        <div class="logo"><?php echo strtoupper($initials); ?></div>
+                    <div class="profile-content">
+                        <div class="logo">
+                            <?php echo strtoupper($initials); ?>
+                        </div>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">
-                        <?php
-                        if (isset($_SESSION['user_name'])) {
-                            $username = $_SESSION['user_name'];
-                        } else {
-                            echo "<script>alert('Error: Session is not working.')</script>";
-                        }
-                        echo $username;
-                        ?>
+                            <?php
+                            if (isset($_SESSION['user_name'])) {
+                                $username = $_SESSION['user_name'];
+                            } else {
+                                echo "<script>alert('Error: Session is not working.')</script>";
+                            }
+                            echo $username;
+                            ?>
                         </div>
                         <div class="job">College name</div>
                     </div>
