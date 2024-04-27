@@ -322,14 +322,27 @@ if (!isset($_SESSION['mail'])) {
 
                     
                     <div class="cardContent">
-                    <div class="imageCard cardLastOne">
-                    <img src="../../assets/offerte_Job.jpg" alt="">
+                    <div class="imageCard">
+                    <img src="../../assets/finance.webp" alt="">
                     </div>
                     <!-- internship details -->
                   
                     <div class="infos">
-                        <h2>Explore More Internships</h2>
-                        <a href="">Explore ></a>
+                      <div class="activeHire">
+                      <i class="fa-solid fa-chart-line"></i>
+                      <p>Active Hiring</p>
+                      </div>
+                        <h2>Android Teaching Assistance (Virtual)</h2>
+                        <div class="locationP">
+                        <i class="fa-solid fa-location-dot"></i> 
+                        <p>work from home</p>
+                        </div>
+                        <div class="stipendP">
+                        <i class="fa-solid fa-money-bill"></i> 
+                        <p>₹ 5,000,00 - 10,000,00/year</p>
+                        </div>
+
+                        <a href="">View details ></a>
                     </div>
                     </div>
 
