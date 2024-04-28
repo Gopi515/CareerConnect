@@ -888,7 +888,9 @@ footer {
   top: 22%;
   left: 20%;
 }
-
+.hiddenDiv {
+  display: none;
+}
 .filterContainer .inputBox p {
   font-size: 1.1rem;
   color: var(--fourth-col);
