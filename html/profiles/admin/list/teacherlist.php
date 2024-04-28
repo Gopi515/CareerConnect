@@ -2,22 +2,28 @@
 require '../../../../dbconnect.php';
 
 // Pagination parameters
-$recordsPerPage = 2; //main pagination work here
+$recordsPerPage = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
-// Fetch records for the current page
-$query = "SELECT * FROM tech_personal_details LIMIT ?, ?"; // row count modifier static
+// Search term
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+// Fetch records for the current page with search
+$query = "SELECT * FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
+$searchParam = "%" . $search . "%";
+mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
-// Count total number of records
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM tech_personal_details";
-$totalRecordsResult = mysqli_query($conn, $totalRecordsQuery);
+// Count total number of records with search
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
+$stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
+mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
+mysqli_stmt_execute($stmtTotal);
+$totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
-
 ?>
 
 <!DOCTYPE html>
@@ -26,30 +32,39 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teachers lists</title>
+    <title>Teachers list</title>
     <link rel="stylesheet" href="list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
+    <script src="../../../../javaScripts/tableascdesc.js"></script>
 </head>
 
 <body>
     <div class="heading1">
         <h1>Teachers list</h1>
     </div>
-    <a href="../admin.php"><div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div></a>
+    <a href="../admin.php">
+        <div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div>
+    </a>
+    <div class="search-container">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Search by anything" value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
     <div class="whole-body">
         <div class="inner-whole-body">
             <table border="1">
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>ZIP Code</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Country</th>
-                    <th>Gender</th>
+                    <th onclick="sortTable(0)" data-column="0">ID<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(1)" data-column="1">First Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(2)" data-column="2">Last Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">Mobile<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="6">City<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="7">State<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="8">Country<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(9)" data-column="9">Gender<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
 
@@ -83,7 +98,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 echo "<div class='pagination'>";
                 for ($i = 1; $i <= $totalPages; $i++) {
                     $activeClass = $i == $page ? 'active' : '';
-                    echo "<a class='$activeClass' href='?page=$i'>$i</a>";
+                    echo "<a class='$activeClass' href='?page=$i&search=$search'>$i</a>";
                 }
                 echo "</div>";
                 ?>
