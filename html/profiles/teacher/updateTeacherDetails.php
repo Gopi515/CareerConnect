@@ -43,14 +43,15 @@
         $state = htmlspecialchars($_POST['state']);
         $country = htmlspecialchars($_POST['country']);
         $gender = $_POST['gender'];
-        $language = $_POST['language'];
+        // $language = $_POST['language'];
         // to convert array to string in php we use implode
-        $lang = implode(",",$language);
+        // $lang = implode(",",$language);
 
         if (
             !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
             !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-            !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($lang)
+            !empty($state) && !empty($city) && !empty($country) && !empty($gender) 
+            // && !empty($lang)
         ) {
 
             // $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
@@ -74,7 +75,8 @@
 
             $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
                     `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
-                    `country` = '$country', `gender` = '$gender', `language` = '$lang' WHERE `email` = '$email'";
+                    `country` = '$country', `gender` = '$gender' WHERE `email` = '$email'";
+                    // , `languages` = '$lang' WHERE `email` = '$email'";
 
             $smt = mysqli_query($conn, $updatedata);
 
@@ -246,54 +248,11 @@
                         </div>
                     </div> 
                 </div> 
-                
 
 
                 <!-- select languages -->
 
                 <div class="tech-language">
-
-
-                    <p class="tech-para-style1">Languages you know*</p>
-
-
-                    <div id="selected-items">
-                        <div id="selected-items-list"></div>
-                    </div>
-
-                    <div class="add-language">
-                        <div id="select-items-button" onclick="showMenu()">+ Add Languages</div>
-                        <div id="languages">
-                          <div class="checkbox-div">
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="bengali" id="bengali">
-                                    <label for="bengali">Bengali</label>
-                                </div>
-                                <!-- language[] to take multiple value we use [], we take input as array -->
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="hindi" id="hindi">
-                                    <label for="hindi">Hindi</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="english" id="english">
-                                    <label for="english">English</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="tamil" id="tamil">
-                                    <label for="tamil">Tamil</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="french" id="french">
-                                    <label for="french">French</label>
-                                </div>
-                                <div class="label">
-                                    <input type="checkbox" name="language[]" value="spanish" id="spanish">
-                                    <label for="spanish">Spanish</label>
-                                </div>
-                          </div>
-                          <div onclick="addToSelected()" class="ok-btn">OK</div>
-                        </div>
-                    </div>
                    
                 </div>
 

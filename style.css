@@ -1802,7 +1802,24 @@ span {
 }
 
 .subdiv {
-  float: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styles for the forgot password section */
+.forgot-password {
+  margin-top: 15px;
+}
+
+.forgot-password a {
+  color: var(--sixth-col);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
 }
 
 /*button*/
