@@ -134,7 +134,7 @@
             <p>Profile</p>
             <input type="text" id="option1Input" placeholder="e.g. Web Development">
             <div id="dropdownFilterprofile"></div>
-            <div id="tag-container"></div>
+            <div id="tag-container" class="hiddenDiv"></div>
         </label>
 
         <!-- location -->
