@@ -1,7 +1,7 @@
-<?php 
+<?php
     session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/companyLogin.php");
+    if (!isset($_SESSION['mail'])) {
+        header("Location: ../../../LoginandRegister/adminLogin.php");
     }
 ?>
 
@@ -10,26 +10,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Your Details</title>
-    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <title>Update Company Details</title>
+    <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
 <?php 
-    require '../../../dbconnect.php';
+    require '../../../../dbconnect.php';
 
-    if (isset($_SESSION['mail'])){
-        $email = $_SESSION['mail'];
+    if(isset($_GET['id'])) {
+    $com_id = $_GET['id'];
     } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
+        echo "Company ID not found in the URL.";
     }
-    $sql = "SELECT * FROM `com_personal_details` WHERE `email` = '$email'";
+
+    $sql = "SELECT * FROM `com_personal_details` WHERE `com_id` = '$com_id'";
     $company_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $name = htmlspecialchars($_POST['name']);
-        $countrycode = $_POST['countrycode'];
+        $email = htmlspecialchars($_POST['email']);
+        $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
@@ -66,12 +68,12 @@
 
             $updatedata = "UPDATE `com_personal_details` SET `name` = '$name', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
                     `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `city` = '$city', `state` = '$state', 
-                    `country` = '$country', `c_website` = '$website', `c_about` = '$about' WHERE `email` = '$email'";
+                    `country` = '$country', `c_website` = '$website', `c_about` = '$about' WHERE `com_id` = '$com_id'";
 
             $smt = mysqli_query($conn, $updatedata);
 
             if ($smt) {
-                header("location: ../../landingPage/landingCompany.php");
+                header("location: ../list/companylist.php");
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -112,7 +114,7 @@
             while($row = mysqli_fetch_assoc($company_details)){
         ?>
 
-        <a href="../../landingPage/landingCompany.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+        <a href="../list/companylist.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
         <form action="#" method="POST"  class="com-container">
@@ -140,6 +142,7 @@
                     <div class="com-email">
                         <p class="com-para-style1">Email*</p>
                         <div class="com-email-box"><?php echo $row["email"];?></div>
+                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
                     </div>
 
                 </div>

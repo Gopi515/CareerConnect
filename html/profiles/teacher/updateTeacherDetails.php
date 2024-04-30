@@ -29,11 +29,6 @@
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
-        if (isset($_SESSION['mail'])) {
-            $email = $_SESSION['mail'];
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
         $countrycode = $_POST['countrycode'];
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
@@ -58,7 +53,7 @@
             // $result = mysqli_query($conn, $checkmobile);
             // $count = mysqli_num_rows($result);
 
-            // if ($count != 0) {
+            // if ($count > 1) {
             //     header("location: ./teacher.php");
             //     exit;
             // }
@@ -85,7 +80,7 @@
                 header("location: ../../landingPage/landingTeacher.php");
                 exit;
             } else {
-                echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+                echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
                 error_log("Database error: " . mysqli_error($conn));
             }
 

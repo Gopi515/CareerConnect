@@ -89,7 +89,7 @@
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href='../list/updateStudent.php'><button class='edit-btn' data-stu-id='" . $row['stu_id'] . "'>Edit</button></a>";
+                        echo "<td><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><button class='edit-btn'>Edit</button></a>";
                         echo "<button class='delete-btn' data-stu-id='" . $row['stu_id'] . "'>Delete</button></td>";
                         echo "</tr>";
                     }

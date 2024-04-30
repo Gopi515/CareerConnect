@@ -10,9 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Student Details</title>
+    <title>Update Teacher Details</title>
     <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>">
-    
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
@@ -20,16 +19,15 @@
     require '../../../../dbconnect.php';
 
     if(isset($_GET['id'])) {
-    $stu_id = $_GET['id'];
+    $tech_id = $_GET['id'];
     } else {
-        echo "Student ID not found in the URL.";
+        echo "Teacher ID not found in the URL.";
     }
 
-    $sql = "SELECT * FROM `stu_personal_details` WHERE `stu_id` = '$stu_id'";
-    $student_details = $conn->query($sql);
+    $sql = "SELECT * FROM `tech_personal_details` WHERE `tech_id` = '$tech_id'";
+    $teacher_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
-
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $email = htmlspecialchars($_POST['email']);
@@ -47,29 +45,41 @@
         // $lang = implode(",",$language);
 
         if (
-            !empty($firstname) && !empty($lastname) && !empty($countrycode) &&
+            !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
             !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-            !empty($state) && !empty($city) && !empty($country) && !empty($gender)
-        ) {
+            !empty($state) && !empty($city) && !empty($country) && !empty($gender) 
             // && !empty($lang)
+        ) {
 
-            // $checkmobile = "SELECT * FROM `stu_personal_details` WHERE `phone_no` = '$mobilenumber'";
+            // $checkmobile = "SELECT * FROM `tech_personal_details` WHERE `phone_no` = '$mobilenumber'";
             // $result = mysqli_query($conn, $checkmobile);
             // $count = mysqli_num_rows($result);
 
-            // if ($count <= 1) {
-            //     header("location: ./updateStudentDetails.php");
+            // if ($count > 1) {
+            //     header("location: ./teacher.php");
             //     exit;
             // }
 
-            $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname',
-                    `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
-                    `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id'";
+
+            // $query = "SELECT id AS tech_id FROM teacher WHERE email = '$email'";
+            // $find = $conn->query($query);
+            // if (mysqli_num_rows($find) > 0) {
+            //     while ($row = mysqli_fetch_array($find)) {
+            //         $tech_id = $row["tech_id"];
+            //     }
+            // }
+
+
+            $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
+                    `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
+                    `country` = '$country', `gender` = '$gender' WHERE `tech_id` = '$tech_id'";
+                    // , `languages` = '$lang' WHERE `email` = '$email'";
 
             $smt = mysqli_query($conn, $updatedata);
 
+
             if ($smt) {
-                header("location: ../list/studentlist.php");
+                header("location: ../list/teacherlist.php");
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -101,53 +111,55 @@
 
             </div>
 
+
         </nav>
 
         <?php
-            while($row = mysqli_fetch_assoc($student_details)){
+            while($row = mysqli_fetch_assoc($teacher_details)){
         ?>
 
-        <a href="../list/studentlist.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+        <a href="../list/teacherlist.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
-        <form action="#" method="POST"  class="stu-container">
+        <form action="#" method="POST"  class="tech-container">
             
             <!-- header -->
-            <div class="stu-header">
+            <div class="tech-header">
                 
 
             </div>
 
             <!-- entry boxes -->
-            <div class="stu-hero-section">
+            <div class="tech-hero-section">
 
-                <div class="stu-entry-boxes1">
+                <div class="tech-entry-boxes1">
 
-                    <div class="stu-first-name">
-                        <p class="stu-para-style1">First name*</p>
-                        <input name="firstname" type="text" placeholder="Enter first name" value="<?php echo $row["F_name"];?>" class="stu-box-design1" required>
+                    <div class="tech-first-name">
+                        <p class="tech-para-style1">First name*</p>
+                        <input name="firstname" type="text" placeholder="Enter first name" value="<?php echo $row["F_name"];?>" class="tech-box-design1" required>
                     </div>
 
-                    <div class="stu-last-name">
-                        <p class="stu-para-style1">Last name*</p>
-                        <input name="lastname" type="text" placeholder="Enter last name" value="<?php echo $row["L_name"];?>" class="stu-box-design1" required>
+                    <div class="tech-last-name">
+                        <p class= "tech-para-style1">Last name*</p>
+                        <input name="lastname" type="text" placeholder="Enter last name" value="<?php echo $row["L_name"];?>" class="tech-box-design1" required>
                     </div>
 
                 </div>
 
-                <div class="stu-entry-boxes2">
+                <div class="tech-entry-boxes2">
 
-                    <div class="stu-email">
-                        <p class="stu-para-style1">Email*</p>
-                        <div class="stu-email-box"><?php echo $row["email"];?></div>
+                    <div class="tech-email">
+                        <p class="tech-para-style1">Email*</p>
+                        <div class="tech-email-box"><?php echo $row["email"];?></div>
                         <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
+                        
                     </div>
 
                 </div>
 
-                <div class="stu-entry-boxes3">
+                <div class="tech-entry-boxes3">
 
-                    <p class="stu-para-style1">Contact number*</p>
+                    <p class="tech-para-style1">Contact number*</p>
                     <!-- country code dropdown -->
                     <select name="countrycode" id="country-code">
                         <option value="+91">+91</option>
@@ -159,55 +171,55 @@
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input name="mobilenumber" type="tel" placeholder="0000000000" value="<?php echo $row["phone_no"];?>" class="mob-box" pattern="\d{10}" maxlength="10" required> 
+                    <input name="mobilenumber" type="tel" placeholder="0000000000" value="<?php echo $row["phone_no"];?>" class="mob-box" pattern="\d{10}" maxlength="10" required>
 
                 </div>
 
-                <div class="stu-address">
-                    <p class="stu-para-style1">Address</p>
-                    <p class="stu-para">To connect you with opportunities closer to you</p>
+                <div class="tech-address">
+                    <p class="tech-para-style1">Address</p>
+                    <p class="tech-para">To connect you with opportunities closer to you</p>
                 </div>
 
-                <div class="stu-entry-boxes2">
+                <div class="tech-entry-boxes2">
 
-                    <div class="stu-address1">
-                        <p class="stu-para-style2">Address1*</p>
-                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" value="<?php echo $row["addr1"];?>" class="stu-box-design2" required>
+                    <div class="tech-address1">
+                        <p class="tech-para-style2">Address1*</p>
+                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" value="<?php echo $row["addr1"];?>" class="tech-box-design2" required>
                     </div>
 
-                    <div class="stu-address2">
-                        <p class="stu-para-style2">Address2*</p>
-                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" value="<?php echo $row["addr2"];?>" class="stu-box-design2" required>
+                    <div class="tech-address2">
+                        <p class="tech-para-style2">Address2*</p>
+                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" value="<?php echo $row["addr2"];?>" class="tech-box-design2" required>
                     </div>
 
                 </div>
 
-                <div class="stu-entry-boxes4">
+                <div class="tech-entry-boxes4">
 
                     <div class="pin-state">
 
-                        <div class="stu-pin">
-                            <p class="stu-para-style2">Pin*</p>
-                            <input name="pincode" type="number" placeholder="Enter pin" value="<?php echo $row["pin"];?>" class="stu-box-design3" required>
+                        <div class="tech-pin">
+                            <p class="tech-para-style2">Pin*</p>
+                            <input name="pincode" type="number" placeholder="Enter pin" value="<?php echo $row["pin"];?>" class="tech-box-design3" required>
                         </div>
 
-                        <div class="stu-state">
-                            <p class="stu-para-style2">State*</p>
-                            <input name="state" type="text" placeholder="Enter state" value="<?php echo $row["state"];?>" class="stu-box-design3" required>
+                        <div class="tech-state">
+                            <p class="tech-para-style2">State*</p>
+                            <input name="state" type="text" placeholder="Enter state" value="<?php echo $row["state"];?>" class="tech-box-design3" required>
                         </div>
 
                     </div>
 
                     <div class="city-country">
 
-                        <div class="stu-city">
-                            <p class="stu-para-style2">City*</p>
-                            <input name="city" type="text" placeholder="Enter city" value="<?php echo $row["city"];?>" class="stu-box-design3" required>
+                        <div class="tech-city">
+                            <p class="tech-para-style2">City*</p>
+                            <input name="city" type="text" placeholder="Enter city" value="<?php echo $row["city"];?>" class="tech-box-design3" required>
                         </div>
 
-                        <div class="stu-country">
-                            <p class="stu-para-style2">Country*</p>
-                            <input name="country" type="text" placeholder="Enter country" value="<?php echo $row["country"];?>" class="stu-box-design3" required>
+                        <div class="tech-country">
+                            <p class="tech-para-style2">Country*</p>
+                            <input name="country" type="text" placeholder="Enter country" value="<?php echo $row["country"];?>" class="tech-box-design3" required>
                         </div>
 
                     </div>
@@ -216,9 +228,9 @@
 
                 <!-- gender button -->
 
-
-                <div class="stu-gender">
-                    <p class="stu-para-style1">Gender*</p>
+                
+                <div class="tech-gender">
+                    <p class="tech-para-style1">Gender*</p>
                     <div class="gender-selection">
                         <div class="male">
                             <input type="radio" id="male" name="gender" value="male" class="radio" checked>
@@ -236,11 +248,10 @@
                 </div> 
 
 
-
                 <!-- select languages -->
 
-                <div class="stu-language">
-                    
+                <div class="tech-language">
+                   
                 </div>
 
 
@@ -250,15 +261,15 @@
             <!-- end next button  -->
             <button value="update" name="update" class="btn submit-btn">Submit</button>
 
+
         </form>
 
         <?php
-        
+
             }
         ?>
 
     </div>
-
 
 </body>
 </html>
