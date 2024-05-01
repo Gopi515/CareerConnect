@@ -7,6 +7,7 @@ if (!isset($_SESSION['mail'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,70 +22,64 @@ require '../../../dbconnect.php';
 
 if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    // Existing fields
     $firstname = htmlspecialchars($_POST['firstname']);
     $lastname = htmlspecialchars($_POST['lastname']);
-    $dept = htmlspecialchars($_POST['dept']);
-    if (isset($_SESSION['mail'])) {
-        $email = $_SESSION['mail'];
-    } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
-    }
+    $email = isset($_SESSION['mail']) ? $_SESSION['mail'] : "";
     $countrycode = $_POST['countrycode'];
     $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
     $address1 = htmlspecialchars($_POST['address1']);
     $address2 = htmlspecialchars($_POST['adderss2']);
-    $start_year = htmlspecialchars($_POST['start_year']);
-    $end_year = htmlspecialchars($_POST['end_year']);
     $pincode = htmlspecialchars($_POST['pincode']);
     $city = htmlspecialchars($_POST['city']);
     $state = htmlspecialchars($_POST['state']);
     $country = htmlspecialchars($_POST['country']);
     $gender = $_POST['gender'];
-    // $language = $_POST['language'];
-    // to convert array to string in php we use implode
-    // $lang = implode(",",$language);
+    $dept = htmlspecialchars($_POST['dept']);
+    $start_year = htmlspecialchars($_POST['start_year']);
+    $end_year = htmlspecialchars($_POST['end_year']);
 
-    if (
-        !empty($firstname) && !empty($lastname) && !empty($dept) && !empty($email) && !empty($countrycode) &&
-        !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($start_year) && !empty($end_year) && !empty($pincode) &&
-        !empty($state) && !empty($city) && !empty($country) && !empty($gender)
-    ) {
-        // && !empty($lang)
+    // File upload handling for profile picture
+    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
+        $profile_pic = $_FILES['profile_pic'];
+        $profile_pic_name = $profile_pic['name'];
+        $profile_pic_tmp = $profile_pic['tmp_name'];
+        $profile_pic_size = $profile_pic['size'];
 
-        $checkmobile = "SELECT * FROM `stu_personal_details` WHERE `phone_no` = '$mobilenumber'";
-        $result = mysqli_query($conn, $checkmobile);
-        $count = mysqli_num_rows($result);
-
-        if ($count != 0) {
-            header("location: ./student.php");
+        // Check if profile picture size is within limit
+        $max_file_size = 2 * 1024 * 1024; // 2MB
+        if ($profile_pic_size <= $max_file_size) {
+            $stu_dp = file_get_contents($profile_pic_tmp); // Read the file content
+        } else {
+            echo "<script>alert('Error: Profile picture should be less than 2MB.')</script>";
             exit;
         }
+    } else {
+        // No profile picture uploaded
+        $stu_dp = ''; // Set default value
+    }
 
-        $query = "SELECT id AS stu_id FROM student WHERE email = '$email'";
-        $find = $conn->query($query);
-        if (mysqli_num_rows($find) > 0) {
-            while ($row = mysqli_fetch_array($find)) {
-                $stu_id = $row["stu_id"];
-            }
-        }
 
-        $insertdata = "INSERT INTO `stu_personal_details`(`stu_id`, `F_name`, `L_name`, `dept`, `email`, `phone_code`,
-                    `phone_no`, `addr1`, `addr2`, `start_year`, `end_year`, `pin`, `city`, `state`, `country`, `gender`) 
-                    VALUES ('$stu_id','$firstname','$lastname','$dept','$email','$countrycode','$mobilenumber','$address1','$address2',
-                     '$start_year', '$end_year', '$pincode','$city','$state','$country','$gender')";
+    // Insert data into database
+    $insertdata = "INSERT INTO `stu_personal_details`(`F_name`, `L_name`, `email`, `phone_code`, `phone_no`, 
+                    `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`, `dept`, `start_year`, `end_year`, `stu_dp`) 
+                    VALUES ('$firstname','$lastname','$email','$countrycode','$mobilenumber','$address1','$address2',
+                    '$pincode','$city','$state','$country','$gender','$dept','$start_year','$end_year', ?)";
 
-        $smt = mysqli_query($conn, $insertdata);
-
-        if ($smt) {
+    $stmt = mysqli_prepare($conn, $insertdata);
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $stu_dp);
+        if (mysqli_stmt_execute($stmt)) {
             header("location: ../../landingPage/landingStudent.php");
             exit;
         } else {
             echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
             error_log("Database error: " . mysqli_error($conn));
         }
-
+        mysqli_stmt_close($stmt);
     } else {
-        echo "<script>alert('Error: Please enter all the field.')</script>";
+        echo "<script>alert('Error: Data input failed. Please try again later.');</script>";
+        error_log("Database error: " . mysqli_error($conn));
     }
 }
 ?>
@@ -108,7 +103,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
         </nav>
-        <a href="../../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+        <a href="../../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left"
+                style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
 
         <!-- main container -->
@@ -122,34 +118,36 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <!-- entry boxes -->
             <div class="stu-hero-section">
-<!-- 
+
                 <div class="stu-entry-boxes2">
                     <div class="stu-profile-pic">
                         <p class="stu-para-style1">Profile Picture*</p>
                         <input type="file" name="profile_pic" accept="image/*" class="stu-box-design1">
                         <p class="note">Note: Image should be less than 2MB.</p>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="stu-entry-boxes1">
 
                     <div class="stu-first-name">
                         <p class="stu-para-style1">First name*</p>
-                        <input name="firstname" type="text" placeholder="Enter first name" class="stu-box-design1" required>
+                        <input name="firstname" type="text" placeholder="Enter first name" class="stu-box-design1"
+                            required>
                     </div>
 
                     <div class="stu-last-name">
                         <p class="stu-para-style1">Last name*</p>
-                        <input name="lastname" type="text" placeholder="Enter last name" class="stu-box-design1" required>
+                        <input name="lastname" type="text" placeholder="Enter last name" class="stu-box-design1"
+                            required>
                     </div>
 
                 </div>
 
                 <div class="stu-entry-boxes2">
 
-                    <div class="stu-email department">
+                    <div class="stu-department">
                         <p class="stu-para-style1">Department*</p>
-                        <input name="dept" type="text" placeholder="Eg: department name _ ID" class="stu-email-box"
+                        <input name="dept" type="text" placeholder="Eg: department name _ ID" class="stu-box-design1"
                             required>
                     </div>
 
@@ -172,9 +170,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="stu-addresses">
                     <p class="stu-para-style1">Batch</p>
-                    <p class="stu-para">Only enter the starting year and ending year.</p>
                 </div>
-                <div class="stu-entry-boxes1">
+                <div class="stu-entry-boxes4">
                     <div class="stu-start-year">
                         <p class="stu-para-style2">Start Year*</p>
                         <input name="start_year" type="number" placeholder="Enter start year" class="stu-box-design3"
@@ -201,7 +198,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="+33">+33</option>
                         <!-- Add more options for other countries -->
                     </select>
-                    <input name="mobilenumber" type="tel" placeholder="0000000000" class="mob-box" pattern="\d{10}" maxlength="10" required> 
+                    <input name="mobilenumber" type="tel" placeholder="0000000000" class="mob-box" pattern="\d{10}"
+                        maxlength="10" required>
 
                 </div>
 
@@ -214,12 +212,14 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="stu-address1">
                         <p class="stu-para-style2">Address1*</p>
-                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area" class="stu-box-design2" required>
+                        <input name="address1" type="text" placeholder="Ex.-House no, Building, Street, Area"
+                            class="stu-box-design2" required>
                     </div>
 
                     <div class="stu-address2">
                         <p class="stu-para-style2">Address2*</p>
-                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District" class="stu-box-design2" required>
+                        <input name="adderss2" type="text" placeholder="Ex.-Locality/Town, City/District"
+                            class="stu-box-design2" required>
                     </div>
 
                 </div>
@@ -230,7 +230,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="stu-pin">
                             <p class="stu-para-style2">Pin*</p>
-                            <input name="pincode" type="number" placeholder="Enter pin" class="stu-box-design3" required>
+                            <input name="pincode" type="number" placeholder="Enter pin" class="stu-box-design3"
+                                required>
                         </div>
 
                         <div class="stu-state">
@@ -249,7 +250,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="stu-country">
                             <p class="stu-para-style2">Country*</p>
-                            <input name="country" type="text" placeholder="Enter country" class="stu-box-design3" required>
+                            <input name="country" type="text" placeholder="Enter country" class="stu-box-design3"
+                                required>
                         </div>
 
                     </div>
@@ -274,8 +276,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input type="radio" id="others" name="gender" value="others" class="radio">
                             <label for="others" class="gen-label label-3">Others</label>
                         </div>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
 
 
 
@@ -291,7 +293,7 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="add-language">
                         <div id="select-items-button" onclick="showMenu()">+ Add Languages</div>
                         <div id="languages" style="display: none;">
-                        <!-- Language dropdown button -->
+                            <!-- Language dropdown button -->
                             <div class="langlabel">
                                 <label class="dropdown-label1">Select Language:</label>
                                 <select class="language-dropdown" id="language-dropdown">
@@ -305,7 +307,8 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
 
                             <!-- Proficiency dropdowns -->
-                            <div class="proficiency"><p class="proficiency-title">Proficiency Level</p>
+                            <div class="proficiency">
+                                <p class="proficiency-title">Proficiency Level</p>
                                 <div class="dropboxesproficiency">
                                     <div class="prf-fst-half">
                                         <label class="dropdown-label">Writing:</label>
@@ -344,15 +347,15 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </div>
                             </div>
 
-                        <div onclick="addToSelected()" class="ok-btn">OK</div>
+                            <div onclick="addToSelected()" class="ok-btn">OK</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
             </div>
 
-          
+
             <!-- end next button  -->
             <button value="submit" name="submit" class="btn next-btn">Next</button>
 
@@ -363,4 +366,5 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <script src="../../../javaScripts/selectLanguage.js"></script>
 </body>
+
 </html>

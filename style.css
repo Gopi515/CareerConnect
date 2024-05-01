@@ -317,13 +317,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -546,6 +544,7 @@ html {
   display: flex;
   justify-content: space-around;
 }
+
 .swiper-slide .cards {
   display: inline-flex;
   width: 30%;
@@ -555,21 +554,25 @@ html {
   border-radius: 10px;
   padding: 15px 15px;
 }
+
 .swiper-slide .cards .cardContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 }
+
 .swiper-slide .cards .cardContent .cardLastOne {
   height: 220px;
   width: 350px;
   margin-left: 12px;
 }
+
 .swiper-slide .cards .cardContent .infosLastone {
   margin-left: -50px;
   margin-top: 20px;
 }
+
 .swiper-slide .cards .cardContent .infosLastone a {
   font-size: 18px;
   margin-left: 5px;
@@ -577,12 +580,14 @@ html {
   background-color: transparent;
   color: var(--fourth-col);
 }
+
 .cardContent .infosLastone h2 {
   font-size: 24px;
   width: 300px;
   color: var(--first-col);
   font-weight: 600;
 }
+
 .swiper-slide .cards .imageCard {
   width: 94%;
   height: 165px;
@@ -593,15 +598,18 @@ html {
   justify-content: center;
   align-items: center;
 }
+
 .swiper-slide .cards .imageCard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .swiper-slide .cards .infos {
   margin-top: 15px;
   color: var(--first-col);
 }
+
 .swiper-slide .cards .infos .activeHire {
   display: flex;
   margin-left: 14px;
@@ -611,6 +619,7 @@ html {
   border-radius: 5px;
   font-size: 13px;
 }
+
 .swiper-slide .cards .infos .locationP {
   display: flex;
   justify-content: space-around;
@@ -618,10 +627,12 @@ html {
   margin-left: 14px;
   width: 152px;
 }
+
 .swiper-slide .cards .infos .locationP i {
   font-size: 14px;
   margin-top: 5px;
 }
+
 .swiper-slide .cards .infos .stipendP {
   display: flex;
   justify-content: space-around;
@@ -630,10 +641,12 @@ html {
   width: 215px;
   font-size: 14px;
 }
+
 .swiper-slide .cards .infos .stipendP i {
   font-size: 12px;
   margin-top: 4px;
 }
+
 .swiper-slide .cards .infos a {
   text-decoration: none;
   font-size: 14px;
@@ -647,11 +660,13 @@ html {
   justify-content: center;
   border-radius: 50px;
 }
+
 .infos .activeHire i {
   margin-top: 3px;
   color: var(--fourth-col);
   font-weight: 800;
 }
+
 .infos h2 {
   display: flex;
   margin-top: 10px;
@@ -660,6 +675,7 @@ html {
   font-size: 18px;
   width: 95%;
 }
+
 .swiper .swiper-btn {
   height: 20px;
   width: 20px;
@@ -840,11 +856,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -854,7 +870,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -888,9 +904,11 @@ footer {
   top: 22%;
   left: 20%;
 }
+
 .hiddenDiv {
   display: none;
 }
+
 .filterContainer .inputBox p {
   font-size: 1.1rem;
   color: var(--fourth-col);
@@ -1675,26 +1693,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1714,31 +1723,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2531,6 +2528,12 @@ legend {
   margin-left: 83px;
 }
 
+.stu-addresses {
+  margin-top: 50px;
+  margin-left: 83px;
+  margin-bottom: 30px;
+}
+
 .pin-state {
   margin-left: 27.7px;
 }
@@ -2564,9 +2567,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
