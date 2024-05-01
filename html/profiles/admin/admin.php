@@ -2,19 +2,24 @@
 session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../../LoginandRegister/adminLogin.php");
+    exit();
 }
 
+require '../../../dbconnect.php';
+
+$username = $_SESSION['user_name'];
+
+$query = "SELECT * FROM admin";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$admin = mysqli_fetch_assoc($result);
+
+// Extract initials from username
 $initials = '';
-if (isset($_SESSION['user_name'])) {
-    $username = $_SESSION['user_name'];
-    // Extracting initials
-    $words = explode(' ', $username);
-    foreach ($words as $word) {
-        $initials .= $word[0];
-    }
-} else {
-    // Handle error if session is not working
-    echo "<script>alert('Error: Session is not working.')</script>";
+$words = explode(' ', $username);
+foreach ($words as $word) {
+    $initials .= $word[0];
 }
 ?>
 
@@ -28,10 +33,6 @@ if (isset($_SESSION['user_name'])) {
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
-
-<?php
-require '../../../dbconnect.php';
-?>
 
 <body>
     <div class="sidebar close">
@@ -62,6 +63,20 @@ require '../../../dbconnect.php';
                     <li><a href="list/companylist.php">Company's List</a></li>
                 </ul>
             </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Email Update</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="listing/studentmainlisting.php">Student's email Update</a></li>
+                    <li><a href="listing/teachermainlisting.html">Teacher's email Update</a></li>
+                    <li><a href="listing/companymainlisting.html">Company's email Update</a></li>
+                </ul>
+            </li>
 
             <li>
                 <a href="rPage.php">
@@ -84,16 +99,11 @@ require '../../../dbconnect.php';
                     </div>
                     <div class="name-job">
                         <div class="profile_name">
-                            <?php
-                            if (isset($_SESSION['user_name'])) {
-                                $username = $_SESSION['user_name'];
-                            } else {
-                                echo "<script>alert('Error: Session is not working.')</script>";
-                            }
-                            echo $username;
-                            ?>
+                            <?php echo $username; ?>
                         </div>
-                        <div class="job">College name</div>
+                        <div class="job">
+                        <?php echo $admin['college_name']; ?>
+                        </div>
                     </div>
                     <i onclick="openLogOut()" class='bx bx-log-out'></i>
                 </div>
