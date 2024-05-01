@@ -90,7 +90,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
                         echo "<td class='need-side'><a href='../list/updateTeacher.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
-                        echo "<i class='btn del fa-solid fa-trash' title='delete'></i></td>";
+                        echo "<a href='../list/deleteTeacher.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
@@ -120,6 +120,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
             </div>
         </div>
     </div>
+
+    
 </body>
 
 </html>

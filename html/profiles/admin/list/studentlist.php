@@ -79,18 +79,6 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th>Operations</th>
                 </tr>
 
-                <div id="blurBackground" class="blur-background" style="display: none;"></div>
-                <div id="deleteModal">
-                    <div class="log-out-content">
-                        <div class="log-out-text">Do you want to delete the student data?</div>
-                        <div class="log-out-buttons">
-                            <div class="choice yes" onclick="nice_question_gopi_will_care_about_that()">Yes</div>
-                            <div class="choice no" onclick="closedel()">No</div>
-                        </div>
-                    </div>
-                    <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
-                </div>
-
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -109,7 +97,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
                         echo "<td class='need-side'><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
-                        echo "<i onclick='opendel()' class='btn del fa-solid fa-trash' title='delete'></i></td>";
+                        echo "<a href='../list/deleteStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
@@ -141,7 +129,6 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
     </div>
     
     <!-- script links -->
-    <script src="../../../../javaScripts/buttonPop.js"></script>
 </body>
 
 </html>
