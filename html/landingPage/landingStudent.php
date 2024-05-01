@@ -24,12 +24,24 @@ if (!isset($_SESSION['mail'])) {
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
-                    <li><a href="../Internship/internship.php">Internship</a></li>
-                    <li><a href="../Job/job.php">Job</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
-                    <li><a href="#"><i class="fas fa-message"></i></a></li>
+                    <li><a href="../Internship/internship.php" class="navItems">Internship
+                      <span class="navItemshover" style="margin-left: -110px;">Find best internships</span>
+                    </a>
+                    </li>
+                    <li><a href="../Job/job.php" class="navItems">Job
+                        <span class="navItemshover" style="margin-left: -75px;">Find best jobs</span>
+                    </a>
+                    </li>
+                    <li>
+                      <a href="#" class="navItems"><i class="fa-solid fa-code"></i>
+                      <span class="navItemshover">Test your skill</span>
+                      </a>
+                    </li>
+                    
                     <div class="dropdown">
-                        <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
+                        <li onclick="toggleDropdown()"><a class="navItems"><i class="fas fa-user" id="postOptions"></i>
+                        <span class="navItemshover">Edit profile</span>
+                        </a>
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="../profiles/student/student.php">Create Profile</a>
                                 <a href="../profiles/student/viewStudentDetails.php">View Profile</a>
