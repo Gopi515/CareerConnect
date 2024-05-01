@@ -16,7 +16,7 @@
     --h1-fontsize: 45px;
     --h2-fontsize: 35px;
     --h3-fontsize: 25px;
-    --padding-btn: 10px 20px;
+    --padding-btn: 7px 13px;
     --border: none;
     --border-50: 50px;
     --transition: all 0.2s ease-in-out;
@@ -55,7 +55,7 @@
 }
 
 .inner-whole-body {
-    width: 95%;
+    width: 98%;
     margin-top: 10px;
     margin-bottom: 10px;
     box-shadow: var(--box-shadow);
@@ -89,11 +89,38 @@ body {
     font-size: 14px;
 }
 
+.need-side {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn {
+    padding: var(--padding-btn);
+    background-color: var(--fourth-col);
+    color: var(--first-col);
+    margin: 0 5px;
+    border: var(--border);
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.edit:hover {
+    background-color: var(--fifth-col);
+}
+
+.del:hover {
+    background-color: #ff4d4d;
+    color: var(--first-col);
+}
+
 /* Center the table */
 table {
-    margin: 20px auto;
+    margin: 15px auto;
     border-collapse: collapse;
-    width: 95%;
+    width: 98%;
     border: 1px solid var(--first-col);
     border-radius: 15px;
     overflow: hidden;
@@ -137,7 +164,7 @@ button:hover {
     background-color: #ddd;
 }
 
-a{
+a {
     text-decoration: none;
 }
 

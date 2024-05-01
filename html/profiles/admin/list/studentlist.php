@@ -51,7 +51,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
         <h1>Students list</h1>
     </div>
     <a href="../admin.php">
-        <div class="regallclosebtn"><i class="fa-solid fa-caret-left"></i></div>
+        <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>
     </a>
     <div class="search-container">
         <form method="GET" action="">
@@ -96,8 +96,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn fa-solid fa-pen-to-square'></i></a>";
-                        echo "<i class='btn fa-solid fa-trash'></i></td>";
+                        echo "<td class='need-side'><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
+                        echo "<i class='btn del fa-solid fa-trash' title='delete'></i></td>";
                         echo "</tr>";
                     }
                 } else {
