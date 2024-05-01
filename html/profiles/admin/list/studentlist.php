@@ -1,13 +1,17 @@
 <?php
-require '../../../../dbconnect.php';
+    session_start();
+    if (!isset($_SESSION['mail'])) {
+        header("Location: ../../../LoginandRegister/adminLogin.php");
+    }
+?>
 
-// Pagination parameters
-$recordsPerPage = 10;
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-$offset = ($page - 1) * $recordsPerPage;
+<?php
+    require '../../../../dbconnect.php';
 
-// Search term
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+    // Pagination parameters
+    $recordsPerPage = 10;
+    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($page - 1) * $recordsPerPage;
 
 // Fetch records for the current page with search
 $query = "SELECT * FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', dept, ' ', email, ' ', phone_no, ' ', start_year, ' ', end_year, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
@@ -25,6 +29,14 @@ mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
+
+    // Count total number of records with search
+    $totalRecordsQuery = "SELECT COUNT(*) AS total FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
+    $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
+    mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
+    mysqli_stmt_execute($stmtTotal);
+    $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
+    $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +101,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><button class='edit-btn' data-stu-id='" . $row['stu_id'] . "'>Edit</button>";
+                        echo "<td><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><button class='edit-btn'>Edit</button></a>";
                         echo "<button class='delete-btn' data-stu-id='" . $row['stu_id'] . "'>Delete</button></td>";
                         echo "</tr>";
                     }

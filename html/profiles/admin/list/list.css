@@ -137,6 +137,10 @@ button:hover {
     background-color: #ddd;
 }
 
+a{
+    text-decoration: none;
+}
+
 /*pagination*/
 .pagination-container {
     text-align: right;

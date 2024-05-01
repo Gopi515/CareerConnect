@@ -1,7 +1,7 @@
-<?php 
+<?php
     session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/studentLogin.php");
+    if (!isset($_SESSION['mail'])) {
+        header("Location: ../../../LoginandRegister/adminLogin.php");
     }
 ?>
 
@@ -10,28 +10,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Your Details</title>
-    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <title>Update Student Details</title>
+    <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>">
     
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
 <?php 
-    require '../../../dbconnect.php';
+    require '../../../../dbconnect.php';
 
-    if (isset($_SESSION['mail'])){
-        $email = $_SESSION['mail'];
+    if(isset($_GET['id'])) {
+    $stu_id = $_GET['id'];
     } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
+        echo "Student ID not found in the URL.";
     }
-    $sql = "SELECT * FROM `stu_personal_details` WHERE `email` = '$email'";
+
+    $sql = "SELECT * FROM `stu_personal_details` WHERE `stu_id` = '$stu_id'";
     $student_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
-        $countrycode = $_POST['countrycode'];
+        $email = htmlspecialchars($_POST['email']);
+        $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
@@ -45,7 +47,7 @@
         // $lang = implode(",",$language);
 
         if (
-            !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
+            !empty($firstname) && !empty($lastname) && !empty($countrycode) &&
             !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
             !empty($state) && !empty($city) && !empty($country) && !empty($gender)
         ) {
@@ -62,12 +64,12 @@
 
             $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname',
                     `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
-                    `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `email` = '$email'";
+                    `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id'";
 
             $smt = mysqli_query($conn, $updatedata);
 
             if ($smt) {
-                header("location: ../../landingPage/landingStudent.php");
+                header("location: ../list/studentlist.php");
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -105,7 +107,7 @@
             while($row = mysqli_fetch_assoc($student_details)){
         ?>
 
-        <a href="../../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+        <a href="../list/studentlist.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
         <form action="#" method="POST"  class="stu-container">
@@ -138,6 +140,7 @@
                     <div class="stu-email">
                         <p class="stu-para-style1">Email*</p>
                         <div class="stu-email-box"><?php echo $row["email"];?></div>
+                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
                     </div>
 
                 </div>

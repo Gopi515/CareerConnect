@@ -1,29 +1,36 @@
 <?php
-require '../../../../dbconnect.php';
+    session_start();
+    if (!isset($_SESSION['mail'])) {
+        header("Location: ../../../LoginandRegister/adminLogin.php");
+    }
+?>
 
-// Pagination parameters
-$recordsPerPage = 10;
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-$offset = ($page - 1) * $recordsPerPage;
+<?php
+    require '../../../../dbconnect.php';
 
-// Search term
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+    // Pagination parameters
+    $recordsPerPage = 10;
+    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($page - 1) * $recordsPerPage;
 
-// Fetch records for the current page with search
-$query = "SELECT * FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
-$stmt = mysqli_prepare($conn, $query);
-$searchParam = "%" . $search . "%";
-mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+    // Search term
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
-$stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
-mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
-mysqli_stmt_execute($stmtTotal);
-$totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
-$totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
+    // Fetch records for the current page with search
+    $query = "SELECT * FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
+    $stmt = mysqli_prepare($conn, $query);
+    $searchParam = "%" . $search . "%";
+    mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Count total number of records with search
+    $totalRecordsQuery = "SELECT COUNT(*) AS total FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
+    $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
+    mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
+    mysqli_stmt_execute($stmtTotal);
+    $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
+    $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +89,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><button class='edit-btn' data-tech-id='" . $row['tech_id'] . "'>Edit</button>";
+                        echo "<td><a href='../list/updateTeacher.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'><button class='edit-btn'>Edit</button></a>";
                         echo "<button class='delete-btn' data-tech-id='" . $row['tech_id'] . "'>Delete</button></td>";
                         echo "</tr>";
                     }

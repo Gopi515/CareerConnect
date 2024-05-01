@@ -1,7 +1,7 @@
-<?php 
+<?php
     session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/teacherLogin.php");
+    if (!isset($_SESSION['mail'])) {
+        header("Location: ../../../LoginandRegister/adminLogin.php");
     }
 ?>
 
@@ -10,26 +10,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Your Details</title>
-    <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <title>Update Teacher Details</title>
+    <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
 <?php 
-    require '../../../dbconnect.php';
+    require '../../../../dbconnect.php';
 
-    if (isset($_SESSION['mail'])){
-        $email = $_SESSION['mail'];
+    if(isset($_GET['id'])) {
+    $tech_id = $_GET['id'];
     } else {
-        echo "<script>alert('Error: Session is not working.')</script>";
+        echo "Teacher ID not found in the URL.";
     }
-    $sql = "SELECT * FROM `tech_personal_details` WHERE `email` = '$email'";
+
+    $sql = "SELECT * FROM `tech_personal_details` WHERE `tech_id` = '$tech_id'";
     $teacher_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
-        $countrycode = $_POST['countrycode'];
+        $email = htmlspecialchars($_POST['email']);
+        $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
@@ -70,14 +72,14 @@
 
             $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
                     `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
-                    `country` = '$country', `gender` = '$gender' WHERE `email` = '$email'";
+                    `country` = '$country', `gender` = '$gender' WHERE `tech_id` = '$tech_id'";
                     // , `languages` = '$lang' WHERE `email` = '$email'";
 
             $smt = mysqli_query($conn, $updatedata);
 
 
             if ($smt) {
-                header("location: ../../landingPage/landingTeacher.php");
+                header("location: ../list/teacherlist.php");
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -116,7 +118,7 @@
             while($row = mysqli_fetch_assoc($teacher_details)){
         ?>
 
-        <a href="../../landingPage/landingTeacher.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+        <a href="../list/teacherlist.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
 
         <!-- main container -->
         <form action="#" method="POST"  class="tech-container">
@@ -149,7 +151,8 @@
                     <div class="tech-email">
                         <p class="tech-para-style1">Email*</p>
                         <div class="tech-email-box"><?php echo $row["email"];?></div>
-
+                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
+                        
                     </div>
 
                 </div>
@@ -268,6 +271,5 @@
 
     </div>
 
-    <script src="../../../javaScripts/teacherLang.js"></script>
 </body>
 </html>
