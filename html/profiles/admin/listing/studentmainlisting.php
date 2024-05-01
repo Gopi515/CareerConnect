@@ -9,7 +9,7 @@ if (!isset($_SESSION['mail'])) {
 require '../../../../dbconnect.php';
 
 // Pagination parameters
-$recordsPerPage = 10;
+$recordsPerPage = 25;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
@@ -17,7 +17,11 @@ $offset = ($page - 1) * $recordsPerPage;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
-$query = "SELECT * FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', dept, ' ', email, ' ', phone_no, ' ', start_year, ' ', end_year, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
+$query = "SELECT s.id AS stu_id, s.user_name, s.email, p.F_name, p.L_name, p.dept
+          FROM student s
+          INNER JOIN stu_personal_details p ON s.id = p.stu_id
+          WHERE CONCAT(s.user_name, ' ', s.email, ' ', p.F_name, ' ', p.L_name, ' ', p.dept) LIKE ?
+          LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
 mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
@@ -25,7 +29,10 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', dept, ' ', email, ' ', phone_no, ' ', start_year, ' ', end_year, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total
+                      FROM student s
+                      INNER JOIN stu_personal_details p ON s.id = p.stu_id
+                      WHERE CONCAT(s.user_name, ' ', s.email, ' ', p.F_name, ' ', p.L_name, ' ', p.dept) LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
 mysqli_stmt_execute($stmtTotal);
@@ -40,8 +47,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student lists</title>
-    <link rel="stylesheet" href="list.css?v=<?php echo time(); ?>">
+    <title>Student only email Update</title>
+    <link rel="stylesheet" href="../list/list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
     <script src="../../../../javaScripts/tableascdesc.js"></script>
 </head>
@@ -55,7 +62,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
     </a>
     <div class="search-container">
         <form method="GET" action="">
-            <input type="text" name="search" placeholder="Search by anything" value="<?php echo htmlspecialchars($search); ?>">
+            <input type="text" name="search" placeholder="Search by anything"
+                value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
@@ -64,56 +72,30 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
             <table border="1">
                 <tr>
                     <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(1)" data-column="1">First Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(2)" data-column="2">Last Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="4">Email<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="5">Mobile<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="6">Start Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="7">End Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="8">ZIP Code<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">City<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(10)" data-column="10">State<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(11)" data-column="11">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(12)" data-column="12">Gender<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(1)" data-column="1">Username<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(2)" data-column="2">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">First Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">Last Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">Department<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
-
-                <div id="blurBackground" class="blur-background" style="display: none;"></div>
-                <div id="deleteModal">
-                    <div class="log-out-content">
-                        <div class="log-out-text">Do you want to delete the student data?</div>
-                        <div class="log-out-buttons">
-                            <div class="choice yes" onclick="nice_question_gopi_will_care_about_that()">Yes</div>
-                            <div class="choice no" onclick="closedel()">No</div>
-                        </div>
-                    </div>
-                    <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
-                </div>
 
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>" . $row['stu_id'] . "</td>";
+                        echo "<td>" . $row['user_name'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['phone_no'] . "</td>";
-                        echo "<td>" . $row['start_year'] . "</td>";
-                        echo "<td>" . $row['end_year'] . "</td>";
-                        echo "<td>" . $row['pin'] . "</td>";
-                        echo "<td>" . $row['city'] . "</td>";
-                        echo "<td>" . $row['state'] . "</td>";
-                        echo "<td>" . $row['country'] . "</td>";
-                        echo "<td>" . $row['gender'] . "</td>";
                         echo "<td class='need-side'><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
-                        echo "<i onclick='opendel()' class='btn del fa-solid fa-trash' title='delete'></i></td>";
+                        echo "<i class='btn del fa-solid fa-trash' title='delete'></i></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='13'>No records found.</td></tr>";
+                    echo "<tr><td colspan='7'>No records found.</td></tr>";
                 }
                 ?>
             </table>
@@ -139,9 +121,6 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
             </div>
         </div>
     </div>
-    
-    <!-- script links -->
-    <script src="../../../../javaScripts/buttonPop.js"></script>
 </body>
 
 </html>

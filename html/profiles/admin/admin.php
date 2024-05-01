@@ -62,6 +62,20 @@ require '../../../dbconnect.php';
                     <li><a href="list/companylist.php">Company's List</a></li>
                 </ul>
             </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Email Update</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="listing/studentmainlisting.php">Student's email Update</a></li>
+                    <li><a href="listing/teachermainlisting.html">Teacher's email Update</a></li>
+                    <li><a href="listing/companymainlisting.html">Company's email Update</a></li>
+                </ul>
+            </li>
 
             <li>
                 <a href="rPage.php">
