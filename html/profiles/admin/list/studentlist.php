@@ -1,17 +1,20 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['mail'])) {
-        header("Location: ../../../LoginandRegister/adminLogin.php");
-    }
+session_start();
+if (!isset($_SESSION['mail'])) {
+    header("Location: ../../../LoginandRegister/adminLogin.php");
+}
 ?>
 
 <?php
-    require '../../../../dbconnect.php';
+require '../../../../dbconnect.php';
 
-    // Pagination parameters
-    $recordsPerPage = 10;
-    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
-    $offset = ($page - 1) * $recordsPerPage;
+// Pagination parameters
+$recordsPerPage = 10;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $recordsPerPage;
+
+// Search term
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
 $query = "SELECT * FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', dept, ' ', email, ' ', phone_no, ' ', start_year, ' ', end_year, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
@@ -29,14 +32,6 @@ mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
-
-    // Count total number of records with search
-    $totalRecordsQuery = "SELECT COUNT(*) AS total FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
-    $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
-    mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
-    mysqli_stmt_execute($stmtTotal);
-    $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
-    $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -72,15 +67,15 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(1)" data-column="1">First Name<span class="sort-icon"></span></th>
                     <th onclick="sortTable(2)" data-column="2">Last Name<span class="sort-icon"></span></th>
                     <th onclick="sortTable(3)" data-column="3">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="3">Email<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="4">Mobile<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="5">Start Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="6">End Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="5">ZIP Code<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="6">City<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(10)" data-column="7">State<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(11)" data-column="8">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(12)" data-column="9">Gender<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">Mobile<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="6">Start Year<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="7">End Year<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="8">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(9)" data-column="9">City<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(10)" data-column="10">State<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(11)" data-column="11">Country<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(12)" data-column="12">Gender<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
 
@@ -101,12 +96,12 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><button class='edit-btn'>Edit</button></a>";
-                        echo "<button class='delete-btn' data-stu-id='" . $row['stu_id'] . "'>Delete</button></td>";
+                        echo "<td><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn fa-solid fa-pen-to-square'></i></a>";
+                        echo "<i class='btn fa-solid fa-trash'></i></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='14'>No records found.</td></tr>";
+                    echo "<tr><td colspan='13'>No records found.</td></tr>";
                 }
                 ?>
             </table>
