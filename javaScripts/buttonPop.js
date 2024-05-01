@@ -116,3 +116,11 @@ function openxlsxT() {
 function closexlsxT() {
   document.getElementById("uploadModalT").style.display = "none";
 }
+function opendel() {
+  document.getElementById("deleteModal").style.display = "flex";
+  document.getElementById("blurBackground").style.display = "block";
+}
+function closedel() {
+  document.getElementById("deleteModal").style.display = "none";
+  document.getElementById("blurBackground").style.display = "none";
+}
