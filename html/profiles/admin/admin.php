@@ -21,6 +21,24 @@ $words = explode(' ', $username);
 foreach ($words as $word) {
     $initials .= $word[0];
 }
+
+// Get total number of students
+$query = "SELECT COUNT(*) AS total_students FROM student";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$totalStudents = $row['total_students'];
+
+// Get total number of teachers
+$query = "SELECT COUNT(*) AS total_teachers FROM teacher";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$totalTeachers = $row['total_teachers'];
+
+// Get total number of companies
+$query = "SELECT COUNT(*) AS total_companies FROM company";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$totalCompanies = $row['total_companies'];
 ?>
 
 <!DOCTYPE html>
@@ -122,8 +140,51 @@ foreach ($words as $word) {
             </div>
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
-        <div class="home-content">
+        <!-- <div class="home-content">
             <span class="text">Admin Main Page</span>
+        </div> -->
+
+        <!-- Dashboard overview content here -->
+        <div class="dashboard-overview">
+            <div class="dashboard-overview">
+                <h2>Admin Dashboard</h2>
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Total Users</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Total number of students: <strong><?php echo $totalStudents; ?></strong></p>
+                        <p>Total number of teachers: <strong><?php echo $totalTeachers; ?></strong></p>
+                        <p>Total number of companies: <strong><?php echo $totalCompanies; ?></strong></p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Recent Activities</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>User John Doe updated their profile</li>
+                            <li>User Jane Smith registered for an event</li>
+                            <li>New job listing added</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="recent-activities">
+            <!-- Recent activities content here -->
+        </div>
+        <div class="notification-center">
+            <!-- Notification center content here -->
+        </div>
+        <div class="task-management">
+            <!-- Task management content here -->
+        </div>
+        <div class="settings-panel">
+            <!-- Settings panel content here -->
         </div>
     </section>
 

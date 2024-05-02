@@ -582,3 +582,48 @@ input[type="file"]::file-selector-button:hover {
     border-radius: var(--border-50);
     border: 3px var(--fourth-col) solid;
 }
+
+/* dashboard overview here */
+.dashboard-overview {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-overview h2 {
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: var(--fourth-col);
+}
+
+.overview-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.overview-card .card-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.overview-card h3 {
+    margin: 0;
+}
+
+.overview-card p {
+    margin-bottom: 10px;
+}
+
+.overview-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.overview-card li {
+    margin-bottom: 5px;
+}

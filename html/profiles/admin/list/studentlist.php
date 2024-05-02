@@ -64,18 +64,19 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
             <table border="1">
                 <tr>
                     <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(1)" data-column="1">First Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(2)" data-column="2">Last Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="4">Email<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="5">Mobile<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="6">Start Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="7">End Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="8">ZIP Code<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">City<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(10)" data-column="10">State<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(11)" data-column="11">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(12)" data-column="12">Gender<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(1)" data-column="0">User Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(2)" data-column="1">First Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="2">Last Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="3">Department<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="4">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="5">Mobile<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="6">Start Year<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="7">End Year<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(9)" data-column="8">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(10)" data-column="9">City<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(11)" data-column="10">State<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(12)" data-column="11">Country<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(13)" data-column="12">Gender<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
 
@@ -84,6 +85,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>" . $row['stu_id'] . "</td>";
+                        echo "<td>" . $row['user_name'] . "</td>";
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
@@ -101,7 +103,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='13'>No records found.</td></tr>";
+                    echo "<tr><td colspan='14'>No records found.</td></tr>";
                 }
                 ?>
             </table>
