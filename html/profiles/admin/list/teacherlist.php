@@ -17,7 +17,9 @@ $offset = ($page - 1) * $recordsPerPage;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
-$query = "SELECT * FROM tech_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', email, ' ', phone_no, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ? LIMIT ?, ?";
+$query = "SELECT t.id, t.user_name, t.email, p.F_name, p.L_name, p.phone_no, p.pin, p.city, p.state, p.country, p.gender 
+    FROM teacher t INNER JOIN tech_personal_details p ON t.id = p.tech_id 
+    WHERE CONCAT(t.user_name, ' ', p.F_name, ' ', p.L_name, ' ', t.email, ' ', p.phone_no, ' ', p.pin, ' ', p.city, ' ', p.state, ' ', p.country, ' ', p.gender) LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
 mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
@@ -63,15 +65,16 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
             <table border="1">
                 <tr>
                     <th onclick="sortTable(0)" data-column="0">ID<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(1)" data-column="1">First Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(2)" data-column="2">Last Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="4">Mobile<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="5">ZIP Code<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="6">City<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="7">State<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="8">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">Gender<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(1)" data-column="1">User Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(2)" data-column="2">First Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Last Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">Mobile<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="6">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="7">City<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="8">State<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(9)" data-column="9">Country<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(10)" data-column="10">Gender<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
 
@@ -79,7 +82,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['tech_id'] . "</td>";
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['user_name'] . "</td>";
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
@@ -89,8 +93,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td class='need-side'><a href='../list/updateTeacher.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
-                        echo "<a href='../list/deleteTeacher.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
+                        echo "<td class='need-side'><a href='../list/updateTeacher.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
+                        echo "<a href='../list/deleteTeacher.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {

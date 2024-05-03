@@ -66,13 +66,40 @@
             //     }
             // }
 
-            $updatedata = "UPDATE `com_personal_details` SET `name` = '$name', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
+            $updatedata = "UPDATE `com_personal_details` SET `name` = '$name', `email` = '$email', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
                     `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `city` = '$city', `state` = '$state', 
                     `country` = '$country', `c_website` = '$website', `c_about` = '$about' WHERE `com_id` = '$com_id'";
-
             $smt = mysqli_query($conn, $updatedata);
 
-            if ($smt) {
+            // Second query
+            $updatedata1 = "UPDATE `company` SET `email` = '$email' WHERE `id` = '$com_id'";
+            $smt1 = mysqli_query($conn, $updatedata1);
+
+            // Third query
+            $updatedata2 = "UPDATE `internships` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt2 = mysqli_query($conn, $updatedata2);
+
+            // Fourth query
+            $updatedata3 = "UPDATE `internship_application_details` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt3 = mysqli_query($conn, $updatedata3);
+
+            // Fifth query
+            $updatedata4 = "UPDATE `internship_applied` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt4 = mysqli_query($conn, $updatedata4);
+
+            // Sixth query
+            $updatedata5 = "UPDATE `job` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt5 = mysqli_query($conn, $updatedata5);
+
+            // Seventh query
+            $updatedata6 = "UPDATE `job_application_details` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt6 = mysqli_query($conn, $updatedata6);
+
+            // Eighth query
+            $updatedata7 = "UPDATE `job_applied` SET `com_email` = '$email' WHERE `com_id` = '$com_id'";
+            $smt7 = mysqli_query($conn, $updatedata7);
+
+            if ($smt && $smt1 && $smt2 && $smt3 && $smt4 && $smt5 && $smt6 && $smt7) {
                 header("location: ../list/companylist.php");
                 exit;
             } else {
@@ -141,8 +168,7 @@
 
                     <div class="com-email">
                         <p class="com-para-style1">Email*</p>
-                        <div class="com-email-box"><?php echo $row["email"];?></div>
-                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
+                        <input name="email" required class="com-email-box" value="<?php echo $row["email"];?>" type="email" placeholder="Enter the email">
                     </div>
 
                 </div>
