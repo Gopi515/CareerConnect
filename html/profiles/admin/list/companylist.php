@@ -18,8 +18,8 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
 $query = "SELECT c.id, c.user_name, c.email, p.name, p.phone_no, p.DOA, p.pin, p.city, p.state, p.country, p.c_website 
-    FROM company c INNER JOIN com_personal_details p ON c.id = p.com_id 
-    WHERE CONCAT(c.user_name, ' ', p.name, ' ', c.email, ' ', p.phone_no, ' ', p.DOA, ' ', p.pin, ' ', p.city, ' ', p.state, ' ', p.country, ' ', p.c_website) LIKE ? LIMIT ?, ?";
+    FROM company c LEFT JOIN com_personal_details p ON c.id = p.com_id 
+    WHERE CONCAT(c.user_name, ' ', COALESCE(p.name, ''), ' ', c.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.DOA, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.c_website, '')) LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
 mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
@@ -27,7 +27,8 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM com_personal_details WHERE CONCAT(name, ' ', email, ' ', phone_no, ' ', DOA, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', c_website) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM company c LEFT JOIN com_personal_details p ON c.id = p.com_id 
+    WHERE CONCAT(c.user_name, ' ', COALESCE(p.name, ''), ' ', c.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.DOA, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.c_website, '')) LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
 mysqli_stmt_execute($stmtTotal);
