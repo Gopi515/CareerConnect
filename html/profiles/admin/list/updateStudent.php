@@ -32,7 +32,10 @@
 
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
+        $dept = htmlspecialchars($_POST['dept']);
         $email = htmlspecialchars($_POST['email']);
+        $start_year = htmlspecialchars($_POST['start_year']);
+        $end_year = htmlspecialchars($_POST['end_year']);
         $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
@@ -47,9 +50,9 @@
         // $lang = implode(",",$language);
 
         if (
-            !empty($firstname) && !empty($lastname) && !empty($countrycode) &&
+            !empty($firstname) && !empty($lastname) && !empty($countrycode) && !empty($email) && !empty($dept) &&
             !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-            !empty($state) && !empty($city) && !empty($country) && !empty($gender)
+            !empty($start_year) && !empty($end_year) && !empty($state) && !empty($city) && !empty($country) && !empty($gender)
         ) {
             // && !empty($lang)
 
@@ -62,13 +65,48 @@
             //     exit;
             // }
 
-            $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname',
-                    `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
-                    `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id'";
+            // $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname',
+            //         `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
+            //         `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id'";
 
-            $smt = mysqli_query($conn, $updatedata);
+            // $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname', `dept` = '$dept', `email` = '$email', `start_year` = '$start_year', 
+            //             `end_year` = '$end_year', `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
+            //             `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id';
+            //             UPDATE `student` SET `email` = '$email' WHERE `id` = '$stu_id';
+            //             UPDATE `internship_application_details` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id';
+            //             UPDATE `internship_applied` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id';
+            //             UPDATE `job_application_details` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id';
+            //             UPDATE `job_applied` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id';";
 
-            if ($smt) {
+            // $smt = mysqli_query($conn, $updatedata);
+            
+            // First query
+            $updatedata1 = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname', `dept` = '$dept', `email` = '$email', `start_year` = '$start_year', 
+                            `end_year` = '$end_year', `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
+                            `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `stu_id` = '$stu_id'";
+            $smt1 = mysqli_query($conn, $updatedata1);
+
+            // Second query
+            $updatedata2 = "UPDATE `student` SET `email` = '$email' WHERE `id` = '$stu_id'";
+            $smt2 = mysqli_query($conn, $updatedata2);
+
+            // Third query
+            $updatedata3 = "UPDATE `internship_application_details` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id'";
+            $smt3 = mysqli_query($conn, $updatedata3);
+
+            // Fourth query
+            $updatedata4 = "UPDATE `internship_applied` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id'";
+            $smt4 = mysqli_query($conn, $updatedata4);
+
+            // Fifth query
+            $updatedata5 = "UPDATE `job_application_details` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id'";
+            $smt5 = mysqli_query($conn, $updatedata5);
+
+            // Sixth query
+            $updatedata6 = "UPDATE `job_applied` SET `stu_email` = '$email' WHERE `stu_id` = '$stu_id'";
+            $smt6 = mysqli_query($conn, $updatedata6);
+
+            if ($smt1 && $smt2 && $smt3 && $smt4 && $smt5 && $smt6) {
                 header("location: ../list/studentlist.php");
                 exit;
             } else {
@@ -137,12 +175,31 @@
 
                 <div class="stu-entry-boxes2">
 
-                    <div class="stu-email">
-                        <p class="stu-para-style1">Email*</p>
-                        <div class="stu-email-box"><?php echo $row["email"];?></div>
-                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
+                    <div class="stu-email department">
+                        <p class="stu-para-style1">Department*</p>
+                        <input name="dept" type="text" placeholder="Eg: department name _ ID" value="<?php echo $row["dept"];?>" class="stu-email-box" required>
                     </div>
 
+                    <div class="stu-email">
+                        <p class="stu-para-style1">Email*</p>
+                        <input name="email" required class="stu-email-box" type="email" placeholder="Enter the email" value="<?php echo $row["email"];?>">
+                    </div>
+
+                </div>
+
+                <div class="stu-addresses">
+                    <p class="stu-para-style1">Batch</p>
+                    <p class="stu-para">Only enter the starting year and ending year.</p>
+                </div>
+                <div class="stu-entry-boxes1">
+                    <div class="stu-start-year">
+                        <p class="stu-para-style2">Start Year*</p>
+                        <input name="start_year" type="number" placeholder="Enter start year" value="<?php echo $row["start_year"];?>" class="stu-box-design3" min="1900" max="2200" step="1" required>
+                    </div>
+                    <div class="stu-end-year">
+                        <p class="stu-para-style2">End Year*</p>
+                        <input name="end_year" type="number" placeholder="Enter end year" value="<?php echo $row["end_year"];?>" class="stu-box-design3" min="1900" max="2200" step="1" required>
+                    </div>
                 </div>
 
                 <div class="stu-entry-boxes3">
