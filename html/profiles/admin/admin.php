@@ -145,9 +145,9 @@ $totalCompanies = $row['total_companies'];
         </div> -->
 
         <!-- Dashboard overview content here -->
-        <div class="dashboard-overview">
+        <div class="admin-overview">
+        <h2>Admin Dashboard</h2>
             <div class="dashboard-overview">
-                <h2>Admin Dashboard</h2>
                 <div class="overview-card">
                     <div class="card-header">
                         <h3>Total Users</h3>
@@ -160,23 +160,41 @@ $totalCompanies = $row['total_companies'];
                 </div>
                 <div class="overview-card">
                     <div class="card-header">
-                        <h3>Recent Activities</h3>
+                        <h3>Admin login details</h3>
                     </div>
                     <div class="card-body">
-                        <ul>
-                            <li>User John Doe updated their profile</li>
-                            <li>User Jane Smith registered for an event</li>
-                            <li>New job listing added</li>
-                        </ul>
+                        <p>Your login User Name: <strong><?php echo $username; ?></strong></p>
+                        <p>Your login Email: <strong><?php echo $admin['email']; ?></strong></p>
+                        <p>College ID: <strong><?php echo $admin['college_id']; ?></strong></p>
+                        <p>College Name: <strong><?php echo $admin['college_name']; ?></strong></p>
                     </div>
+                </div>
+            </div>
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>All Lists</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="list/studentlist.php">Student's List</a>
+                    <a class="button" href="list/teacherlist.php">Teacher's List</a>
+                    <a class="button" href="list/companylist.php">Company's List</a>
+                </div>
+            </div>
+
+            <!-- work from here -->
+            <div class="recent-activities">
+                <div class="dashboard-overview">
+                </div>
+            </div>
+
+            <div class="recent-activities">
+                <div class="dashboard-overview">
                 </div>
             </div>
         </div>
 
 
-        <div class="recent-activities">
-            <!-- Recent activities content here -->
-        </div>
+        
         <div class="notification-center">
             <!-- Notification center content here -->
         </div>
