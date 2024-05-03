@@ -82,21 +82,6 @@ $totalCompanies = $row['total_companies'];
                 </ul>
             </li>
             <li>
-                <div class="icon-link">
-                    <a href="#">
-                        <i class='bx bx-collection'></i>
-                        <span class="link_name">Email Update</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a href="listing/studentmainlisting.php">Student's email Update</a></li>
-                    <li><a href="listing/teachermainlisting.html">Teacher's email Update</a></li>
-                    <li><a href="listing/companymainlisting.html">Company's email Update</a></li>
-                </ul>
-            </li>
-
-            <li>
                 <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
@@ -187,8 +172,13 @@ $totalCompanies = $row['total_companies'];
                 </div>
             </div>
 
-            <div class="recent-activities">
-                <div class="dashboard-overview">
+            <div class="list-overview">
+                <div class="help-header">
+                    <h3>Help Desk:</h3>
+                    <div class="thebuttons">
+                        <a class="button btus" href="something.php" title="Frequently Asked Questions">FAQs</a>
+                        <a class="button btus" href="something.php" title="Email us directly">Email Us</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,8 +191,8 @@ $totalCompanies = $row['total_companies'];
         <div class="task-management">
             <!-- Task management content here -->
         </div>
-        <div class="settings-panel">
-            <!-- Settings panel content here -->
+        <div class="help-panel">
+            <!-- Help panel content here -->
         </div>
     </section>
 

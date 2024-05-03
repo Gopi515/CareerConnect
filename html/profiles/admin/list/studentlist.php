@@ -17,9 +17,10 @@ $offset = ($page - 1) * $recordsPerPage;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
-$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.state, p.country, p.gender 
-    FROM student s INNER JOIN stu_personal_details p ON s.id = p.stu_id 
-    WHERE CONCAT(s.user_name, ' ', p.F_name, ' ', p.L_name, ' ', p.dept, ' ', s.email, ' ', p.phone_no, ' ', p.start_year, ' ', p.end_year, ' ', p.pin, ' ', p.city, ' ', p.state, ' ', p.country, ' ', p.gender) LIKE ? LIMIT ?, ?";
+$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.city, p.state, p.country, p.gender 
+    FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id 
+    WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ? LIMIT ?, ?";
+
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
 mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
@@ -27,12 +28,13 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM stu_personal_details WHERE CONCAT(F_name, ' ', L_name, ' ', dept, ' ', email, ' ', phone_no, ' ', start_year, ' ', end_year, ' ', pin, ' ', city, ' ', state, ' ', country, ' ', gender) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
+
 
 ?>
 
