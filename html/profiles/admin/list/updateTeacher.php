@@ -70,15 +70,17 @@
             // }
 
 
-            $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
+            $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `email` = '$email', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
                     `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
                     `country` = '$country', `gender` = '$gender' WHERE `tech_id` = '$tech_id'";
-                    // , `languages` = '$lang' WHERE `email` = '$email'";
-
             $smt = mysqli_query($conn, $updatedata);
 
+            // Second query
+            $updatedata1 = "UPDATE `teacher` SET `email` = '$email' WHERE `id` = '$tech_id'";
+            $smt1 = mysqli_query($conn, $updatedata1);
 
-            if ($smt) {
+
+            if ($smt && $smt1) {
                 header("location: ../list/teacherlist.php");
                 exit;
             } else {
@@ -150,8 +152,7 @@
 
                     <div class="tech-email">
                         <p class="tech-para-style1">Email*</p>
-                        <div class="tech-email-box"><?php echo $row["email"];?></div>
-                        <input type="hidden" name="email" value="<?php echo $row["email"];?>" style="display: none;">
+                        <input name="email" type="email" placeholder="Enter the email" value="<?php echo $row["email"];?>" class="tech-email-box" required>
                         
                     </div>
 
