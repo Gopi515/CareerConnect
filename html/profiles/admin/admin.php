@@ -8,8 +8,9 @@ if (!isset($_SESSION['mail'])) {
 require '../../../dbconnect.php';
 
 $username = $_SESSION['user_name'];
+$email = $_SESSION['mail'];
 
-$query = "SELECT * FROM admin";
+$query = "SELECT * FROM admin where email = '$email'";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);

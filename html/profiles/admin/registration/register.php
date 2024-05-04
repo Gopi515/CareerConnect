@@ -65,9 +65,10 @@
 
                 if ($password == $cpassword) {
                     $HASH = password_hash($password, PASSWORD_DEFAULT);
-                    $sql = "INSERT INTO `$role`(`user_name`, `pass`, `email`) VALUES (?, ?, ?)";
+                    $token = bin2hex(random_bytes(14));
+                    $sql = "INSERT INTO `$role`(`user_name`, `pass`, `email`, `token`) VALUES (?, ?, ?, ?)";
                     $stmt = mysqli_prepare($conn, $sql);
-                    mysqli_stmt_bind_param($stmt, "sss", $username, $HASH, $email);
+                    mysqli_stmt_bind_param($stmt, "ssss", $username, $HASH, $email, $token);
                     mysqli_stmt_execute($stmt);
 
                     if ($stmt) {
