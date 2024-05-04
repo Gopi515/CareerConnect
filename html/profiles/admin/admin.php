@@ -53,7 +53,7 @@ $totalCompanies = $row['total_companies'];
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
-<body>
+<body class="bg-img">
     <div class="sidebar close">
         <div class="logo-details">
             <a href="admin.php">
@@ -106,7 +106,7 @@ $totalCompanies = $row['total_companies'];
                             <?php echo $username; ?>
                         </div>
                         <div class="job">
-                        <?php echo $admin['college_name']; ?>
+                            <?php echo $admin['college_name']; ?>
                         </div>
                     </div>
                     <i onclick="openLogOut()" class='bx bx-log-out'></i>
@@ -132,16 +132,22 @@ $totalCompanies = $row['total_companies'];
 
         <!-- Dashboard overview content here -->
         <div class="admin-overview">
-        <h2>Admin Dashboard</h2>
+            <h2>Admin Dashboard</h2>
             <div class="dashboard-overview">
                 <div class="overview-card">
                     <div class="card-header">
                         <h3>Total Users</h3>
                     </div>
                     <div class="card-body">
-                        <p>Total number of students: <strong><?php echo $totalStudents; ?></strong></p>
-                        <p>Total number of teachers: <strong><?php echo $totalTeachers; ?></strong></p>
-                        <p>Total number of companies: <strong><?php echo $totalCompanies; ?></strong></p>
+                        <p>Total number of students: <strong>
+                                <?php echo $totalStudents; ?>
+                            </strong></p>
+                        <p>Total number of teachers: <strong>
+                                <?php echo $totalTeachers; ?>
+                            </strong></p>
+                        <p>Total number of companies: <strong>
+                                <?php echo $totalCompanies; ?>
+                            </strong></p>
                     </div>
                 </div>
                 <div class="overview-card">
@@ -149,10 +155,18 @@ $totalCompanies = $row['total_companies'];
                         <h3>Admin login details</h3>
                     </div>
                     <div class="card-body">
-                        <p>Your login User Name: <strong><?php echo $username; ?></strong></p>
-                        <p>Your login Email: <strong><?php echo $admin['email']; ?></strong></p>
-                        <p>College ID: <strong><?php echo $admin['college_id']; ?></strong></p>
-                        <p>College Name: <strong><?php echo $admin['college_name']; ?></strong></p>
+                        <p>Your login User Name: <strong>
+                                <?php echo $username; ?>
+                            </strong></p>
+                        <p>Your login Email: <strong>
+                                <?php echo $admin['email']; ?>
+                            </strong></p>
+                        <p>College ID: <strong>
+                                <?php echo $admin['college_id']; ?>
+                            </strong></p>
+                        <p>College Name: <strong>
+                                <?php echo $admin['college_name']; ?>
+                            </strong></p>
                     </div>
                 </div>
             </div>
@@ -178,14 +192,15 @@ $totalCompanies = $row['total_companies'];
                     <h3>Help Desk:</h3>
                     <div class="thebuttons">
                         <a class="button btus" href="something.php" title="Frequently Asked Questions">FAQs</a>
-                        <a class="button btus" href="something.php" title="Email us directly">Email Us</a>
+                        <a class="button btus" href="../admin/HelpDesk/contactUs.php" title="Email us directly">Email
+                            Us</a>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        
+
         <div class="notification-center">
             <!-- Notification center content here -->
         </div>

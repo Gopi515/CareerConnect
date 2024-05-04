@@ -122,10 +122,23 @@ require '../../../dbconnect.php';
                 <div>Terms and Policy</div>
                 <p>Manage terms of service, privacy policy, and other legal documents.</p>
             </a>
-            <a class="boxes HD" href="something.php">
-                <div>Help Desk</div>
+            
+            <a class="boxes HD">
+                <div onclick="openPOP()">Help Desk</div>
                 <p>Contact with technical team, FAQs,...</p>
             </a>
+
+            <div id="blurBackground" class="blur-background" style="display: none;"></div>
+            <div id="choicePOP">
+                <div class="log-out-content">
+                    <div class="log-out-text">How can we help you:</div>
+                    <div class="log-out-buttons">
+                        <a class="notd" href="something.php"><div class="choice yes">FAQs</div></a>
+                        <a class="notd" href="HelpDesk/contactUS.php"><div class="choice no">Email Us</div></a>
+                    </div>
+                </div>
+                <div id="closeLogout" onclick="closePOP()"><i class='bx bx-x'></i></div>
+            </div>
         </div>
     </section>
 

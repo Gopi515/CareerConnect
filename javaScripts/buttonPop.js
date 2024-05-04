@@ -124,3 +124,12 @@ function closedel() {
   document.getElementById("deleteModal").style.display = "none";
   document.getElementById("blurBackground").style.display = "none";
 }
+
+function openPOP() {
+  document.getElementById("choicePOP").style.display = "flex";
+  document.getElementById("blurBackground").style.display = "block";
+}
+function closePOP() {
+  document.getElementById("choicePOP").style.display = "none";
+  document.getElementById("blurBackground").style.display = "none";
+}

@@ -25,11 +25,18 @@
         0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
 
+html,
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+}
+
+.bg-img {
+    background-image: url(../../../assets/bgimg.jpeg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .sidebar {
@@ -273,7 +280,7 @@
 
 .home-section {
     position: relative;
-    background: var(--first-col);
+    background: none;
     height: 100vh;
     left: 285px;
     width: calc(100% - 285px);
@@ -511,7 +518,8 @@ input[type="file"]::file-selector-button:hover {
     z-index: 149;
 }
 
-#logOutPop {
+#logOutPop,
+#choicePOP {
     display: none;
     margin-top: 50vh;
     position: fixed;
@@ -532,14 +540,16 @@ input[type="file"]::file-selector-button:hover {
     z-index: 150;
 }
 
-#logOutPop .log-out-buttons {
+#logOutPop .log-out-buttons,
+#choicePOP .log-out-buttons {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 20px;
 }
 
-#logOutPop .log-out-buttons .choice {
+#logOutPop .log-out-buttons .choice,
+#choicePOP .log-out-buttons .choice {
     padding: var(--padding-btn);
     border-radius: 15px;
     border: 3px solid var(--first-col);
@@ -550,7 +560,8 @@ input[type="file"]::file-selector-button:hover {
     transition: var(--transition);
 }
 
-#logOutPop .log-out-buttons .choice:hover {
+#logOutPop .log-out-buttons .choice:hover,
+#choicePOP .log-out-buttons .choice:hover {
     background-color: var(--first-col);
     color: var(--fourth-col);
     border-radius: var(--border-50);
@@ -562,7 +573,8 @@ input[type="file"]::file-selector-button:hover {
     border: 2px solid var(--first-col);
 }
 
-#logOutPop #closeLogout {
+#logOutPop #closeLogout,
+#choicePOP #closeLogout {
     position: absolute;
     background-color: var(--fourth-col);
     border-radius: var(--border-50);
@@ -576,21 +588,25 @@ input[type="file"]::file-selector-button:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#logOutPop #closeLogout:hover {
+#logOutPop #closeLogout:hover,
+#choicePOP #closeLogout:hover {
     background-color: rgb(255, 61, 61);
     color: var(--first-col);
     border-radius: var(--border-50);
-    border: 3px var(--fourth-col) solid;
+    border: 3px var(--first-col) solid;
 }
 
 /* dashboard overview here */
 .admin-overview {
-    background-color: var(--second-col);
     text-align: center;
     padding: 20px;
     margin: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .admin-overview h2 {
@@ -699,4 +715,9 @@ input[type="file"]::file-selector-button:hover {
 
 .btus {
     margin: 0 20px;
+}
+
+.notd {
+    text-decoration: none;
+    margin: 0px 25px;
 }
