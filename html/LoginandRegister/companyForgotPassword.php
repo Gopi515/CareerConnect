@@ -5,19 +5,20 @@
     <title>Forgot Password</title>
     <link rel="stylesheet" href="forgotPassword.css" />
   </head>
+
   <?php
     require '../../dbconnect.php';
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require 'phpmailer/src/Exception.php';
-    require 'phpmailer/src/PHPMailer.php';
-    require 'phpmailer/src/SMTP.php';
+    require '../profiles/admin/HelpDesk/PHPMailer/src/Exception.php';
+    require '../profiles/admin/HelpDesk/PHPMailer/src/PHPMailer.php';
+    require '../profiles/admin/HelpDesk/PHPMailer/src/SMTP.php';
 
     if (isset($_POST['check-email']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
       $email = htmlspecialchars($_POST['email']);
 
-      $emailquery = "SELECT * FROM `student` WHERE `email` = '$email'";
+      $emailquery = "SELECT * FROM `company` WHERE `email` = '$email'";
         $result = mysqli_query($conn, $emailquery);
         $count = mysqli_num_rows($result);
 
@@ -43,8 +44,8 @@
             $mail->isHTML(true);
 
             $mail->Subject = "Password Reset";
-            $mail->Body = "Hi, $username. Click here too reset your password
-            http://localhost/CareerConnect/html/LoginandRegister/newPassword.php";
+            $mail->Body = "Hi, $username. Click here to reset your password
+            http://localhost/CareerConnect/html/LoginandRegister/companyNewPassword.php?token=$token";
 
             $mail->send();
 
@@ -52,7 +53,7 @@
                 "
             <script>
                 alert('Check your mail to reset your password $email');
-                document.location.href = 'studentLogin.php';
+                document.location.href = 'companyLogin.php';
             </script>
             ";
         }else {
@@ -65,10 +66,11 @@
         }
     }
   ?>
+  
   <body>
     <div class="container">
       <div class="form">
-        <form action="forgot-password.php" method="POST">
+        <form action="#" method="POST">
             <h2 class="forg-h2">Forgot Password</h2>
             <p class="forg-p">Enter your email address</p>
             <div>
