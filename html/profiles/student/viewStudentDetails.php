@@ -86,11 +86,31 @@
 
                 <div class="stu-entry-boxes2">
 
+                    <div class="stu-email department">
+                        <p class="stu-para-style1">Department*</p>
+                        <div class="stu-email-box"><?php echo $row["dept"];?>"</div>
+                    </div>
+
                     <div class="stu-email">
                         <p class="stu-para-style1">Email</p>
                         <div class="stu-email-box"><?php echo $row["email"];?></div>
                     </div>
 
+                </div>
+
+                <div class="stu-addresses">
+                    <p class="stu-para-style1">Batch</p>
+                    <p class="stu-para">Only enter the starting year and ending year.</p>
+                </div>
+                <div class="stu-entry-boxes1">
+                    <div class="stu-start-year">
+                        <p class="stu-para-style2">Start Year*</p>
+                        <div class="stu-box-design3"><?php echo $row["start_year"];?></div>
+                    </div>
+                    <div class="stu-end-year">
+                        <p class="stu-para-style2">End Year*</p>
+                        <div class="stu-box-design3"><?php echo $row["end_year"];?></div>
+                    </div>
                 </div>
 
                 <div class="stu-entry-boxes3">

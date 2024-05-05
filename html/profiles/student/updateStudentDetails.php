@@ -29,9 +29,13 @@
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        $stu_id = htmlspecialchars($_POST['hidden_stu_id']);
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
-        $countrycode = $_POST['countrycode'];
+        $dept = htmlspecialchars($_POST['dept']);
+        $start_year = htmlspecialchars($_POST['start_year']);
+        $end_year = htmlspecialchars($_POST['end_year']);
+        $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
@@ -39,15 +43,15 @@
         $city = htmlspecialchars($_POST['city']);
         $state = htmlspecialchars($_POST['state']);
         $country = htmlspecialchars($_POST['country']);
-        $gender = $_POST['gender'];
+        $gender = htmlspecialchars($_POST['gender']);
         // $language = $_POST['language'];
         // to convert array to string in php we use implode
         // $lang = implode(",",$language);
 
         if (
-            !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
-            !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-            !empty($state) && !empty($city) && !empty($country) && !empty($gender)
+            !empty($firstname) && !empty($lastname) && !empty($countrycode) && !empty($email) && !empty($dept) &&
+            !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) && !empty($start_year) && 
+            !empty($end_year) && !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($stu_id)
         ) {
             // && !empty($lang)
 
@@ -60,14 +64,20 @@
             //     exit;
             // }
 
-            $updatedata = "UPDATE `stu_personal_details` SET `F_name`='$firstname',`L_name`='$lastname',
-                    `phone_code`='$countrycode',`phone_no`='$mobilenumber',`addr1`='$address1',`addr2`='$address2',
-                    `pin`='$pincode',`city`='$city',`state`='$state',`country`='$country',`gender`='$gender' WHERE `email` = '$email'";
+            $updatedata = "INSERT INTO `temp_stu_personal_details`(`stu_id`, `F_name`, `L_name`, `dept`, `phone_code`, `phone_no`, `start_year`, 
+                        `end_year`, `addr1`, `addr2`, `pin`, `city`, `state`, `country`, `gender`) VALUES ('$stu_id','$firstname','$lastname',
+                        '$dept','$countrycode','$mobilenumber','$start_year','$end_year','$address1','$address2','$pincode','$city',
+                        '$state','$country','$gender')";
 
             $smt = mysqli_query($conn, $updatedata);
 
             if ($smt) {
-                header("location: ../../landingPage/landingStudent.php");
+                echo"
+                <script>
+                    alert('Profile update under verification.');
+                    document.location.href = '../../landingPage/landingStudent.php';
+                </script>
+                ";
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -135,11 +145,31 @@
 
                 <div class="stu-entry-boxes2">
 
+                    <div class="stu-email department">
+                        <p class="stu-para-style1">Department*</p>
+                        <input name="dept" type="text" placeholder="Eg: department name _ ID" value="<?php echo $row["dept"];?>" class="stu-email-box" required>
+                    </div>
+
                     <div class="stu-email">
                         <p class="stu-para-style1">Email*</p>
                         <div class="stu-email-box"><?php echo $row["email"];?></div>
                     </div>
 
+                </div>
+
+                <div class="stu-addresses">
+                    <p class="stu-para-style1">Batch</p>
+                    <p class="stu-para">Only enter the starting year and ending year.</p>
+                </div>
+                <div class="stu-entry-boxes1">
+                    <div class="stu-start-year">
+                        <p class="stu-para-style2">Start Year*</p>
+                        <input name="start_year" type="number" placeholder="Enter start year" value="<?php echo $row["start_year"];?>" class="stu-box-design3" min="1900" max="2200" step="1" required>
+                    </div>
+                    <div class="stu-end-year">
+                        <p class="stu-para-style2">End Year*</p>
+                        <input name="end_year" type="number" placeholder="Enter end year" value="<?php echo $row["end_year"];?>" class="stu-box-design3" min="1900" max="2200" step="1" required>
+                    </div>
                 </div>
 
                 <div class="stu-entry-boxes3">
@@ -232,7 +262,7 @@
                     </div> 
                 </div> 
 
-
+                <input type="hidden" name="hidden_stu_id" value="<?php echo $row["stu_id"]; ?>" style="display: none;">
 
                 <!-- select languages -->
 

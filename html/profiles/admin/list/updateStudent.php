@@ -44,7 +44,7 @@
         $city = htmlspecialchars($_POST['city']);
         $state = htmlspecialchars($_POST['state']);
         $country = htmlspecialchars($_POST['country']);
-        $gender = $_POST['gender'];
+        $gender = htmlspecialchars($_POST['gender']);
         // $language = $_POST['language'];
         // to convert array to string in php we use implode
         // $lang = implode(",",$language);

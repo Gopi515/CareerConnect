@@ -24,7 +24,16 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
 // Fetch student data for the current page
-$query = "SELECT * FROM stu_personal_details LIMIT ?, ?";
+$query = "SELECT t.stu_id, t.F_name, t.L_name, t.dept, t.phone_code, t.phone_no, t.start_year, 
+        t.end_year, t.addr1, t.addr2, t.pin, t.city, t.state, t.country, t.gender
+FROM temp_stu_personal_details t
+INNER JOIN stu_personal_details s ON t.stu_id = s.stu_id
+UNION ALL
+SELECT s.stu_id, s.F_name, s.L_name, s.dept, s.phone_code, s.phone_no, s.start_year, s.end_year, 
+        s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
+FROM stu_personal_details s
+INNER JOIN temp_stu_personal_details t ON s.stu_id = t.stu_id LIMIT ?, ?";
+
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
@@ -57,7 +66,7 @@ $result = mysqli_stmt_get_result($stmt);
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Department</th>
-                    <th>Email</th>
+                    <th>Country-code</th>
                     <th>Mobile</th>
                     <th>Start Year</th>
                     <th>End Year</th>
@@ -79,7 +88,7 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['phone_code'] . "</td>";
                         echo "<td>" . $row['phone_no'] . "</td>";
                         echo "<td>" . $row['start_year'] . "</td>";
                         echo "<td>" . $row['end_year'] . "</td>";
@@ -90,8 +99,8 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href='edit_student.php?id=" . $row['id'] . "'>Accept</a>
-                            <a href='delete_student.php?id=" . $row['id'] . "'>Decline</a></td>";
+                        echo "<td><a href=''>Accept</a>
+                            <a href=''>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {
