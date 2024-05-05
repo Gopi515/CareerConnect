@@ -67,10 +67,8 @@ $result = mysqli_stmt_get_result($stmt);
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Department</th>
-                    <th>Country-code</th>
                     <th>Mobile</th>
-                    <th>Start Year</th>
-                    <th>End Year</th>
+                    <th>Batch Year</th>
                     <th>Address 1</th>
                     <th>Address 2</th>
                     <th>Zip Code</th>
@@ -90,10 +88,8 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
-                        echo "<td>" . $row['phone_code'] . "</td>";
-                        echo "<td>" . $row['phone_no'] . "</td>";
-                        echo "<td>" . $row['start_year'] . "</td>";
-                        echo "<td>" . $row['end_year'] . "</td>";
+                        echo "<td>" . $row['phone_code'] . " - " . $row['phone_no'] . "</td>";
+                        echo "<td>" . $row['start_year'] . " - " . $row['end_year'] . "</td>";
                         echo "<td>" . $row['addr1'] . "</td>";
                         echo "<td>" . $row['addr2'] . "</td>";
                         echo "<td>" . $row['pin'] . "</td>";
@@ -102,15 +98,15 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
                         if ($row['source'] == 'stu_personal_details') {
-                            echo "<td><a href=''>Accept</a><a href=''>Decline</a></td>";
+                            echo "<td><a class='accdec acc' href=''>Accept</a><a class='accdec dec' href=''>Decline</a></td>";
                         } else {
-                            echo "<td><div>Old data</div></td>";
+                            echo "<td><div class='static-div'>Old data</div></td>";
                         }
 
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='16'>No records found.</td></tr>";
+                    echo "<tr><td colspan='14'>No records found.</td></tr>";
                 }
                 ?>
             </table>
