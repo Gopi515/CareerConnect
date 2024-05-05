@@ -83,6 +83,20 @@ $totalCompanies = $row['total_companies'];
                 </ul>
             </li>
             <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bxs-checkbox-checked'></i>
+                        <span class="link_name">Verification</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="pvalidation/stuValidation.php">Student Updates</a></li>
+                    <li><a href="pvalidation/techValidation.php">Teacher Updates</a></li>
+                    <li><a href="pvalidation/compValidation.php">Company Updates</a></li>
+                </ul>
+            </li>
+            <li>
                 <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
                     <span class="link_name">Register IDs</span>
