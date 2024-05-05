@@ -98,12 +98,13 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
                         if ($row['source'] == 'stu_personal_details') {
-                            echo "<td><a class='accdec acc' href=''>Accept</a><a class='accdec dec' href=''>Decline</a></td>";
+                            echo "<td><a class='accdec acc' href='../pvalidation/acceptStuValidation.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../pvalidation/declineStuValidation.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         } else {
                             echo "<td><div class='static-div'>Old data</div></td>";
                         }
 
                         echo "</tr>";
+
                     }
                 } else {
                     echo "<tr><td colspan='14'>No records found.</td></tr>";
