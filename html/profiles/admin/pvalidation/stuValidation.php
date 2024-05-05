@@ -23,17 +23,18 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 // Define number of pages
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
-// Fetch student data for the current page
-$query = "SELECT t.stu_id, t.F_name, t.L_name, t.dept, t.phone_code, t.phone_no, t.start_year, 
+$query = "(SELECT 'temp_stu_personal_details' AS source, s.stu_id, s.F_name, s.L_name, s.dept, s.phone_code, s.phone_no, s.start_year, s.end_year, 
+s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
+FROM stu_personal_details s
+INNER JOIN temp_stu_personal_details t ON s.stu_id = t.stu_id)
+UNION ALL
+(SELECT 'stu_personal_details' AS source, t.stu_id, t.F_name, t.L_name, t.dept, t.phone_code, t.phone_no, t.start_year, 
         t.end_year, t.addr1, t.addr2, t.pin, t.city, t.state, t.country, t.gender
 FROM temp_stu_personal_details t
-INNER JOIN stu_personal_details s ON t.stu_id = s.stu_id
-UNION ALL
-SELECT s.stu_id, s.F_name, s.L_name, s.dept, s.phone_code, s.phone_no, s.start_year, s.end_year, 
-        s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
-FROM stu_personal_details s
-INNER JOIN temp_stu_personal_details t ON s.stu_id = t.stu_id LIMIT ?, ?";
+INNER JOIN stu_personal_details s ON t.stu_id = s.stu_id)
+LIMIT ?, ?";
 
+// Fetch student data for the current page
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
@@ -83,7 +84,8 @@ $result = mysqli_stmt_get_result($stmt);
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
+                        $background_color = ($row['source'] === 'stu_personal_details') ? '#adebad' : '#ff9999';
+                        echo "<tr style='background-color: $background_color;'>";
                         echo "<td>" . $row['stu_id'] . "</td>";
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
@@ -99,12 +101,16 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href=''>Accept</a>
-                            <a href=''>Decline</a></td>";
+                        if ($row['source'] == 'stu_personal_details') {
+                            echo "<td><a href=''>Accept</a><a href=''>Decline</a></td>";
+                        } else {
+                            echo "<td><div>Old data</div></td>";
+                        }
+
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='15'>No records found.</td></tr>";
+                    echo "<tr><td colspan='16'>No records found.</td></tr>";
                 }
                 ?>
             </table>
