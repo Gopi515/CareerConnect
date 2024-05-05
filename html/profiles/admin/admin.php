@@ -184,6 +184,8 @@ $totalCompanies = $row['total_companies'];
                     </div>
                 </div>
             </div>
+
+            <!-- listings -->
             <div class="list-overview">
                 <div class="list-header">
                     <h3>All Lists</h3>
@@ -194,10 +196,16 @@ $totalCompanies = $row['total_companies'];
                     <a class="button" href="list/companylist.php">Company's List</a>
                 </div>
             </div>
-
-            <!-- work from here -->
-            <div class="recent-activities">
-                <div class="dashboard-overview">
+            
+            <!-- verification -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>Profile Verification</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="pvalidation/techValidation.php">Student Updates</a>
+                    <a class="button" href="pvalidation/stuValidation.php">Teacher Updates</a>
+                    <a class="button" href="pvalidation/comapValidation.php">Company Updates</a>
                 </div>
             </div>
 
@@ -211,18 +219,6 @@ $totalCompanies = $row['total_companies'];
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <div class="notification-center">
-            <!-- Notification center content here -->
-        </div>
-        <div class="task-management">
-            <!-- Task management content here -->
-        </div>
-        <div class="help-panel">
-            <!-- Help panel content here -->
         </div>
     </section>
 
