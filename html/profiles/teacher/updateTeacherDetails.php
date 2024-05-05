@@ -27,9 +27,11 @@
     $teacher_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $tech_id = htmlspecialchars($_POST['hidden_tech_id']);
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
-        $countrycode = $_POST['countrycode'];
+        $countrycode = htmlspecialchars($_POST['countrycode']);
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
         $address1 = htmlspecialchars($_POST['address1']);
         $address2 = htmlspecialchars($_POST['adderss2']);
@@ -37,7 +39,7 @@
         $city = htmlspecialchars($_POST['city']);
         $state = htmlspecialchars($_POST['state']);
         $country = htmlspecialchars($_POST['country']);
-        $gender = $_POST['gender'];
+        $gender = htmlspecialchars($_POST['gender']);
         // $language = $_POST['language'];
         // to convert array to string in php we use implode
         // $lang = implode(",",$language);
@@ -45,7 +47,7 @@
         if (
             !empty($firstname) && !empty($lastname) && !empty($email) && !empty($countrycode) &&
             !empty($mobilenumber) && !empty($address1) && !empty($address2) && !empty($pincode) &&
-            !empty($state) && !empty($city) && !empty($country) && !empty($gender) 
+            !empty($state) && !empty($city) && !empty($country) && !empty($gender) && !empty($tech_id)  
             // && !empty($lang)
         ) {
 
@@ -68,16 +70,21 @@
             // }
 
 
-            $updatedata = "UPDATE `tech_personal_details` SET `F_name` = '$firstname', `L_name` = '$lastname', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
-                    `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `state` = '$state', `city` = '$city', 
-                    `country` = '$country', `gender` = '$gender' WHERE `email` = '$email'";
+            $updatedata = "INSERT INTO `temp_tech_personal_details`(`tech_id`, `F_name`, `L_name`, `phone_code`, `phone_no`, `addr1`, `addr2`, `pin`, 
+                        `city`, `state`, `country`, `gender`) VALUES ('$tech_id','$firstname','$lastname','$countrycode','$mobilenumber','$address1',
+                        '$address2','$pincode','$city','$state','$country','$gender')";
                     // , `languages` = '$lang' WHERE `email` = '$email'";
 
             $smt = mysqli_query($conn, $updatedata);
 
 
             if ($smt) {
-                header("location: ../../landingPage/landingTeacher.php");
+                echo"
+                <script>
+                    alert('Profile update under verification.');
+                    document.location.href = '../../landingPage/landingTeacher.php';
+                </script>
+                ";
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -243,6 +250,9 @@
                         </div>
                     </div> 
                 </div> 
+
+                <!-- hidden tech id -->
+                <input type="hidden" name="hidden_tech_id" value="<?php echo $row["tech_id"];?>" style="display: none;">
 
 
                 <!-- select languages -->

@@ -262,6 +262,7 @@
                     </div> 
                 </div> 
 
+                <!-- hidden input field to store student id -->
                 <input type="hidden" name="hidden_stu_id" value="<?php echo $row["stu_id"]; ?>" style="display: none;">
 
                 <!-- select languages -->

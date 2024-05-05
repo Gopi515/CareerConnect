@@ -12,9 +12,8 @@ require '../../../../dbconnect.php';
 $recordsPerPage = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
-
 // Count total records
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM tech_personal_details";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM temp_tech_personal_details";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
@@ -24,7 +23,16 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
 // Fetch student data for the current page
-$query = "SELECT * FROM tech_personal_details LIMIT ?, ?";
+$query = "(SELECT 'temp_tech_personal_details' AS source, s.tech_id, s.F_name, s.L_name, s.phone_code, s.phone_no, 
+        s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
+        FROM tech_personal_details s
+        INNER JOIN temp_tech_personal_details t ON s.tech_id = t.tech_id)
+        UNION ALL
+        (SELECT 'tech_personal_details' AS source, t.tech_id, t.F_name, t.L_name, t.phone_code, t.phone_no, 
+                t.addr1, t.addr2, t.pin, t.city, t.state, t.country, t.gender
+        FROM temp_tech_personal_details t
+        INNER JOIN tech_personal_details s ON t.tech_id = s.tech_id)
+        LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
@@ -37,7 +45,7 @@ $result = mysqli_stmt_get_result($stmt);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Validation</title>
+    <title>Teacher Validation</title>
     <link rel="stylesheet" href="../list/list.css">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 </head>
@@ -56,7 +64,6 @@ $result = mysqli_stmt_get_result($stmt);
                     <th>Teacher ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Email</th>
                     <th>Mobile</th>
                     <th>Address 1</th>
                     <th>Address 2</th>
@@ -71,12 +78,12 @@ $result = mysqli_stmt_get_result($stmt);
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
+                        $background_color = ($row['source'] === 'tech_personal_details') ? '#adebad' : '#ff9999';
+                        echo "<tr style='background-color: $background_color;'>";
                         echo "<td>" . $row['tech_id'] . "</td>";
                         echo "<td>" . $row['F_name'] . "</td>";
                         echo "<td>" . $row['L_name'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['phone_no'] . "</td>";
+                        echo "<td>" . $row['phone_code'] . " - " . $row['phone_no'] . "</td>";
                         echo "<td>" . $row['addr1'] . "</td>";
                         echo "<td>" . $row['addr2'] . "</td>";
                         echo "<td>" . $row['pin'] . "</td>";
@@ -84,12 +91,16 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href='edit_teacher.php?id=" . $row['id'] . "'>Accept</a>
-                            <a href='delete_teacher.php?id=" . $row['id'] . "'>Decline</a></td>";
+                        if ($row['source'] == 'tech_personal_details') {
+                            echo "<td><a class='accdec acc' href='../pvalidation/acceptTechValidation.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../pvalidation/declineTechValidation.php?id=" . htmlspecialchars($row['tech_id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        } else {
+                            echo "<td><div class='static-div'>Old data</div></td>";
+                        }
+
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='13'>No records found.</td></tr>";
+                    echo "<tr><td colspan='12'>No records found.</td></tr>";
                 }
                 ?>
             </table>

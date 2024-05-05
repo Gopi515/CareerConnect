@@ -23,11 +23,13 @@
     } else {
         echo "<script>alert('Error: Session is not working.')</script>";
     }
+
     $sql = "SELECT * FROM `com_personal_details` WHERE `email` = '$email'";
     $company_details = $conn->query($sql);
 
     if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        $com_id = htmlspecialchars($_POST['hidden_com_id']);
         $name = htmlspecialchars($_POST['name']);
         $countrycode = $_POST['countrycode'];
         $mobilenumber = htmlspecialchars($_POST['mobilenumber']);
@@ -42,7 +44,7 @@
 
         if (
             !empty($name) && !empty($email) && !empty($countrycode) && !empty($mobilenumber) &&
-            !empty($address1) && !empty($address2) && !empty($pincode) &&
+            !empty($address1) && !empty($address2) && !empty($pincode) && !empty($com_id) &&
             !empty($state) && !empty($city) && !empty($country) && !empty($website) && !empty($about)
         ) {
 
@@ -64,14 +66,19 @@
             //     }
             // }
 
-            $updatedata = "UPDATE `com_personal_details` SET `name` = '$name', `phone_code`='$countrycode', `phone_no` = '$mobilenumber', 
-                    `addr1` = '$address1', `addr2` = '$address2', `pin` = '$pincode', `city` = '$city', `state` = '$state', 
-                    `country` = '$country', `c_website` = '$website', `c_about` = '$about' WHERE `email` = '$email'";
+            $updatedata = "INSERT INTO `temp_com_personal_details`(`com_id`, `name`, `phone_code`, `phone_no`, `addr1`, `addr2`, 
+                        `pin`, `city`, `state`, `country`, `c_website`, `c_about`) VALUES ('$com_id','$name','$countrycode','$mobilenumber',
+                        '$address1','$address2','$pincode','$city','$state','$country','$website','$about')";
 
             $smt = mysqli_query($conn, $updatedata);
 
             if ($smt) {
-                header("location: ../../landingPage/landingCompany.php");
+                echo"
+                <script>
+                    alert('Profile update under verification.');
+                    document.location.href = '../../landingPage/landingCompany.php';
+                </script>
+                ";
                 exit;
             } else {
                 echo "<script>alert('Error: Data update failed. Please try again later.');</script>";
@@ -237,6 +244,8 @@
                     </div>
                 </div>
 
+                <!-- hidden input field to store company id -->
+                <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
 
                 <!-- about section -->
 

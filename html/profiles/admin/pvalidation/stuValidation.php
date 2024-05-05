@@ -14,7 +14,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
 // Count total records
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM stu_personal_details";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM temp_stu_personal_details";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
@@ -24,15 +24,15 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
 $query = "(SELECT 'temp_stu_personal_details' AS source, s.stu_id, s.F_name, s.L_name, s.dept, s.phone_code, s.phone_no, s.start_year, s.end_year, 
-s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
-FROM stu_personal_details s
-INNER JOIN temp_stu_personal_details t ON s.stu_id = t.stu_id)
-UNION ALL
-(SELECT 'stu_personal_details' AS source, t.stu_id, t.F_name, t.L_name, t.dept, t.phone_code, t.phone_no, t.start_year, 
-        t.end_year, t.addr1, t.addr2, t.pin, t.city, t.state, t.country, t.gender
-FROM temp_stu_personal_details t
-INNER JOIN stu_personal_details s ON t.stu_id = s.stu_id)
-LIMIT ?, ?";
+        s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
+        FROM stu_personal_details s
+        INNER JOIN temp_stu_personal_details t ON s.stu_id = t.stu_id)
+        UNION ALL
+        (SELECT 'stu_personal_details' AS source, t.stu_id, t.F_name, t.L_name, t.dept, t.phone_code, t.phone_no, t.start_year, 
+                t.end_year, t.addr1, t.addr2, t.pin, t.city, t.state, t.country, t.gender
+        FROM temp_stu_personal_details t
+        INNER JOIN stu_personal_details s ON t.stu_id = s.stu_id)
+        LIMIT ?, ?";
 
 // Fetch student data for the current page
 $stmt = mysqli_prepare($conn, $query);
