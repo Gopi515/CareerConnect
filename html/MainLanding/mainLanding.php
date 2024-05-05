@@ -78,13 +78,17 @@ header("Content-Type: text/html");
 
     <!-- landing page content -->
     <div class="mainlangidingContent">
+        <div class="welcomeImgcard">
+            <video src="../../assets/career.webm" loop muted autoplay type="video/webm" class="welcomeImg"></video>
+        </div>
         <div class="welcomeNote">
             <h1>Welcome To CareerConnect</h1>
             <p>Explore endless opportunities for your career growth.</p>
+            <a href="#servicesContainer">Explore</a>
         </div>
 
         <!-- services -->
-        <div class="servicesContainer">
+        <div class="servicesContainer" id="servicesContainer">
             <h2>Our Services</h2>
 
              <!-- student services -->
@@ -95,7 +99,7 @@ header("Content-Type: text/html");
                 <div class="studentserviceCards servicecardsAll">
                     <div class="serviceCard studentserviceCard1">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/hiring.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Explore Companies</h3>
