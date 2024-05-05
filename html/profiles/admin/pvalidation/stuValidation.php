@@ -99,8 +99,8 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td><a href=''>Accept</a>
-                            <a href=''>Decline</a></td>";
+                        echo "<td><a href='../pvalidation/acceptStuValidation.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a>
+                            <a href='../pvalidation/declineStuValidation.php?id=" . htmlspecialchars($row['stu_id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {
