@@ -18,7 +18,16 @@
 <!-- the php part -->
 <?php
 session_start();
-require '../../dbconnect.php';
+require '../../dbconnect.php';  // Connection to the first database
+$host = 'localhost';  // or your host
+$username = 'root';
+$password = '';
+$database = 'cee_db';
+
+$conn_cee = new mysqli($host, $username, $password, $database);
+if ($conn_cee->connect_error) {
+    die('Connection failed: ' . $conn_cee->connect_error);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -26,55 +35,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = trim($_POST['password']);
 
     if (empty($username) || empty($email) || empty($password)) {
-        echo "<script>alert('Error: Username, email, and password are all required.');</script>";
-    } else {
-        if (isset($_POST['role'])) {
-            $role = $_POST['role'];
+        echo "<script>alert('Error: Username, email, and password are all required.'); window.history.back();</script>";
+        exit;
+    }
 
-            if (empty($role)) {
-                echo "<script>alert('Error: Please select a role.');</script>";
-            } else {
-                function loginUser($conn, $role, $username, $email, $password)
-                {
-                    $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = '$username' AND `email` = '$email'";
-                    $result = mysqli_query($conn, $sql);
+    if (isset($_POST['role'])) {
+        $role = $_POST['role'];
 
-                    if ($result) {
-                        $_SESSION['mail'] = $email;
-                    }
+        if (empty($role)) {
+            echo "<script>alert('Error: Please select a role.'); window.history.back();</script>";
+            exit;
+        }
 
-                    if ($row = mysqli_fetch_assoc($result)) {
-                        if (password_verify($password, $row['pass'])) {
-                            // Redirect based on the role
-                            switch ($role) {
-                                case 'student':
-                                    header("location: ../landingPage/landingStudent.php");
-                                    break;
-                                default:
-                                    echo "<script>alert('Error: Unknown role.');</script>";
-                                    break;
-                            }
-                        } else {
-                            echo "<script>alert('Error: Incorrect password. Please try again.');</script>";
-                        }
-                    } else {
-                        echo "<script>alert('Error: Case-sensitive username or you have selected a different role.');</script>";
-                    }
-                }
-
-                switch ($role) {
-                    case 'student':
-                        loginUser($conn, $role, $username, $email, $password);
-                        break;
-                    default:
-                        echo "<script>alert('Error: Invalid role selected.');</script>";
-                        break;
-                }
-            }
+        if ($role === 'student') {
+            loginUser($conn, $conn_cee, $role, $username, $email, $password);
+        } else {
+            echo "<script>alert('Error: Invalid role selected.'); window.history.back();</script>";
+            exit;
         }
     }
 }
+
+function loginUser($conn, $conn_cee, $role, $username, $email, $password) {
+    $sql = "SELECT * FROM `$role` WHERE BINARY `user_name` = ? AND `email` = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        if (password_verify($password, $row['pass'])) {
+            $_SESSION['mail'] = $email;
+            if ($role === 'student') {
+                $checkSql = "SELECT * FROM examinee_tbl WHERE exmne_email = ?";
+                $checkStmt = $conn_cee->prepare($checkSql);
+                $checkStmt->bind_param("s", $email);
+                $checkStmt->execute();
+                $checkResult = $checkStmt->get_result();
+
+                if ($checkResult->num_rows == 0) {
+                    $insertSql = "INSERT INTO examinee_tbl (exmne_email, exmne_password) VALUES (?, ?)";
+                    $insertStmt = $conn_cee->prepare($insertSql);
+                    if (!$insertStmt) {
+                        die('MySQL prepare error: ' . $conn_cee->error);
+                    }
+                    $insertStmt->bind_param("ss", $email, $password);  // Inserting password as plain text
+                    $insertStmt->execute();
+                }
+
+                header("location: ../landingPage/landingStudent.php");
+                exit;
+            }
+        } else {
+            echo "<script>alert('Error: Incorrect password. Please try again.'); window.history.back();</script>";
+            exit;
+        }
+    } else {
+        echo "<script>alert('Error: Case-sensitive username or you have selected a different role.'); window.history.back();</script>";
+        exit;
+    }
+}
 ?>
+
 
 
 <!-- Here starts the body part -->
