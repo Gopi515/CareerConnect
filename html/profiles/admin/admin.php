@@ -82,6 +82,8 @@ $totalCompanies = $row['total_companies'];
                     <li><a href="list/companylist.php">Company's List</a></li>
                 </ul>
             </li>
+
+            <!-- inner drop -->
             <li>
                 <div class="icon-link">
                     <a href="#">
@@ -96,6 +98,20 @@ $totalCompanies = $row['total_companies'];
                     <li><a href="pvalidation/compValidation.php">Company Updates</a></li>
                 </ul>
             </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bxs-checkbox-checked'></i>
+                        <span class="link_name">intern and jobs</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="internjobverification/internverify.php">Internship updates</a></li>
+                    <li><a href="internjobverification/jobverify.php">Job Updates</a></li>
+                </ul>
+            </li>
+            <!-- inner drop end -->
             <li>
                 <a href="rPage.php">
                     <i class='bx bxs-registered'></i>
