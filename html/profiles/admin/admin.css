@@ -164,7 +164,7 @@ html,
 }
 
 .sidebar .nav-links li .sub-menu {
-    padding: 6px 6px 14px 80px;
+    padding: 6px 6px 14px 35px;
     margin-top: -2px;
     background: var(--fourth-col);
     display: none;
