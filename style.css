@@ -47,6 +47,16 @@ html {
 }
 
 /*-------Main landing page-------*/
+.mainLandingPage {
+  background: linear-gradient(
+    180deg,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244)
+  );
+}
 .navbar {
   display: flex;
   position: fixed;
@@ -60,9 +70,24 @@ html {
 }
 
 .navbar-brand {
-  color: var(--fourth-col);
   font-weight: 700;
-  font-size: var(--h3-fontsize);
+  font-size: 33px;
+  stroke: var(--fourth-col);
+  stroke-width: 2;
+  animation: textAnimate 5s infinite alternate;
+}
+@keyframes textAnimate {
+  0% {
+    stroke-dasharray: 0 50%;
+    stroke-dashoffset: 20%;
+    fill: var(--fourth-col);
+  }
+
+  100% {
+    stroke-dasharray: 50% 0;
+    stroke-dashoffset: -20%;
+    fill: var(--second-col);
+  }
 }
 
 .navbar-buttons {
@@ -380,6 +405,7 @@ html {
   width: 350px;
   height: 300px;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .serviceCard .textPart {
