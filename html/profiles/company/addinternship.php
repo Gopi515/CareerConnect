@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../../LoginandRegister/companyLogin.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['mail'])) {
+    header("Location: ../../LoginandRegister/companyLogin.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,62 +25,62 @@
 
 <!-- php here -->
 <?php
-    require '../../../dbconnect.php';
+require '../../../dbconnect.php';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
-        $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
-        $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
-        $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
-        $stipend = !empty($_POST["stipend"]) ? $_POST["stipend"] : "";
-        $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $topic = !empty($_POST["topic"]) ? $_POST["topic"] : "";
+    $workLocation = !empty($_POST["worklocation"]) ? $_POST["worklocation"] : "";
+    $locationName = ($workLocation == "" && !empty($_POST["locationName"])) ? $_POST["locationName"] : "Remote";
+    $duration = !empty($_POST["duration"]) ? $_POST["duration"] : "";
+    $stipend = !empty($_POST["stipend"]) ? $_POST["stipend"] : "";
+    $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
 
-        // Retrieving and decode the added skills array
-        $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+    // Retrieving and decode the added skills array
+    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
 
-        if ($addedSkillsArray === null) {
-            echo "Error decoding addedSkills JSON: " . json_last_error_msg();
-            exit;
-        }
+    if ($addedSkillsArray === null) {
+        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+        exit;
+    }
 
-        // Combining skills into a comma-separated string
-        $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+    // Combining skills into a comma-separated string
+    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
 
-        $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
-        $certificate = isset($_POST['certificate']) ? 1 : 0;
-        $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
-        if (isset($_SESSION['mail'])) {
-            $email = $_SESSION['mail'];
-        } else {
-            echo "<script>alert('Error: Session is not working.')</script>";
-        }
+    $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
+    $certificate = isset($_POST['certificate']) ? 1 : 0;
+    $openings = !empty($_POST["openings"]) ? $_POST["openings"] : 0;
+    if (isset($_SESSION['mail'])) {
+        $email = $_SESSION['mail'];
+    } else {
+        echo "<script>alert('Error: Session is not working.')</script>";
+    }
 
-        $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
-        $find = $conn->query($query);
-        if(mysqli_num_rows($find)>0){
-            while($row = mysqli_fetch_array($find)){
-                $com_id = $row["com_id"];
-            }
-        }
-
-        try {
-            $sql = "INSERT INTO internships (com_id, topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-            $stmt = mysqli_prepare($conn, $sql);
-
-            mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString , $aboutInternship, $certificate, $openings, $email);
-
-            mysqli_stmt_execute($stmt);
-
-            mysqli_stmt_close($stmt);
-
-            header('Location: ../../landingPage/landingCompany.php');
-            exit;
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
+    $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
+    $find = $conn->query($query);
+    if (mysqli_num_rows($find) > 0) {
+        while ($row = mysqli_fetch_array($find)) {
+            $com_id = $row["com_id"];
         }
     }
+
+    try {
+        $sql = "INSERT INTO temp_internship (com_id, topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_prepare($conn, $sql);
+
+        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString, $aboutInternship, $certificate, $openings, $email);
+
+        mysqli_stmt_execute($stmt);
+
+        mysqli_stmt_close($stmt);
+
+        header('Location: ../../landingPage/landingCompany.php');
+        exit;
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 
 ?>
 
@@ -108,7 +108,7 @@
     
                 <!-- Radio button for Work From Home -->
                 <label for="WFH">
-                    <input type="radio" id="WFH" name="worklocation" value="" checked onclick="disableInput()"> Remote Job.
+                    <input type="radio" id="WFH" name="worklocation" value="" checked onclick="disableInput()"> Remote.
                 </label>
                 <br>
                 <!-- Radio button for Office Location -->
@@ -145,11 +145,10 @@
             </div>
             
             <!-- Add Required Skills -->
-            <div class="addDomainelement">
+            <!-- <div class="addDomainelement">
                 <p>Add Required Skills*</p>
                 <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
 
-                <!-- popup container -->
                 <div id="popupskillContainer" class="hidePopup">
                     <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
 
@@ -165,7 +164,7 @@
                 <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
                 </div>
       
-            </div>
+            </div> -->
 
             <!-- Information about the internship -->
             <div class="internabout">
