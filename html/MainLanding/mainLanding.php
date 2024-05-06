@@ -15,7 +15,9 @@ header("Content-Type: text/html");
 
 <body class="mainLandingPage">
     <navbar class="navbar">
-        <div class="navbar-brand">Career Connect</div>
+        <svg width="300" height="60">
+        <text x="0" y="40" class="navbar-brand">CareerConnect</text>
+        </svg>
         <div class="navbar-buttons">
 
             <!-- the login -->
@@ -89,7 +91,9 @@ header("Content-Type: text/html");
 
         <!-- services -->
         <div class="servicesContainer" id="servicesContainer">
-            <h2>Our Services</h2>
+            <svg width="300" height="60">
+            <text x="0" y="40" class="navbar-brand">Our Services</text>
+            </svg>
 
              <!-- student services -->
             <div class="serviceStudent serviceAll">
@@ -99,7 +103,7 @@ header("Content-Type: text/html");
                 <div class="studentserviceCards servicecardsAll">
                     <div class="serviceCard studentserviceCard1">
                         <div class="imagePart">
-                            <img src="../../assets/hiring.jpg" alt="">
+                            <img src="../../assets/hiring.avif" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Explore Companies</h3>
@@ -108,7 +112,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard studentserviceCard2">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/internship.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Explore Internships</h3>
@@ -117,7 +121,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard studentserviceCard3">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/job.jpeg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Explore Jobs</h3>
@@ -140,7 +144,7 @@ header("Content-Type: text/html");
                 <div class="studentserviceCards servicecardsAll">
                     <div class="serviceCard companyserviceCard1">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/talent.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Search for Talent</h3>
@@ -149,7 +153,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard companyserviceCard2">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/internshipOnline.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Post Internships</h3>
@@ -158,7 +162,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard companyserviceCard3">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/jobs.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Post Jobs</h3>
@@ -181,7 +185,7 @@ header("Content-Type: text/html");
                 <div class="studentserviceCards servicecardsAll">
                     <div class="serviceCard universityserviceCard1">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/companies.png" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Connect with Companies</h3>
@@ -190,7 +194,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard universityserviceCard2">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/connection.jpg" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Build Connection</h3>
@@ -201,7 +205,7 @@ header("Content-Type: text/html");
                     </div>
                     <div class="serviceCard universityserviceCard3">
                         <div class="imagePart">
-                            <img src="../../assets/NITMAS.png" alt="">
+                            <img src="../../assets/skill.webp" alt="">
                         </div>
                         <div class="textPart">
                             <h3>Skill Check</h3>
