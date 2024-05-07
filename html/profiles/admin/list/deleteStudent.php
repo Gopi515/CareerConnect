@@ -2,7 +2,7 @@
 require '../../../../dbconnect.php';
 
 if (isset($_GET['id'])) {
-    $stu_id = $_GET['id'];
+    $stu_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     $deletedata1 = "DELETE FROM stu_personal_details WHERE stu_id = $stu_id";
     $deletedata2 = "DELETE FROM student WHERE id = $stu_id";
 

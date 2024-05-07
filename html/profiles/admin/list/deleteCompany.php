@@ -2,7 +2,7 @@
 require '../../../../dbconnect.php';
 
 if (isset($_GET['id'])) {
-    $com_id = $_GET['id'];
+    $com_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     $deletedata1 = "DELETE FROM com_personal_details WHERE com_id = $com_id";
     $deletedata2 = "DELETE FROM company WHERE id = $com_id";
 

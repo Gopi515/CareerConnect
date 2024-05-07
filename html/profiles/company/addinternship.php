@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <!-- Select the job type -->
             <div class="category">
-                <legend>Select the job type*</legend>
+                <legend>Select the internship type*</legend>
     
                 <!-- Radio button for Work From Home -->
                 <label for="WFH">

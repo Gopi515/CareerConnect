@@ -19,7 +19,7 @@
     require '../../../../dbconnect.php';
 
     if(isset($_GET['id'])) {
-    $com_id = $_GET['id'];
+    $com_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     } else {
         echo "Company ID not found in the URL.";
     }
