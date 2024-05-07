@@ -95,7 +95,7 @@ require '../../../dbconnect.php';
                     <li><a href="internjobverification/jobverify.php">Job Updates</a></li>
                 </ul>
             </li>
-            <li>
+            <li  style="background-color:#0362ff;">
                 <a href="studentiandj.php">
                 <i class='bx bxl-venmo'></i>
                     <span class="link_name">Applied verification</span>
@@ -107,7 +107,7 @@ require '../../../dbconnect.php';
                     <span class="link_name">Register IDs</span>
                 </a>
             </li>
-            <li style="background-color:#0362ff;">
+            <li>
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Settings</span>
@@ -146,7 +146,7 @@ require '../../../dbconnect.php';
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
         <div class="home-content">
-            <span class="text">Settings</span>
+            <span class="text">Applied Verification</span>
         </div>
         <div class="admin-Settings">
             <a class="boxes GS" href="settings/generalSettings.php">
