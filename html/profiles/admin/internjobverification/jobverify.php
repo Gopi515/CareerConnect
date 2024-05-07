@@ -9,13 +9,25 @@ if (!isset($_SESSION['mail'])) {
 <?php
 require '../../../../dbconnect.php';
 
-// Fetch student data for the current page
-$query = "SELECT * FROM temp_job";
+// Pagination parameters
+$recordsPerPage = 10;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($page - 1) * $recordsPerPage;
+
+// Fetch job data for the current page
+$query = "SELECT * FROM temp_job LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
-?>
 
+// Count total number of records
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM temp_job";
+$stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
+mysqli_stmt_execute($stmtTotal);
+$totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
+$totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +39,6 @@ $result = mysqli_stmt_get_result($stmt);
     <link rel="stylesheet" href="../list/list.css">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 </head>
-
 
 <body>
     <div class="heading1">
@@ -56,6 +67,7 @@ $result = mysqli_stmt_get_result($stmt);
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
                         echo "<td>" . $row['com_id'] . "</td>";
                         echo "<td>" . $row['com_email'] . "</td>";
                         echo "<td>" . $row['Topic'] . "</td>";
@@ -68,12 +80,33 @@ $result = mysqli_stmt_get_result($stmt);
                         echo "<td>" . $row['additional_info'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
                         echo "<td><a class='accdec acc' href='../pvalidation/acceptStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../pvalidation/declineStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='12'>No data found</td></tr>";
                 }
                 ?>
             </table>
+            <div class="pagination-container">
+                <?php
+                // Display pagination links
+                $totalPages = ceil($totalRecords / $recordsPerPage);
+                echo "<div class='pagination'>";
+                for ($i = 1; $i <= $totalPages; $i++) {
+                    $activeClass = $i == $page ? 'active' : '';
+                    echo "<a class='$activeClass' href='?page=$i'>$i</a>";
+                }
+                echo "</div>";
+                ?>
+                <div class="record-info">
+                    <?php
+                    // Display number of records in the current page out of all records
+                    $startRecord = ($page - 1) * $recordsPerPage + 1;
+                    $endRecord = min($page * $recordsPerPage, $totalRecords);
+                    echo "Showing $startRecord - $endRecord of $totalRecords records.";
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </body>
