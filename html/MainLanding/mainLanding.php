@@ -81,7 +81,7 @@ header("Content-Type: text/html");
     <!-- landing page content -->
     <div class="mainlangidingContent">
         <div class="welcomeImgcard">
-            <video src="../../assets/career.webm" loop muted autoplay type="video/webm" class="welcomeImg"></video>
+            <video src="../../assets/career.mp4" loop muted autoplay type="video/mp4" class="welcomeImg"></video>
         </div>
         <div class="welcomeNote">
             <h1>Welcome To CareerConnect</h1>
@@ -91,7 +91,7 @@ header("Content-Type: text/html");
 
         <!-- services -->
         <div class="servicesContainer" id="servicesContainer">
-            <svg width="300" height="60">
+            <svg width="300" height="60" class="serviceSvg">
             <text x="0" y="40" class="navbar-brand">Our Services</text>
             </svg>
 
@@ -229,22 +229,22 @@ header("Content-Type: text/html");
         <div class="companyMarquee">
         <h2>Top companies trust us</h2>
         <marquee direction="right" scrollamount="10" class="companyMarqueeslide">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
-            <img src="../../assets/Meta-Logo.png" alt="">
+            <img src="../../assets/Meta.png" alt="">
+            <img src="../../assets/TCS.png" alt="">
+            <img src="../../assets/CAP.png" alt="">
+            <img src="../../assets/Accenture.png" alt="">
+            <img src="../../assets/ibm.png" alt="">
+            <img src="../../assets/deloitte.png" alt="">
+            <img src="../../assets/wipro.webp" alt="">
+            <img src="../../assets/infosys.webp" alt="">
+            <img src="../../assets/intel.png" alt="">
+            <img src="../../assets/adani.png" alt="">
+            <img src="../../assets/HU.png" alt="">
+            <img src="../../assets/Amazon.png" alt="">
+            <img src="../../assets/AMD.png" alt="">
+            <img src="../../assets/samsung.png" alt="">
+            <img src="../../assets/nvidia.png" alt="">
+            <img src="../../assets/riot.png" alt="">
         </marquee>
         </div>
 
