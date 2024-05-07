@@ -4,7 +4,7 @@
 
     // Check if 'id' is set in the URL
     if(isset($_GET['id'])) {
-        $com_id = $_GET['id'];
+        $com_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     } else {
         echo "<script>alert('Company ID not found in the URL.')</script>";
         exit(); // Stop execution if ID is not found

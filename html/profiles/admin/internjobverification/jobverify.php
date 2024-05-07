@@ -15,7 +15,9 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
 // Fetch job data for the current page
-$query = "SELECT * FROM temp_job LIMIT ?, ?";
+$query = "SELECT t.*, c.name
+        FROM temp_job t
+        LEFT JOIN com_personal_details c ON t.com_id = c.com_id LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
@@ -51,6 +53,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
         <div class="inner-whole-body">
             <table border="1">
                 <tr class="for-overflow">
+                    <th>Job ID</th>
                     <th>Company Name</th>
                     <th>Company Email</th>
                     <th>Job topic</th>
@@ -68,9 +71,10 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['com_id'] . "</td>";
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
                         echo "<td>" . $row['com_email'] . "</td>";
-                        echo "<td>" . $row['Topic'] . "</td>";
+                        echo "<td>" . $row['topic'] . "</td>";
                         echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
                         echo "<td>" . $row['experience'] . "</td>";
                         echo "<td>" . $row['CTC'] . "</td>";
@@ -79,7 +83,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_job'] . "</td>";
                         echo "<td>" . $row['additional_info'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td><a class='accdec acc' href='../pvalidation/acceptStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../pvalidation/declineStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "<td><a class='accdec acc' href='../internjobverification/jobAccept.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../internjobverification/jobDecline.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {

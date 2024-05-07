@@ -20,7 +20,7 @@
     require '../../../../dbconnect.php';
 
     if(isset($_GET['id'])) {
-    $stu_id = $_GET['id'];
+    $stu_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     } else {
         echo "Student ID not found in the URL.";
     }

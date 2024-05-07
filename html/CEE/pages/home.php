@@ -12,7 +12,7 @@
     text-align: center;
     margin-top: 150px;
     margin-left: 10px;
-    font-family: poppins;
+    font-family: sans-serif, poppins;
     color: #0083fa;
 }
 </style>

@@ -14,8 +14,10 @@ $recordsPerPage = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
-// Fetch student data for the current page
-$query = "SELECT * FROM temp_internship LIMIT ?, ?";
+// Fetch internship data for the current page
+$query = "SELECT t.*, c.name
+        FROM temp_internship t
+        LEFT JOIN com_personal_details c ON t.com_id = c.com_id LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
@@ -35,7 +37,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>internship verify</title>
+    <title>Internship verify</title>
     <link rel="stylesheet" href="../list/list.css">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 </head>
@@ -51,6 +53,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
         <div class="inner-whole-body">
             <table border="1">
                 <tr class="for-overflow">
+                    <th>Internship ID</th>
                     <th>Company Name</th>
                     <th>Company Email</th>
                     <th>Internship topic</th>
@@ -68,9 +71,10 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['com_id'] . "</td>";
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
                         echo "<td>" . $row['com_email'] . "</td>";
-                        echo "<td>" . $row['Topic'] . "</td>";
+                        echo "<td>" . $row['topic'] . "</td>";
                         echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
                         echo "<td>" . $row['duration'] . "</td>";
                         echo "<td>" . $row['stipend'] . "</td>";
@@ -79,7 +83,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_internship'] . "</td>";
                         echo "<td>" . $row['certificate'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td><a class='accdec acc' href='../pvalidation/acceptStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../pvalidation/declineStuValidation.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "<td><a class='accdec acc' href='../internjobverification/internAccept.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../internjobverification/internDecline.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {
