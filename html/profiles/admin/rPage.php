@@ -2,19 +2,25 @@
 session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../../LoginandRegister/adminLogin.php");
+    exit();
 }
 
+require '../../../dbconnect.php';
+
+$username = $_SESSION['user_name'];
+$email = $_SESSION['mail'];
+
+$query = "SELECT * FROM admin where email = '$email'";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$admin = mysqli_fetch_assoc($result);
+
+// Extract initials from username
 $initials = '';
-if (isset($_SESSION['user_name'])) {
-    $username = $_SESSION['user_name'];
-    // Extracting initials
-    $words = explode(' ', $username);
-    foreach ($words as $word) {
-        $initials .= $word[0];
-    }
-} else {
-    // Handle error if session is not working
-    echo "<script>alert('Error: Session is not working.')</script>";
+$words = explode(' ', $username);
+foreach ($words as $word) {
+    $initials .= $word[0];
 }
 ?>
 
@@ -201,8 +207,8 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
             <li>
                 <div class="icon-link">
                     <a href="#">
-                        <i class='bx bxs-checkbox-checked'></i>
-                        <span class="link_name">Verification</span>
+                    <i class='bx bx-notepad'></i>
+                        <span class="link_name">Profile Changes</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
@@ -211,6 +217,25 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                     <li><a href="pvalidation/techValidation.php">Teacher Updates</a></li>
                     <li><a href="pvalidation/compValidation.php">Company Updates</a></li>
                 </ul>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bxs-checkbox-checked'></i>
+                        <span class="link_name">Internship and jobs verification</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="internjobverification/internverify.php">Internship updates</a></li>
+                    <li><a href="internjobverification/jobverify.php">Job Updates</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="studentiandj.php">
+                <i class='bx bxl-venmo'></i>
+                    <span class="link_name">Applied verification</span>
+                </a>
             </li>
             <li style="background-color:#0362ff;">
                 <a href="rPage.php">
@@ -221,26 +246,23 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
             <li>
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
-                    <span class="link_name">Setting</span>
+                    <span class="link_name">Settings</span>
                 </a>
             </li>
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <div class="logo"><?php echo strtoupper($initials); ?></div>
+                        <div class="logo">
+                            <?php echo strtoupper($initials); ?>
+                        </div>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">
-                        <?php
-                        if (isset($_SESSION['user_name'])) {
-                            $username = $_SESSION['user_name'];
-                        } else {
-                            echo "<script>alert('Error: Session is not working.')</script>";
-                        }
-                        echo $username;
-                        ?>
+                            <?php echo $admin['user_name']; ?>
                         </div>
-                        <div class="job">College name</div>
+                        <div class="job">
+                            <?php echo $admin['college_name']; ?>
+                        </div>
                     </div>
                     <i onclick="openLogOut()" class='bx bx-log-out'></i>
                 </div>

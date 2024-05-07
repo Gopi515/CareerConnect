@@ -44,7 +44,7 @@ html,
     top: 0;
     left: 0;
     height: 100%;
-    width: 280px;
+    width: 300px;
     background: var(--fourth-col);
     z-index: 100;
     transition: all 0.5s ease;
@@ -152,7 +152,7 @@ html,
 }
 
 .sidebar .nav-links li a .link_name {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--first-col);
     transition: all 0.4s ease;
@@ -282,8 +282,8 @@ html,
     position: relative;
     background: none;
     height: 100vh;
-    left: 285px;
-    width: calc(100% - 285px);
+    left: 315px;
+    width: calc(100% - 315px);
     transition: all 0.5s ease;
 }
 
@@ -600,7 +600,7 @@ input[type="file"]::file-selector-button:hover {
 .admin-overview {
     text-align: center;
     padding: 20px;
-    margin: 20px;
+    margin: 30px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2px);
