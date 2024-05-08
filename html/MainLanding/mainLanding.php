@@ -228,7 +228,7 @@ header("Content-Type: text/html");
         <!-- company marquee -->
         <div class="companyMarquee">
         <h2>Top companies trust us</h2>
-        <marquee direction="right" scrollamount="10" class="companyMarqueeslide">
+        <marquee direction="right" scrollamount="15" class="companyMarqueeslide">
             <img src="../../assets/Meta.png" alt="">
             <img src="../../assets/TCS.png" alt="">
             <img src="../../assets/CAP.png" alt="">
@@ -250,25 +250,48 @@ header("Content-Type: text/html");
 
         <!-- university marquee -->
         <div class="companyMarquee universityMarquee">
-        <h2>50+ universities alreay registered</h2>
-        <marquee direction="left" scrollamount="10" class="companyMarqueeslide">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
-            <img src="../../assets/NITMAS.png" alt="">
+        <h2>15+ universities alreay registered</h2>
+        <marquee direction="left" scrollamount="15" class="companyMarqueeslide">
+            <img src="../../assets/Nitmas.png" alt="">
+            <img src="../../assets/tnu.png" alt="">
+            <img src="../../assets/ashoka.webp" alt="">
+            <img src="../../assets/OP.png" alt="">
+            <img src="../../assets/TI.png" alt="">
+            <img src="../../assets/VIT.png" alt="">
+            <img src="../../assets/UEM.png" alt="">
+            <img src="../../assets/Toronto.png" alt="">
+            <img src="../../assets/Princeton.png" alt="">
+            <img src="../../assets/Bristol.png" alt="">
+            <img src="../../assets/Lines.webp" alt="">
+            <img src="../../assets/Fairfield.png" alt="">
+            <img src="../../assets/howard.png" alt="">
+            <img src="../../assets/Cambridge.png" alt="">
+            <img src="../../assets/Open.png" alt="">
+            <img src="../../assets/Illi.png" alt="">
         </marquee>
+        </div>
+
+        <div class="counts">
+            <div class="companyCount countText">
+                <h1>20+</h1>
+                <p>Companies hiring</p>
+            </div>
+            <div class="internshipCount countText">
+                <h1>50+</h1>
+                <p>Internships available</p>
+            </div>
+            <div class="studentsCount countText">
+                <h1>100+</h1>
+                <p>Students registered</p>
+            </div>
+            <div class="jobCount countText">
+                <h1>60+</h1>
+                <p>Jobs available</p>
+            </div>
+        </div>
+
+        <div class="registerFooter">
+            
         </div>
     </div>
 
@@ -277,6 +300,7 @@ header("Content-Type: text/html");
     <footer class="footerMainlanding"></footer>
 
     <script src="../../javaScripts/buttonPop.js"></script>
+    <script src="../../javaScripts/navbarFooter.js"></script>
 </body>
 
 </html>
