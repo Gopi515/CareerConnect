@@ -63,8 +63,9 @@ html {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--seventh-col);
+  background-color: rgb(130, 245, 253);
   padding: 15px;
+  border-radius: 0 0 18px 18px;
   top: 0px;
   z-index: 999;
 }
@@ -86,7 +87,7 @@ html {
   100% {
     stroke-dasharray: 50% 0;
     stroke-dashoffset: -20%;
-    fill: var(--seventh-col);
+    fill: rgb(130, 245, 253);
   }
 }
 
@@ -527,12 +528,32 @@ html {
 }
 
 .universityMarquee img {
-  width: 170px;
+  width: 250px;
   padding: 50px;
 }
 
+.mainLandingPage .counts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 155px;
+}
+.counts .countText {
+  border: 2.5px solid var(--third-col);
+  padding: 60px 40px;
+  border-radius: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.counts .countText h1 {
+  font-size: 70px;
+  font-weight: 700;
+  color: var(--fourth-col);
+}
 .footerMainlanding {
-  margin-top: 200px;
+  margin-top: 160px;
+  border-radius: 18px 18px 0 0;
 }
 
 /*------landing page------*/
