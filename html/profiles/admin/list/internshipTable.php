@@ -18,11 +18,10 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $com_id = isset($_GET['com_id']) ? $_GET['com_id'] : null;
 
 // Fetch records for the current page with search
-$query = "SELECT i.id AS internship_id, c.user_name AS company_name, p.email AS company_email, i.topic AS internship_topic, i.work_location AS work_location, i.location_name AS location_name, i.duration AS duration, i.stipend AS stipend, i.apply_by AS last_date_to_apply, i.required_skills AS required_skills, i.about_internship AS about_the_internship, i.certificate AS certificate_on_completion, i.openings AS number_of_openings
+$query = "SELECT i.id AS internship_id, p.name AS company_name, p.email AS company_email, i.topic AS internship_topic, i.work_location AS work_location, i.location_name AS location_name, i.duration AS duration, i.stipend AS stipend, i.apply_by AS last_date_to_apply, i.required_skills AS required_skills, i.about_internship AS about_the_internship, i.certificate AS certificate_on_completion, i.openings AS number_of_openings
 FROM internships i 
 LEFT JOIN com_personal_details p ON i.com_id = p.com_id 
-LEFT JOIN company c ON i.com_id = c.id 
-WHERE i.com_id = ? AND CONCAT(i.topic, ' ', i.work_location, ' ', i.location_name, ' ', i.duration, ' ', i.stipend, ' ', i.apply_by, ' ', i.required_skills, ' ', i.about_internship, ' ', i.certificate, ' ', i.openings, ' ', c.user_name, ' ', p.email) LIKE ? LIMIT ?, ?";
+WHERE i.com_id = ? AND CONCAT(i.topic, ' ', i.work_location, ' ', i.location_name, ' ', i.duration, ' ', i.stipend, ' ', i.apply_by, ' ', i.required_skills, ' ', i.about_internship, ' ', i.certificate, ' ', i.openings, ' ', p.name, ' ', p.email) LIKE ? LIMIT ?, ?";
 
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
@@ -100,7 +99,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_the_internship'] . "</td>";
                         echo "<td>" . ($row['certificate_on_completion'] == 1 ? 'Yes' : 'No') . "</td>";
                         echo "<td>" . $row['number_of_openings'] . "</td>";
-                        echo "<td><a href='../list/deleteCompany.php?id=" . htmlspecialchars($row['internship_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
+                        echo "<td><a href='../list/deleteInternship.php?id=" . htmlspecialchars($row['internship_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {

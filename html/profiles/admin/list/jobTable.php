@@ -18,10 +18,10 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $com_id = isset($_GET['com_id']) ? $_GET['com_id'] : null;
 
 // Fetch records for the current page with search
-$query = "SELECT j.id AS job_id, c.user_name AS company_name, j.topic AS job_topic, j.work_location AS work_location, j.location_name AS location_name, j.experience AS experience, j.CTC AS CTC, j.apply_by AS last_date_to_apply, j.required_skills AS required_skills, j.about_job AS about_the_job, j.additional_info AS additional_info, j.openings AS number_of_openings
+$query = "SELECT j.id AS job_id, c.name AS company_name, c.email AS company_email, j.topic AS job_topic, j.work_location AS work_location, j.location_name AS location_name, j.experience AS experience, j.CTC AS CTC, j.apply_by AS last_date_to_apply, j.required_skills AS required_skills, j.about_job AS about_the_job, j.additional_info AS additional_info, j.openings AS number_of_openings
 FROM job j 
-LEFT JOIN company c ON j.com_id = c.id 
-WHERE j.com_id = ? AND CONCAT(j.topic, ' ', j.work_location, ' ', j.location_name, ' ', j.experience, ' ', j.CTC, ' ', j.required_skills, ' ', j.about_job, ' ', j.additional_info, ' ', c.user_name) LIKE ? LIMIT ?, ?";
+LEFT JOIN com_personal_details c ON j.com_id = c.com_id 
+WHERE j.com_id = ? AND CONCAT(j.topic, ' ', j.work_location, ' ', j.location_name, ' ', j.experience, ' ', j.CTC, ' ', j.required_skills, ' ', j.about_job, ' ', j.additional_info, ' ', c.name, ' ', c.email) LIKE ? LIMIT ?, ?";
 
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
@@ -70,6 +70,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 <tr class="for-overflow">
                     <th>Job ID</th>
                     <th>Company Name</th>
+                    <th>Company Email</th>
                     <th>Job Topic</th>
                     <th>Work Location</th>
                     <th>Experience</th>
@@ -87,6 +88,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<tr>";
                         echo "<td>" . $row['job_id'] . "</td>";
                         echo "<td>" . $row['company_name'] . "</td>";
+                        echo "<td>" . $row['company_email'] . "</td>";
                         echo "<td>" . $row['job_topic'] . "</td>";
                         echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
                         echo "<td>" . $row['experience'] . "</td>";
@@ -96,7 +98,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_the_job'] . "</td>";
                         echo "<td>" . $row['additional_info'] . "</td>";
                         echo "<td>" . $row['number_of_openings'] . "</td>";
-                        echo "<td><a href='../list/deleteCompany.php?id=" . htmlspecialchars($row['job_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
+                        echo "<td><a href='../list/deleteJob.php?id=" . htmlspecialchars($row['job_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
