@@ -2,7 +2,6 @@
 session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../../../LoginandRegister/adminLogin.php");
-    exit;
 }
 ?>
 
@@ -14,18 +13,29 @@ $recordsPerPage = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $recordsPerPage;
 
-// Fetch internship data for the current page
-$query = "SELECT t.*, c.name
-        FROM temp_internship t
-        LEFT JOIN com_personal_details c ON t.com_id = c.com_id LIMIT ?, ?";
+// Search term
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$com_id = isset($_GET['com_id']) ? $_GET['com_id'] : null;
+
+// Fetch records for the current page with search
+$query = "SELECT i.id AS internship_id, c.user_name AS company_name, p.email AS company_email, i.topic AS internship_topic, i.work_location AS work_location, i.location_name AS location_name, i.duration AS duration, i.stipend AS stipend, i.apply_by AS last_date_to_apply, i.required_skills AS required_skills, i.about_internship AS about_the_internship, i.certificate AS certificate_on_completion, i.openings AS number_of_openings
+FROM internships i 
+LEFT JOIN com_personal_details p ON i.com_id = p.com_id 
+LEFT JOIN company c ON i.com_id = c.id 
+WHERE i.com_id = ? AND CONCAT(i.topic, ' ', i.work_location, ' ', i.location_name, ' ', i.duration, ' ', i.stipend, ' ', i.apply_by, ' ', i.required_skills, ' ', i.about_internship, ' ', i.certificate, ' ', i.openings, ' ', c.user_name, ' ', p.email) LIKE ? LIMIT ?, ?";
+
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, "ii", $offset, $recordsPerPage);
+$searchParam = "%" . $search . "%";
+mysqli_stmt_bind_param($stmt, "isii", $com_id, $searchParam, $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
-// Count total number of records
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM temp_internship";
+// Count total number of records with search
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM internships i 
+LEFT JOIN com_personal_details p ON i.com_id = p.com_id 
+WHERE i.com_id = ? AND CONCAT(i.topic, ' ', i.work_location, ' ', i.location_name, ' ', i.duration, ' ', i.stipend, ' ', i.apply_by, ' ', i.required_skills, ' ', i.about_internship, ' ', i.certificate, ' ', i.openings, ' ', p.email) LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
+mysqli_stmt_bind_param($stmtTotal, "is", $com_id, $searchParam);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
@@ -37,18 +47,25 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship verify</title>
-    <link rel="stylesheet" href="../list/list.css">
+    <title>Student lists</title>
+    <link rel="stylesheet" href="list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
+    <script src="../../../../javaScripts/tableascdesc.js"></script>
 </head>
 
 <body>
     <div class="heading1">
-        <h1>Verification of Internships</h1>
+        <h1>Internships list</h1>
     </div>
-    <a href="../admin.php">
+    <a href="companylist.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>
     </a>
+    <div class="search-container">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Search by anything" value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
     <div class="whole-body">
         <div class="inner-whole-body">
             <table border="1">
@@ -65,25 +82,25 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th>about the internship</th>
                     <th>certificate on completion</th>
                     <th>Number of openings</th>
-                    <th>Operations</th>
+                    <th>Operation</th>
                 </tr>
                 <?php
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . $row['name'] . "</td>";
-                        echo "<td>" . $row['com_email'] . "</td>";
-                        echo "<td>" . $row['topic'] . "</td>";
+                        echo "<td>" . $row['internship_id'] . "</td>";
+                        echo "<td>" . $row['company_name'] . "</td>";
+                        echo "<td>" . $row['company_email'] . "</td>";
+                        echo "<td>" . $row['internship_topic'] . "</td>";
                         echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
                         echo "<td>" . $row['duration'] . "</td>";
                         echo "<td>" . $row['stipend'] . "</td>";
-                        echo "<td>" . $row['apply_by'] . "</td>";
+                        echo "<td>" . $row['last_date_to_apply'] . "</td>";
                         echo "<td>" . $row['required_skills'] . "</td>";
-                        echo "<td>" . $row['about_internship'] . "</td>";
-                        echo "<td>" . ($row['certificate'] == 1 ? 'Yes' : 'No') . "</td>";
-                        echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td><a class='accdec acc' href='../internjobverification/internAccept.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a><a class='accdec dec' href='../internjobverification/internDecline.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "<td>" . $row['about_the_internship'] . "</td>";
+                        echo "<td>" . ($row['certificate_on_completion'] == 1 ? 'Yes' : 'No') . "</td>";
+                        echo "<td>" . $row['number_of_openings'] . "</td>";
+                        echo "<td><a href='../list/deleteCompany.php?id=" . htmlspecialchars($row['internship_id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
@@ -98,7 +115,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 echo "<div class='pagination'>";
                 for ($i = 1; $i <= $totalPages; $i++) {
                     $activeClass = $i == $page ? 'active' : '';
-                    echo "<a class='$activeClass' href='?page=$i'>$i</a>";
+                    echo "<a class='$activeClass' href='?page=$i&search=$search&com_id=$com_id'>$i</a>";
                 }
                 echo "</div>";
                 ?>
