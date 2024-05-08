@@ -76,6 +76,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(8)" data-column="8">State<span class="sort-icon"></span></th>
                     <th onclick="sortTable(9)" data-column="9">Country<span class="sort-icon"></span></th>
                     <th onclick="sortTable(10)" data-column="10">Website<span class="sort-icon"></span></th>
+                    <th>Career Path</th>
                     <th>Operations</th>
                 </tr>
 
@@ -94,14 +95,20 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['c_website'] . "</td>";
+                        // Type column with Internship and Job buttons
+                        echo "<td class='need-ij'><a href='internshipTable.php?com_id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><div class='btn internb'>Internship</div></a>";
+                        echo "<a href='jobTable.php?com_id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><div class='btn jobb'>Job</div></a></td>";
+                        // Operations column with Edit and Delete buttons
                         echo "<td class='need-side'><a href='../list/updateCompany.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
                         echo "<a href='../list/deleteCompany.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='11'>No records found.</td></tr>"; // Display message if no data found
+                    echo "<tr><td colspan='14'>No records found.</td></tr>"; // Adjust colspan to account for extra columns
                 }
                 ?>
+
+
             </table>
             <div class="pagination-container">
                 <?php

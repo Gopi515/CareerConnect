@@ -94,6 +94,16 @@ body {
   align-items: center;
 }
 
+.need-ij {
+  display: table-cell;
+}
+
+.need-ij a {
+  display: inline-block;
+  margin-right: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
 .btn {
   padding: var(--padding-btn);
   background-color: var(--fourth-col);
@@ -104,6 +114,12 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: var(--transition);
+}
+
+.internb:hover,
+.jobb:hover {
+  background-color: var(--fifth-col);
+  box-shadow: var(--box-shadow);
 }
 
 .edit:hover {
