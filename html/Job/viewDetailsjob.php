@@ -41,10 +41,10 @@
             while($row = $result->fetch_assoc())
             {
                 ?>
-                <h1 class="detailsHeading"><?php echo $row["Topic"]; ?></h1>
+                <h1 class="detailsHeading"><?php echo $row["topic"]; ?></h1>
 
                 <div class="mainDetailscontainer">
-                    <h3 class="detailsContainerheading"><?php echo $row["Topic"]; ?></h3>
+                    <h3 class="detailsContainerheading"><?php echo $row["topic"]; ?></h3>
                     <div class="detailsloaction">
                     <h4><i class="fa-solid fa-location-dot"></i><?php echo $row["location_name"]; ?></h4>
                 </div>

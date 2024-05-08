@@ -21,7 +21,7 @@ if (!isset($_SESSION['mail'])) {
 require_once '../../dbconnect.php';
 
 if (isset($_POST["applyJob"])) {
-    $job_topic = $_POST["hidden_Topic"];
+    $job_topic = $_POST["hidden_topic"];
     $job_location = $_POST["hidden_location"];
     $job_com_id = $_POST["hidden_com_id"];
     $job_com_email = $_POST["hidden_com_email"];
@@ -63,7 +63,7 @@ $totalPages = ceil($totalInternships / $internshipsPerPage);
 $currentDate = date("Y-m-d"); // Current date
 
 // Modify the SQL query to retrieve internships for the current page
-$query = "SELECT * FROM `internships` WHERE apply_by >= '$currentDate' ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
+$query = "SELECT * FROM `job` WHERE apply_by >= '$currentDate' ORDER BY id ASC LIMIT $offset, $internshipsPerPage";
 $result = mysqli_query($conn, $query);
 $count = mysqli_num_rows($result);
 ?>
@@ -178,7 +178,7 @@ $count = mysqli_num_rows($result);
                         <div class="internshipCard internshipCard1">
 
                             <form action="Job.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
-                                <h1>  <?php echo $row["Topic"]; ?>  </h1>
+                                <h1>  <?php echo $row["topic"]; ?>  </h1>
                                 <div class="locationP">
                                 <i class="fa-solid fa-location-dot"></i> 
 
@@ -201,7 +201,7 @@ $count = mysqli_num_rows($result);
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="hidden_Topic" value="<?php echo $row["Topic"]; ?>" style="display: none;">
+                                <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
                                 <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
                                 <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
                                 <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
