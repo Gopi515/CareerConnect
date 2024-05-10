@@ -98,7 +98,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['required_skills'] . "</td>";
                         echo "<td>" . $row['about_job'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td class='need-side'><a href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Applied candidates</p></a></td>";
+                        echo "<td class='need-side'><a href='jobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Applied candidates</p></a></td>";
                         echo "</tr>";
                     }
                 } else {
