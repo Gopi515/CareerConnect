@@ -10,6 +10,7 @@
   --clr-black: #000;
   --clr-grey: #656e83;
   --clr-green: #00ecff;
+  --fourth-col: #0083fa;
   --clr-second: #e7fbff;
   --clr-seventh: #99eedd;
   --font-poppins: "Poppins", sans-serif;
@@ -126,7 +127,7 @@ a {
 }
 
 .bg-green {
-  background-color: var(--clr-green);
+  background-color: var(--fourth-col);
 }
 
 .text-center {
