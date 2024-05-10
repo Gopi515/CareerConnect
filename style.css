@@ -48,15 +48,14 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
+
 .navbar {
   display: flex;
   position: fixed;
@@ -77,6 +76,7 @@ html {
   stroke-width: 2;
   animation: textAnimate 5s infinite alternate;
 }
+
 @keyframes textAnimate {
   0% {
     stroke-dasharray: 0 50%;
@@ -120,6 +120,22 @@ html {
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 50;
+}
+
+.navmains {
+  text-decoration: none;
+  color: var(--fourth-col);
+  font-weight: 600;
+  padding: 5px 10px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navmains:hover {
+  background-color: var(--fourth-col);
+  border-radius: var(--border-50);
+  padding: 5px 10px;
+  color: var(--first-col);
 }
 
 /* the Register inner */
@@ -297,9 +313,11 @@ html {
   0% {
     text-shadow: 0 0 5px var(--third-col);
   }
+
   50% {
     text-shadow: 0 0 20px var(--third-col);
   }
+
   100% {
     text-shadow: 0 0 5px var(--third-col);
   }
@@ -311,6 +329,7 @@ html {
   color: var(--third-col);
   font-weight: 600;
 }
+
 .welcomeNote a {
   text-decoration: none;
   text-transform: uppercase;
@@ -326,10 +345,12 @@ html {
   transform: translateX(-50%);
   transition: all 0.3s;
 }
+
 .welcomeNote a:hover {
   padding: 12px 30px;
   box-shadow: 0 0 20px var(--third-col);
 }
+
 .mainlangidingContent .welcomeImgcard {
   display: flex;
   justify-content: center;
@@ -339,6 +360,7 @@ html {
   height: 90vh;
   background-color: rgb(0, 0, 0);
 }
+
 .mainlangidingContent .welcomeImgcard::after {
   content: "";
   position: absolute;
@@ -348,12 +370,14 @@ html {
   height: 33px;
   background: linear-gradient(to bottom, var(--third-col), rgb(217, 255, 244));
 }
+
 .welcomeImgcard .welcomeImg {
   object-fit: cover;
   width: 100%;
   height: 90vh;
   opacity: 0.3;
 }
+
 /* service listing */
 
 .servicesContainer {
@@ -399,13 +423,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -538,6 +560,7 @@ html {
   align-items: center;
   margin-top: 155px;
 }
+
 .counts .countText {
   border: 2.5px solid var(--third-col);
   padding: 60px 40px;
@@ -546,11 +569,13 @@ html {
   align-items: center;
   justify-content: center;
 }
+
 .counts .countText h1 {
   font-size: 70px;
   font-weight: 700;
   color: var(--fourth-col);
 }
+
 .footerMainlanding {
   margin-top: 160px;
   border-radius: 18px 18px 0 0;
@@ -604,6 +629,7 @@ html {
   font-size: 1.2rem;
   border-radius: 3rem;
 }
+
 .navItems .navItemshover {
   visibility: hidden;
   width: 120px;
@@ -621,10 +647,12 @@ html {
   opacity: 0;
   transition: opacity 0.5s;
 }
+
 .navItems:hover .navItemshover {
   visibility: visible;
   opacity: 1;
 }
+
 /* Page content styles */
 .content {
   justify-content: center;
@@ -981,11 +1009,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -995,7 +1023,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1818,26 +1846,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1857,31 +1876,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2713,9 +2720,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
