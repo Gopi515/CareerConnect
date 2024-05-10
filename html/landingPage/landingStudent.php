@@ -56,7 +56,7 @@ if (!isset($_SESSION['mail'])) {
               <li onclick="toggleDropdown()">
                 <a class="navItems"
                   ><i class="fas fa-user" id="postOptions"></i>
-                  <span class="navItemshover">Edit profile</span>
+                  <span class="navItemshover">Your profile</span>
                 </a>
                 <div id="myDropdown" class="dropdown-content">
                   <a href="../profiles/student/student.php">Create Profile</a>
