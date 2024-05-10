@@ -1,12 +1,13 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../LoginandRegister/companyLogin.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['mail'])) {
+    header("Location: ../LoginandRegister/companyLogin.php");
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <!-- metas -->
@@ -18,7 +19,7 @@
 
     <!-- linking -->
     <link rel="stylesheet" href="../../style.css">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,6 +29,8 @@
             <div class="container">
                 <div class="logo">CareerConnect</div>
                 <ul class="nav-links">
+                    <a class="navmains" href="../profiles/company/posted/internshipposted.php">Your Internships</a>
+                    <a class="navmains" href="../profiles/company/posted/jobposted.php">Your Jobs</a>
                     <li><a href="#"><i class="fas fa-window-restore"></i></a></li>
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
@@ -65,4 +68,5 @@
     <script src="../../javaScripts/buttonPop.js"></script>
     <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
 </body>
+
 </html>
