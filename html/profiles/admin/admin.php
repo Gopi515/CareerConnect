@@ -230,6 +230,17 @@ $totalCompanies = $row['total_companies'];
                 </div>
             </div>
 
+            <!-- Internship and job verification -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>Internship and Job Verifications</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="internjobverification/internverify.php">Internship Updates</a>
+                    <a class="button" href="internjobverification/jobverify.php">Job Updates</a>
+                </div>
+            </div>
+
             <div class="list-overview">
                 <div class="help-header">
                     <h3>Help Desk:</h3>
