@@ -7,16 +7,20 @@ if (isset($_GET['id'])) {
     $stmt1 = mysqli_query($conn, $deletedata1);
 
     if ($stmt1) {
-        echo '<script type=\"text/javascript\">
-                        alert(\"Deleted successfully.\");
-                        </script>';
+        echo"
+                <script>
+                    alert('Deleted successfully.');
+                    document.location.href = '../list/internshipTable.php';
+                </script>
+                ";
     } else {
-        echo '<script type=\"text/javascript\">
-                        alert(\"Delete unsuccessful.\");
-                        </script>';
+        echo"
+                <script>
+                    alert('Delete unsuccessful.');
+                    document.location.href = '../list/internshipTable.php';
+                </script>
+                ";
     }
-
-    header("location: ../list/internshipTable.php");
 
 } else {
     echo "Internship ID not found in the URL.";
