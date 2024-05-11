@@ -26,7 +26,11 @@
         $id = $_GET["id"];
     }
 
-    $sql_query = "SELECT * FROM internships WHERE id = $id";
+    $sql_query = "SELECT i.*, COUNT(a.id) AS id_count 
+    FROM internships i
+    LEFT JOIN internship_applied a ON i.id = a.internship_id
+    WHERE i.id = $id
+    GROUP BY a.internship_id";
     $result=$conn->query($sql_query);
 ?>
 
@@ -67,7 +71,7 @@
         
                 <h4 class="noofApplicationdetails">
                 <i class="fa-solid fa-user-group"></i>
-                555 Applications
+                <?php echo $row["id_count"];?> Applications
                 </h4>
 
                 <div class="detailsContaineroptions">

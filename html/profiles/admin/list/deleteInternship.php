@@ -8,18 +8,18 @@ if (isset($_GET['id'])) {
 
     if ($stmt1) {
         echo"
-                <script>
-                    alert('Deleted successfully.');
-                    document.location.href = '../list/internshipTable.php';
-                </script>
-                ";
+            <script>
+                alert('Deleted successfully.');
+                document.location.href = '../list/internshipTable.php';
+            </script>
+            ";
     } else {
         echo"
-                <script>
-                    alert('Delete unsuccessful.');
-                    document.location.href = '../list/internshipTable.php';
-                </script>
-                ";
+            <script>
+                alert('Delete unsuccessful.');
+                document.location.href = '../list/internshipTable.php';
+            </script>
+            ";
     }
 
 } else {
