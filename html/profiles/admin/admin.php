@@ -112,10 +112,17 @@ $totalCompanies = $row['total_companies'];
             </li>
             <!-- inner drop end -->
             <li>
-                <a href="studentiandj.php">
-                <i class='bx bxl-venmo'></i>
-                    <span class="link_name">Applied verification</span>
-                </a>
+                <div class="icon-link">
+                    <a href="#">
+                    <i class='bx bxl-venmo'></i>
+                        <span class="link_name">Applied verification</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="applications/internApp.php">Internship application</a></li>
+                    <li><a href="applications/jobApp.php">Job applications</a></li>
+                </ul>
             </li>
             <li>
                 <a href="rPage.php">
