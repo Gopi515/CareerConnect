@@ -17,7 +17,7 @@ $offset = ($page - 1) * $recordsPerPage;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
-$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.city, p.state, p.country, p.gender 
+$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.state, p.country, p.gender 
     FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id 
     WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ? LIMIT ?, ?";
 
