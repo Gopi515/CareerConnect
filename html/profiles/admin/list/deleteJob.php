@@ -7,14 +7,14 @@ if (isset($_GET['id'])) {
     $stmt1 = mysqli_query($conn, $deletedata1);
 
     if ($stmt1) {
-        echo"
+        echo "
             <script>
                 alert('Deleted successfully.');
-                document.location.href = '../list/jobTable.php';
+                document.location.href = '../list/companylist.php';
             </script>
             ";
     } else {
-        echo"
+        echo "
             <script>
                 alert('Delete unsuccessful.');
                 document.location.href = '../list/jobTable.php';
