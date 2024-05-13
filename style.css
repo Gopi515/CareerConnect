@@ -3907,3 +3907,17 @@ input::-webkit-inner-spin-button {
   border-radius: var(--border-50);
   border: 3px var(--fourth-col) solid;
 }
+
+.company_name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 5%;
+  color: var(--fourth-col);
+}
+
+.company_namef {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 7%;
+  color: var(--fourth-col);
+}
