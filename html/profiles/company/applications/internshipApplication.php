@@ -116,7 +116,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['resume'] . "</td>";
                         echo "<td>" . $row['noc_certificate'] . "</td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
-                        echo "<td class='need-side'><a class='accdec acc' href='acceptInternApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a>";
+                        echo "<td class='need-side'><a class='accdec acc' href='acceptInternApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Shortlisted</a>";
                         echo "<a class='accdec dec' href='declineInternApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }

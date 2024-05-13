@@ -9,13 +9,13 @@ if (isset($_GET['id'])) {
 
     if ($stmt) {
         echo '<script type="text/javascript">
-                alert("Reviewed & Forwarded successfully.");
+                alert("Shortlisted successfully.");
                 window.location.href = "../posted/jobposted.php"; 
             </script>';
         exit;
     } else {
         echo '<script type="text/javascript">
-                alert("Reviewed & Forwarded unsuccessful.");
+                alert("Shortlisted unsuccessful.");
                 window.location.href = "../posted/jobposted.php";
             </script>';
         exit;

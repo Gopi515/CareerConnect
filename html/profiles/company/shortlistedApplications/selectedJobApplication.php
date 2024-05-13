@@ -3,20 +3,20 @@ require '../../../../dbconnect.php';
 
 if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    $status = "Company shortlisted your application";
-    $updatedata = "UPDATE `internship_applied` SET `status`='$status' WHERE id = $id";
+    $status = "You are selected";
+    $updatedata = "UPDATE `job_applied` SET `status`='$status' WHERE id = $id";
     $stmt = mysqli_query($conn, $updatedata);
 
     if ($stmt) {
         echo '<script type="text/javascript">
-                alert("Shortlisted successfully.");
-                window.location.href = "../posted/internshipposted.php"; 
+                alert("Selected successfully.");
+                window.location.href = "postedJob.php"; 
             </script>';
         exit;
     } else {
         echo '<script type="text/javascript">
-                alert("Shortlisted unsuccessful.");
-                window.location.href = "../posted/internshipposted.php";
+                alert("Selected unsuccessful.");
+                window.location.href = "postedJob.php";
             </script>';
         exit;
     }

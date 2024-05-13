@@ -27,7 +27,7 @@ $offset = ($page - 1) * $recordsPerPage;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
 // Fetch records for the current page with search
-$query = "SELECT * FROM internships WHERE com_id = ? AND CONCAT(topic, ' ', location_name, ' ', work_location, ' ', duration, ' ', required_skills, ' ', about_internship) LIKE ? LIMIT ?, ?";
+$query = "SELECT * FROM job WHERE com_id = ? AND CONCAT(topic, ' ', location_name, ' ', work_location, ' ', experience, ' ', required_skills, ' ', about_job) LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
 mysqli_stmt_bind_param($stmt, "issi", $companyId, $searchParam, $offset, $recordsPerPage);
@@ -35,7 +35,7 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM internships WHERE com_id = ? AND CONCAT(topic, ' ', location_name, ' ', work_location, ' ', duration, ' ', required_skills, ' ', about_internship) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM job WHERE com_id = ? AND CONCAT(topic, ' ', location_name, ' ', work_location, ' ', experience, ' ', required_skills, ' ', about_job) LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
 mysqli_stmt_bind_param($stmtTotal, "is", $companyId, $searchParam);
 mysqli_stmt_execute($stmtTotal);
@@ -43,14 +43,13 @@ $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship lists</title>
+    <title>Job lists</title>
     <link rel="stylesheet" href="../../admin/list/list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
     <script src="../../../../javaScripts/tableascdesc.js"></script>
@@ -58,7 +57,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body>
     <div class="heading1">
-        <h1>Internship lists</h1>
+        <h1>Job lists</h1>
     </div>
     <a href="../../../landingPage/landingCompany.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to home page"></i></div>
@@ -77,13 +76,12 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(0)" data-column="0">ID<span class="sort-icon"></span></th>
                     <th onclick="sortTable(1)" data-column="1">Topic<span class="sort-icon"></span></th>
                     <th onclick="sortTable(2)" data-column="2">Work Location<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Duration<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="4">Stipend<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Experience<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">CTC<span class="sort-icon"></span></th>
                     <th onclick="sortTable(5)" data-column="5">Apply By (yyyy-mm-dd)<span class="sort-icon"></span></th>
                     <th onclick="sortTable(6)" data-column="6">Required Skills<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="7">About Internship<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="8">Certificate<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">Openings<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="7">About Job<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="8">Openings<span class="sort-icon"></span></th>
                     <th>Operations</th>
                 </tr>
 
@@ -94,18 +92,17 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['topic'] . "</td>";
                         echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
-                        echo "<td>" . $row['duration'] . "</td>";
-                        echo "<td>" . "Rs." . $row['stipend'] . "</td>";
+                        echo "<td>" . $row['experience'] . "</td>";
+                        echo "<td>" . ($row['CTC'] ? 'Rs.' . $row['CTC'] : 'Not specified') . "</td>";
                         echo "<td>" . $row['apply_by'] . "</td>";
                         echo "<td>" . $row['required_skills'] . "</td>";
-                        echo "<td>" . $row['about_internship'] . "</td>";
-                        echo "<td>" . ($row['certificate'] ? 'Yes' : 'No') . "</td>";
+                        echo "<td>" . $row['about_job'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td class='need-side'><a href='../applications/internshipApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Applied candidates</p></a></td>";
+                        echo "<td class='need-side'><a href='shortlistedJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Shortlisted candidates</p></a></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='12'>No records found.</td></tr>";
+                    echo "<tr><td colspan='10'>No records found.</td></tr>";
                 }
                 ?>
             </table>
