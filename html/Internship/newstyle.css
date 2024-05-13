@@ -1,0 +1,51 @@
+.apply-side-by-side {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    transform: translate(-10%, 161%);
+}
+
+.uploadResume {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.uploadResume h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--fourth-col);
+}
+
+.uploadResume input[type="file"] {
+    display: none;
+}
+
+.uploadResume .file-label {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease;
+}
+
+
+.uploadResume .file-label:hover {
+    background-color: #16c9d5;
+    border-radius: 25px;
+}
+
+.uploadResume p {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 200%;
+}

@@ -25,9 +25,10 @@
         $id = $_GET["id"];
     }
 
-    $sql_query = "SELECT j.*, COUNT(a.id) AS id_count 
+    $sql_query = "SELECT j.*, c.name, COUNT(a.id) AS id_count 
     FROM job j
     LEFT JOIN job_applied a ON j.id = a.job_id
+    LEFT JOIN com_personal_details c ON j.com_id = c.id
     WHERE j.id = $id
     GROUP BY a.job_id";
     $result=$conn->query($sql_query);
@@ -49,6 +50,7 @@
 
                 <div class="mainDetailscontainer">
                     <h3 class="detailsContainerheading"><?php echo $row["topic"]; ?></h3>
+                    <p class="company_name"><?php echo $row["name"]; ?></p>
                     <div class="detailsloaction">
                     <h4><i class="fa-solid fa-location-dot"></i><?php echo $row["location_name"]; ?></h4>
                 </div>
