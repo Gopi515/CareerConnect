@@ -15,22 +15,31 @@ $offset = ($page - 1) * $recordsPerPage;
 
 // Search term
 $search = isset($_GET['search']) ? $_GET['search'] : '';
+$status = "Applied & Forwarded to Admin";
 
 // Fetch records for the current page with search
-$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.city, p.state, p.country, p.gender 
-    FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id 
-    WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ? LIMIT ?, ?";
-
+$query = "SELECT a.id, a.profile, a.location, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.apply_date, j.experience, j.CTC, p.name, s.F_name, s.L_name, s.dept, s.email, s.start_year, s.end_year, s.pin, s.city, s.state, s.country 
+    FROM job_applied a 
+    LEFT JOIN job_application_details d ON a.id = d.id
+    LEFT JOIN job j ON a.job_id = j.id
+    LEFT JOIN com_personal_details p ON a.com_id = p.com_id
+    LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
+    WHERE a.status = ? AND CONCAT(a.id, ' ', a.profile, ' ', a.location, ' ', d.cover_letter, ' ', d.availability, ' ', d.availability_spec, ' ', d.assessment, ' ', d.apply_date, ' ', j.experience, ' ', j.CTC, ' ', p.name, ' ', s.F_name, ' ', s.L_name, ' ', s.dept, ' ', s.email, ' ', s.start_year, ' ', s.end_year, ' ', s.pin, ' ', s.city, ' ', s.state, ' ', s.country, ' ') LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
-mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
+mysqli_stmt_bind_param($stmt, "ssii", $status, $searchParam, $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM job_applied a 
+    LEFT JOIN job_application_details d ON a.id = d.id
+    LEFT JOIN job j ON a.job_id = j.id
+    LEFT JOIN com_personal_details p ON a.com_id = p.com_id
+    LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id 
+    WHERE a.status = ? AND CONCAT(a.id, ' ', a.profile, ' ', a.location, ' ', d.cover_letter, ' ', d.availability, ' ', d.availability_spec, ' ', d.assessment, ' ', d.apply_date, ' ', j.experience, ' ', j.CTC, ' ', p.name, ' ', s.F_name, ' ', s.L_name, ' ', s.dept, ' ', s.email, ' ', s.start_year, ' ', s.end_year, ' ', s.pin, ' ', s.city, ' ', s.state, ' ', s.country, ' ') LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
-mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
+mysqli_stmt_bind_param($stmtTotal, "ss", $status, $searchParam);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
@@ -74,21 +83,21 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(6)" data-column="6">City<span class="sort-icon"></span></th>
                     <th onclick="sortTable(7)" data-column="7">State<span class="sort-icon"></span></th>
                     <th onclick="sortTable(8)" data-column="8">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">Gender<span class="sort-icon"></span></th>
                     <!-- company personal details table -->
-                    <th onclick="sortTable(10)" data-column="10">Company Name<span class="sort-icon"></span></th>
-                    <!-- internship table -->
-                    <th onclick="sortTable(11)" data-column="11">Job Topic<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(12)" data-column="12">Work Location<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(13)" data-column="13">experience<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(14)" data-column="14">CTC<span class="sort-icon"></span></th>
-                    <!-- internship application details -->
-                    <th onclick="sortTable(15)" data-column="15">Cover Letter<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(16)" data-column="16">Availability<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(17)" data-column="17">Assessment<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(18)" data-column="18">Resume<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(19)" data-column="19">NOC certificate<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(20)" data-column="20">Apply Date<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(9)" data-column="9">Company Name<span class="sort-icon"></span></th>
+                    <!-- job applied table -->
+                    <th onclick="sortTable(10)" data-column="10">Job Topic<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(11)" data-column="11">Work Location<span class="sort-icon"></span></th>
+                    <!-- job table -->
+                    <th onclick="sortTable(12)" data-column="12">experience<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(13)" data-column="13">CTC<span class="sort-icon"></span></th>
+                    <!-- job application details -->
+                    <th onclick="sortTable(14)" data-column="14">Cover Letter<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(15)" data-column="15">Availability<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(16)" data-column="16">Assessment<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(17)" data-column="17">Resume<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(18)" data-column="18">NOC certificate<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(19)" data-column="19">Apply Date<span class="sort-icon"></span></th>
 
                     <th>Operations</th>
                 </tr>
@@ -106,24 +115,23 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['city'] . "</td>";
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
-                        echo "<td>" . $row['gender'] . "</td>";
                         echo "<td>" . $row['name'] . "</td>";
-                        echo "<td>" . $row['topic'] . "</td>";
-                        echo "<td>" . $row['work_location'] . "" . $row['location_name'] . "</td>";
+                        echo "<td>" . $row['profile'] . "</td>";
+                        echo "<td>" . $row['profile'] . "</td>";
                         echo "<td>" . $row['experience'] . "</td>";
                         echo "<td>" . $row['CTC'] . "</td>";
                         echo "<td>" . $row['cover_letter'] . "</td>";
-                        echo "<td>" . $row['availability'] . "</td>";
+                        echo "<td>" . $row['availability'] . " " . $row['availability_spec'] . "</td>";
                         echo "<td>" . $row['assessment'] . "</td>";
                         echo "<td>" . $row['resume'] . "</td>";
                         echo "<td>" . $row['noc_certificate'] . "</td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
-                        echo "<td class='need-side'><a class='accdec acc' href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a>";
-                        echo "<a class='accdec dec' href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "<td class='need-side'><a class='accdec acc' href='jobApplicationAccept.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Accept</a>";
+                        echo "<a class='accdec dec' href='jobApplicationDecline.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='21'>No records found.</td></tr>";
+                    echo "<tr><td colspan='20'>No records found.</td></tr>";
                 }
                 ?>
             </table>

@@ -16,7 +16,7 @@ $offset = ($page - 1) * $recordsPerPage;
 // Search term
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $Job_id = isset($_GET['id']) ? $_GET['id'] : null;
-$status = "Admin reviewed & Forwarded to Company";
+$status = "Company shortlisted your application";
 
 // Fetch records for the current page with search
 $query = "SELECT a.id, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.apply_date, s.F_name, s.L_name, s.dept, s.email, s.phone_no, s.start_year, s.end_year, s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
@@ -56,9 +56,9 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body>
     <div class="heading1">
-        <h1>Job Application</h1>
+        <h1>Shortlisted Job Application</h1>
     </div>
-    <a href="../posted/jobposted.php">
+    <a href="postedJob.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>
     </a>
     <div class="search-container">

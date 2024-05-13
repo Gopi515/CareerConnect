@@ -101,7 +101,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_internship'] . "</td>";
                         echo "<td>" . ($row['certificate'] ? 'Yes' : 'No') . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
-                        echo "<td class='need-side'><a href='internshipApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Applied students</p></a></td>";
+                        echo "<td class='need-side'><a href='../applications/internshipApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Applied candidates</p></a></td>";
                         echo "</tr>";
                     }
                 } else {
