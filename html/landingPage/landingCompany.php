@@ -3,6 +3,28 @@ session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../LoginandRegister/companyLogin.php");
 }
+
+require '../../dbconnect.php';
+
+$email = $_SESSION['mail'];
+
+$query = "SELECT * FROM com_personal_details where email = '$email'";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$company = mysqli_fetch_assoc($result);
+
+// Get total number of students
+$query = "SELECT COUNT(*) AS total_internship FROM internships where com_email = '$email'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$totalinternship = $row['total_internship'];
+
+// Get total number of teachers
+$query = "SELECT COUNT(*) AS total_job FROM job where com_email = '$email'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$totaljob = $row['total_job'];
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +41,13 @@ if (!isset($_SESSION['mail'])) {
 
     <!-- linking -->
     <link rel="stylesheet" href="../../style.css">
+    <!-- <link rel="stylesheet" href="../profiles/admin/admin.css"> -->
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-img">
     <!-- welcome section -->
-    <header>
+    <header class="hi-nav">
         <nav id="navbar">
             <div class="container">
                 <div class="logo">CareerConnect</div>
@@ -61,7 +84,75 @@ if (!isset($_SESSION['mail'])) {
             </div>
             <!-- <div id="closeLogout" onclick="closeLogOut()"><i class='bx bx-x'></i></div> -->
         </div>
+
+        <!-- Dashboard overview content here -->
+        <div class="admin-overview">
+            <h2>Company Dashboard</h2>
+            <div class="dashboard-overview">
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Total Users</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Total number of internships: <strong>
+                                <?php echo $totalinternship; ?>
+                            </strong></p>
+                        <p>Total number of jobs: <strong>
+                                <?php echo $totaljob; ?>
+                            </strong></p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h3>Admin login details</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Your Company Name: <strong>
+                                <?php echo $company['name']; ?>
+                            </strong></p>
+                        <p>Your login Email: <strong>
+                                <?php echo $company['email']; ?>
+                            </strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- listings -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>All Posts & Applications</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="../profiles/company/posted/internshipposted.php">Internships & Applications</a>
+                    <a class="button" href="../profiles/company/posted/jobposted.php">Jobs & Applications</a>
+                </div>
+            </div>
+            
+            <!-- verification -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>All Posts & Shortlisted Applications</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="../profiles/company/shortlistedApplications/postedInternship.php">Internships & Shortlisted Applications</a>
+                    <a class="button" href="../profiles/company/shortlistedApplications/postedJob.php">Jobs & Shortlisted Applications</a>
+                </div>
+            </div>
+
+            <!-- Internship and job verification -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>All Posts & Selected Applications</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="../profiles/company/selectedApplications/internship.php">Internships & Selected Applications</a>
+                    <a class="button" href="../profiles/company/selectedApplications/job.php">Jobs & Selected Applications</a>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <footer class="footer-comlanding"></footer>
 
     <!-- <script src="../../javaScripts/dropdown.js"></script> -->
     <script src="../../javaScripts/showDropdown.js"></script>
