@@ -251,6 +251,12 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                 </a>
             </li>
             <li>
+                <a href="shortlistandselected.php">
+                    <i class='bx bxs-registered'></i>
+                    <span class="link_name">Shortlist & Selected students</span>
+                </a>
+            </li>
+            <li>
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Settings</span>

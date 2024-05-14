@@ -131,6 +131,12 @@ $totalCompanies = $row['total_companies'];
                 </a>
             </li>
             <li>
+                <a href="shortlistandselected.php">
+                    <i class='bx bxs-registered'></i>
+                    <span class="link_name">Shortlist & Selected students</span>
+                </a>
+            </li>
+            <li>
                 <a href="settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Settings</span>

@@ -91,7 +91,7 @@ $totaljob = $row['total_job'];
             <div class="dashboard-overview">
                 <div class="overview-card">
                     <div class="card-header">
-                        <h3>Total Users</h3>
+                        <h3>Total Posts</h3>
                     </div>
                     <div class="card-body">
                         <p>Total number of internships: <strong>
@@ -104,16 +104,27 @@ $totaljob = $row['total_job'];
                 </div>
                 <div class="overview-card">
                     <div class="card-header">
-                        <h3>Admin login details</h3>
+                        <h3>Your details</h3>
                     </div>
                     <div class="card-body">
                         <p>Your Company Name: <strong>
                                 <?php echo $company['name']; ?>
                             </strong></p>
-                        <p>Your login Email: <strong>
+                        <p>Logged Email: <strong>
                                 <?php echo $company['email']; ?>
                             </strong></p>
                     </div>
+                </div>
+            </div>
+
+            <!-- posting -->
+            <div class="list-overview">
+                <div class="list-header">
+                    <h3>Post Internship & Job</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="../profiles/company/addinternship.php">Post Internship</a>
+                    <a class="button" href="../profiles/company/addjob.php">Post Job</a>
                 </div>
             </div>
 

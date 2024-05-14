@@ -57,7 +57,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body>
     <div class="heading1">
-        <h1>Job lists</h1>
+        <h1>Job select application</h1>
     </div>
     <a href="../../../landingPage/landingCompany.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to home page"></i></div>
