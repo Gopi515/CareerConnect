@@ -131,8 +131,8 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <button class="serviceRegister">Know more</button>
-                <button class="serviceLogin">Login &#x25B6;</button>
+                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
                 </div>
             </div>
 
@@ -172,8 +172,8 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <button class="serviceRegister">Know more</button>
-                <button class="serviceLogin">Login &#x25B6;</button>
+                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                <a href="../LoginandRegister/companyLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
                 </div>
             </div>
 
@@ -217,8 +217,8 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <button class="serviceRegister">Know more</button>
-                <button class="serviceLogin">Login &#x25B6;</button>
+                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
                 </div>
             </div>
         </div>
