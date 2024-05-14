@@ -6,7 +6,9 @@
   --first-col: #ffffff;
   --last-col: #000000;
   --second-col: #e7fbff;
+  --second-col-dark: #b2f2ff;
   --third-col: #00ecff;
+  --third-col-dark: #00b8c6;
   --fourth-col: #0083fa;
   --fifth-col: #16c9d5;
   --sixth-col: #0362ff;
@@ -48,12 +50,14 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(180deg,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244));
+  background: linear-gradient(
+    180deg,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244)
+  );
 }
 
 .navbar {
@@ -423,11 +427,13 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(-45deg,
-      var(--fourth-col),
-      var(--third-col),
-      var(--third-col),
-      var(--fourth-col));
+  background: linear-gradient(
+    -45deg,
+    var(--fourth-col),
+    var(--third-col),
+    var(--third-col),
+    var(--fourth-col)
+  );
   display: flex;
   justify-content: center;
 }
@@ -1009,11 +1015,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1023,7 +1029,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1846,17 +1852,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1876,19 +1891,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2720,9 +2747,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -3920,4 +3947,147 @@ input::-webkit-inner-spin-button {
   font-weight: 700;
   margin-left: 7%;
   color: var(--fourth-col);
+}
+
+/* company landing page */
+
+.hi-nav {
+  margin-top: -30px;
+}
+
+.bg-img {
+  background-image: url(assets/bgimg.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.admin-overview {
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.admin-overview h2 {
+  margin-top: 70px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  color: var(--sixth-col);
+}
+
+.dashboard-overview {
+  background-color: var(--first-col);
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dashboard-overview:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+
+.overview-card {
+  background-color: var(--second-col-dark);
+  padding: 20px 5%;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+}
+
+.overview-card .card-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.overview-card h3 {
+  margin: 0;
+}
+
+.overview-card p {
+  margin-bottom: 10px;
+}
+
+.overview-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.overview-card li {
+  margin-bottom: 5px;
+}
+
+.overview-card p {
+  margin-bottom: 5px;
+}
+
+.card-header h3 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: var(--fourth-col);
+}
+
+.overview-card .card-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.list-overview {
+  background-color: var(--first-col);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.list-overview:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+
+.list-overview h3 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: var(--fourth-col);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: var(--third-col-dark);
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: var(--first-col);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.button:hover {
+  background-color: var(--third-col);
+  box-shadow: var(--box-shadow);
+}
+
+.footer-comlanding {
+  width: 100%;
+  height: 10rem;
+  background-color: var(--seventh-col);
+  margin-top: 0px;
 }
