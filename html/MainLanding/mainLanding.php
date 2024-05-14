@@ -273,19 +273,19 @@ header("Content-Type: text/html");
 
         <div class="counts">
             <div class="companyCount countText">
-                <h1>20+</h1>
+                <h1 data-count="21">0</h1>
                 <p>Companies hiring</p>
             </div>
             <div class="internshipCount countText">
-                <h1>50+</h1>
+                <h1 data-count="52">0</h1>
                 <p>Internships available</p>
             </div>
             <div class="studentsCount countText">
-                <h1>100+</h1>
+                <h1 data-count="121">0</h1>
                 <p>Students registered</p>
             </div>
             <div class="jobCount countText">
-                <h1>60+</h1>
+                <h1 data-count="66">0</h1>
                 <p>Jobs available</p>
             </div>
         </div>
@@ -300,6 +300,7 @@ header("Content-Type: text/html");
     <footer class="footerMainlanding"></footer>
 
     <script src="../../javaScripts/buttonPop.js"></script>
+    <script src="../../javaScripts/countUpAnim.js"></script>
     <script src="../../javaScripts/navbarFooter.js"></script>
 </body>
 
