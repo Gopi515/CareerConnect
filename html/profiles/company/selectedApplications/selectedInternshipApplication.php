@@ -56,7 +56,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body>
     <div class="heading1">
-        <h1>Selected Internship Application</h1>
+        <h1>Selected Intern Application</h1>
     </div>
     <a href="internship.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>

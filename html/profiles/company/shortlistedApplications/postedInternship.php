@@ -50,7 +50,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship lists</title>
+    <title>Internship shortlists</title>
     <link rel="stylesheet" href="../../admin/list/list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
     <script src="../../../../javaScripts/tableascdesc.js"></script>
@@ -58,7 +58,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body>
     <div class="heading1">
-        <h1>Internship lists</h1>
+        <h1>Internship Shortlists</h1>
     </div>
     <a href="../../../landingPage/landingCompany.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to home page"></i></div>

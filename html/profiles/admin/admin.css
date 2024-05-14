@@ -344,6 +344,10 @@ html,
     margin-left: 10px;
 }
 
+.fordemocracy {
+    margin: 10px 10px 100px 20px !important;
+}
+
 .boxes {
     position: relative;
     flex: 1 0 calc(33.33% - 20px);
