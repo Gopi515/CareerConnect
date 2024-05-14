@@ -15,27 +15,58 @@ $offset = ($page - 1) * $recordsPerPage;
 
 // Search term
 $search = isset($_GET['search']) ? $_GET['search'] : '';
+$status = "You are selected";
 
 // Fetch records for the current page with search
-$query = "SELECT s.id, s.user_name, s.email, p.F_name, p.L_name, p.dept, p.phone_no, p.start_year, p.end_year, p.pin, p.city, p.state, p.country, p.gender 
-    FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id 
-    WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ? LIMIT ?, ?";
-
+$query = "SELECT a.id, a.profile, a.location, a.duration, i.stipend, p.name, s.F_name, s.L_name, s.dept, s.email, s.start_year, s.end_year, s.pin, s.city, s.state, s.country 
+    FROM internship_applied a 
+    LEFT JOIN internships i ON a.internship_id = i.id
+    LEFT JOIN com_personal_details p ON a.com_id = p.com_id
+    LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
+    WHERE a.status = ? AND CONCAT(a.id, ' ', a.profile, ' ', a.location, ' ', a.duration, ' ', i.stipend, ' ', p.name, ' ', s.F_name, ' ', s.L_name, ' ', s.dept, ' ', s.email, ' ', s.start_year, ' ', s.end_year, ' ', s.pin, ' ', s.city, ' ', s.state, ' ', s.country, ' ') LIKE ? LIMIT ?, ?";
 $stmt = mysqli_prepare($conn, $query);
 $searchParam = "%" . $search . "%";
-mysqli_stmt_bind_param($stmt, "sii", $searchParam, $offset, $recordsPerPage);
+mysqli_stmt_bind_param($stmt, "ssii", $status, $searchParam, $offset, $recordsPerPage);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 // Count total number of records with search
-$totalRecordsQuery = "SELECT COUNT(*) AS total FROM student s LEFT JOIN stu_personal_details p ON s.id = p.stu_id WHERE CONCAT(s.user_name, ' ', COALESCE(p.F_name, ''), ' ', COALESCE(p.L_name, ''), ' ', COALESCE(p.dept, ''), ' ', s.email, ' ', COALESCE(p.phone_no, ''), ' ', COALESCE(p.start_year, ''), ' ', COALESCE(p.end_year, ''), ' ', COALESCE(p.pin, ''), ' ', COALESCE(p.city, ''), ' ', COALESCE(p.state, ''), ' ', COALESCE(p.country, ''), ' ', COALESCE(p.gender, '')) LIKE ?";
+$totalRecordsQuery = "SELECT COUNT(*) AS total FROM internship_applied a 
+    LEFT JOIN internships i ON a.internship_id = i.id
+    LEFT JOIN com_personal_details p ON a.com_id = p.com_id
+    LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id 
+    WHERE a.status = ? AND CONCAT(a.id, ' ', a.profile, ' ', a.location, ' ', a.duration, ' ', i.stipend, ' ', p.name, ' ', s.F_name, ' ', s.L_name, ' ', s.dept, ' ', s.email, ' ', s.start_year, ' ', s.end_year, ' ', s.pin, ' ', s.city, ' ', s.state, ' ', s.country, ' ') LIKE ?";
 $stmtTotal = mysqli_prepare($conn, $totalRecordsQuery);
-mysqli_stmt_bind_param($stmtTotal, "s", $searchParam);
+mysqli_stmt_bind_param($stmtTotal, "ss", $status, $searchParam);
 mysqli_stmt_execute($stmtTotal);
 $totalRecordsResult = mysqli_stmt_get_result($stmtTotal);
 $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
+?>
 
-
+<?php
+    if(isset($_POST["Export"])){
+         
+        header('Content-Type: text/csv; charset=utf-8');  
+        header('Content-Disposition: attachment; filename=Selected_Intern_Student.csv');  
+        $output = fopen("php://output", "w");  
+		
+        fputcsv($output, array('ID', 'First Name', 'Last Name', 'Email', 'Start Year', 'End Year', 'ZIP Code', 'City', 'State', 'Country', 'Company Name', 'Internship Topic', 'Work Location', 'Duration', 'Stipend'));
+        $status = "You are selected";  
+        $query = "SELECT a.id, s.F_name, s.L_name, s.email, s.start_year, s.end_year, s.pin, s.city, s.state, s.country, p.name, a.profile, a.location, a.duration, i.stipend 
+                FROM internship_applied a 
+                LEFT JOIN internships i ON a.internship_id = i.id
+                LEFT JOIN com_personal_details p ON a.com_id = p.com_id
+                LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
+                WHERE a.status = '$status'
+                ORDER BY a.id DESC" ;  
+        $result = mysqli_query($conn, $query);  
+        while($row = mysqli_fetch_assoc($result))  
+        {  
+             fputcsv($output, $row);  
+        }  
+        fclose($output);
+        exit();  
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -44,44 +75,54 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student lists</title>
-    <link rel="stylesheet" href="list.css?v=<?php echo time(); ?>">
+    <title>Selected Intern Student</title>
+    <link rel="stylesheet" href="../applications/newlist.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
     <script src="../../../../javaScripts/tableascdesc.js"></script>
 </head>
 
 <body>
     <div class="heading1">
-        <h1>Students list</h1>
+        <h1>Selected Intern Student</h1>
     </div>
-    <a href="../admin.php">
+    <a href="../shortlistandselected.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>
     </a>
     <div class="search-container">
+
         <form method="GET" action="">
             <input type="text" name="search" placeholder="Search by anything" value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
+
+        <div>
+            <form action="#" method="post" name="upload_excel" enctype="multipart/form-data">
+                        <input type="submit" name="Export" class="regallexportbtn" value="Export to excel"/>                   
+            </form>           
+        </div>
+
     </div>
     <div class="whole-body">
         <div class="inner-whole-body">
-            <table border="1">
+            <table class="tablebody" border="1">
                 <tr>
                     <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(1)" data-column="1">User Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(2)" data-column="2">First Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Last Name<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(4)" data-column="4">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="5">Email<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="6">Mobile<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(7)" data-column="7">Start Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(8)" data-column="8">End Year<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(9)" data-column="9">ZIP Code<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(10)" data-column="10">City<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(11)" data-column="11">State<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(12)" data-column="12">Country<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(13)" data-column="13">Gender<span class="sort-icon"></span></th>
-                    <th>Operations</th>
+                    <th onclick="sortTable(1)" data-column="1">Student Name<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(2)" data-column="2">Department<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(4)" data-column="4">Batch<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="6">City<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(7)" data-column="7">State<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(8)" data-column="8">Country<span class="sort-icon"></span></th>
+                    <!-- company personal details table -->
+                    <th onclick="sortTable(9)" data-column="9">Company Name<span class="sort-icon"></span></th>
+                    <!-- internship applied table -->
+                    <th onclick="sortTable(10)" data-column="10">Internship Topic<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(11)" data-column="11">Work Location<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(12)" data-column="12">Duration<span class="sort-icon"></span></th>
+                    <!-- internship table -->
+                    <th onclick="sortTable(13)" data-column="13">Stipend<span class="sort-icon"></span></th>
                 </tr>
 
                 <?php
@@ -89,21 +130,19 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . $row['user_name'] . "</td>";
-                        echo "<td>" . $row['F_name'] . "</td>";
-                        echo "<td>" . $row['L_name'] . "</td>";
+                        echo "<td>" . $row['F_name'] . " " . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['phone_no'] . "</td>";
-                        echo "<td>" . $row['start_year'] . "</td>";
-                        echo "<td>" . $row['end_year'] . "</td>";
+                        echo "<td>" . $row['start_year'] . " - " . $row['end_year'] . "</td>";
                         echo "<td>" . $row['pin'] . "</td>";
                         echo "<td>" . $row['city'] . "</td>";
                         echo "<td>" . $row['state'] . "</td>";
                         echo "<td>" . $row['country'] . "</td>";
-                        echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td class='need-side'><a href='../list/updateStudent.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
-                        echo "<a href='../list/deleteStudent.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>" . $row['profile'] . "</td>";
+                        echo "<td>" . $row['location'] . "</td>";
+                        echo "<td>" . $row['duration'] . "</td>";
+                        echo "<td>" . $row['stipend'] . "</td>";
                         echo "</tr>";
                     }
                 } else {
@@ -111,7 +150,11 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 }
                 ?>
             </table>
-            <div class="pagination-container">
+            
+            </div>
+            
+        </div>
+        <div class="pagination-container">
                 <?php
                 // Display pagination links
                 $totalPages = ceil($totalRecords / $recordsPerPage);
@@ -130,8 +173,6 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     echo "Showing $startRecord - $endRecord of $totalRecords records.";
                     ?>
                 </div>
-            </div>
-        </div>
     </div>
     
     <!-- script links -->

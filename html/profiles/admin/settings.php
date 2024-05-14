@@ -116,7 +116,7 @@ require '../../../dbconnect.php';
             </li>
             <li>
                 <a href="shortlistandselected.php">
-                    <i class='bx bxs-registered'></i>
+                    <i class='bx bxs-download'></i>
                     <span class="link_name">Shortlist & Selected students</span>
                 </a>
             </li>
