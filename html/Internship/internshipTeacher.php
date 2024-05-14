@@ -82,8 +82,9 @@
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
+                                <a href="../profiles/teacher/teacher.php">Create Profile</a>
                                 <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
-                                <a href="#">Edit Profile</a>
+                                <a href="../profiles/teacher/updateTeacherDetails.php">Update Profile</a>
                                 <a onclick="openLogOut()">Log Out</a>
                             </div>
                         </li>

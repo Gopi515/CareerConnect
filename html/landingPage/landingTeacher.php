@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if(!isset($_SESSION['mail'])){
-        header("Location: ../LoginandRegister/teacherLogin.php");
-    }
+<?php
+session_start();
+if (!isset($_SESSION['mail'])) {
+  header("Location: ../LoginandRegister/teacherLogin.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +43,8 @@
                 <a><i class="fas fa-user" id="postOptions"></i></a>
                 <div id="myDropdown" class="dropdown-content">
                   <a href="../profiles/teacher/teacher.php">Create Profile</a>
-                  <a href="../profiles/teacher/viewTeacherDetails.php"
-                    >View Profile</a
-                  >
-                  <a href="../profiles/teacher/updateTeacherDetails.php"
-                    >Update Profile</a
-                  >
+                  <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
+                  <a href="../profiles/teacher/updateTeacherDetails.php">Update Profile</a>
                   <a onclick="openLogOut()">Log Out</a>
                 </div>
               </li>
