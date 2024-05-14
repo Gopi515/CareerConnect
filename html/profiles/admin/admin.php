@@ -132,7 +132,7 @@ $totalCompanies = $row['total_companies'];
             </li>
             <li>
                 <a href="shortlistandselected.php">
-                    <i class='bx bxs-registered'></i>
+                    <i class='bx bxs-download'></i>
                     <span class="link_name">Shortlist & Selected students</span>
                 </a>
             </li>
@@ -237,9 +237,9 @@ $totalCompanies = $row['total_companies'];
                     <h3>Profile Verification</h3>
                 </div>
                 <div class="buttons">
-                    <a class="button" href="pvalidation/techValidation.php">Student Updates</a>
-                    <a class="button" href="pvalidation/stuValidation.php">Teacher Updates</a>
-                    <a class="button" href="pvalidation/comapValidation.php">Company Updates</a>
+                    <a class="button" href="pvalidation/stuValidation.php">Student Updates</a>
+                    <a class="button" href="pvalidation/techValidation.php">Teacher Updates</a>
+                    <a class="button" href="pvalidation/compValidation.php">Company Updates</a>
                 </div>
             </div>
 
