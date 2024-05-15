@@ -21,6 +21,7 @@ if (!isset($_SESSION['mail'])) {
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../profiles/student/resume.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Internship/newstyle.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
 <?php
@@ -35,15 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $applyBy = !empty($_POST["applyby"]) ? $_POST["applyby"] : "";
 
     // Retrieving and decode the added skills array
-    $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
+    // Decode the skills JSON string
+    $skills = isset($_POST['skills']) ? json_decode($_POST['skills']) : [];
 
-    if ($addedSkillsArray === null) {
-    echo "Error decoding addedSkills JSON: " . json_last_error_msg();
-    exit;
+    // Check if decoding was successful and $skills is an array
+    if ($skills !== null && is_array($skills)) {
+    // Combine skills into a comma-separated string
+    $skillsString = implode(', ', $skills);
+    } else {
+    // Handle the case where decoding fails or $skills is not an array
+    $skillsString = "No skills required";
     }
 
-    // Combining skills into a comma-separated string
-    $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
 
 
     $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
@@ -99,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- body starts -->
 <body>
     <!-- Page title -->
+    <a href="../../landingPage/landingCompany.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 2.2%;"></i></a>
     <div>
         <h1 class="title tinterna">Add Internship</h1>
     </div>
@@ -163,12 +168,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <!-- Add Required Skills -->
             <label class="inputBox inputBoxrequiredskill">
-
-            <!-- profile -->
-            <p class="skillAddheading">Add Required SkillS*</p>
+            <p class="skillAddheading">Add Required Skills*</p>
             <input type="text" id="option1Input" placeholder="Search to add required skills for this Internship e.g. HTML">
             <div id="dropdownFilterprofile" style="width: 100%;"></div>
-            <div id="tag-container" class="hiddenDiv" name="addedSkills" style="border: none; width: 100%;"></div>
+            <!-- Use a hidden input field to store the selected skills -->
+            <input type="hidden" id="skillsInput" name="skills">
+            <!-- Use a div to display the selected skills -->
+            <div id="tag-container" class="hiddenDiv" style="border: none; width: 100%;"></div>
             </label>
 
             <!-- Information about the internship -->

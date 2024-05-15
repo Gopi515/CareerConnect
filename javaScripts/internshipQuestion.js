@@ -252,4 +252,13 @@ function renderTags() {
     tag.innerHTML = `<span>${item}</span><button onclick="removeTag('${item}')">&#10005;</button>`;
     tagContainer.appendChild(tag);
   });
+
+  // Update the hidden input field with the selected skills
+  updateSkillsInput();
+}
+
+// Function to update the hidden input field with the selected skills
+function updateSkillsInput() {
+  const skillsInput = document.getElementById("skillsInput");
+  skillsInput.value = JSON.stringify(selectedItems);
 }
