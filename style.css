@@ -50,14 +50,12 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
 
 .navbar {
@@ -429,13 +427,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -1023,11 +1019,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1037,7 +1033,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1887,26 +1883,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1926,31 +1913,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2783,9 +2758,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4252,6 +4227,61 @@ input::-webkit-inner-spin-button {
   color: white;
 }
 
+/*for the skills in question*/
+.interQuestion {
+  margin-top: 20px;
+}
+
+.interQuestion label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#rightAnswer {
+  width: 150px;
+  margin-left: 30px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: var(--border-50);
+  box-sizing: border-box;
+  outline: none;
+  background-color: var(--seventh-col);
+  color: var(--fourth-col);
+  font-weight: 600;
+}
+
+#rightAnswer option {
+  padding: 10px;
+}
+
+.internQuestionthing {
+  display: flex;
+  float: right;
+  width: 55%;
+  justify-content: space-between;
+}
+
+.internQuestionthing button {
+  padding: 10px;
+  width: 45%;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: var(--border-50);
+  box-sizing: border-box;
+  outline: none;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  font-weight: 600;
+}
+
+.letsgoright {
+  width: 100%;
+  margin-right: 0px;
+}
+
 /* Exam */
 .takeExamheading {
   font-size: 40px;
@@ -4261,6 +4291,7 @@ input::-webkit-inner-spin-button {
   font-weight: 800;
   margin-top: 2%;
 }
+
 .takeExamform {
   display: flex;
   flex-direction: column;
@@ -4273,12 +4304,14 @@ input::-webkit-inner-spin-button {
   border-radius: 40px;
   box-shadow: var(--box-shadow);
 }
+
 .takeExamform .questionName {
   font-size: 20px;
   font-weight: bold;
   color: var(--fourth-col);
   margin-left: 10px;
 }
+
 .takeExamform .examOptions {
   display: flex;
   flex-direction: column;
@@ -4287,6 +4320,7 @@ input::-webkit-inner-spin-button {
   font-size: 18px;
   font-weight: 600;
 }
+
 .examSubmitbtn {
   display: flex;
   justify-content: center;
