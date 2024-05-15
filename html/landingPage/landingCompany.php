@@ -163,7 +163,37 @@ $totaljob = $row['total_job'];
         </div>
     </section>
 
-    <footer class="footer-comlanding"></footer>
+    <!-- footer -->
+    <footer class="footer-comlanding">
+      <div class="footerMainlanding">
+          <div class="footerContainer">
+              <a class="footertopicname" href="#"><div class="footerLogo">
+                  CareerConnect
+              </div></a>
+              <div class="footerLinks">
+                  <ul>
+                    <li><a href="../profiles/company/addinternship.php">Post Internships</a></li>
+                    <li><a href="../profiles/company/addjob.php">Post Jobs</a></li>
+                    <li><a href="../profiles/company/posted/internshipposted.php">Your Internships</a></li>
+                    <li><a href="../profiles/company/posted/jobposted.php">Your Jobs</a></li>
+                    <li><a href="mailto:careerconnect383@gmail.com">Contact Us</a></li>
+
+                  </ul>
+              </div>
+              <div class="footerSocial">
+                  <ul>
+                      <li><a class="facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                      <li><a class="twitter" href="https://twitter.com/?lang=en"><i class="fa-brands fa-x-twitter"></i></a></li>
+                      <li><a class="youtube" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                      <li><a class="linkedin" href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footerBottom">
+              <p>&copy; 2024 CareerConnect. Made with ❤️ by Gopinath, Arnab and Priyadarsi.</p>
+          </div>
+      </div>
+    </footer>
 
     <!-- <script src="../../javaScripts/dropdown.js"></script> -->
     <script src="../../javaScripts/showDropdown.js"></script>

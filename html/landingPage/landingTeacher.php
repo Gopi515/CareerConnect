@@ -22,7 +22,7 @@ if (!isset($_SESSION['mail'])) {
     ></script>
   </head>
 
-  <body>
+  <body class="bg-img">
     <!-- welcome section -->
     <header>
       <nav id="navbar">
@@ -225,7 +225,36 @@ if (!isset($_SESSION['mail'])) {
       </div>
     </section>
 
-    <footer></footer>
+    <!-- footer -->
+    <footer class="teacherfooter">
+      <div class="footerMainlanding">
+          <div class="footerContainer">
+              <a class="footertopicname" href="#"><div class="footerLogo">
+                  CareerConnect
+              </div></a>
+              <div class="footerLinks">
+                  <ul>
+                      <li><a href="../Internship/internshipTeacher.php">View Internships</a></li>
+                      <li><a href="../Job/jobTeacher.php">View Jobs</a></li>
+                      <li><a href="../CEE/adminpanel/">Take Exam</a></li>
+                      <li><a href="mailto:careerconnect383@gmail.com">Contact Us</a></li>
+
+                  </ul>
+              </div>
+              <div class="footerSocial">
+                  <ul>
+                      <li><a class="facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                      <li><a class="twitter" href="https://twitter.com/?lang=en"><i class="fa-brands fa-x-twitter"></i></a></li>
+                      <li><a class="youtube" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                      <li><a class="linkedin" href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="footerBottom">
+              <p>&copy; 2024 CareerConnect. Made with ❤️ by Gopinath, Arnab and Priyadarsi.</p>
+          </div>
+      </div>
+    </footer>
 
     <!-- script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

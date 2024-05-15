@@ -41,6 +41,12 @@
   letter-spacing: 1px;
 }
 
+.bg-img2 {
+  background-image: url(../../../../assets/abstractblueanother.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 /*icon*/
 .sort-icon {
   display: inline-block;

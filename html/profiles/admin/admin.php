@@ -255,6 +255,16 @@ $totalCompanies = $row['total_companies'];
             </div>
 
             <div class="list-overview">
+                <div class="list-header">
+                    <h3>Applied Verifications</h3>
+                </div>
+                <div class="buttons">
+                    <a class="button" href="applications/internApp.php">Internship application</a>
+                    <a class="button" href="applications/jobApp.php">Job applications</a>
+                </div>
+            </div>
+
+            <div class="list-overview">
                 <div class="help-header">
                     <h3>Help Desk:</h3>
                     <div class="thebuttons">

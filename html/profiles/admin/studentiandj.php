@@ -39,7 +39,7 @@ foreach ($words as $word) {
 require '../../../dbconnect.php';
 ?>
 
-<body>
+<body class="bg-img">
     <div class="sidebar close">
         <div class="logo-details">
             <a href="admin.php">

@@ -39,6 +39,12 @@ html,
     background-attachment: fixed;
 }
 
+.bg-img2 {
+    background-image: url(../../../assets/abstractblueanother.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -293,14 +299,18 @@ html,
 }
 
 .home-section .home-content {
-    height: 60px;
+    height: 100px;
     display: flex;
     align-items: center;
+    margin: 50px 0px;
 }
 
 .home-section .home-content .su,
 .home-section .home-content .text {
-    color: #11101d;
+    color: var(--sixth-col);
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+    text-shadow: var(--box-shadow);
     font-size: 35px;
 }
 
@@ -310,7 +320,7 @@ html,
 }
 
 .home-section .home-content .text {
-    font-size: 26px;
+    font-size: 60px;
     font-weight: 600;
 }
 
@@ -328,6 +338,7 @@ html,
 .admin-Settings {
     display: flex;
     flex-wrap: wrap;
+    margin: 100px 0 0 0;
 }
 
 .logo {

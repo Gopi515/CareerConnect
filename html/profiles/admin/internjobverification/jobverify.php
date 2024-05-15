@@ -42,7 +42,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-img2">
     <div class="heading1">
         <h1>Verification of Jobs</h1>
     </div>

@@ -39,7 +39,7 @@ foreach ($words as $word) {
 require '../../../dbconnect.php';
 ?>
 
-<body>
+<body class="bg-img">
     <div class="sidebar close">
         <div class="logo-details">
             <a href="admin.php">
@@ -162,14 +162,6 @@ require '../../../dbconnect.php';
             <span class="text">Shortlisted and Selected Students lists</span>
         </div>
         <div class="admin-Settings">
-            <a class="fordemocracy boxes GS" href="slistandselect/selectedInternshipStudent.php">
-                <div>Selected Intern Student</div>
-                <p>list of all the students who are selected for internships</p>
-            </a>
-            <a class="fordemocracy boxes GS" href="slistandselect/selectedJobStudent.php">
-                <div>Selected Job Student</div>
-                <p>list of all the students who are selected for jobs</p>
-            </a>
             <a class="fordemocracy boxes GS" href="slistandselect/shortlistedInternshipStudent.php">
                 <div>Intern Shortlisted Student</div>
                 <p>list of all the students who are shortlisted for internships</p>
@@ -177,6 +169,14 @@ require '../../../dbconnect.php';
             <a class="fordemocracy boxes GS" href="slistandselect/shortlistedJobStudent.php">
                 <div>Job Shortlisted Student</div>
                 <p>list of all the students who are shortlisted for jobs</p>
+            </a>
+            <a class="fordemocracy boxes GS" href="slistandselect/selectedInternshipStudent.php">
+                <div>Selected Intern Student</div>
+                <p>list of all the students who are selected for internships</p>
+            </a>
+            <a class="fordemocracy boxes GS" href="slistandselect/selectedJobStudent.php">
+                <div>Selected Job Student</div>
+                <p>list of all the students who are selected for jobs</p>
             </a>
 
 

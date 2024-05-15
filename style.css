@@ -68,6 +68,7 @@ html {
   padding: 15px;
   border-radius: 0 0 18px 18px;
   top: 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   z-index: 999;
 }
 
@@ -891,8 +892,19 @@ html {
 footer {
   width: 100%;
   height: 10rem;
-  background-color: var(--seventh-col);
-  margin-top: 160%;
+  margin-top: 80%;
+}
+
+.teacherfooter {
+  width: 100%;
+  height: 10rem;
+  margin-top: 145%;
+}
+
+.stufooter {
+  width: 100%;
+  height: 10rem;
+  margin-top: 100%;
 }
 
 .dropdown {
@@ -4058,7 +4070,6 @@ input::-webkit-inner-spin-button {
 .footer-comlanding {
   width: 100%;
   height: 10rem;
-  background-color: var(--seventh-col);
   margin-top: 0px;
 }
 
@@ -4070,6 +4081,7 @@ input::-webkit-inner-spin-button {
   text-align: center;
   margin-top: 160px;
   border-radius: 18px 18px 0 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
 }
 
 .footerContainer {
@@ -4079,7 +4091,7 @@ input::-webkit-inner-spin-button {
 }
 
 .footerLogo {
-  margin-bottom: 20px;
+  margin: 0px;
 }
 
 .footerLogo {
@@ -4097,7 +4109,14 @@ input::-webkit-inner-spin-button {
 
 .footerLinks ul li {
   display: inline-block;
-  margin-right: 20px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.footerLinks ul li:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s;
+  scale: 1.1;
 }
 
 .footerLinks ul li:last-child {
@@ -4117,7 +4136,14 @@ input::-webkit-inner-spin-button {
 
 .footerSocial ul li {
   display: inline-block;
-  margin-right: 10px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.footerSocial ul li:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s;
+  scale: 1.1;
 }
 
 .footerSocial ul li:last-child {
@@ -4132,7 +4158,8 @@ input::-webkit-inner-spin-button {
 
 .footerBottom {
   margin-top: 20px;
-  margin-left: 75px;
+  margin-left: 40px;
+  /*change this to align the thankyou line in mainlanding*/
 }
 
 .footerBottom p {
@@ -4144,4 +4171,29 @@ input::-webkit-inner-spin-button {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+}
+
+.facebook:hover {
+  color: var(--fourth-col);
+  text-shadow: 0 0 10px var(--fourth-col);
+}
+
+.twitter:hover {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+}
+
+.youtube:hover {
+  color: red;
+  text-shadow: 0 0 10px red;
+}
+
+.linkedin:hover {
+  color: blue;
+  text-shadow: 0 0 10px blue;
+}
+
+.footertopicname {
+  text-decoration: none;
+  color: white;
 }

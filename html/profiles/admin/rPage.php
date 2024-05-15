@@ -175,7 +175,7 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
 }
 ?>
 
-<body>
+<body class="bg-img">
     <div class="sidebar close">
         <div class="logo-details">
             <a href="admin.php">
