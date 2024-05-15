@@ -50,12 +50,14 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(180deg,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244));
+  background: linear-gradient(
+    180deg,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244)
+  );
 }
 
 .navbar {
@@ -425,11 +427,13 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(-45deg,
-      var(--fourth-col),
-      var(--third-col),
-      var(--third-col),
-      var(--fourth-col));
+  background: linear-gradient(
+    -45deg,
+    var(--fourth-col),
+    var(--third-col),
+    var(--third-col),
+    var(--fourth-col)
+  );
   display: flex;
   justify-content: center;
 }
@@ -1006,11 +1010,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1020,7 +1024,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1124,7 +1128,7 @@ footer {
 }
 
 #tag-container .tag {
-  background-color: #f0f0f0;
+  background-color: var(--seventh-col);
   border-radius: 5px;
   padding: 5px 10px;
   margin: 5px;
@@ -1734,6 +1738,29 @@ footer {
 }
 
 /*required skills area*/
+.inputBoxrequiredskill p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--fourth-col);
+}
+.inputBoxrequiredskill input {
+  width: 100%;
+  background-color: var(--seventh-col);
+  border: var(--border);
+  padding: 15px 15px;
+  border-radius: var(--border-50);
+  color: var(--sixth-col);
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+.inputBoxrequiredskill input:focus {
+  outline: none;
+  border: 3px solid var(--second-col);
+  box-shadow: var(--box-shadow);
+}
+.inputBoxrequiredskill .requiredSkilldropdown {
+  width: 100%;
+}
 .reqskills {
   margin-bottom: 20px;
 }
@@ -1843,17 +1870,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1873,19 +1909,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2421,6 +2469,7 @@ legend {
 .internabout {
   color: var(--fourth-col);
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .aboutintern {
@@ -2717,9 +2766,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }

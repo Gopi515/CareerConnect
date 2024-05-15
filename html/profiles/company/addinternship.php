@@ -38,12 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : [];
 
     if ($addedSkillsArray === null) {
-        echo "Error decoding addedSkills JSON: " . json_last_error_msg();
-        exit;
+    echo "Error decoding addedSkills JSON: " . json_last_error_msg();
+    exit;
     }
 
     // Combining skills into a comma-separated string
     $skillsString = isset($addedSkillsArray) ? implode(', ', $addedSkillsArray) : "No skills required";
+
 
     $aboutInternship = !empty($_POST["aboutintern"]) ? $_POST["aboutintern"] : "";
     $certificate = isset($_POST['certificate']) ? 1 : 0;
@@ -161,65 +162,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <!-- Add Required Skills -->
-            <label for="" class="form-label">Skill</label>
-            <div class="input-options">
-                <div class="option-dropdown">
-                    <select name="skill" class="form-control skill" id="skill_select" onchange="generateCV()">
-                        <option value="">Select Skill</option>
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="PHP">PHP</option>
-                        <option value="Python">Python</option>
-                        <option value="Java">Java</option>
-                        <option value="C++">C++</option>
-                        <option value="C#">C#</option>
-                        <option value="Ruby">Ruby</option>
-                        <option value="Swift">Swift</option>
-                        <option value="Kotlin">Kotlin</option>
-                        <option value="Dart">Dart</option>
-                        <option value="Flutter">Flutter</option>
-                        <option value="React">React</option>
-                        <option value="Angular">Angular</option>
-                        <option value="Vue">Vue</option>
-                        <option value="Node">Node</option>
-                        <option value="Express">Express</option>
-                        <option value="Laravel">Laravel</option>
-                        <option value="CodeIgniter">CodeIgniter</option>
-                        <option value="Django">Django</option>
-                        <option value="Flask">Flask</option>
-                        <option value="Spring">Spring</option>
-                        <option value="Hibernate">Hibernate</option>
-                        <option value="JPA">JPA</option>
-                        <option value="JSP">JSP</option>
-                        <option value="Servlet">Servlet</option>
-                        <option value="Thymeleaf">Thymeleaf</option>
-                        <option value="JDBC">JDBC</option>
-                        <option value="MySQL">MySQL</option>
-                        <option value="PostgreSQL">PostgreSQL</option>
-                        <option value="MongoDB">MongoDB</option>
-                        <option value="SQLite">SQLite</option>
-                        <option value="Oracle">Oracle</option>
-                        <option value="SQL Server">SQL Server</option>
-                        <option value="MariaDB">MariaDB</option>
-                        <option value="Firebase">Firebase</option>
-                        <option value="AWS">AWS</option>
-                        <option value="Azure">Azure</option>
-                        <option value="Google Cloud">Google Cloud</option>
-                        <option value="Heroku">Heroku</option>
-                        <option value="Netlify">Netlify</option>
-                        <option value="Vercel">Vercel</option>
-                        <option value="Digital Ocean">Digital Ocean</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                </div>
-            </div>
-            <span class="form-text"></span>
+            <label class="inputBox inputBoxrequiredskill">
+
+            <!-- profile -->
+            <p class="skillAddheading">Add Required SkillS*</p>
+            <input type="text" id="option1Input" placeholder="Search to add required skills for this Internship e.g. HTML">
+            <div id="dropdownFilterprofile" style="width: 100%;"></div>
+            <div id="tag-container" class="hiddenDiv" name="addedSkills" style="border: none; width: 100%;"></div>
+            </label>
 
             <!-- Information about the internship -->
             <div class="internabout">
                 <p class="aboutintern">Please write something about the internship*</p>
-                <textarea name="aboutintern" class="txt-box abouttxt" placeholder="You can write about the internship requirements." style="resize: none;" required></textarea>
+                <textarea name="aboutintern" class="txt-box abouttxt" placeholder="You can write about the internship requirements..." style="resize: none;"required>
+                </textarea>
             </div>
 
             <!-- Checkbox for Certificate -->
