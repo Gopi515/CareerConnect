@@ -297,7 +297,33 @@ header("Content-Type: text/html");
 
 
     <!-- footer -->
-    <footer class="footerMainlanding"></footer>
+    <footer class="footerMainlanding">
+        <div class="footerContainer">
+            <div class="footerLogo">
+                CareerConnect
+            </div>
+            <div class="footerLinks">
+                <ul>
+                    <li><a href="#">Student login</a></li>
+                    <li><a href="#">Teacher login</a></li>
+                    <li><a href="#">Company login</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footerSocial">
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p>&copy; 2024 CareerConnect. Made with ❤️ by Gopinath, Arnab and Priyadarsi.</p>
+        </div>
+    </footer>
+
 
     <script src="../../javaScripts/buttonPop.js"></script>
     <script src="../../javaScripts/countUpAnim.js"></script>
