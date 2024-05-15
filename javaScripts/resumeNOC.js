@@ -17,3 +17,13 @@ function displayNocName() {
     output.innerText = "";
   }
 }
+
+function displayintImageName() {
+  var input = document.getElementById("intImage");
+  var output = document.getElementById("file-intImage");
+  if (input.files.length > 0) {
+    output.innerText = "Selected file: " + input.files[0].name;
+  } else {
+    output.innerText = "";
+  }
+}

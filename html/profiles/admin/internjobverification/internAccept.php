@@ -31,13 +31,15 @@ if ($result->num_rows > 0) {
     $certificate = $row['certificate'];
     $openings = $row['openings'];
     $com_email = $row['com_email'];
+    $resume_name = $row['topic_image'];
+    $resume_size = $row['image_size'];
 
 
         // Update data in the main table
-        $insert_query = "INSERT INTO internships (com_id, topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insert_query = "INSERT INTO internships (com_id, topic, topic_image, image_size, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_query);
-        $insert_stmt->bind_param("isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration,
+        $insert_stmt->bind_param("isssssssssssis", $com_id, $topic, $resume_name, $resume_size, $workLocation, $locationName, $duration,
             $stipend, $applyBy, $skillsString, $aboutInternship, $certificate, $openings, $com_email);
         $insert_result = $insert_stmt->execute();
 

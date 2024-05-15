@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../../LoginandRegister/companyLogin.php");
+    exit();
 }
 ?>
 
@@ -9,7 +10,6 @@ if (!isset($_SESSION['mail'])) {
 <html lang="en">
 
 <head>
-
     <!-- metas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,11 +21,8 @@ if (!isset($_SESSION['mail'])) {
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../profiles/student/resume.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Internship/newstyle.css?v=<?php echo time(); ?>">
-
 </head>
 
-
-<!-- php here -->
 <?php
 require '../../../dbconnect.php';
 
@@ -55,20 +52,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_SESSION['mail'];
     } else {
         echo "<script>alert('Error: Session is not working.')</script>";
+        exit();
     }
 
     // Handling file upload
-    if (isset($_FILES['resume']) && $_FILES['resume']['error'] === UPLOAD_ERR_OK) {
-        $resume_name = $_FILES['resume']['name'];
-        $resume_size = $_FILES['resume']['size'];
-        $resume_tmp = $_FILES['resume']['tmp_name'];
+    if (isset($_FILES['intImage']) && $_FILES['intImage']['error'] == UPLOAD_ERR_OK) {
+        $resume_name = $_FILES['intImage']['name'];
+        $resume_size = $_FILES['intImage']['size'];
+        $resume_tmp = $_FILES['intImage']['tmp_name'];
         $resume_destination = '../../../images/internshipImages/' . $resume_name;
         move_uploaded_file($resume_tmp, $resume_destination);
     } else {
-        echo "Error uploading file.";
-        exit;
+        echo "Error: " . $_FILES['intImage']['error'];
+        exit();
     }
-
 
     $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
     $find = $conn->query($query);
@@ -80,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         $sql = "INSERT INTO temp_internship (com_id, topic, topic_image, image_size, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
 
@@ -91,38 +88,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_close($stmt);
 
         header('Location: ../../landingPage/landingCompany.php');
-        exit;
+        exit();
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
     }
 }
-
 ?>
 
-
 <!-- body starts -->
-
 <body>
-
     <!-- Page title -->
     <div>
-        <h1 class="title tinterna">
-            Add Internship
-        </h1>
+        <h1 class="title tinterna">Add Internship</h1>
     </div>
     <div class="Internship">
-        <form action="addinternship.php" method="POST">
+        <form action="addinternship.php" method="POST" enctype="multipart/form-data">
             <!-- Topic of the Internship -->
             <div class="topic">
                 <p class="Internship-topic">Topic of the Internship*</p>
-                <input type="text" name="topic" class="txt-box"
-                    placeholder="Example: Full Stack Developer, Front End Developer" required>
+                <input type="text" name="topic" class="txt-box" placeholder="Example: Full Stack Developer, Front End Developer" required>
             </div>
 
             <!-- Select the job type -->
             <div class="category">
                 <legend>Select the internship type*</legend>
-
                 <!-- Radio button for Work From Home -->
                 <label for="WFH">
                     <input type="radio" id="WFH" name="worklocation" value="" checked onclick="disableInput()"> Remote.
@@ -136,13 +125,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="apply-side">
-            <!-- Upload resume pdf -->
+                <!-- Upload internship related image pdf -->
                 <div class="uploadResumeij">
-                    <h2>Upload Topic Related Image</h2>
-                    <input type="file" id="resume" name="resume" accept="image/*" required onchange="displayResumeName()">
-                    <label for="resume" class="file-label">Choose Topic Image</label>
-                    <p id="file-resume"></p>
-                </div>  
+                    <h2>Upload Topic Banner</h2>
+                    <input type="file" id="intImage" name="intImage" accept="image/*" required onchange="displayintImageName()">
+                    <label for="intImage" class="file-label">Choose Topic Image</label>
+                    <p id="file-intImage"></p>
+                </div>
             </div>
 
             <!-- Duration selection -->
@@ -230,9 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Information about the internship -->
             <div class="internabout">
                 <p class="aboutintern">Please write something about the internship*</p>
-                <textarea name="aboutintern" class="txt-box abouttxt"
-                    placeholder="You can write about the internship requirements." style="resize: none;"
-                    required></textarea>
+                <textarea name="aboutintern" class="txt-box abouttxt" placeholder="You can write about the internship requirements." style="resize: none;" required></textarea>
             </div>
 
             <!-- Checkbox for Certificate -->
@@ -244,8 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Number of Openings input -->
             <div class="Total-vacancy">
                 <p class="opening">Number of Openings*</p>
-                <input type="number" name="openings" class="txt-box" placeholder="Number only" id="vacancyInput"
-                    required>
+                <input type="number" name="openings" class="txt-box" placeholder="Number only" id="vacancyInput" required>
                 <p class="error-message" style="color: red;"></p>
             </div>
 
