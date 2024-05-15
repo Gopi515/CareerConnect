@@ -100,7 +100,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['F_name'] . " " . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td><a href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a></td>";
                         echo "<td>" . $row['phone_no'] . "</td>";
                         echo "<td>" . $row['start_year'] . " - " . $row['end_year'] . "</td>";
                         echo "<td>" . $row['addr1'] . " " . $row['addr2'] . "</td>";

@@ -74,7 +74,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
                     <th onclick="sortTable(1)" data-column="1">Student Name<span class="sort-icon"></span></th>
                     <th onclick="sortTable(2)" data-column="2">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Email (click on respective mail id to send email)<span class="sort-icon"></span></th>
                     <th onclick="sortTable(4)" data-column="4">Phone Number<span class="sort-icon"></span></th>
                     <th onclick="sortTable(5)" data-column="5">Batch<span class="sort-icon"></span></th>
                     <th onclick="sortTable(6)" data-column="6">Address<span class="sort-icon"></span></th>
@@ -101,7 +101,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['F_name'] . " " . $row['L_name'] . "</td>";
                         echo "<td>" . $row['dept'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td><a href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a></td>";
                         echo "<td>" . $row['phone_no'] . "</td>";
                         echo "<td>" . $row['start_year'] . " - " . $row['end_year'] . "</td>";
                         echo "<td>" . $row['addr1'] . " " . $row['addr2'] . "</td>";
