@@ -4225,3 +4225,58 @@ input::-webkit-inner-spin-button {
   text-decoration: none;
   color: white;
 }
+
+/*for the skills in question*/
+.interQuestion {
+  margin-top: 20px;
+}
+
+.interQuestion label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#rightAnswer {
+  width: 150px;
+  margin-left: 30px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: var(--border-50);
+  box-sizing: border-box;
+  outline: none;
+  background-color: var(--seventh-col);
+  color: var(--fourth-col);
+  font-weight: 600;
+}
+
+#rightAnswer option {
+  padding: 10px;
+}
+
+.internQuestionthing {
+  display: flex;
+  float: right;
+  width: 55%;
+  justify-content: space-between;
+}
+
+.internQuestionthing button {
+  padding: 10px;
+  width: 45%;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: var(--border-50);
+  box-sizing: border-box;
+  outline: none;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  font-weight: 600;
+}
+
+.letsgoright {
+  width: 100%;
+  margin-right: 0px;
+}

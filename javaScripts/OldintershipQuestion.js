@@ -203,8 +203,11 @@ const dropdownItems = [
   "XCODE",
   "YOUTUBE ADS",
   "ZBRUSH",
-]; // Sample dropdown items
-let selectedSkill = null;
+];
+// JavaScript code for dropdown filter and single skill selection
+// Ensure dropdownItems array is defined
+
+let selectedSkill = null; // Variable to store the selected skill
 
 const searchBar = document.getElementById("option1Input");
 const dropdown = document.getElementById("dropdownFilterprofile");
