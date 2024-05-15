@@ -50,7 +50,7 @@ $result = mysqli_stmt_get_result($stmt);
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-img2">
 <div class="heading1">
         <h1>Validate Teacher details</h1>
     </div>

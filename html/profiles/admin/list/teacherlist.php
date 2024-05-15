@@ -47,7 +47,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
     <script src="../../../../javaScripts/tableascdesc.js"></script>
 </head>
 
-<body>
+<body class="bg-img2">
     <div class="heading1">
         <h1>Teachers list</h1>
     </div>

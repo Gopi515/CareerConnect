@@ -16,7 +16,7 @@ header("Content-Type: text/html");
 <body class="mainLandingPage">
     <navbar class="navbar">
         <svg width="300" height="60">
-        <text x="0" y="40" class="navbar-brand">CareerConnect</text>
+            <text x="0" y="40" class="navbar-brand">CareerConnect</text>
         </svg>
         <div class="navbar-buttons">
 
@@ -49,10 +49,11 @@ header("Content-Type: text/html");
                             <div class="buttonInnerLog" id="buttonInnerLog">Company Log in -></div>
                         </a>
                     </div>
-                
-                <div class="closeLogIn" id="closeLogIn" onclick="closeLogIn()"><i class="fa-solid fa-xmark"></i></div>
+
+                    <div class="closeLogIn" id="closeLogIn" onclick="closeLogIn()"><i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
             </div>
-        </div>
 
             <!-- the admin page-->
             <div class="navbar-button" onclick="openRegIn()">Register your college</div>
@@ -74,7 +75,7 @@ header("Content-Type: text/html");
                 </div>
                 <div class="closeRegIn" id="closeRegIn" onclick="closeRegIn()"><i class="fa-solid fa-xmark"></i></div>
             </div>
-            </div>
+        </div>
         </div>
     </navbar>
 
@@ -92,10 +93,10 @@ header("Content-Type: text/html");
         <!-- services -->
         <div class="servicesContainer" id="servicesContainer">
             <svg width="300" height="60" class="serviceSvg">
-            <text x="0" y="40" class="navbar-brand">Our Services</text>
+                <text x="0" y="40" class="navbar-brand">Our Services</text>
             </svg>
 
-             <!-- student services -->
+            <!-- student services -->
             <div class="serviceStudent serviceAll">
                 <h2>
                     Secure your future with us
@@ -131,12 +132,13 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
-                <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
+                    <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                    <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login
+                            &#x25B6;</button></a>
                 </div>
             </div>
 
-             <!-- company services -->
+            <!-- company services -->
             <div class="serviceCompany serviceAll">
                 <h2>
                     Hire the best talent
@@ -172,8 +174,9 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
-                <a href="../LoginandRegister/companyLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
+                    <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                    <a href="../LoginandRegister/companyLogin.php"><button class="serviceLogin">Login
+                            &#x25B6;</button></a>
                 </div>
             </div>
 
@@ -217,8 +220,9 @@ header("Content-Type: text/html");
                 </div>
 
                 <div class="serviceButtons">
-                <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
-                <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login &#x25B6;</button></a>
+                    <a href="../profiles/admin/something.php"><button class="serviceRegister">Know more</button></a>
+                    <a href="../LoginandRegister/studentLogin.php"><button class="serviceLogin">Login
+                            &#x25B6;</button></a>
                 </div>
             </div>
         </div>
@@ -227,48 +231,48 @@ header("Content-Type: text/html");
 
         <!-- company marquee -->
         <div class="companyMarquee">
-        <h2>Top companies trust us</h2>
-        <marquee direction="right" scrollamount="15" class="companyMarqueeslide">
-            <img src="../../assets/Meta.png" alt="">
-            <img src="../../assets/TCS.png" alt="">
-            <img src="../../assets/CAP.png" alt="">
-            <img src="../../assets/Accenture.png" alt="">
-            <img src="../../assets/ibm.png" alt="">
-            <img src="../../assets/deloitte.png" alt="">
-            <img src="../../assets/wipro.webp" alt="">
-            <img src="../../assets/infosys.webp" alt="">
-            <img src="../../assets/intel.png" alt="">
-            <img src="../../assets/adani.png" alt="">
-            <img src="../../assets/HU.png" alt="">
-            <img src="../../assets/Amazon.png" alt="">
-            <img src="../../assets/AMD.png" alt="">
-            <img src="../../assets/samsung.png" alt="">
-            <img src="../../assets/nvidia.png" alt="">
-            <img src="../../assets/riot.png" alt="">
-        </marquee>
+            <h2>Top companies trust us</h2>
+            <marquee direction="right" scrollamount="15" class="companyMarqueeslide">
+                <img src="../../assets/Meta.png" alt="">
+                <img src="../../assets/TCS.png" alt="">
+                <img src="../../assets/CAP.png" alt="">
+                <img src="../../assets/Accenture.png" alt="">
+                <img src="../../assets/ibm.png" alt="">
+                <img src="../../assets/deloitte.png" alt="">
+                <img src="../../assets/wipro.webp" alt="">
+                <img src="../../assets/infosys.webp" alt="">
+                <img src="../../assets/intel.png" alt="">
+                <img src="../../assets/adani.png" alt="">
+                <img src="../../assets/HU.png" alt="">
+                <img src="../../assets/Amazon.png" alt="">
+                <img src="../../assets/AMD.png" alt="">
+                <img src="../../assets/samsung.png" alt="">
+                <img src="../../assets/nvidia.png" alt="">
+                <img src="../../assets/riot.png" alt="">
+            </marquee>
         </div>
 
         <!-- university marquee -->
         <div class="companyMarquee universityMarquee">
-        <h2>15+ universities alreay registered</h2>
-        <marquee direction="left" scrollamount="15" class="companyMarqueeslide">
-            <img src="../../assets/Nitmas.png" alt="">
-            <img src="../../assets/tnu.png" alt="">
-            <img src="../../assets/ashoka.webp" alt="">
-            <img src="../../assets/OP.png" alt="">
-            <img src="../../assets/TI.png" alt="">
-            <img src="../../assets/VIT.png" alt="">
-            <img src="../../assets/UEM.png" alt="">
-            <img src="../../assets/Toronto.png" alt="">
-            <img src="../../assets/Princeton.png" alt="">
-            <img src="../../assets/Bristol.png" alt="">
-            <img src="../../assets/Lines.webp" alt="">
-            <img src="../../assets/Fairfield.png" alt="">
-            <img src="../../assets/howard.png" alt="">
-            <img src="../../assets/Cambridge.png" alt="">
-            <img src="../../assets/Open.png" alt="">
-            <img src="../../assets/Illi.png" alt="">
-        </marquee>
+            <h2>15+ universities alreay registered</h2>
+            <marquee direction="left" scrollamount="15" class="companyMarqueeslide">
+                <img src="../../assets/Nitmas.png" alt="">
+                <img src="../../assets/tnu.png" alt="">
+                <img src="../../assets/ashoka.webp" alt="">
+                <img src="../../assets/OP.png" alt="">
+                <img src="../../assets/TI.png" alt="">
+                <img src="../../assets/VIT.png" alt="">
+                <img src="../../assets/UEM.png" alt="">
+                <img src="../../assets/Toronto.png" alt="">
+                <img src="../../assets/Princeton.png" alt="">
+                <img src="../../assets/Bristol.png" alt="">
+                <img src="../../assets/Lines.webp" alt="">
+                <img src="../../assets/Fairfield.png" alt="">
+                <img src="../../assets/howard.png" alt="">
+                <img src="../../assets/Cambridge.png" alt="">
+                <img src="../../assets/Open.png" alt="">
+                <img src="../../assets/Illi.png" alt="">
+            </marquee>
         </div>
 
         <div class="counts">
@@ -291,7 +295,7 @@ header("Content-Type: text/html");
         </div>
 
         <div class="registerFooter">
-            
+
         </div>
     </div>
 
@@ -304,18 +308,19 @@ header("Content-Type: text/html");
             </div>
             <div class="footerLinks">
                 <ul>
-                    <li><a href="#">Student login</a></li>
-                    <li><a href="#">Teacher login</a></li>
-                    <li><a href="#">Company login</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="../LoginandRegister/studentLogin.php">Student login</a></li>
+                    <li><a href="../LoginandRegister/teacherLogin.php">Teacher login</a></li>
+                    <li><a href="../LoginandRegister/companyLogin.php">Company login</a></li>
+                    <li><a href="mailto:careerconnect383@gmail.com">Contact Us</a></li>
+
                 </ul>
             </div>
             <div class="footerSocial">
                 <ul>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a class="facebook" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a class="twitter" href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="youtube" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                    <li><a class="linkedin" href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
                 </ul>
             </div>
         </div>

@@ -50,14 +50,12 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
 
 .navbar {
@@ -70,6 +68,7 @@ html {
   padding: 15px;
   border-radius: 0 0 18px 18px;
   top: 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   z-index: 999;
 }
 
@@ -427,13 +426,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -895,8 +892,19 @@ html {
 footer {
   width: 100%;
   height: 10rem;
-  background-color: var(--seventh-col);
-  margin-top: 160%;
+  margin-top: 80%;
+}
+
+.teacherfooter {
+  width: 100%;
+  height: 10rem;
+  margin-top: 145%;
+}
+
+.stufooter {
+  width: 100%;
+  height: 10rem;
+  margin-top: 100%;
 }
 
 .dropdown {
@@ -1010,11 +1018,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1024,7 +1032,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1743,6 +1751,7 @@ footer {
   font-weight: bold;
   color: var(--fourth-col);
 }
+
 .inputBoxrequiredskill input {
   width: 100%;
   background-color: var(--seventh-col);
@@ -1753,14 +1762,17 @@ footer {
   margin-bottom: 15px;
   transition: var(--transition);
 }
+
 .inputBoxrequiredskill input:focus {
   outline: none;
   border: 3px solid var(--second-col);
   box-shadow: var(--box-shadow);
 }
+
 .inputBoxrequiredskill .requiredSkilldropdown {
   width: 100%;
 }
+
 .reqskills {
   margin-bottom: 20px;
 }
@@ -1870,26 +1882,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1909,31 +1912,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2766,9 +2757,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4107,7 +4098,6 @@ input::-webkit-inner-spin-button {
 .footer-comlanding {
   width: 100%;
   height: 10rem;
-  background-color: var(--seventh-col);
   margin-top: 0px;
 }
 
@@ -4119,6 +4109,7 @@ input::-webkit-inner-spin-button {
   text-align: center;
   margin-top: 160px;
   border-radius: 18px 18px 0 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.1);
 }
 
 .footerContainer {
@@ -4128,7 +4119,7 @@ input::-webkit-inner-spin-button {
 }
 
 .footerLogo {
-  margin-bottom: 20px;
+  margin: 0px;
 }
 
 .footerLogo {
@@ -4146,7 +4137,14 @@ input::-webkit-inner-spin-button {
 
 .footerLinks ul li {
   display: inline-block;
-  margin-right: 20px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.footerLinks ul li:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s;
+  scale: 1.1;
 }
 
 .footerLinks ul li:last-child {
@@ -4166,7 +4164,14 @@ input::-webkit-inner-spin-button {
 
 .footerSocial ul li {
   display: inline-block;
-  margin-right: 10px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.footerSocial ul li:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s;
+  scale: 1.1;
 }
 
 .footerSocial ul li:last-child {
@@ -4181,7 +4186,8 @@ input::-webkit-inner-spin-button {
 
 .footerBottom {
   margin-top: 20px;
-  margin-left: 75px;
+  margin-left: 40px;
+  /*change this to align the thankyou line in mainlanding*/
 }
 
 .footerBottom p {
@@ -4193,4 +4199,29 @@ input::-webkit-inner-spin-button {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+}
+
+.facebook:hover {
+  color: var(--fourth-col);
+  text-shadow: 0 0 10px var(--fourth-col);
+}
+
+.twitter:hover {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+}
+
+.youtube:hover {
+  color: red;
+  text-shadow: 0 0 10px red;
+}
+
+.linkedin:hover {
+  color: blue;
+  text-shadow: 0 0 10px blue;
+}
+
+.footertopicname {
+  text-decoration: none;
+  color: white;
 }

@@ -39,7 +39,7 @@ foreach ($words as $word) {
 require '../../../dbconnect.php';
 ?>
 
-<body>
+<body class="bg-img">
     <div class="sidebar close">
         <div class="logo-details">
             <a href="admin.php">
@@ -164,11 +164,11 @@ require '../../../dbconnect.php';
         <div class="admin-Settings">
             <a class="boxes GS" href="settings/generalSettings.php">
                 <div>General Settings</div>
-                <p>Edit Profile, Logo customisation, personal details,...</p>
+                <p>Enter personal details...</p>
             </a>
             <a class="boxes TP" href="something.php">
                 <div>Terms and Policy</div>
-                <p>Manage terms of service, privacy policy, and other legal documents.</p>
+                <p>Terms of service, privacy policy, and other legal documents.</p>
             </a>
             
             <a class="boxes HD">

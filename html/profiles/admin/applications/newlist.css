@@ -31,6 +31,12 @@
   margin-top: 20px;
 }
 
+.bg-img2 {
+  background-image: url(../../../../assets/abstractblueanother.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .heading1 h1 {
   font-size: var(--h1-fontsize);
   color: var(--fourth-col);
