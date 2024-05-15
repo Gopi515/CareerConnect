@@ -19,7 +19,7 @@ $Internship_id = isset($_GET['id']) ? $_GET['id'] : null;
 $status = "Admin reviewed & Forwarded to Company";
 
 // Fetch records for the current page with search
-$query = "SELECT a.id, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.apply_date, s.F_name, s.L_name, s.dept, s.email, s.phone_no, s.start_year, s.end_year, s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender 
+$query = "SELECT a.id, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.resume_name, d.noc_name, d.apply_date, s.F_name, s.L_name, s.dept, s.email, s.phone_no, s.start_year, s.end_year, s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender 
     FROM internship_applied a 
     LEFT JOIN internship_application_details d ON a.id = d.id
     LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
@@ -63,7 +63,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
     </a>
     <div class="search-container">
         <form method="GET" action="">
-            <input type="text" name="search" placeholder="Search by anything" value="<?php echo htmlspecialchars($search); ?>">
+            <input type="text" name="search" placeholder="Search by anything"
+                value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
@@ -113,8 +114,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['cover_letter'] . "</td>";
                         echo "<td>" . $row['availability'] . " " . $row['availability_spec'] . "</td>";
                         echo "<td>" . $row['assessment'] . "</td>";
-                        echo "<td>" . $row['resume'] . "</td>";
-                        echo "<td>" . $row['noc_certificate'] . "</td>";
+                        echo "<td><a href='../../admin/applications/download.php?file=" . urlencode($row['resume_name']) . "'>" . $row['resume_name'] . "</a></td>";
+                        echo "<td><a href='../../admin/applications/download.php?file=" . urlencode($row['noc_name']) . "'>" . $row['noc_name'] . "</a></td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
                         echo "<td class='need-side'><a class='accdec acc' href='acceptInternApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Shortlisted</a>";
                         echo "<a class='accdec dec' href='declineInternApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
@@ -125,31 +126,31 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                 }
                 ?>
             </table>
-            
-            </div>
-            
+
         </div>
-        <div class="pagination-container">
-                <?php
-                // Display pagination links
-                $totalPages = ceil($totalRecords / $recordsPerPage);
-                echo "<div class='pagination'>";
-                for ($i = 1; $i <= $totalPages; $i++) {
-                    $activeClass = $i == $page ? 'active' : '';
-                    echo "<a class='$activeClass' href='?page=$i&search=$search'>$i</a>";
-                }
-                echo "</div>";
-                ?>
-                <div class="record-info">
-                    <?php
-                    // Display number of records in the current page out of all records
-                    $startRecord = ($page - 1) * $recordsPerPage + 1;
-                    $endRecord = min($page * $recordsPerPage, $totalRecords);
-                    echo "Showing $startRecord - $endRecord of $totalRecords records.";
-                    ?>
-                </div>
+
     </div>
-    
+    <div class="pagination-container">
+        <?php
+        // Display pagination links
+        $totalPages = ceil($totalRecords / $recordsPerPage);
+        echo "<div class='pagination'>";
+        for ($i = 1; $i <= $totalPages; $i++) {
+            $activeClass = $i == $page ? 'active' : '';
+            echo "<a class='$activeClass' href='?page=$i&search=$search'>$i</a>";
+        }
+        echo "</div>";
+        ?>
+        <div class="record-info">
+            <?php
+            // Display number of records in the current page out of all records
+            $startRecord = ($page - 1) * $recordsPerPage + 1;
+            $endRecord = min($page * $recordsPerPage, $totalRecords);
+            echo "Showing $startRecord - $endRecord of $totalRecords records.";
+            ?>
+        </div>
+    </div>
+
     <!-- script links -->
 </body>
 
