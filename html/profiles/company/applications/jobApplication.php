@@ -19,7 +19,7 @@ $Job_id = isset($_GET['id']) ? $_GET['id'] : null;
 $status = "Admin reviewed & Forwarded to Company";
 
 // Fetch records for the current page with search
-$query = "SELECT a.id, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.apply_date, s.F_name, s.L_name, s.dept, s.email, s.phone_no, s.start_year, s.end_year, s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
+$query = "SELECT a.id, d.cover_letter, d.availability, d.availability_spec, d.assessment, d.resume_name, d.noc_name, d.apply_date, s.F_name, s.L_name, s.dept, s.email, s.phone_no, s.start_year, s.end_year, s.addr1, s.addr2, s.pin, s.city, s.state, s.country, s.gender
     FROM job_applied a 
     LEFT JOIN job_application_details d ON a.id = d.id
     LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
@@ -112,8 +112,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['cover_letter'] . "</td>";
                         echo "<td>" . $row['availability'] . " " . $row['availability_spec'] . "</td>";
                         echo "<td>" . $row['assessment'] . "</td>";
-                        echo "<td>" . $row['resume'] . "</td>";
-                        echo "<td>" . $row['noc_certificate'] . "</td>";
+                        echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['resume_name']) . "'>" . $row['resume_name'] . "</a></td>";
+                        echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['noc_name']) . "'>" . $row['noc_name'] . "</a></td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
                         echo "<td class='need-side'><a class='accdec acc' href='acceptJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Shortlisted</a>";
                         echo "<a class='accdec dec' href='declineJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";

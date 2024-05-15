@@ -224,7 +224,7 @@ a {
   position: absolute;
   padding: 5px 14px;
   margin-top: -67px;
-  margin-left: 300px;
+  margin-left: 250px;
   background-color: var(--fourth-col);
   color: var(--first-col);
   font-weight: 700;
@@ -463,9 +463,9 @@ tbody {
 }
 
 @media screen and (max-width: 768px) {
-    .regallexportbtn {
-        right: 24%;
-    }
+  .regallexportbtn {
+    right: 24%;
+  }
 }
 
 .regallexportbtn:hover {

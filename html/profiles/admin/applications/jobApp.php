@@ -74,7 +74,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
         <div class="inner-whole-body">
             <table class="tablebody" border="1">
                 <tr>
-                    <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(0)" data-column="0">No.<span class="sort-icon"></span></th>
                     <th onclick="sortTable(1)" data-column="1">Student Name<span class="sort-icon"></span></th>
                     <th onclick="sortTable(2)" data-column="2">Department<span class="sort-icon"></span></th>
                     <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
