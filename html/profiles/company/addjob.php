@@ -19,6 +19,7 @@ if (!isset($_SESSION['mail'])) {
 
     <!-- linking -->
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../profiles/student/resume.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -142,25 +143,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <!-- Add Required Skills -->
-            <!-- <div class="addDomainelement">
-                <p>Add Required Skills*</p>
-                <div id="addskillButton" onclick="openskillPopup()" class="addquestionSkillbutton">Add</div>
-                <div id="popupskillContainer" class="hidePopup">
-                    <div class="interQuestion"><input type="text" id="searchBar" placeholder="Search..." oninput="filterElements()"/></div>
-
-                    <div class="closeContainerbutton">
-                    <span id="closeButton" onclick="closePopup()">×</span>
-                    </div>
-
-                    <div class="testCase1"><div id="elementsskillContainer" class="elementsContainer"></div></div>
+            <label for="" class="form-label">Skill</label>
+            <div class="input-options">
+                <div class="option-dropdown">
+                    <select name="skill" class="form-control skill" id="skill_select" onchange="generateCV()">
+                        <option value="">Select Skill</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Kotlin">Kotlin</option>
+                        <option value="Dart">Dart</option>
+                        <option value="Flutter">Flutter</option>
+                        <option value="React">React</option>
+                        <option value="Angular">Angular</option>
+                        <option value="Vue">Vue</option>
+                        <option value="Node">Node</option>
+                        <option value="Express">Express</option>
+                        <option value="Laravel">Laravel</option>
+                        <option value="CodeIgniter">CodeIgniter</option>
+                        <option value="Django">Django</option>
+                        <option value="Flask">Flask</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Hibernate">Hibernate</option>
+                        <option value="JPA">JPA</option>
+                        <option value="JSP">JSP</option>
+                        <option value="Servlet">Servlet</option>
+                        <option value="Thymeleaf">Thymeleaf</option>
+                        <option value="JDBC">JDBC</option>
+                        <option value="MySQL">MySQL</option>
+                        <option value="PostgreSQL">PostgreSQL</option>
+                        <option value="MongoDB">MongoDB</option>
+                        <option value="SQLite">SQLite</option>
+                        <option value="Oracle">Oracle</option>
+                        <option value="SQL Server">SQL Server</option>
+                        <option value="MariaDB">MariaDB</option>
+                        <option value="Firebase">Firebase</option>
+                        <option value="AWS">AWS</option>
+                        <option value="Azure">Azure</option>
+                        <option value="Google Cloud">Google Cloud</option>
+                        <option value="Heroku">Heroku</option>
+                        <option value="Netlify">Netlify</option>
+                        <option value="Vercel">Vercel</option>
+                        <option value="Digital Ocean">Digital Ocean</option>
+                        <!-- Add more options as needed -->
+                    </select>
                 </div>
-
-                <div id="addedElements" name="internshipSkills">
-                
-                <input type="hidden" id="addedSkillsInput" name="addedSkills" required/>
-                </div>
-      
-            </div> -->
+            </div>
+            <span class="form-text"></span>
 
             <!-- Information about the Job -->
             <div class="internabout">
@@ -193,5 +229,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
     <script src="../../../javaScripts/internshipQuestion.js"></script>
+    <script src="../../../javaScripts/resume/skills.js"></script>
 </body>
 </html>

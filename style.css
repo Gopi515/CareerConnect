@@ -50,14 +50,12 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
 
 .navbar {
@@ -427,13 +425,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -580,11 +576,6 @@ html {
   font-size: 70px;
   font-weight: 700;
   color: var(--fourth-col);
-}
-
-.footerMainlanding {
-  margin-top: 160px;
-  border-radius: 18px 18px 0 0;
 }
 
 /*------landing page------*/
@@ -1015,11 +1006,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1029,7 +1020,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1852,26 +1843,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1891,31 +1873,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2747,9 +2717,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -3715,7 +3685,7 @@ input::-webkit-inner-spin-button {
 .projects,
 .skills,
 .Achievements {
-  margin: 30px;
+  margin: 0px;
 }
 
 .indetails {
@@ -4090,4 +4060,88 @@ input::-webkit-inner-spin-button {
   height: 10rem;
   background-color: var(--seventh-col);
   margin-top: 0px;
+}
+
+/*main landing footer*/
+.footerMainlanding {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+  margin-top: 160px;
+  border-radius: 18px 18px 0 0;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLogo {
+  margin-bottom: 20px;
+}
+
+.footerLogo {
+  padding-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footerLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footerLinks ul li:last-child {
+  margin-right: 0;
+}
+
+.footerLinks ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerSocial ul {
+  list-style: none;
+  padding-right: 50px;
+  margin: 0;
+}
+
+.footerSocial ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footerSocial ul li:last-child {
+  margin-right: 0;
+}
+
+.footerSocial ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.footerBottom {
+  margin-top: 20px;
+  margin-left: 75px;
+}
+
+.footerBottom p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footerBottom p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
 }
