@@ -19,6 +19,7 @@ if (!isset($_SESSION['mail'])) {
 
     <!-- linking -->
     <link rel="stylesheet" href="../../../style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Internship/newstyle.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -55,6 +56,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Error: Session is not working.')</script>";
     }
 
+    // Handling file upload
+    if (isset($_FILES['resume']) && $_FILES['resume']['error'] === UPLOAD_ERR_OK) {
+        $resume_name = $_FILES['resume']['name'];
+        $resume_size = $_FILES['resume']['size'];
+        $resume_tmp = $_FILES['resume']['tmp_name'];
+        $resume_destination = '../../../images/internshipImages/' . $resume_name;
+        move_uploaded_file($resume_tmp, $resume_destination);
+    } else {
+        echo "Error uploading file.";
+        exit;
+    }
+
+
     $query = "SELECT id AS com_id FROM company WHERE email = '$email'";
     $find = $conn->query($query);
     if (mysqli_num_rows($find) > 0) {
@@ -64,12 +78,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        $sql = "INSERT INTO temp_internship (com_id, topic, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO temp_internship (com_id, topic, topic_image, image_size, work_location, location_name, duration, stipend, apply_by, required_skills, about_internship, certificate, openings, com_email)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
 
-        mysqli_stmt_bind_param($stmt, "isssssssssis", $com_id, $topic, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString, $aboutInternship, $certificate, $openings, $email);
+        mysqli_stmt_bind_param($stmt, "isssssssssssis", $com_id, $topic, $resume_name, $resume_size, $workLocation, $locationName, $duration, $stipend, $applyBy, $skillsString, $aboutInternship, $certificate, $openings, $email);
 
         mysqli_stmt_execute($stmt);
 
@@ -116,6 +130,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="radio" id="NWFH" name="worklocation" value="" onclick="enableInput()"> Office Location.
                     <input type="text" name="locationName" class="NWFH-loc" placeholder="Enter the city name" disabled>
                 </label>
+            </div>
+
+            <div class="apply-side">
+            <!-- Upload resume pdf -->
+                <div class="uploadResumeij">
+                    <h2>Upload Topic Related Image</h2>
+                    <input type="file" id="resume" name="resume" accept="image/*" required onchange="displayResumeName()">
+                    <label for="resume" class="file-label">Choose Topic Image</label>
+                    <p id="file-resume"></p>
+                </div>  
             </div>
 
             <!-- Duration selection -->
@@ -197,5 +221,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
     <script src="../../../javaScripts/internshipQuestion.js"></script>
+    <script src="../../../javaScripts/resumeNOC.js"></script>
 </body>
 </html>
