@@ -50,8 +50,9 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 // Calculate the offset for the SQL query
 $offset = ($currentPage - 1) * $internshipsPerPage;
 
+$currentDate = date("Y-m-d");
 // Retrieve the total number of internships
-$queryTotal = "SELECT COUNT(*) AS total FROM `job`";
+$queryTotal = "SELECT COUNT(*) AS total FROM `job` WHERE apply_by >= '$currentDate'";
 $resultTotal = mysqli_query($conn, $queryTotal);
 $rowTotal = mysqli_fetch_assoc($resultTotal);
 $totalInternships = $rowTotal['total'];
