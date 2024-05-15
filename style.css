@@ -1136,7 +1136,7 @@ footer {
 }
 
 #tag-container .tag {
-  background-color: #f0f0f0;
+  background-color: var(--seventh-col);
   border-radius: 5px;
   padding: 5px 10px;
   margin: 5px;
@@ -1746,6 +1746,33 @@ footer {
 }
 
 /*required skills area*/
+.inputBoxrequiredskill p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--fourth-col);
+}
+
+.inputBoxrequiredskill input {
+  width: 100%;
+  background-color: var(--seventh-col);
+  border: var(--border);
+  padding: 15px 15px;
+  border-radius: var(--border-50);
+  color: var(--sixth-col);
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+
+.inputBoxrequiredskill input:focus {
+  outline: none;
+  border: 3px solid var(--second-col);
+  box-shadow: var(--box-shadow);
+}
+
+.inputBoxrequiredskill .requiredSkilldropdown {
+  width: 100%;
+}
+
 .reqskills {
   margin-bottom: 20px;
 }
@@ -2433,6 +2460,7 @@ legend {
 .internabout {
   color: var(--fourth-col);
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .aboutintern {

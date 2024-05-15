@@ -23,6 +23,7 @@ const dropdownItems = [
   "C#",
   "C++",
   "CANVA",
+  "CodeIgniter",
   "CIVIL ENGINEERING",
   "CLOUD COMPUTING",
   "COMPUTER NETWORKS",
@@ -67,6 +68,7 @@ const dropdownItems = [
   "FIREBASE",
   "FIREWALL CONFIGURATION",
   "FLASH",
+  "FLASK",
   "FLUTTER",
   "FRONTEND DEVELOPMENT",
   "FULL STACK DEVELOPMENT",
@@ -101,7 +103,7 @@ const dropdownItems = [
   "KOTLIN",
   "KUBERNETES",
   "LEADERSHIP",
-  "LARAVAl",
+  "LARAVEl",
   "LEAGUE OF LEGENDS",
   "LINKDIN MARKETING",
   "LINEAR PROGRAMMING",
@@ -149,6 +151,7 @@ const dropdownItems = [
   "REACT.JS",
   "REACTJS",
   "REACT",
+  "REACT NATIVE",
   "REST API",
   "REDUX",
   "RISK MANAGEMENT",
@@ -249,9 +252,13 @@ function renderTags() {
     tag.innerHTML = `<span>${item}</span><button onclick="removeTag('${item}')">&#10005;</button>`;
     tagContainer.appendChild(tag);
   });
+
+  // Update the hidden input field with the selected skills
+  updateSkillsInput();
 }
 
-function removeTag(item) {
-  selectedItems = selectedItems.filter((tag) => tag !== item);
-  renderTags();
+// Function to update the hidden input field with the selected skills
+function updateSkillsInput() {
+  const skillsInput = document.getElementById("skillsInput");
+  skillsInput.value = JSON.stringify(selectedItems);
 }

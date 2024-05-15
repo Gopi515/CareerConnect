@@ -8,7 +8,7 @@ require '../../dbconnect.php';
 
 $email = $_SESSION['mail'];
 
-$query = "SELECT * FROM com_personal_details where email = '$email'";
+$query = "SELECT * FROM company where email = '$email'";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
@@ -108,7 +108,7 @@ $totaljob = $row['total_job'];
                     </div>
                     <div class="card-body">
                         <p>Your Company Name: <strong>
-                                <?php echo $company['name']; ?>
+                                <?php echo $company['user_name']; ?>
                             </strong></p>
                         <p>Logged Email: <strong>
                                 <?php echo $company['email']; ?>
