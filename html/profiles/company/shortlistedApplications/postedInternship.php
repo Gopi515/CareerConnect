@@ -84,6 +84,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(7)" data-column="7">About Internship<span class="sort-icon"></span></th>
                     <th onclick="sortTable(8)" data-column="8">Certificate<span class="sort-icon"></span></th>
                     <th onclick="sortTable(9)" data-column="9">Openings<span class="sort-icon"></span></th>
+                    <th>Tests</th>
                     <th>Operations</th>
                 </tr>
 
@@ -101,11 +102,12 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['about_internship'] . "</td>";
                         echo "<td>" . ($row['certificate'] ? 'Yes' : 'No') . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
+                        echo "<td><a href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Take Test</p></a></td>";
                         echo "<td class='need-side'><a href='shortlistedInternshipApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Shortlisted candidates</p></a></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='12'>No records found.</td></tr>";
+                    echo "<tr><td colspan='11'>No records found.</td></tr>";
                 }
                 ?>
             </table>

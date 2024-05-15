@@ -82,6 +82,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(6)" data-column="6">Required Skills<span class="sort-icon"></span></th>
                     <th onclick="sortTable(7)" data-column="7">About Job<span class="sort-icon"></span></th>
                     <th onclick="sortTable(8)" data-column="8">Openings<span class="sort-icon"></span></th>
+                    <th>Tests</th>
                     <th>Operations</th>
                 </tr>
 
@@ -98,6 +99,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['required_skills'] . "</td>";
                         echo "<td>" . $row['about_job'] . "</td>";
                         echo "<td>" . $row['openings'] . "</td>";
+                        echo "<td><a href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Take Test</p></a></td>";
                         echo "<td class='need-side'><a href='shortlistedJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'><p class='btn'>Shortlisted candidates</p></a></td>";
                         echo "</tr>";
                     }
