@@ -52,7 +52,7 @@ if (isset($_POST["student_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                 $password = $getData[1];
                 $HASH = password_hash($password, PASSWORD_DEFAULT);
                 $email = $getData[2];
-                $token = bin2hex(random_bytes(14));
+                $token = bin2hex(random_bytes(82));
 
                 $sql = "INSERT INTO `student`(`user_name`, `pass`, `email`, `token`) 
                     values ('$username','$HASH','$email','$token')";
@@ -98,7 +98,7 @@ if (isset($_POST["teacher_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                 $password = $getData[1];
                 $HASH = password_hash($password, PASSWORD_DEFAULT);
                 $email = $getData[2];
-                $token = bin2hex(random_bytes(14));
+                $token = bin2hex(random_bytes(82));
 
                 $sql = "INSERT INTO `teacher`(`user_name`, `pass`, `email`, `token`) 
                     values ('$username','$HASH','$email', '$token')";
@@ -144,7 +144,7 @@ if (isset($_POST["company_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") 
                 $password = $getData[1];
                 $HASH = password_hash($password, PASSWORD_DEFAULT);
                 $email = $getData[2];
-                $token = bin2hex(random_bytes(14));
+                $token = bin2hex(random_bytes(82));
 
                 $sql = "INSERT INTO `company`(`user_name`, `pass`, `email`, `token`) 
                     values ('$username','$HASH','$email', '$token')";
