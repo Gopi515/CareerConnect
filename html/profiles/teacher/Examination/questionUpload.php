@@ -17,8 +17,8 @@ if (isset($_POST["submitQuestion"])) {
     $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : []; // Decoding the JSON string to an array here
     $skillsString = implode(', ', $addedSkillsArray); // Converting the array into a string by imploding it
 
-    $query = "INSERT INTO question_bank (email, Questions, OptionA, OptionB, OptionC, OptionD, right_option, skills) 
-              VALUES ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
+    $query = "INSERT INTO `question_bank`(`email`, `Questions`, `OptionA`, `OptionB`, `OptionC`, `OptionD`, `right_option`, `skills`) 
+        values ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
 
     $result = mysqli_query($conn, $query);
 
@@ -79,12 +79,7 @@ if (isset($_POST["submitQuestion"])) {
             <!-- right answer -->
             <div class="interQuestion">
                 <label for="answer">Right answer</label>
-                <select id="rightAnswer" name="answer" required>
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
-                    <option value="Option 3">Option 3</option>
-                    <option value="Option 4">Option 4</option>
-                </select>
+                <input type="text" id="option" name="answer" placeholder="Type right answer here..." required />
             </div>
 
 

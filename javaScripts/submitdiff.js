@@ -4,5 +4,5 @@ function submitAndAddAnother() {
 
 function submitAndExit() {
   document.getElementById("questionForm").action =
-    "../html/landingPage/landingTeacher.php";
+    "../../../landingPage/landingTeacher.php";
 }

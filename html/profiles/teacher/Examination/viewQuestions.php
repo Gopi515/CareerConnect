@@ -41,7 +41,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student lists</title>
+    <title>Questions lists</title>
     <link rel="stylesheet" href="../../admin/list/list.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/f540fd6d80.js" crossorigin="anonymous"></script>
     <script src="../../../../javaScripts/tableascdesc.js"></script>
@@ -49,7 +49,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body class="bg-img2">
     <div class="heading1">
-        <h1>Students list</h1>
+        <h1>Questions list</h1>
     </div>
     <a href="../../../landingPage/landingTeacher.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>
@@ -88,7 +88,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td>" . $row['OptionD'] . "</td>";
                         echo "<td>" . $row['right_option'] . "</td>";
                         echo "<td>" . $row['skills'] . "</td>";
-                        echo "<td><a href='../list/deleteStudent.php?id=" . htmlspecialchars($row['QID'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
+                        echo "<td class='need-side'><a href='updateQuestion.php?id=" . htmlspecialchars($row['QID'], ENT_QUOTES, 'UTF-8') . "'><i class='btn edit fa-solid fa-pen-to-square' title='edit'></i></a>";
+                        echo "<a href=deleteQuestion.php?id=" . htmlspecialchars($row['QID'], ENT_QUOTES, 'UTF-8') . "'><i class='btn del fa-solid fa-trash' title='delete'></i></a></td>";
                         echo "</tr>";
                     }
                 } else {
