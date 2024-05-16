@@ -25,8 +25,8 @@ if (isset($_POST["UpdateQuestion"])) {
     $option4 = mysqli_real_escape_string($conn, $_POST["option4"]);
     $correctOption = mysqli_real_escape_string($conn, $_POST["answer"]);
 
-    $query = "UPDATE `question_bank` SET `Questions`='$questionName',`OptionA`='$option1',`OptionB`='$option2',`OptionC`='$option3',
-            `OptionD`='$option4',`right_option`='$correctOption' WHERE `QID`= '$question_id' AND `email` = '{$_SESSION['mail']}'";
+    $query = "UPDATE `question_bank` SET `Questions`='$questionName',`Option1`='$option1',`Option2`='$option2',`Option3`='$option3',
+            `Option4`='$option4',`right_option`='$correctOption' WHERE `QID`= '$question_id' AND `email` = '{$_SESSION['mail']}'";
 
     $result = mysqli_query($conn, $query);
 
@@ -78,19 +78,19 @@ if (isset($_POST["UpdateQuestion"])) {
             <!-- options -->
             <div class="interQuestion">
                 <label for="option1">Option 1</label>
-                <input type="text" id="option" name="option1" value="<?php echo $row["OptionA"];?>" placeholder="Type first option here..." required />
+                <input type="text" id="option" name="option1" value="<?php echo $row["Option1"];?>" placeholder="Type first option here..." required />
             </div>
             <div class="interQuestion">
                 <label for="option2">Option 2</label>
-                <input type="text" id="option" name="option2" value="<?php echo $row["OptionB"];?>" placeholder="Type second option here..." required />
+                <input type="text" id="option" name="option2" value="<?php echo $row["Option2"];?>" placeholder="Type second option here..." required />
             </div>
             <div class="interQuestion">
                 <label for="option3">Option 3</label>
-                <input type="text" id="option" name="option3" value="<?php echo $row["OptionC"];?>" placeholder="Type third option here..." required />
+                <input type="text" id="option" name="option3" value="<?php echo $row["Option3"];?>" placeholder="Type third option here..." required />
             </div>
             <div class="interQuestion">
                 <label for="option4">Option 4</label>
-                <input type="text" id="option" name="option4" value="<?php echo $row["OptionD"];?>" placeholder="Type fourth option here..." required />
+                <input type="text" id="option" name="option4" value="<?php echo $row["Option4"];?>" placeholder="Type fourth option here..." required />
             </div>
 
             <!-- right answer -->
