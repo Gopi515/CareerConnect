@@ -50,14 +50,12 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
 
 .navbar {
@@ -429,13 +427,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -1005,6 +1001,22 @@ footer {
   font-weight: 500;
 }
 
+.containers {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  margin-top: 20%;
+  margin-left: -35%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--fourth-col);
+  font-weight: 500;
+}
+
 .filterContainer .container input {
   transform: translate(5%, 5%);
   opacity: 0;
@@ -1023,11 +1035,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1037,7 +1049,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1054,7 +1066,7 @@ footer {
 }
 
 .filterContainer .containerWfrmH {
-  top: 32%;
+  top: 13%;
 }
 
 .filterContainer .containerPartTime {
@@ -1069,7 +1081,7 @@ footer {
 .filterContainer .inputBox {
   position: absolute;
   top: 22%;
-  left: 20%;
+  left: 10%;
 }
 
 .hiddenDiv {
@@ -1083,7 +1095,7 @@ footer {
 }
 
 .filterContainer .inputBox input {
-  width: 15rem;
+  width: 22rem;
   border: none;
   padding: 3% 3%;
   background-color: var(--third-col);
@@ -1095,7 +1107,7 @@ footer {
 }
 
 .filterContainer .inputBoxlocation {
-  top: 33%;
+  top: 15%;
 }
 
 .filterContainer .inputBoxDate {
@@ -1887,26 +1899,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1926,31 +1929,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2062,6 +2053,55 @@ span {
 }
 
 .btn.selected {
+  background-color: var(--fifth-col);
+}
+
+
+/*Apply filter part*/
+.btnapply {
+  position: absolute;
+  padding: var(--padding-btn);
+  border-radius: 50px;
+  border: var(--border);
+  font-weight: 600;
+  font-size: 15px;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  cursor: pointer;
+  transition: var(--transition);
+  height: 7%;
+  top: 90%;
+}
+
+.btnapply:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.btnapply.selected {
+  background-color: var(--fifth-col);
+}
+
+.btnremove {
+  position: absolute;
+  padding: var(--padding-btn);
+  border-radius: 50px;
+  border: var(--border);
+  font-weight: 600;
+  font-size: 15px;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  cursor: pointer;
+  transition: var(--transition);
+  height: 7%;
+  top: 90%;
+  left: 10%;
+}
+
+.btnremove:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.btnremove.selected {
   background-color: var(--fifth-col);
 }
 
@@ -2783,9 +2823,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4393,13 +4433,33 @@ input[type="file"]::file-selector-button:hover {
 .internQuestionthing {
   display: flex;
   float: right;
-  width: 55%;
+  width: 25%;
   justify-content: space-between;
 }
 
 .internQuestionthing button {
   padding: 10px;
-  width: 45%;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: var(--border-50);
+  box-sizing: border-box;
+  outline: none;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  font-weight: 600;
+}
+
+.internQuestionthings {
+  display: flex;
+  float: right;
+  width: 25%;
+  justify-content: space-between;
+}
+
+.internQuestionthings button {
+  padding: 10px;
+  margin-top: 20px;
   border-radius: 50px;
   cursor: pointer;
   border: 1px solid #ccc;
@@ -4487,6 +4547,7 @@ input[type="file"]::file-selector-button:hover {
   font-size: 18px;
   font-weight: 600;
 }
+
 .giveTestbutton {
   display: flex;
   text-align: center;
@@ -4504,6 +4565,7 @@ input[type="file"]::file-selector-button:hover {
   transition: 0.5s;
   text-decoration: none;
 }
+
 .giveTestbutton:hover {
   border-radius: 50px;
   background-color: var(--third-col-dark);
