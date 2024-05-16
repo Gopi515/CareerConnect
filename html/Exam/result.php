@@ -20,11 +20,17 @@ $total_questions = $_SESSION['total_questions'];
     <title>Exam Results</title>
 </head>
 <body>
-    <h1>Exam Results</h1>
-    <p>Your score: <?php echo $score; ?>/100</p>
-    <p>Correct answers: <?php echo $correct_answers_count; ?></p>
-    <p>Wrong answers: <?php echo $wrong_answers_count; ?></p>
-    <p>Total questions: <?php echo $total_questions; ?></p>
-    <a href="../Internship/applyInternship.php">Go Back</a>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 100px;">
+    <h1 style="color: var(--fourth-col);">Exam Results</h1>
+    <div style="width: 400px; padding: 20px 30px; border-radius: 10px; background-color: var(--third-col); margin-top: 70px;">
+    <p style="font-size: 22px; color: var(--first-col); font-weight: 600;">Your score: <?php echo $score; ?>/100</p>
+    <p style="font-size: 22px; color: var(--first-col); font-weight: 600;">Correct answers: <?php echo $correct_answers_count; ?></p>
+    <p style="font-size: 22px; color: var(--first-col); font-weight: 600;">Wrong answers: <?php echo $wrong_answers_count; ?></p>
+    <p style="font-size: 22px; color: var(--first-col); font-weight: 600;">Total questions: <?php echo $total_questions; ?></p>
+    </div>
+    <a href="../Internship/applyInternship.php" style="text-decoration: none; padding: 10px 15px; background-color: var(--fourth-col); color: var(--first-col); margin-top: 20px; border-radius: 20px; box-shadow: var(--box-shadow);">Go Back</a>
+    </div>
+
+ 
 </body>
 </html>
