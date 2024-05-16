@@ -14,6 +14,7 @@ if (!isset($_SESSION['mail'])) {
   <title>Landing Teacher</title>
   <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
@@ -39,7 +40,7 @@ if (!isset($_SESSION['mail'])) {
                 <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
                 <a href="../profiles/teacher/updateTeacherDetails.php">Update Profile</a>
                 <a href="../profiles/teacher/Examination/questionUpload.php">Upload Questions</a>
-                <a href="../profiles/teacher/Examination/questionUpload.php">CSV Question Upload</a>
+                <a id="uploadLink" class="boxes CR" href="#"><div onclick="openxlsxC()">CSV Question Upload</div></a>
                 <a href="../profiles/teacher/Examination/viewQuestions.php">View Questions</a>
                 <a onclick="openLogOut()">Log Out</a>
               </div>
@@ -49,6 +50,22 @@ if (!isset($_SESSION['mail'])) {
       </div>
     </nav>
   </header>
+
+  <form action="#" method="post" name="company_excel" enctype="multipart/form-data">
+    <div id="uploadModalC" class="modalXD">
+        <div class=" modal-content-machine">
+            <div id="closemodal" onclick="closexlsxC()"><i class='bx bx-x'></i></div>
+            <h2>Upload the CSV to mass Enter Question</h2>
+            <div id="dropArea">
+                <p>Click choose file button to browse</p>
+                <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
+            </div>
+            <div id="uploadResult"></div>
+            <button type="submit" id="submit" name="company_mass_data">Upload</button>
+            <span id="fileName"></span>
+        </div>
+    </div>
+  </form>
 
   <!-- content area -->
   <div class="content">
@@ -121,7 +138,7 @@ if (!isset($_SESSION['mail'])) {
       </div>
     </div>
 
-    <!-- Internship wit job offer section -->
+    <!-- Internship with job offer section -->
     <div class="Internship-job-off">
       <h1>Internships with job offer</h1>
       <div class="swiper mySwiper swiper-intJbOff">
@@ -256,6 +273,7 @@ if (!isset($_SESSION['mail'])) {
   <script src="../../javaScripts/showDropdown.js"></script>
   <script src="../../javaScripts/buttonPop.js"></script>
   <script src="../../javaScripts/landingInternshipJobLogout.js"></script>
+  <script src="../../javaScripts/uploadFile.js"></script>
 </body>
 
 </html>
