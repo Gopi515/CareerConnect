@@ -115,8 +115,8 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['resume_name']) . "'>" . $row['resume_name'] . "</a></td>";
                         echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['noc_name']) . "'>" . $row['noc_name'] . "</a></td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
-                        echo "<td class='need-side'><a class='accdec acc' href='acceptJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Shortlisted</a>";
-                        echo "<a class='accdec dec' href='declineJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
+                        echo "<td class='need-side'><a class='accdec acc' href='selectedJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Selected</a>";
+                        echo "<a class='accdec dec' href='selectedJobApplication.php?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Rejected</a></td>";
                         echo "</tr>";
                     }
                 } else {

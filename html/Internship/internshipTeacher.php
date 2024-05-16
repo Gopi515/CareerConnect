@@ -20,25 +20,6 @@
 <?php
     require '../../dbconnect.php';
 
-    if (isset($_POST["applyInternship"])) {
-        $internship_topic = $_POST["hidden_topic"];
-        $internship_location = $_POST["hidden_location"];
-        $internship_duration = $_POST["hidden_duration"];
-        $internship_com_id = $_POST["hidden_com_id"];
-        $internship_com_email = $_POST["hidden_com_email"];
-        $internship_int_id = $_POST["hidden_int_id"];
-
-        $_SESSION['int_topic'] = $internship_topic;
-        $_SESSION['int_loc'] = $internship_location;
-        $_SESSION['int_dur'] = $internship_duration;
-        $_SESSION['int_com_id'] = $internship_com_id;
-        $_SESSION['int_com_email'] = $internship_com_email;
-        $_SESSION['int_id'] = $internship_int_id;
-
-        header("Location:../Internship/applyInternship.php");
-    }
-
-
     $internshipsPerPage = 5;
 
     // Determine the current page
@@ -68,10 +49,6 @@
         if (!empty($_POST['location'])) {
             $location = mysqli_real_escape_string($conn, $_POST['location']);
             $filterConditions .= " AND (i.work_location LIKE '%$location%' OR i.location_name LIKE '%$location%')";
-        }
-        if (!empty($_POST['duration'])) {
-            $duration = (int) $_POST['duration'];
-            $filterConditions .= " AND i.duration <= $duration";
         }
         if (!empty($_POST['removefilter'])) {
             $filterConditions = "WHERE i.apply_by >= '$currentDate'";
@@ -167,20 +144,6 @@
                     <input type="text" id="location" name="location" placeholder="e.g. Delhi">
                 </label>
 
-                <!-- duration -->
-                <label class="inputBox inputBoxDuration">
-                    <p>Max.duration(months)</p>
-                    <select id="duration" name="duration">
-                        <option value="">Choose Duration</option>
-                        <option value="1">1 month</option>
-                        <option value="2">2 months</option>
-                        <option value="3">3 months</option>
-                        <option value="4">4 months</option>
-                        <option value="5">5 months</option>
-                        <option value="6">6 months</option>
-                    </select>
-                </label>
-
                 <!-- filter button -->
                 <button type="submit" name="filter">Apply Filters</button>
             </div>
@@ -218,16 +181,9 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
-                        <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
-                        <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>" style="display: none;">
-                        <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
-                        <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
-                        <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>" style="display: none;">
 
                         <div class="buttonNextstep">
-                            <a href="viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
-                            <button class="applyButton" type="submit" name="applyInternship">Apply</button>
+                            <a href="viewDetailsinternshipTeacher.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
                         </div>
                     </form>
                 </div>
