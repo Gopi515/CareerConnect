@@ -74,7 +74,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(0)" data-column="0">UID<span class="sort-icon"></span></th>
                     <th onclick="sortTable(1)" data-column="1">Student Name<span class="sort-icon"></span></th>
                     <th onclick="sortTable(2)" data-column="2">Department<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(3)" data-column="3">Email (click on respective mail id to send email)<span class="sort-icon"></span></th>
                     <th onclick="sortTable(4)" data-column="4">Phone Number<span class="sort-icon"></span></th>
                     <th onclick="sortTable(5)" data-column="5">Batch<span class="sort-icon"></span></th>
                     <th onclick="sortTable(6)" data-column="6">Address<span class="sort-icon"></span></th>
@@ -90,7 +90,6 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(15)" data-column="15">Resume<span class="sort-icon"></span></th>
                     <th onclick="sortTable(16)" data-column="16">NOC certificate<span class="sort-icon"></span></th>
                     <th onclick="sortTable(17)" data-column="17">Apply Date<span class="sort-icon"></span></th>
-                    <th>Operations</th>
                 </tr>
 
                 <?php
@@ -115,12 +114,10 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                         echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['resume_name']) . "'>" . $row['resume_name'] . "</a></td>";
                         echo "<td><a href='../../admin/applications/downloadj.php?file=" . urlencode($row['noc_name']) . "'>" . $row['noc_name'] . "</a></td>";
                         echo "<td>" . $row['apply_date'] . "</td>";
-                        echo "<td class='need-side'><a class='accdec acc' href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Shortlisted</a>";
-                        echo "<a class='accdec dec' href='#?id=" . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . "'>Decline</a></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='18'>No records found.</td></tr>";
+                    echo "<tr><td colspan='17'>No records found.</td></tr>";
                 }
                 ?>
             </table>

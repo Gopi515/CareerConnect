@@ -46,88 +46,134 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- question section -->
-    <form action="result.php" method="post" class="takeExamform" id="examForm">
+    <form action="submitExam.php" method="post" class="takeExamform" id="examForm">
       <input type="hidden" name="autoSubmit" id="autoSubmit" value="0">
 
-     <!-- timer -->
-    <div class="timer" >
-    <h3>Remaining Time:</h3>
-    <div id="timer" style="color: black;">15:00</div>
-    </div>
+      <!-- timer -->
+      <div class="timer">
+          <h3>Remaining Time:</h3>
+          <div id="timer" style="color: black;">15:00</div>
+      </div>
 
       <?php
-        require '../../dbconnect.php';
+      require '../../dbconnect.php';
 
-        // Get the internship ID from the URL parameter (you need to sanitize this input)
-        $internship_id = $_SESSION['int_id'];
+      // Get the internship ID from the URL parameter (you need to sanitize this input)
+      $internship_id = $_SESSION['int_id'];
 
-        // Fetch internship details including skills from the database
-        $sql = "SELECT required_skills FROM internships WHERE id = $internship_id";
-        $result = $conn->query($sql);
+      // Fetch internship details including skills from the database
+      $sql = "SELECT required_skills FROM internships WHERE id = $internship_id";
+      $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $skills = explode(",", $row['required_skills']);
-            $num_skills = count($skills);
+      if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+          $skills = explode(",", $row['required_skills']);
+          $num_skills = count($skills);
 
-            // Calculate the number of questions to select from each skill based on the specified criteria
-            $num_questions_per_skill = array();
-            if ($num_skills == 1) {
-                $num_questions_per_skill[$skills[0]] = 10;
-            } elseif ($num_skills == 2) {
-                $num_questions_per_skill[$skills[0]] = 5;
-                $num_questions_per_skill[$skills[1]] = 5;
-            } elseif ($num_skills == 3) {
-                $num_questions_per_skill[$skills[0]] = 4;
-                $num_questions_per_skill[$skills[1]] = 3;
-                $num_questions_per_skill[$skills[2]] = 3;
-            } elseif ($num_skills == 4) {
-                $num_questions_per_skill[$skills[0]] = 4;
-                $num_questions_per_skill[$skills[1]] = 2;
-                $num_questions_per_skill[$skills[2]] = 2;
-                $num_questions_per_skill[$skills[3]] = 2;
-            } elseif ($num_skills == 5) {
-                $num_questions_per_skill[$skills[0]] = 2;
-                $num_questions_per_skill[$skills[1]] = 2;
-                $num_questions_per_skill[$skills[2]] = 2;
-                $num_questions_per_skill[$skills[3]] = 2;
-                $num_questions_per_skill[$skills[4]] = 2;
-            }
+          // Calculate the number of questions to select from each skill based on the specified criteria
+          $num_questions_per_skill = array();
+          if ($num_skills == 1) {
+              $num_questions_per_skill[$skills[0]] = 10;
+          } elseif ($num_skills == 2) {
+              $num_questions_per_skill[$skills[0]] = 5;
+              $num_questions_per_skill[$skills[1]] = 5;
+          } elseif ($num_skills == 3) {
+              $num_questions_per_skill[$skills[0]] = 4;
+              $num_questions_per_skill[$skills[1]] = 3;
+              $num_questions_per_skill[$skills[2]] = 3;
+          } elseif ($num_skills == 4) {
+              $num_questions_per_skill[$skills[0]] = 3;
+              $num_questions_per_skill[$skills[1]] = 2;
+              $num_questions_per_skill[$skills[2]] = 3;
+              $num_questions_per_skill[$skills[3]] = 2;
+          } elseif ($num_skills == 5) {
+              $num_questions_per_skill[$skills[0]] = 2;
+              $num_questions_per_skill[$skills[1]] = 2;
+              $num_questions_per_skill[$skills[2]] = 2;
+              $num_questions_per_skill[$skills[3]] = 2;
+              $num_questions_per_skill[$skills[4]] = 2;
+          } elseif ($num_skills == 6) {
+              $num_questions_per_skill[$skills[0]] = 2;
+              $num_questions_per_skill[$skills[1]] = 1;
+              $num_questions_per_skill[$skills[2]] = 2;
+              $num_questions_per_skill[$skills[3]] = 2;
+              $num_questions_per_skill[$skills[4]] = 1;
+              $num_questions_per_skill[$skills[5]] = 2;
+          } elseif ($num_skills == 7) {
+              $num_questions_per_skill[$skills[0]] = 1;
+              $num_questions_per_skill[$skills[1]] = 2;
+              $num_questions_per_skill[$skills[2]] = 1;
+              $num_questions_per_skill[$skills[3]] = 2;
+              $num_questions_per_skill[$skills[4]] = 1;
+              $num_questions_per_skill[$skills[5]] = 1;
+              $num_questions_per_skill[$skills[6]] = 2;
+          } elseif ($num_skills == 8) {
+              $num_questions_per_skill[$skills[0]] = 2;
+              $num_questions_per_skill[$skills[1]] = 1;
+              $num_questions_per_skill[$skills[2]] = 1;
+              $num_questions_per_skill[$skills[3]] = 1;
+              $num_questions_per_skill[$skills[4]] = 2;
+              $num_questions_per_skill[$skills[5]] = 1;
+              $num_questions_per_skill[$skills[6]] = 1;
+              $num_questions_per_skill[$skills[7]] = 1;
+          } elseif ($num_skills == 9) {
+              $num_questions_per_skill[$skills[0]] = 1;
+              $num_questions_per_skill[$skills[1]] = 1;
+              $num_questions_per_skill[$skills[2]] = 1;
+              $num_questions_per_skill[$skills[3]] = 1;
+              $num_questions_per_skill[$skills[4]] = 1;
+              $num_questions_per_skill[$skills[5]] = 1;
+              $num_questions_per_skill[$skills[6]] = 2;
+              $num_questions_per_skill[$skills[7]] = 1;
+              $num_questions_per_skill[$skills[8]] = 1;
+          } elseif ($num_skills == 10) {
+              $num_questions_per_skill[$skills[0]] = 1;
+              $num_questions_per_skill[$skills[1]] = 1;
+              $num_questions_per_skill[$skills[2]] = 1;
+              $num_questions_per_skill[$skills[3]] = 1;
+              $num_questions_per_skill[$skills[4]] = 1;
+              $num_questions_per_skill[$skills[5]] = 1;
+              $num_questions_per_skill[$skills[6]] = 1;
+              $num_questions_per_skill[$skills[7]] = 1;
+              $num_questions_per_skill[$skills[8]] = 1;
+              $num_questions_per_skill[$skills[9]] = 1;
+          }
 
-            // Retrieve and display random questions from each skill
-            $question_number = 1;
-            foreach ($num_questions_per_skill as $skill => $num_questions) {
-                $sql = "SELECT * FROM question_bank WHERE skills = '$skill' ORDER BY RAND() LIMIT $num_questions";
-                $result = $conn->query($sql);
-                
-                if ($result->num_rows > 0) {
-                    echo "<h3>$skill</h3>";
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<label for='question$question_number' class='questionName'>$question_number. {$row['Questions']}</label><br/>";
-                        echo "<div class='examOptions'>";
-                        for ($i = 1; $i <= 4; $i++) {
-                            $option = "Option$i";
-                            echo "<div>
-                                    <input type='radio' name='question{$question_number}option' id='question{$question_number}option$i' />
-                                    <label for='question{$question_number}option$i'>{$row[$option]}</label>
-                                  </div>";
-                        }
-                        echo "</div>";
-                        echo "<br />";
-                        echo "<br />";
-                        $question_number++;
-                    }
-                }
-            }
-        } else {
-            echo "Internship not found.";
-        }
+          // Retrieve and display random questions from each skill
+          $question_number = 1;
+          foreach ($num_questions_per_skill as $skill => $num_questions) {
+              $sql = "SELECT * FROM question_bank WHERE skills = '$skill' ORDER BY RAND() LIMIT $num_questions";
+              $result = $conn->query($sql);
+              
+              if ($result->num_rows > 0) {
+                  echo "<h3>$skill</h3>";
+                  while ($row = $result->fetch_assoc()) {
+                      echo "<input type='hidden' name='question_ids[]' value='{$row['QID']}' />";
+                      echo "<label for='question$question_number' class='questionName'>$question_number. {$row['Questions']}</label><br/>";
+                      echo "<div class='examOptions'>";
+                      for ($i = 1; $i <= 4; $i++) {
+                          $option = "Option$i";
+                          echo "<div>
+                                  <input type='radio' name='answers[{$row['QID']}]' id='question{$question_number}option$i' value='{$row[$option]}' />
+                                  <label for='question{$question_number}option$i'>{$row[$option]}</label>
+                                </div>";
+                      }
+                      echo "</div>";
+                      echo "<br />";
+                      echo "<br />";
+                      $question_number++;
+                  }
+              }
+          }
+      } else {
+          echo "Internship not found.";
+      }
 
-        $conn->close();
+      $conn->close();
       ?>
 
-       <button class="examSubmitbtn" type="submit" name="submit">Submit</button>
-    </form>
+      <button class="examSubmitbtn" type="submit" name="submit">Submit</button>
+  </form>
 
 
     <!-- script -->

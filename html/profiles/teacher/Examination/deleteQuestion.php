@@ -18,11 +18,11 @@
 
     if ($delete_result) {
         echo"
-                <script>
-                    alert('You have deleted the question.');
-                    document.location.href = 'viewQuestions.php';
-                </script>
-                ";
+            <script>
+                alert('You have deleted the question.');
+                document.location.href = 'viewQuestions.php';
+            </script>
+            ";
         exit;
     } else {
         echo "<script>alert('Error: Delete failed. Please try again later.');</script>";

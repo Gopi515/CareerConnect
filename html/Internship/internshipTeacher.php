@@ -52,8 +52,35 @@
     $offset = ($currentPage - 1) * $internshipsPerPage;
 
     $currentDate = date("Y-m-d");
+
+    // Initialize filter conditions
+    $filterConditions = "WHERE i.apply_by >= '$currentDate'";
+
+    // Check if filters are set
+    if (isset($_POST['filter'])) {
+        if (!empty($_POST['workFromHome'])) {
+            $filterConditions .= " AND i.location_name = 'Remote'";
+        }
+        if (!empty($_POST['profile'])) {
+            $profile = mysqli_real_escape_string($conn, $_POST['profile']);
+            $filterConditions .= " AND i.topic LIKE '%$profile%'";
+        }
+        if (!empty($_POST['location'])) {
+            $location = mysqli_real_escape_string($conn, $_POST['location']);
+            $filterConditions .= " AND (i.work_location LIKE '%$location%' OR i.location_name LIKE '%$location%')";
+        }
+        if (!empty($_POST['duration'])) {
+            $duration = (int) $_POST['duration'];
+            $filterConditions .= " AND i.duration <= $duration";
+        }
+        if (!empty($_POST['removefilter'])) {
+            $filterConditions = "WHERE i.apply_by >= '$currentDate'";
+        }
+
+    }
+
     // Retrieve the total number of internships
-    $queryTotal = "SELECT COUNT(*) AS total FROM `internships` WHERE apply_by >= '$currentDate'";
+    $queryTotal = "SELECT COUNT(*) AS total FROM `internships` AS i $filterConditions";
     $resultTotal = mysqli_query($conn, $queryTotal);
     $rowTotal = mysqli_fetch_assoc($resultTotal);
     $totalInternships = $rowTotal['total'];
@@ -61,17 +88,15 @@
     // Calculate the total number of pages
     $totalPages = ceil($totalInternships / $internshipsPerPage);
 
-    // fetching date from my pc locally
-    $currentDate = date("Y-m-d"); // Current date
-
-    // Modify the SQL query to retrieve internships for the current page
+    // Modify the SQL query to retrieve internships for the current page with filters
     $query = "SELECT i.*, cpd.name AS name 
             FROM `internships` AS i 
             INNER JOIN `com_personal_details` AS cpd 
             ON i.com_id = cpd.com_id 
-            WHERE i.apply_by >= '$currentDate' 
+            $filterConditions 
             ORDER BY i.id ASC 
             LIMIT $offset, $internshipsPerPage";
+
     $result = mysqli_query($conn, $query);
     $count = mysqli_num_rows($result);
 ?>
@@ -117,78 +142,62 @@
         </i>
       </div>
        
-      <div class="filterOptions">
+      <form method="POST" action="Internship.php">
+            <div class="filterOptions">
+                <!-- checkbox -->
+                <label class="container containerWfrmH">Work from home
+                    <input type="checkbox" id="workFromHome" name="workFromHome">
+                    <span class="checkmark"></span>
+                </label>
 
-        <!-- checkbox -->
-        <label class="container">As per my preferences
-            <input type="checkbox"  id="myCheckbox" onchange="toggleInput()">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container containerWfrmH">Work from home
-            <input type="checkbox" id="option5Input" onchange="toggleInput()">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container containerPartTime">Part-time
-            <input type="checkbox" id="option6Input">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container containerjobOff">Internships with job offer
-            <input type="checkbox" id="option7Input">
-            <span class="checkmark"></span>
-        </label>
+                <label class="container containerPartTime">Remove filters
+                    <input type="checkbox" id="workFromHome" name="removefilter">
+                    <span class="checkmark"></span>
+                </label>
 
-        <!-- inputbox -->
-        <label class="inputBox">
-            <p>Profile</p>
-            <input type="text" placeholder="e.g. Web Development" id="option1Input">
-            <div id="dropdownFilterprofile"></div>
-            <div id="tag-container"></div>
-        </label>
-        <label class="inputBox inputBoxlocation">
-            <p>Location</p>
-            <input type="text" placeholder="e.g. Delhi" id="option2Input">
-        </label>
-        <label class="inputBox inputBoxDate">
-            <p>Starting from (or after)</p>
-            <input type="date" placeholder="Choose Date" id="option3Input">
-        </label>
-        <label class="inputBox inputBoxDuration">
-            <p>Max.duration(months)</p>
-            <div class="dropdown">
-                <input type="text" id="option4Input" onclick="showDropdown()" placeholder="Choose Duration">
-                <div class="dropdown-content" id="dropdownOptions">
-                  <a href="#" onclick="selectOption('1 month')">1 month</a>
-                  <a href="#" onclick="selectOption('2 months')">2 months</a>
-                  <a href="#" onclick="selectOption('3 months')">3 months</a>
-                  <a href="#" onclick="selectOption('4 months')">4 months</a>
-                  <a href="#" onclick="selectOption('5 months')">5 months</a>
-                  <a href="#" onclick="selectOption('6 months')">6 months</a>
-                </div>
-              </div>
-        </label>
+                <!-- profile -->
+                <label class="inputBox">
+                    <p>Profile</p>
+                    <input type="text" id="profile" name="profile" placeholder="e.g. Web Development">
+                </label>
 
-      </div>
+                <!-- location -->
+                <label class="inputBox inputBoxlocation">
+                    <p>Location</p>
+                    <input type="text" id="location" name="location" placeholder="e.g. Delhi">
+                </label>
+
+                <!-- duration -->
+                <label class="inputBox inputBoxDuration">
+                    <p>Max.duration(months)</p>
+                    <select id="duration" name="duration">
+                        <option value="">Choose Duration</option>
+                        <option value="1">1 month</option>
+                        <option value="2">2 months</option>
+                        <option value="3">3 months</option>
+                        <option value="4">4 months</option>
+                        <option value="5">5 months</option>
+                        <option value="6">6 months</option>
+                    </select>
+                </label>
+
+                <!-- filter button -->
+                <button type="submit" name="filter">Apply Filters</button>
+            </div>
+
+        </form>
     </div>
 
     <!-- Internship listings -->
    <div class="internshipContainer">
-
-
-    
-    <?php
-    if($count > 0) {
-    ?>
-
-
-       <h2><?php echo $totalInternships . ' Total internships'; ?></h2> <!-- Display total internships -->
-
+    <?php if ($count > 0): ?>
+        <h2><?php echo $totalInternships . ' Total internships'; ?></h2> <!-- Display total internships -->
         <div class="internshipOrder">
-            <?php
-            while($row = mysqli_fetch_array($result)) {
-                ?>
+            <?php while ($row = mysqli_fetch_array($result)): ?>
                 <div class="internshipCard internshipCard1">
-                    <form action="Internship.php?action=add&id=<?php echo $row["id"]?>" method="POST">
+                    <form action="Internship.php?action=add&id=<?php echo $row["id"]; ?>" method="POST">
                         <h1><?php echo $row["topic"]; ?></h1>
+                        <p class="company_namef"><?php echo $row["name"]; ?></p>
                         <div class="locationP">
                             <i class="fa-solid fa-location-dot"></i>
                             <?php echo $row["work_location"]; ?>
@@ -209,7 +218,6 @@
                             </div>
                         </div>
 
-                        <!-- for storing the data of applied internship temporary -->
                         <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
                         <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
                         <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>" style="display: none;">
@@ -218,39 +226,32 @@
                         <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>" style="display: none;">
 
                         <div class="buttonNextstep">
-                            <a href="viewdetailsinternshipTeacher.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
+                            <a href="viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
+                            <button class="applyButton" type="submit" name="applyInternship">Apply</button>
                         </div>
                     </form>
                 </div>
-                <?php
-            }
-            ?>
+            <?php endwhile; ?>
         </div>
 
         <h2 class="pageNumbers"><?php echo "Page $currentPage of $totalPages"; ?></h2> <!-- Display current page -->
-        
+
         <!-- Pagination navigation -->
         <div class="pagination">
-            <?php if ($currentPage > 1) : ?>
+            <?php if ($currentPage > 1): ?>
                 <a href="?page=<?php echo $currentPage - 1; ?>">&lt;</a>
             <?php endif; ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <a <?php echo ($i === $currentPage) ? 'class="active"' : ''; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
             <?php endfor; ?>
-            <?php if ($currentPage < $totalPages) : ?>
+            <?php if ($currentPage < $totalPages): ?>
                 <a href="?page=<?php echo $currentPage + 1; ?>">&gt;</a>
             <?php endif; ?>
         </div>
-        <?php
-         if($count > 0) {
-    } else {
-        echo "<p>No internships found.</p>";
-    }
-    ?>
-        <?php
-    }
-    ?>
-</div>
+        <?php else: ?>
+            <p>No internships found.</p>
+        <?php endif; ?>
+    </div>
 
 
 

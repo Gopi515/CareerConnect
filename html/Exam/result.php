@@ -1,4 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['score'])) {
+    header("Location: takeExam.php");
+    exit();
+}
 
+$score = $_SESSION['score'];
+$correct_answers_count = $_SESSION['correct_answers_count'];
+$wrong_answers_count = $_SESSION['wrong_answers_count'];
+$total_questions = $_SESSION['total_questions'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,33 +17,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <title>Other Page</title>
-    <style>
-        .message-container {
-            display: none; /* Initially hidden */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 2px solid #0083fa;
-            border-radius: 8px;
-            text-align: center;
-            z-index: 1000;
-        }
-    </style>
+    <title>Exam Results</title>
 </head>
 <body>
-    nothing to see here yet
-    <!-- Message container -->
-    <div class="message-container" id="messageContainer">
-        <p>You have already submitted the exam, you cannot go back to the previous page.</p>
-        <button id="okButton">OK</button>
-    </div>
-
-    <!-- script -->
-    <script src="../../javaScripts/notGoback.js"></script>
+    <h1>Exam Results</h1>
+    <p>Your score: <?php echo $score; ?>/100</p>
+    <p>Correct answers: <?php echo $correct_answers_count; ?></p>
+    <p>Wrong answers: <?php echo $wrong_answers_count; ?></p>
+    <p>Total questions: <?php echo $total_questions; ?></p>
+    <a href="../Internship/applyInternship.php">Go Back</a>
 </body>
 </html>
-
