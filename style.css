@@ -50,12 +50,14 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(180deg,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244));
+  background: linear-gradient(
+    180deg,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244)
+  );
 }
 
 .navbar {
@@ -427,11 +429,13 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(-45deg,
-      var(--fourth-col),
-      var(--third-col),
-      var(--third-col),
-      var(--fourth-col));
+  background: linear-gradient(
+    -45deg,
+    var(--fourth-col),
+    var(--third-col),
+    var(--third-col),
+    var(--fourth-col)
+  );
   display: flex;
   justify-content: center;
 }
@@ -1031,11 +1035,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1045,7 +1049,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1895,17 +1899,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1925,19 +1938,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2051,7 +2076,6 @@ span {
 .btn.selected {
   background-color: var(--fifth-col);
 }
-
 
 /*Apply filter part*/
 .btnapply {
@@ -2819,9 +2843,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4597,4 +4621,109 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 10px;
   color: var(--fourth-col);
   box-shadow: var(--box-shadow);
+}
 
+/* SwiperCSS */
+.Internship_section {
+  width: 100%;
+}
+
+.swiper {
+  width: 90%;
+  padding-bottom: 50px;
+}
+.swiper .swiper-slide {
+  background-position: center;
+  width: 25rem;
+  height: 400px;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+  transition: all 0.5s ease;
+  border-radius: 10px;
+  background-color: rgb(91, 209, 255);
+}
+.swiper-slide-active {
+  filter: blur(0px);
+}
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+/* swiper headings */
+.swiper .content {
+  text-transform: uppercase;
+  padding-top: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.swiper .content h3 {
+  color: var(--first-col);
+  font-size: 20px;
+}
+.swiper .uil {
+  color: var(--black);
+  position: relative;
+}
+.swiper .content p {
+  margin: -5px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
+.swiper .content a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 8px 12px;
+  color: var(--fourth-col);
+  background-color: var(--first-col);
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+.swiper .content a:hover {
+  letter-spacing: none;
+  font-size: 14px;
+  box-shadow: 0 0 1px var(--white), 0 0 5px var(--first-color),
+    0 0 15px var(--first-color);
+}
+
+/* Swiper odd & even cards */
+
+.swiper .detailodd img {
+  display: flex;
+  position: relative;
+  object-fit: cover;
+  margin-top: 30px;
+  width: 330px;
+  height: 180px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  border: 2px solid whitesmoke;
+}
+.swiper .detaileven img {
+  display: flex;
+  margin-left: 120px;
+  position: relative;
+  margin: 30px 60px 15px 60px;
+  width: 200px;
+  height: 100px;
+  border-radius: 0% 40%;
+  box-shadow: 0 5px 50px var(--lildark);
+  border: 2px solid var(--second-color);
+}
+.landingToall {
+  position: absolute;
+  margin-top: 130px;
+  margin-left: 490px;
+  text-decoration: none;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--fourth-col);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.landingToall:hover {
+  letter-spacing: 2px;
+}
