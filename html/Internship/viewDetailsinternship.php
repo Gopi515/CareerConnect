@@ -33,6 +33,26 @@
     WHERE i.id = $id
     GROUP BY a.internship_id";
     $result=$conn->query($sql_query);
+
+    $query = "SELECT * FROM internships WHERE id = '$id'";
+    $find = $conn->query($query);
+    if (mysqli_num_rows($find) > 0) {
+        while ($row = mysqli_fetch_array($find)) {
+            $internship_topic = $row["topic"];
+            $internship_location = $row["location_name"];
+            $internship_duration = $row["duration"];
+            $internship_com_id = $row["com_id"];
+            $internship_com_email = $row["com_email"];
+            $internship_int_id = $row["id"];
+        }
+    }
+
+    $_SESSION['int_topic'] = $internship_topic;
+    $_SESSION['int_loc'] = $internship_location;
+    $_SESSION['int_dur'] = $internship_duration;
+    $_SESSION['int_com_id'] = $internship_com_id;
+    $_SESSION['int_com_email'] = $internship_com_email;
+    $_SESSION['int_id'] = $internship_int_id;
 ?>
 
 <body style="height: 230vh;">
@@ -109,7 +129,7 @@
 
 
                 <a href="../Internship/applyInternship.php" class="detailsApplybutton">Apply</a>
-                <?php
+    <?php
             }
         }
     ?>

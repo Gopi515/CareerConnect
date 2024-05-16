@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/internshipQuestion.js"></script>
+    <script src="../../../javaScripts/OldintershipQuestion.js"></script>
     <script src="../../../javaScripts/resume/skills.js"></script>
     <script src="../../../javaScripts/resumeNOC.js"></script>
 </body>
