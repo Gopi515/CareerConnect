@@ -124,7 +124,7 @@ $result4 = mysqli_query($conn, $query);
               <i class="uil uil-laptop"></i>
               <div style="margin-top: 20px">
                 <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
-                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['stipend']; ?>/month</p>
+                <p> &#8377; <?php echo $row['stipend']; ?>/month</p>
                 <p><i class="fa-solid fa-clock"></i> <?php echo $row['duration']; ?> months</p>
               </div>
               <a href="../Internship/viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
@@ -162,7 +162,7 @@ $result4 = mysqli_query($conn, $query);
               <i class="uil uil-laptop"></i>
               <div style="margin-top: 20px">
                 <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
-                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['stipend']; ?>/month</p>
+                <p>&#8377; <?php echo $row['stipend']; ?>/month</p>
                 <p><i class="fa-solid fa-clock"></i> <?php echo $row['duration']; ?> months</p>
               </div>
               <a href="../Internship/viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
@@ -199,7 +199,7 @@ $result4 = mysqli_query($conn, $query);
               <i class="uil uil-laptop"></i>
               <div style="margin-top: 20px">
                 <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
-                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['CTC']; ?>/month</p>
+                <p>&#8377; <?php echo $row['CTC']; ?>/month</p>
               </div>
               <a href="../Job/viewDetailsjob.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
             </div>
@@ -235,7 +235,7 @@ $result4 = mysqli_query($conn, $query);
               <i class="uil uil-laptop"></i>
               <div style="margin-top: 20px">
                 <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
-                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['CTC']; ?>/month</p>
+                <p>&#8377;</i> <?php echo $row['CTC']; ?>/month</p>
               </div>
               <a href="../Job/viewDetailsjob.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
             </div>
@@ -282,7 +282,6 @@ $result4 = mysqli_query($conn, $query);
               <li><a href="../Internship/internship.php">Internships</a></li>
               <li><a href="../Job/job.php">Jobs</a></li>
               <li><a href="../profiles/student/resume.php">CV Builder</a></li>
-              <li><a href="../CEE/home.php">Take skill test</a></li>
               <li>
                 <a href="mailto:careerconnect383@gmail.com">Contact Us</a>
               </li>

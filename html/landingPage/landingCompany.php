@@ -54,7 +54,6 @@ $totaljob = $row['total_job'];
                 <ul class="nav-links">
                     <a class="navmains" href="../profiles/company/posted/internshipposted.php">Your Internships</a>
                     <a class="navmains" href="../profiles/company/posted/jobposted.php">Your Jobs</a>
-                    <li><a href="#"><i class="fas fa-window-restore"></i></a></li>
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">

@@ -315,7 +315,6 @@ $result4 = mysqli_query($conn, $query);
           <ul>
             <li><a href="../Internship/internshipTeacher.php">View Internships</a></li>
             <li><a href="../Job/jobTeacher.php">View Jobs</a></li>
-            <li><a href="../CEE/adminpanel/">Take Exam</a></li>
             <li><a href="mailto:careerconnect383@gmail.com">Contact Us</a></li>
 
           </ul>
