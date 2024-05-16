@@ -1,23 +1,25 @@
+// Function to start the timer
 function startTimer() {
   const timerElement = document.getElementById("timer");
   const examForm = document.getElementById("examForm");
 
-  let endTime = localStorage.getItem("endTime");
+  let endTime = sessionStorage.getItem("endTime");
 
   if (!endTime) {
-    endTime = Date.now() + 15 * 60 * 1000;
-    localStorage.setItem("endTime", endTime);
+    endTime = Date.now() + 15 * 60 * 1000; // Set the end time to 15 minutes from now
+    sessionStorage.setItem("endTime", endTime); // Save the end time in sessionStorage
   }
 
+  // Calculate and display the time remaining
   const interval = setInterval(() => {
     const now = Date.now();
     const timeLeft = Math.floor((endTime - now) / 1000);
 
     if (timeLeft <= 0) {
-      clearInterval(interval);
-      localStorage.removeItem("endTime");
-      document.getElementById("autoSubmit").value = "1";
-      examForm.submit();
+      clearInterval(interval); // Stop the timer if time is up
+      sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage
+      document.getElementById("autoSubmit").value = "1"; // Auto-submit the form
+      examForm.submit(); // Submit the form
       return;
     }
 
@@ -26,26 +28,40 @@ function startTimer() {
 
     timerElement.textContent = `${minutes}:${
       seconds < 10 ? "0" : ""
-    }${seconds}`;
-  }, 1000);
+    }${seconds}`; // Display the time remaining
+  }, 1000); // Update the timer every second
 }
 
+// Event listener to start the timer when the window loads
 window.onload = startTimer;
 
+// Variable to track if the form is submitted
 let formSubmitted = false;
 
+// Event listener to mark the form as submitted
 document.getElementById("examForm").addEventListener("submit", function () {
   formSubmitted = true;
-  localStorage.removeItem("endTime");
+  sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage when the form is submitted
 });
 
-window.addEventListener("beforeunload", function (e) {
-  if (formSubmitted) {
-    return undefined;
-  }
+// Event listener for the popstate event to clear the sessionStorage when the user navigates back
+window.addEventListener("popstate", function () {
+  sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage when the user navigates back
+});
 
-  const message =
-    "Are you sure you want to refresh the page or go back and restart the test? All the saved data will be lost.";
-  e.returnValue = message;
-  return message;
+// Function to reset the timer
+function resetTimer() {
+  sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage
+}
+
+// Event listener for the "go back" button
+document.querySelector(".goBack").addEventListener("click", function () {
+  resetTimer(); // Reset the timer when the user clicks the "go back" button
+});
+
+// Event listener for the popstate event (back/forward button of the browser)
+window.addEventListener("popstate", function () {
+  if (!formSubmitted) {
+    resetTimer(); // Reset the timer when the user navigates back/forward
+  }
 });
