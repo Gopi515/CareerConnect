@@ -18,6 +18,56 @@ if (!isset($_SESSION['mail'])) {
   <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
 
+<?php
+  require '../../dbconnect.php';
+  if (isset($_POST["question_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+      $filename = $_FILES["file"]["tmp_name"];
+      $file_extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
+      // Check if the file extension is CSV
+      if ($file_extension === 'csv') {
+          if ($_FILES["file"]["size"] > 0) {
+              $file = fopen($filename, "r");
+
+              while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+
+                  $questionName = $getData[0];
+                  $option1 = $getData[1];
+                  $option2 = $getData[2];
+                  $option3 = $getData[3];
+                  $option4 = $getData[4];
+                  $correctOption = $getData[5];
+                  $skillsString = $getData[6];
+
+                  $sql = "INSERT INTO `question_bank`(`email`, `Questions`, `OptionA`, `OptionB`, `OptionC`, `OptionD`, `right_option`, `skills`) 
+                      values ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (!isset($result)) {
+                      echo "<script type=\"text/javascript\">
+                          alert(\"Invalid File:Please Upload CSV File.\");
+                          window.location = \"landingTeacher.php\"
+                          </script>";
+                  } else {
+                      echo "<script type=\"text/javascript\">
+                          alert(\"CSV File has been successfully Imported.\");
+                          window.location = \"landingTeacher.php\"
+                          </script>";
+                  }
+              }
+
+              fclose($file);
+          }
+      } else {
+          // Display error message for invalid file type
+          echo "<script type=\"text/javascript\">
+              alert(\"Invalid File Type: Please Upload CSV File.\");
+              window.location = \"landingTeacher.php\"
+              </script>";
+      }
+  }
+?>
+
 <body class="bg-img">
   <!-- welcome section -->
   <header>
@@ -51,7 +101,7 @@ if (!isset($_SESSION['mail'])) {
     </nav>
   </header>
 
-  <form action="#" method="post" name="company_excel" enctype="multipart/form-data">
+  <form action="#" method="post" name="question_excel" enctype="multipart/form-data">
     <div id="uploadModalC" class="modalXD">
         <div class=" modal-content-machine">
             <div id="closemodal" onclick="closexlsxC()"><i class='bx bx-x'></i></div>
@@ -61,7 +111,7 @@ if (!isset($_SESSION['mail'])) {
                 <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
             </div>
             <div id="uploadResult"></div>
-            <button type="submit" id="submit" name="company_mass_data">Upload</button>
+            <button type="submit" id="submit" name="question_mass_data">Upload</button>
             <span id="fileName"></span>
         </div>
     </div>
