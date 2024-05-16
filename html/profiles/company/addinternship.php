@@ -171,9 +171,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="skillAddheading">Add Required Skills*</p>
             <input type="text" id="option1Input" placeholder="Search to add required skills for this Internship e.g. HTML">
             <div id="dropdownFilterprofile" style="width: 100%;"></div>
-            <!-- Use a hidden input field to store the selected skills -->
+            <!-- hidden input field to store the selected skills -->
             <input type="hidden" id="skillsInput" name="skills">
-            <!-- Use a div to display the selected skills -->
+            <!-- div to display the selected skills -->
             <div id="tag-container" class="hiddenDiv" style="border: none; width: 100%;"></div>
             </label>
 
@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../../../javaScripts/tillzero.js"></script>
     <script src="../../../javaScripts/date.js"></script>
     <script src="../../../javaScripts/label.js"></script>
-    <script src="../../../javaScripts/internshipQuestion.js"></script>
+    <script src="../../../javaScripts/OldintershipQuestion.js"></script>
     <script src="../../../javaScripts/resume/skills.js"></script>
     <script src="../../../javaScripts/resumeNOC.js"></script>
 </body>

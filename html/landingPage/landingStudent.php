@@ -34,11 +34,7 @@ if (!isset($_SESSION['mail'])) {
               <span class="navItemshover" style="margin-left: -75px">Find best jobs</span>
             </a>
           </li>
-          <li>
-            <a href="../CEE/home.php" class="navItems">Skill Test
-              <span class="navItemshover" >Test your skill</span>
-            </a>
-          </li>
+          
 
           <div class="dropdown">
             <li onclick="toggleDropdown()">
