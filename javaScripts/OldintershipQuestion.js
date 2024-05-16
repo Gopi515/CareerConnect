@@ -207,7 +207,7 @@ const dropdownItems = [
 // JavaScript code for dropdown filter and single skill selection
 // Ensure dropdownItems array is defined
 
-let selectedSkill = null; // Variable to store the selected skill
+let selectedSkills = []; // Array to store the selected skills
 
 const searchBar = document.getElementById("option1Input");
 const dropdown = document.getElementById("dropdownFilterprofile");
@@ -239,33 +239,34 @@ function renderDropdown(items) {
 }
 
 function selectItem(item) {
-  selectedSkill = item; // Update selected skill
-  renderTags();
+  if (!selectedSkills.includes(item)) {
+    selectedSkills.push(item); // Update selected skills if not already present
+    renderTags();
+  }
   searchBar.value = "";
   dropdown.style.display = "none";
 }
 
 function renderTags() {
   tagContainer.innerHTML = "";
-  if (selectedSkill !== null) {
+  selectedSkills.forEach((skill) => {
     const tag = document.createElement("div");
     tag.classList.add("tag");
-    tag.innerHTML = `<span>${selectedSkill}</span><button onclick="removeTag()">&#10005;</button>`;
+    tag.innerHTML = `<span>${skill}</span><button onclick="removeTag('${skill}')">&#10005;</button>`;
     tagContainer.appendChild(tag);
-  }
+  });
 
-  // Update the hidden input field with the selected skill
+  // Update the hidden input field with all selected skills
   updateSkillsInput();
 }
 
-function removeTag() {
-  selectedSkill = null; // Reset selected skill
+function removeTag(skillToRemove) {
+  selectedSkills = selectedSkills.filter((skill) => skill !== skillToRemove);
   renderTags();
 }
 
-// Function to update the hidden input field with the selected skill
+// Function to update the hidden input field with the selected skills
 function updateSkillsInput() {
   const skillsInput = document.getElementById("skillsInput");
-  skillsInput.value =
-    selectedSkill !== null ? JSON.stringify([selectedSkill]) : "";
+  skillsInput.value = JSON.stringify(selectedSkills);
 }
