@@ -37,11 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- headings and instructions -->
     <h1 class="takeExamheading">Take exam</h1>
-    <p class="examInstructions">
-      [Instructions: Answer all the questions below. You can only submit the exam once.
-      Refreshing the page or going back will result in loss of all saved data.
-      You have 15 minutes to complete the exam. If you refresh the page the timer will not reset but, the exam will be submitted automatically when the time is up]
-    </p>
      
 
 
@@ -175,8 +170,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button class="examSubmitbtn" type="submit" name="submit">Submit</button>
   </form>
 
+  <!-- Popup container for exam instructions -->
+    <div id="examInstructionsPopup" class="popup-container">
+    <div class="popup-content">
+        <h2>Exam Instructions</h2>
+        <p style="color: var(--fourth-col); font-weight: bold;">Read the instructions carefully before taking the test:</p>
+        <ul style="margin-top: 20px; text-align: left;">
+            <li>In this page you will be facing 10 multiple choice questions based on the internship/job you are applying for.
+            </li>
+            <li>
+                You will get 15 minutes to complete the exam. If you able to score 60% marks (6 correct out of 10 questions), then you will be able to submit the application otherwise you can take the test again.
+            </li>
+            <li>You can only submit the exam once. Refreshing the page or going back will result in the loss of all saved data.</li>
+            <li>Exam will be submitted automatically when the time is up.</li>
+        </ul>
+        <br>
+        <p>Good Luck!</p>
+        <button id="startExamBtn">OK</button>
+        <button id="cancelExamBtn">Cancel Exam</button>
+    </div>
+    </div>
 
     <!-- script -->
     <script src="../../javaScripts/timer.js"></script>
+    <script>
+        function showExamInstructionsPopup() {
+          var popup = document.getElementById("examInstructionsPopup");
+          popup.style.display = "flex";
+      }
+
+      // Function to start the exam
+      function startExam() {
+          var popup = document.getElementById("examInstructionsPopup");
+          popup.style.display = "none";
+          // Set the autoSubmit hidden input value to 0 to indicate manual submission
+          document.getElementById("autoSubmit").value = "0";
+          // Start the timer
+          startTimer();
+      }
+
+      // Function to cancel the exam and go back to the internship page
+      function cancelExam() {
+          localStorage.removeItem("endTime");
+          window.location.href = "../Internship/applyInternship.php";
+      }
+
+      // Show the exam instructions popup when the page loads
+      window.onload = function() {
+          showExamInstructionsPopup();
+          document.getElementById("startExamBtn").addEventListener("click", startExam);
+          document.getElementById("cancelExamBtn").addEventListener("click", cancelExam);
+      };
+
+       window.history.forward(); 
+        function noBack() { 
+            window.history.forward(); 
+        } 
+</script>
   </body>
 </html>
