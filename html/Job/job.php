@@ -107,7 +107,6 @@ if (isset($_POST["applyjob"])) {
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton"><a href="../Internship/internship.php">Internship</a></li>
                     <li id="button2" class="interJobbutton"><a href="#">Job</a></li>
-                    <li id="button2" class="interJobbutton"><a href="../CEE/home.php">Skill Test</a></li>
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">

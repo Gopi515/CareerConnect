@@ -335,7 +335,6 @@
                                                 <div class="option-dropdown">
                                                     <select name="skill" class="form-control skill" id="skill_select" onchange="generateCV()">
                                                         <option value="">Select Skill</option>
-                                                        <select id="skillsDropdown">
   <option value="AJAX">AJAX</option>
   <option value="ALGORITHMS">ALGORITHMS</option>
   <option value="AMAZON WEB SERVICE">AMAZON WEB SERVICE</option>
