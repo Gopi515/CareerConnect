@@ -89,14 +89,14 @@ $result4 = mysqli_query($conn, $query);
   <header>
     <nav id="navbar">
       <div class="container">
-        <div class="logo">CareerConnect</div>
+        <a href="landingTeacher.php" style="text-decoration: none;"><div class="logo">CareerConnect</div></a>
         <ul class="nav-links">
           <li>
-            <a href="../Internship/internshipTeacher.php">Internship</a>
+            <a href="../Internship/internshipTeacher.php">Internships</a>
           </li>
-          <li><a href="../Job/jobTeacher.php">Job</a></li>
+          <li><a href="../Job/jobTeacher.php">Jobs</a></li>
           <li>
-            <a href="../CEE/adminpanel/"><i class="fa-solid fa-note-sticky"></i></a>
+            <a href="../profiles/teacher/Examination/questionUpload.php">Upload Questions</a>
           </li>
           <div class="dropdown">
             <li onclick="toggleDropdown()">

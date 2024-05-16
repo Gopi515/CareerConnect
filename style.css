@@ -50,14 +50,12 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(
-    180deg,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244),
-    white,
-    rgb(217, 255, 244)
-  );
+  background: linear-gradient(180deg,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244),
+      white,
+      rgb(217, 255, 244));
 }
 
 .navbar {
@@ -429,13 +427,11 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(
-    -45deg,
-    var(--fourth-col),
-    var(--third-col),
-    var(--third-col),
-    var(--fourth-col)
-  );
+  background: linear-gradient(-45deg,
+      var(--fourth-col),
+      var(--third-col),
+      var(--third-col),
+      var(--fourth-col));
   display: flex;
   justify-content: center;
 }
@@ -990,7 +986,7 @@ footer {
   display: inline-flex;
   width: 100%;
   margin-top: 20%;
-  margin-left: -35%;
+  margin-left: -44.5%;
   cursor: pointer;
   font-size: 1.1rem;
   -webkit-user-select: none;
@@ -1035,11 +1031,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input ~ .checkmark {
+.filterContainer .container:hover input~.checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked ~ .checkmark {
+.filterContainer .container input:checked~.checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1049,7 +1045,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked ~ .checkmark:after {
+.filterContainer .container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -1066,11 +1062,11 @@ footer {
 }
 
 .filterContainer .containerWfrmH {
-  top: 13%;
+  top: 32%;
 }
 
 .filterContainer .containerPartTime {
-  top: 40%;
+  top: 65%;
 }
 
 .filterContainer .containerjobOff {
@@ -1080,8 +1076,28 @@ footer {
 /* custom inputbox */
 .filterContainer .inputBox {
   position: absolute;
-  top: 22%;
+  top: 15%;
   left: 10%;
+}
+
+.applyFilter {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  padding: 10px 20px;
+  background-color: var(--fourth-col);
+  color: var(--first-col);
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.applyFilter:hover {
+  box-shadow: 0 0 10px var(--fourth-col);
+  transform: scale(1.05);
 }
 
 .hiddenDiv {
@@ -1107,7 +1123,7 @@ footer {
 }
 
 .filterContainer .inputBoxlocation {
-  top: 15%;
+  top: 28%;
 }
 
 .filterContainer .inputBoxDate {
@@ -1899,26 +1915,17 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipheading
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
   width: 17rem;
 }
 
@@ -1938,31 +1945,19 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedProfile {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedLocation {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedDuration {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship
-  .applliedInternshiplist
-  .appliedInternshipitems
-  .appliedStatus {
+.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2843,9 +2838,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked ~ .label-1,
-#female:checked ~ .label-2,
-#others:checked ~ .label-3 {
+#male:checked~.label-1,
+#female:checked~.label-2,
+#others:checked~.label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4632,6 +4627,7 @@ input[type="file"]::file-selector-button:hover {
   width: 90%;
   padding-bottom: 50px;
 }
+
 .swiper .swiper-slide {
   background-position: center;
   width: 25rem;
@@ -4642,9 +4638,11 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 10px;
   background-color: rgb(91, 209, 255);
 }
+
 .swiper-slide-active {
   filter: blur(0px);
 }
+
 .swiper-3d .swiper-slide-shadow-left,
 .swiper-3d .swiper-slide-shadow-right {
   background-image: none;
@@ -4657,20 +4655,24 @@ input[type="file"]::file-selector-button:hover {
   text-decoration: none;
   font-weight: 700;
 }
+
 .swiper .content h3 {
   color: var(--first-col);
   font-size: 20px;
 }
+
 .swiper .uil {
   color: var(--black);
   position: relative;
 }
+
 .swiper .content p {
   margin: -5px;
   padding-bottom: 10px;
   font-size: 15px;
   color: rgb(255, 255, 255);
 }
+
 .swiper .content a {
   position: relative;
   display: inline-block;
@@ -4682,6 +4684,7 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 50px;
   transition: all 0.2s ease;
 }
+
 .swiper .content a:hover {
   letter-spacing: none;
   font-size: 14px;
@@ -4702,6 +4705,7 @@ input[type="file"]::file-selector-button:hover {
   box-shadow: var(--box-shadow);
   border: 2px solid whitesmoke;
 }
+
 .swiper .detaileven img {
   display: flex;
   margin-left: 120px;
@@ -4713,6 +4717,7 @@ input[type="file"]::file-selector-button:hover {
   box-shadow: 0 5px 50px var(--lildark);
   border: 2px solid var(--second-color);
 }
+
 .landingToall {
   position: absolute;
   margin-top: 130px;
@@ -4724,6 +4729,7 @@ input[type="file"]::file-selector-button:hover {
   font-weight: 700;
   transition: all 0.3s ease;
 }
+
 .landingToall:hover {
   letter-spacing: 2px;
 }
