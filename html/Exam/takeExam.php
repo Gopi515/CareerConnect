@@ -55,245 +55,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="timer" style="color: black;">15:00</div>
     </div>
 
-      <label for="question1" class="questionName">1. Question 1</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question1option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question1option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question1option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question1option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
+      <?php
+        require '../../dbconnect.php';
 
-      <br />
-      <br />
+        // Get the internship ID from the URL parameter (you need to sanitize this input)
+        $internship_id = $_SESSION['int_id'];
 
-      <label for="question2" class="questionName">2. Question 2</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question2option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question2option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question2option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question2option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
+        // Fetch internship details including skills from the database
+        $sql = "SELECT required_skills FROM internships WHERE id = $internship_id";
+        $result = $conn->query($sql);
 
-      <br />
-      <br />
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $skills = explode(",", $row['required_skills']);
+            $num_skills = count($skills);
 
-      <label for="question3" class="questionName">3. Question 3</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question3option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question3option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question3option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question3option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
+            // Calculate the number of questions to select from each skill based on the specified criteria
+            $num_questions_per_skill = array();
+            if ($num_skills == 1) {
+                $num_questions_per_skill[$skills[0]] = 10;
+            } elseif ($num_skills == 2) {
+                $num_questions_per_skill[$skills[0]] = 5;
+                $num_questions_per_skill[$skills[1]] = 5;
+            } elseif ($num_skills == 3) {
+                $num_questions_per_skill[$skills[0]] = 4;
+                $num_questions_per_skill[$skills[1]] = 3;
+                $num_questions_per_skill[$skills[2]] = 3;
+            } elseif ($num_skills == 4) {
+                $num_questions_per_skill[$skills[0]] = 4;
+                $num_questions_per_skill[$skills[1]] = 2;
+                $num_questions_per_skill[$skills[2]] = 2;
+                $num_questions_per_skill[$skills[3]] = 2;
+            } elseif ($num_skills == 5) {
+                $num_questions_per_skill[$skills[0]] = 2;
+                $num_questions_per_skill[$skills[1]] = 2;
+                $num_questions_per_skill[$skills[2]] = 2;
+                $num_questions_per_skill[$skills[3]] = 2;
+                $num_questions_per_skill[$skills[4]] = 2;
+            }
 
-      <br />
-      <br />
+            // Retrieve and display random questions from each skill
+            $question_number = 1;
+            foreach ($num_questions_per_skill as $skill => $num_questions) {
+                $sql = "SELECT * FROM question_bank WHERE skills = '$skill' ORDER BY RAND() LIMIT $num_questions";
+                $result = $conn->query($sql);
+                
+                if ($result->num_rows > 0) {
+                    echo "<h3>$skill</h3>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<label for='question$question_number' class='questionName'>$question_number. {$row['Questions']}</label><br/>";
+                        echo "<div class='examOptions'>";
+                        for ($i = 1; $i <= 4; $i++) {
+                            $option = "Option$i";
+                            echo "<div>
+                                    <input type='radio' name='question{$question_number}option' id='question{$question_number}option$i' />
+                                    <label for='question{$question_number}option$i'>{$row[$option]}</label>
+                                  </div>";
+                        }
+                        echo "</div>";
+                        echo "<br />";
+                        echo "<br />";
+                        $question_number++;
+                    }
+                }
+            }
+        } else {
+            echo "Internship not found.";
+        }
 
-      <label for="question4" class="questionName">4. Question 4</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question4option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question4option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question4option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question4option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question5" class="questionName">5. Question 5</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question5option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question5option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question5option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question5option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question1" class="questionName">6. Question 6</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question6option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question6option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question6option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question6option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question2" class="questionName">7. Question 7</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question7option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question7option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question7option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question7option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question3" class="questionName">8. Question 8</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question8option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question8option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question8option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question8option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question4" class="questionName">9. Question 9</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question9option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question9option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question9option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question9option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
-
-      <label for="question5" class="questionName">10. Question 10</label>
-       <br/>
-      <div class="examOptions">
-        <div>
-          <input type="radio" name="question10option" id="option1"  />
-          <label for="option1">Option 1</label>
-        </div>
-        <div>
-          <input type="radio" name="question10option" id="option2" />
-          <label for="option2">Option 2</label>
-        </div>
-        <div>
-          <input type="radio" name="question10option" id="option3"  />
-          <label for="option3">Option 3</label>
-        </div>
-        <div>
-          <input type="radio" name="question10option" id="option4"  />
-          <label for="option4">Option 4</label>
-        </div>
-      </div>
-
-      <br />
-      <br />
+        $conn->close();
+      ?>
 
        <button class="examSubmitbtn" type="submit" name="submit">Submit</button>
     </form>

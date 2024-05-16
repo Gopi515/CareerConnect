@@ -69,7 +69,7 @@ if (isset($_POST["submit"])) {
         mysqli_query($conn, $sql);
 
         // Unset session variables
-        unset($_SESSION['int_topic'], $_SESSION['int_loc'], $_SESSION['int_dur'], $_SESSION['int_com_id'], $_SESSION['int_com_email'], $_SESSION['int_id']);
+        unset($_SESSION['int_topic'], $_SESSION['int_loc'], $_SESSION['int_dur'], $_SESSION['int_com_id'], $_SESSION['int_com_email']);
 
         // Redirect after successful submission
         echo "<script>alert('Application submitted successfully');</script>";

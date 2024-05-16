@@ -32,6 +32,25 @@
     WHERE j.id = $id
     GROUP BY a.job_id";
     $result=$conn->query($sql_query);
+
+    $query = "SELECT * FROM job WHERE id = '$id'";
+    $find = $conn->query($query);
+    if (mysqli_num_rows($find) > 0) {
+        while ($row = mysqli_fetch_array($find)) {
+            $job_topic = $row["topic"];
+            $job_location = $row["location_name"];
+            $job_com_id = $row["com_id"];
+            $job_com_email = $row["com_email"];
+            $job_id = $row["id"];
+        }
+    }
+
+    $_SESSION['Job_topic'] = $job_topic;
+    $_SESSION['Job_loc'] = $job_location;
+    $_SESSION['job_com_id'] = $job_com_id;
+    $_SESSION['job_com_email'] = $job_com_email;
+    $_SESSION['job_id'] = $job_id;
+
 ?>
 
 <body style="height: 290vh;">

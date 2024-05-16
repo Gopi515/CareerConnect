@@ -2,42 +2,10 @@
 session_start();
 if (!isset($_SESSION['mail'])) {
     header("Location: ../LoginandRegister/studentLogin.php");
+    exit(); // Ensure script stops executing after redirection
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship</title>
-    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
-    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
-</head>
-
-<!-- php -->
-
-<?php
 require '../../dbconnect.php';
-
-if (isset($_POST["applyInternship"])) {
-    $internship_topic = $_POST["hidden_topic"];
-    $internship_location = $_POST["hidden_location"];
-    $internship_duration = $_POST["hidden_duration"];
-    $internship_com_id = $_POST["hidden_com_id"];
-    $internship_com_email = $_POST["hidden_com_email"];
-    $internship_int_id = $_POST["hidden_int_id"];
-
-    $_SESSION['int_topic'] = $internship_topic;
-    $_SESSION['int_loc'] = $internship_location;
-    $_SESSION['int_dur'] = $internship_duration;
-    $_SESSION['int_com_id'] = $internship_com_id;
-    $_SESSION['int_com_email'] = $internship_com_email;
-    $_SESSION['int_id'] = $internship_int_id;
-
-    header("Location:../Internship/applyInternship.php");
-}
-
 
 $internshipsPerPage = 5;
 
@@ -61,21 +29,47 @@ $totalInternships = $rowTotal['total'];
 // Calculate the total number of pages
 $totalPages = ceil($totalInternships / $internshipsPerPage);
 
-// fetching date from my pc locally
-$currentDate = date("Y-m-d"); // Current date
-
-// Modify the SQL query to retrieve internships for the current page
+// Fetch all internships by default
 $query = "SELECT i.*, cpd.name AS name 
           FROM `internships` AS i 
           INNER JOIN `com_personal_details` AS cpd 
           ON i.com_id = cpd.com_id 
-          WHERE i.apply_by >= '$currentDate' 
-          ORDER BY i.id ASC 
-          LIMIT $offset, $internshipsPerPage";
+          WHERE i.apply_by >= '$currentDate'";
+
+// Check if the filter form is submitted and topic is provided
+if (isset($_POST["applyFilter"]) && isset($_POST["topicInput"]) && !empty($_POST["topicInput"])) {
+    $topic = $_POST["topicInput"];
+    // Modify the query to filter by topic
+    $query .= " AND i.topic LIKE '%$topic%'";
+
+    // Store filter parameters in session for persistence
+    $_SESSION['filter_topic'] = $topic;
+} elseif (isset($_POST["removeFilter"])) {
+    // Unset the filter topic session variable
+    unset($_SESSION['filter_topic']);
+}
+
+if (isset($_SESSION['filter_topic'])) {
+    // Apply filter from session
+    $topic = $_SESSION['filter_topic'];
+    $query .= " AND i.topic LIKE '%$topic%'";
+}
+
+$query .= " ORDER BY i.id ASC LIMIT $offset, $internshipsPerPage";
+
 $result = mysqli_query($conn, $query);
 $count = mysqli_num_rows($result);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship</title>
+    <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>">
+    <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
+</head>
 
 <body>
     
@@ -110,8 +104,27 @@ $count = mysqli_num_rows($result);
     <div class="internshipPage" id="card1">
     <div class="internshipSection">
     <a href="../landingPage/landingStudent.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 7.5%;"></i></a>
+    
     <!-- filter section -->
     <div class="filterContainer">
+        <div class="filter">
+            <i class="fas fa-filter">
+                <h1>Filters</h1>
+            </i>
+        </div>
+
+        <form method="POST" action="">
+            <label class="inputBox inputBoxlocation">
+                <p>Topic</p>
+                <input type="text" name="topicInput" placeholder="e.g. Web Developer">
+            </label>
+                
+            <button type="submit" name="applyFilter" class="btnapply">Apply Filter</button>
+            <button type="submit" name="removeFilter" class="btnremove">Remove Filter</button>
+        </form>
+    </div>
+
+    <!-- <div class="filterContainer">
       <div class="filter">
         <i class="fas fa-filter">
             <h1>Filters</h1>
@@ -119,12 +132,6 @@ $count = mysqli_num_rows($result);
       </div>
        
       <div class="filterOptions">
-
-        <!-- checkbox -->
-        <!-- <label class="container">As per my preferences
-            <input type="checkbox"  id="myCheckbox" onchange="toggleInput()">
-            <span class="checkmark"></span>
-        </label> -->
         <label class="container containerWfrmH">Work from home
             <input type="checkbox" id="option5Input" onchange="toggleInput()">
             <span class="checkmark"></span>
@@ -138,30 +145,23 @@ $count = mysqli_num_rows($result);
             <span class="checkmark"></span>
         </label>
 
-        <!-- inputbox -->
         <label class="inputBox">
 
-        <!-- profile -->
             <p>Profile</p>
             <input type="text" id="option1Input" placeholder="e.g. Web Development">
             <div id="dropdownFilterprofile"></div>
             <div id="tag-container" class="hiddenDiv"></div>
         </label>
 
-        <!-- location -->
         <label class="inputBox inputBoxlocation">
             <p>Location</p>
             <input type="text" placeholder="e.g. Delhi" id="option2Input" onclick="showDropdown()" oninput="filterOptions()">
-            <!-- <div class="dropdown-contentLocation" id="dropdownoptionslocation"> -->
         </label>
 
-        <!-- date -->
         <label class="inputBox inputBoxDate">
             <p>Starting from (or after)</p>
             <input type="date" placeholder="Choose Date" id="option3Input">
         </label>
-
-        <!-- duration -->
         <label class="inputBox inputBoxDuration">
             <p>Max.duration(months)</p>
             <div class="dropdown">
@@ -178,7 +178,7 @@ $count = mysqli_num_rows($result);
         </label>
 
       </div>
-    </div>
+    </div> -->
 
     <!-- Internship listings -->
     <div class="internshipContainer">
@@ -187,76 +187,76 @@ $count = mysqli_num_rows($result);
         if ($count > 0) {
             ?>
 
-            <h2><?php echo $totalInternships . ' Total internships'; ?></h2> <!-- Display total internships -->
+                <h2><?php echo $totalInternships . ' Total internships'; ?></h2> <!-- Display total internships -->
 
-            <div class="internshipOrder">
-                <?php
+                <div class="internshipOrder">
+                    <?php
                     while ($row = mysqli_fetch_array($result)) {
-                ?>
-            <div class="internshipCard internshipCard1">
-            <form action="Internship.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
-                <h1><?php echo $row["topic"]; ?></h1>
-                <p class="company_namef"><?php echo $row["name"]; ?></p>
-                <div class="locationP">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <?php echo $row["work_location"]; ?>
-                    <?php echo $row["location_name"]; ?>
-                    </div>
-                    <div class="mainDetails">
-                        <div class="lastDateapply">
-                            <p><i class="fa-solid fa-calendar-days"></i> Last date to apply</p>
-                            <p><?php echo $row["apply_by"]; ?></p>
-                        </div>
-                        <div class="durationInternship">
-                            <p><i class="fa-solid fa-clock"></i> Duration</p>
-                            <p><?php echo $row["duration"]; ?></p>
-                        </div>
-                        <div class="stipendInternship">
-                            <p><i class="fa-solid fa-sack-dollar"></i> Stipend</p>
-                            <p>&#8377; <?php echo $row["stipend"]; ?> /month</p>
-                        </div>
-                    </div>
+                        ?>
+                    <div class="internshipCard internshipCard1">
+                    <form action="Internship.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
+                        <h1><?php echo $row["topic"]; ?></h1>
+                        <p class="company_namef"><?php echo $row["name"]; ?></p>
+                        <div class="locationP">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <?php echo $row["work_location"]; ?>
+                            <?php echo $row["location_name"]; ?>
+                            </div>
+                            <div class="mainDetails">
+                                <div class="lastDateapply">
+                                    <p><i class="fa-solid fa-calendar-days"></i> Last date to apply</p>
+                                    <p><?php echo $row["apply_by"]; ?></p>
+                                </div>
+                                <div class="durationInternship">
+                                    <p><i class="fa-solid fa-clock"></i> Duration</p>
+                                    <p><?php echo $row["duration"]; ?></p>
+                                </div>
+                                <div class="stipendInternship">
+                                    <p><i class="fa-solid fa-sack-dollar"></i> Stipend</p>
+                                    <p>&#8377; <?php echo $row["stipend"]; ?> /month</p>
+                                </div>
+                            </div>
 
-                    <!-- for storing the data of applied internship temporary -->
-                    <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
-                    <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
-                    <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>" style="display: none;">
-                    <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
-                    <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
-                    <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>" style="display: none;">
+                            <!-- for storing the data of applied internship temporary -->
+                            <input type="hidden" name="hidden_topic" value="<?php echo $row["topic"]; ?>" style="display: none;">
+                            <input type="hidden" name="hidden_location" value="<?php echo $row["work_location"] . ' ' . $row["location_name"]; ?>" style="display: none;">
+                            <input type="hidden" name="hidden_duration" value="<?php echo $row["duration"]; ?>" style="display: none;">
+                            <input type="hidden" name="hidden_com_id" value="<?php echo $row["com_id"]; ?>" style="display: none;">
+                            <input type="hidden" name="hidden_com_email" value="<?php echo $row["com_email"]; ?>" style="display: none;">
+                            <input type="hidden" name="hidden_int_id" value="<?php echo $row["id"]; ?>" style="display: none;">
 
-                    <div class="buttonNextstep">
-                        <a href="viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
-                        <button class="applyButton" type="submit" name="applyInternship">Apply</button>
-                    </div>
-            </form>
-                </div>
-            <?php
-                }
-            ?>
-        </div>
+                            <div class="buttonNextstep">
+                                <a href="viewDetailsinternship.php?id=<?php echo $row["id"]; ?>" class="details">View Details</a>
+                                <button class="applyButton" type="submit" name="applyInternship">Apply</button>
+                            </div>
+                    </form>
+                        </div>
+                    <?php
+                    }
+                    ?>
+            </div>
 
-        <h2 class="pageNumbers"><?php echo "Page $currentPage of $totalPages"; ?></h2> <!-- Display current page -->
+            <h2 class="pageNumbers"><?php echo "Page $currentPage of $totalPages"; ?></h2> <!-- Display current page -->
         
-        <!-- Pagination navigation -->
-        <div class="pagination">
-            <?php if ($currentPage > 1): ?>
-                <a href="?page=<?php echo $currentPage - 1; ?>">&lt;</a>
-            <?php endif; ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a <?php echo ($i === $currentPage) ? 'class="active"' : ''; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-            <?php endfor; ?>
-            <?php if ($currentPage < $totalPages): ?>
-                <a href="?page=<?php echo $currentPage + 1; ?>">&gt;</a>
-            <?php endif; ?>
-    </div>
-        <?php
-        if ($count > 0) {
-        } else {
-            echo "<p>No internships found.</p>";
-        }
-        ?>
-        <?php
+            <!-- Pagination navigation -->
+            <div class="pagination">
+                <?php if ($currentPage > 1): ?>
+                        <a href="?page=<?php echo $currentPage - 1; ?>">&lt;</a>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <a <?php echo ($i === $currentPage) ? 'class="active"' : ''; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endfor; ?>
+                <?php if ($currentPage < $totalPages): ?>
+                        <a href="?page=<?php echo $currentPage + 1; ?>">&gt;</a>
+                <?php endif; ?>
+        </div>
+            <?php
+            if ($count > 0) {
+            } else {
+                echo "<p>No internships found.</p>";
+            }
+            ?>
+            <?php
         }
         ?>
     </div>

@@ -17,7 +17,7 @@ if (isset($_POST["submitQuestion"])) {
     $addedSkillsArray = isset($_POST['addedSkills']) ? json_decode($_POST['addedSkills'], true) : []; // Decoding the JSON string to an array here
     $skillsString = implode(', ', $addedSkillsArray); // Converting the array into a string by imploding it
 
-    $query = "INSERT INTO `question_bank`(`email`, `Questions`, `OptionA`, `OptionB`, `OptionC`, `OptionD`, `right_option`, `skills`) 
+    $query = "INSERT INTO `question_bank`(`email`, `Questions`, `Option1`, `Option2`, `Option3`, `Option4`, `right_option`, `skills`) 
         values ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
 
     $result = mysqli_query($conn, $query);
