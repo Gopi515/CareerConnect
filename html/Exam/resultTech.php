@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['score'])) {
-    header("Location: takeExam.php");
+    header("Location: takeExamTech.php");
     exit();
 }
 
@@ -30,9 +30,9 @@ $total_questions = $_SESSION['total_questions'];
         </div>
 
         <?php if ($score <= 60): ?>
-            <a href="../Internship/internship.php" style="text-decoration: none; padding: 10px 15px; background-color: var(--fourth-col); color: var(--first-col); margin-top: 20px; border-radius: 20px; box-shadow: var(--box-shadow);">Go Back</a>
+            <a href="../Job/job.php" style="text-decoration: none; padding: 10px 15px; background-color: var(--fourth-col); color: var(--first-col); margin-top: 20px; border-radius: 20px; box-shadow: var(--box-shadow);">Go Back</a>
         <?php else: ?>
-            <a href="../Internship/applyInternship.php" style="text-decoration: none; padding: 10px 15px; background-color: var(--fourth-col); color: var(--first-col); margin-top: 20px; border-radius: 20px; box-shadow: var(--box-shadow);">Submit</a>
+            <a href="../Job/applyJob.php" style="text-decoration: none; padding: 10px 15px; background-color: var(--fourth-col); color: var(--first-col); margin-top: 20px; border-radius: 20px; box-shadow: var(--box-shadow);">Submit</a>
         <?php endif; ?>
     </div>
 </body>

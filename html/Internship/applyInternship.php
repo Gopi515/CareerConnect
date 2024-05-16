@@ -69,7 +69,7 @@ if (isset($_POST["submit"])) {
         mysqli_query($conn, $sql);
 
         // Unset session variables
-        unset($_SESSION['int_topic'], $_SESSION['int_loc'], $_SESSION['int_dur'], $_SESSION['int_com_id'], $_SESSION['int_com_email']);
+        unset($_SESSION['int_topic'], $_SESSION['int_loc'], $_SESSION['int_dur'], $_SESSION['int_com_id'], $_SESSION['int_com_email'] , $_SESSION['int_id']);
 
         // Redirect after successful submission
         echo "<script>alert('Application submitted successfully');</script>";
@@ -142,19 +142,8 @@ if (isset($_POST["submit"])) {
 
         </div>
 
-        <div class="assesment takeTest">
-            <h2>Take Test</h2>
-            <p>In the next step you will be facing 10 multiple choice questions based on the internship/job you are applying for. You will get 15 minutes to complete the exam. If you able to score 70% marks (7 correct out of 10 questions), then your application will be sucessfully submitted otherwise you can take the test again.
-            <br>
-            <br>
-            Good luck
-            </p>
-        </div>
 
-        <a href="../Exam/takeExam.php" class="giveTestbutton">Start test</a>
-
-
-        <!-- <button class="internshipApplybtn" type="submit" name="submit" onclick="redirectToAnotherPage()" style="margin-top: 200px;">Submit</button> -->
+        <button class="internshipApplybtn" type="submit" name="submit" onclick="redirectToAnotherPage()">Submit</button>
         <!-- onclick="redirectToAnotherPage()" -->
 
         </form>

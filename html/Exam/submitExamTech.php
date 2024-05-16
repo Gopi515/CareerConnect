@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['total_questions'] = $total_questions;
 
     // Redirect to result.php
-    header("Location: result.php");
+    header("Location: resultTech.php");
     exit();
 }
 ?>

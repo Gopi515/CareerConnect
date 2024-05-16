@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the submission was auto-submitted
     if (isset($_POST['autoSubmit']) && $_POST['autoSubmit'] == '1') {
         // Redirect to result.php
-        header("Location: result.php");
+        header("Location: resultTech.php");
         exit();
     }
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Take exam</title>
   </head>
   <body>
-    <a href="../Internship/internship.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 55px; margin-left: 40px;"></i></a>
+    <a href="../Job/job.php" class="goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: 55px; margin-left: 40px;"></i></a>
 
     <!-- headings and instructions -->
     <h1 class="takeExamheading">Take exam</h1>
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <!-- question section -->
-    <form action="submitExam.php" method="post" class="takeExamform" id="examForm">
+    <form action="submitExamTech.php" method="post" class="takeExamform" id="examForm">
       <input type="hidden" name="autoSubmit" id="autoSubmit" value="0">
 
       <!-- timer -->
@@ -54,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       require '../../dbconnect.php';
 
       // Get the internship ID from the URL parameter (you need to sanitize this input)
-      $internship_id = $_SESSION['int_id'];
+      $job_id = $_SESSION['job_id'];
 
       // Fetch internship details including skills from the database
-      $sql = "SELECT required_skills FROM internships WHERE id = $internship_id";
+      $sql = "SELECT required_skills FROM job WHERE id = $job_id";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
           }
       } else {
-          echo "Internship not found.";
+          echo "Job not found.";
       }
 
       $conn->close();
@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Function to cancel the exam and go back to the internship page
       function cancelExam() {
           localStorage.removeItem("endTime");
-          window.location.href = "../Internship/internship.php";
+          window.location.href = "../Job/job.php";
       }
 
       // Show the exam instructions popup when the page loads

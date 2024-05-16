@@ -128,7 +128,7 @@
                 </div>
 
 
-                <a href="../Internship/applyInternship.php" class="detailsApplybutton">Apply</a>
+                <a href="../Exam/takeExam.php" class="detailsApplybutton">Apply</a>
     <?php
             }
         }

@@ -20,7 +20,7 @@ if (!isset($_SESSION['mail'])) {
 <?php
 require_once '../../dbconnect.php';
 
-if (isset($_POST["applyJob"])) {
+if (isset($_POST["applyjob"])) {
     $job_topic = $_POST["hidden_topic"];
     $job_location = $_POST["hidden_location"];
     $job_com_id = $_POST["hidden_com_id"];
@@ -33,7 +33,7 @@ if (isset($_POST["applyJob"])) {
     $_SESSION['job_com_email'] = $job_com_email;
     $_SESSION['job_id'] = $job_id;
 
-    header("Location:../Exam/takeExam.php");
+    header("Location:../Exam/takeExamTech.php");
 }
 
 
@@ -181,7 +181,7 @@ if (isset($_POST["applyJob"])) {
         <div class="internshipOrder">
             <?php while ($row = mysqli_fetch_array($result)): ?>
                 <div class="internshipCard internshipCard1">
-                    <form action="Job.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
+                    <form action="job.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
                         <h1><?php echo $row["topic"]; ?></h1>
                         <p class="company_namef"><?php echo $row["name"]; ?></p>
                         <div class="locationP">

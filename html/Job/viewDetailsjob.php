@@ -134,7 +134,7 @@
                 </div>
 
 
-                <a href="../Job/applyJob.php" class="detailsApplybuttonJob">Apply</a>
+                <a href="../Exam/takeExamTech.php" class="detailsApplybuttonJob">Apply</a>
                 <?php
             }
         }
