@@ -97,10 +97,8 @@ if (isset($_POST["submitQuestion"])) {
             <!-- submit button -->
             <div class="letsgoright">
                 <div class="internQuestionthing">
-                    <button type="submit" value="submit" name="submitQuestion" onclick="submitAndAddAnother()">Submit
+                    <button type="submit" value="submit" name="submitQuestion">Submit
                         and Add another</button>
-                    <button type="submit" value="submit" name="submitQuestion" onclick="submitAndExit()">Submit and
-                        Exit</button>
                 </div>
             </div>
         </div>
@@ -109,7 +107,5 @@ if (isset($_POST["submitQuestion"])) {
 
 <!-- script -->
 <script src="../../../../javaScripts/internshipQuestion.js"></script>
-<script src="../../../../javaScripts/rightAnswerSelection.js"></script>
-<script src="../../../../javaScripts/submitdiff.js"></script>
 
 </html>
