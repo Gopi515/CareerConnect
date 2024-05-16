@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($adminpassword == $confirmpassword) {
         $HASH = password_hash($adminpassword, PASSWORD_DEFAULT);
-        $token = bin2hex(random_bytes(14));
+        $token = bin2hex(random_bytes(82));
         $sql = "INSERT INTO `admin` (`user_name`, `email`, `college_id`, `college_name`, `adminpass`, `token`) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ssisss", $username, $email, $collegeId, $collegeName, $HASH, $token);
