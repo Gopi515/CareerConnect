@@ -5,6 +5,22 @@ if (!isset($_SESSION['mail'])) {
 }
 ?>
 
+<?php
+require '../../dbconnect.php';
+$query = "SELECT * FROM internships ORDER BY topic ASC";
+$result1 = mysqli_query($conn, $query);
+
+$query = "SELECT * FROM internships ORDER BY topic DESC";
+$result2 = mysqli_query($conn, $query);
+
+$query = "SELECT * FROM job ORDER BY topic ASC";
+$result3 = mysqli_query($conn, $query);
+
+$query = "SELECT * FROM job ORDER BY topic DESC";
+$result4 = mysqli_query($conn, $query);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +29,7 @@ if (!isset($_SESSION['mail'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Landing Teacher</title>
   <link rel="stylesheet" href="../../style.css?v=<?php echo time(); ?>" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
@@ -118,157 +134,159 @@ if (!isset($_SESSION['mail'])) {
   </form>
 
   <!-- content area -->
-  <div class="content">
-    <div class="helloText">
-      <h1>Hi, There! &#128075;</h1>
-      <p>Explore</p>
-    </div>
-
-    <!-- trending section -->
-    <div class="trending">
-      <h1>Trending on CareerConnect &#128293;</h1>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card1 cards"></div>
-            <div class="card2 cards"></div>
-            <div class="card3 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card4 cards"></div>
-            <div class="card5 cards"></div>
-            <div class="card6 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card7 cards"></div>
-            <div class="card8 cards"></div>
-            <div class="card9 cards"></div>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+ <div class="content">
+      <div class="helloText">
+        <h1>Hi, There! &#128075;</h1>
+        <p>Explore</p>
       </div>
-    </div>
 
-    <!-- Internship section -->
-    <div class="Internship_section">
-      <h1>Internships</h1>
-      <div class="swiper mySwiper swiper-Int">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card10 cards">
-              <!-- <div class="infos">
-                        <h2>Android Teaching Assistance (Virtual)</h2>
-                        <div class="locationP">
-                        <i class="fa-solid fa-location-dot"></i> 
-
-                        <p>work from home</p>
-
-                      </div>
-                      </div> -->
+      <!-- trending section -->
+      <div class="trending">
+        <h1 style="margin-bottom: 80px">Internships</h1>
+        <a href="../Internship/internshipTeacher.php" class="landingToall">View all ></a>
+        <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <?php
+    while ($row = mysqli_fetch_assoc($result1)) {
+    ?>
+      <div class="swiper-slide">
+        <div class="detailodd">
+          <div class="lol">
+            <img src="../../assets/<?php echo $row['topic_image']; ?>" alt="image missing" />
+            <div class="content">
+              <h3><?php echo $row['topic']; ?></h3>
+              <i class="uil uil-desktop"></i>
+              <i class="uil uil-laptop"></i>
+              <div style="margin-top: 20px">
+                <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
+                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['stipend']; ?>/month</p>
+                <p><i class="fa-solid fa-clock"></i> <?php echo $row['duration']; ?> months</p>
+              </div>
+              <a href="../Internship/viewdetailsinternshipTeacher.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
             </div>
-            <div class="card11 cards"></div>
-            <div class="card12 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card13 cards"></div>
-            <div class="card14 cards"></div>
-            <div class="card15 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card16 cards"></div>
-            <div class="card17 cards"></div>
-            <div class="card18 cards"></div>
           </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
       </div>
-    </div>
-
-    <!-- Internship with job offer section -->
-    <div class="Internship-job-off">
-      <h1>Internships with job offer</h1>
-      <div class="swiper mySwiper swiper-intJbOff">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card19 cards"></div>
-            <div class="card20 cards"></div>
-            <div class="card21 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card22 cards"></div>
-            <div class="card23 cards"></div>
-            <div class="card24 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card25 cards"></div>
-            <div class="card26 cards"></div>
-            <div class="card27 cards"></div>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-
-    <!-- Jobs section -->
-    <div class="Job">
-      <h1>Jobs</h1>
-      <div class="swiper mySwiper swiper-jobs">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card28 cards"></div>
-            <div class="card29 cards"></div>
-            <div class="card30 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card31 cards"></div>
-            <div class="card32 cards"></div>
-            <div class="card33 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card34 cards"></div>
-            <div class="card35 cards"></div>
-            <div class="card36 cards"></div>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-
-    <!-- preferences section -->
-    <div class="preferences">
-      <h1>Internships and Jobs based on your preferences</h1>
-      <div class="swiper mySwiper swiper-preferences">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="card28 cards"></div>
-            <div class="card29 cards"></div>
-            <div class="card30 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card31 cards"></div>
-            <div class="card32 cards"></div>
-            <div class="card33 cards"></div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card34 cards"></div>
-            <div class="card35 cards"></div>
-            <div class="card36 cards"></div>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
+    <?php
+    }
+    ?>
   </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+      </div>
+
+      <!-- Internship section -->
+      <div class="Internship_section">
+        <h1 style="margin-bottom: -80px">New Internships</h1>
+        <a href="../Internship/internshipTeacher.php" class="landingToall" style="margin-top: 165px;">View all ></a>
+        <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <?php
+    while ($row = mysqli_fetch_assoc($result2)) {
+    ?>
+      <div class="swiper-slide">
+        <div class="detailodd">
+          <div class="lol">
+            <img src="../../assets/<?php echo $row['topic_image']; ?>" alt="image missing" />
+            <div class="content">
+              <h3><?php echo $row['topic']; ?></h3>
+              <i class="uil uil-desktop"></i>
+              <i class="uil uil-laptop"></i>
+              <div style="margin-top: 20px">
+                <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
+                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['stipend']; ?>/month</p>
+                <p><i class="fa-solid fa-clock"></i> <?php echo $row['duration']; ?> months</p>
+              </div>
+              <a href="../Internship/viewdetailsinternshipTeacher.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+      </div>
+
+      <!-- Jobs section -->
+      <div class="Job">
+        <h1 style="margin-bottom: -80px">Jobs</h1>
+        <a href="../Job/jobTeacher.php" class="landingToall" style="margin-top: 170px;">View all ></a>
+        <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <?php
+    while ($row = mysqli_fetch_assoc($result3)) {
+    ?>
+      <div class="swiper-slide">
+        <div class="detailodd">
+          <div class="lol">
+            <img src="../../assets/<?php echo $row['topic_image']; ?>" alt="image missing" />
+            <div class="content">
+              <h3><?php echo $row['topic']; ?></h3>
+              <i class="uil uil-desktop"></i>
+              <i class="uil uil-laptop"></i>
+              <div style="margin-top: 20px">
+                <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
+                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['CTC']; ?>/month</p>
+              </div>
+              <a href="../Job/viewdetailsjobTeacher.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+      </div>
+
+      <!-- preferences section -->
+      <div class="preferences">
+        <h1 style="margin-bottom: -80px">New Jobs</h1>
+        <a href="../Job/jobTeacher.php" class="landingToall" style="margin-top: 175px;">View all ></a>
+        <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <?php
+    while ($row = mysqli_fetch_assoc($result4)) {
+    ?>
+      <div class="swiper-slide">
+        <div class="detailodd">
+          <div class="lol">
+            <img src="../../assets/<?php echo $row['topic_image']; ?>" alt="image missing" />
+            <div class="content">
+              <h3><?php echo $row['topic']; ?></h3>
+              <i class="uil uil-desktop"></i>
+              <i class="uil uil-laptop"></i>
+              <div style="margin-top: 20px">
+                <p><i class="fa-solid fa-location-dot"></i> <?php echo $row['location_name']; ?></p>
+                <p><i class="fa-solid fa-money-bill"></i> <?php echo $row['CTC']; ?>/month</p>
+              </div>
+              <a href="../Job/viewdetailsjobTeacher.php?id=<?php echo $row["id"]; ?>" target="blank">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+      </div>
+    </div>
 
   <section class="home-section">
     <div id="blurBackground" class="blur-background" style="display: none"></div>
@@ -318,7 +336,8 @@ if (!isset($_SESSION['mail'])) {
   </footer>
 
   <!-- script -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="../../javaScripts/slider.js"></script>
   <script src="../../javaScripts/showDropdown.js"></script>
   <script src="../../javaScripts/buttonPop.js"></script>
