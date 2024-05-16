@@ -164,7 +164,7 @@
                 </label>
 
                 <!-- filter button -->
-                <button type="submit" name="filter">Apply Filters</button>
+                <button class="applyFilter" type="submit" name="filter">Apply Filters</button>
             </div>
 
         </form>

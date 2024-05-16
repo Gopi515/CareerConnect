@@ -78,7 +78,6 @@ require_once '../../dbconnect.php';
     $result = mysqli_query($conn, $query);
     $count = mysqli_num_rows($result);
 ?>
-?>
 
 
 <body>
@@ -91,8 +90,6 @@ require_once '../../dbconnect.php';
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton"><a href="../Internship/internshipTeacher.php">Internship</a></li>
                     <li id="button2" class="interJobbutton"><a href="#">Job</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
-                    <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
@@ -123,7 +120,7 @@ require_once '../../dbconnect.php';
         </i>
       </div>
        
-      <form method="POST" action="job.php">
+      <form method="POST" action="jobTeacher.php">
             <div class="filterOptions">
                 <!-- checkbox -->
                 <label class="container containerWfrmH">Work from home
@@ -149,7 +146,7 @@ require_once '../../dbconnect.php';
                 </label>
 
                 <!-- filter button -->
-                <button type="submit" name="filter">Apply Filters</button>
+                <button class="applyFilter" type="submit" name="filter">Apply Filters</button>
             </div>
 
         </form>
@@ -162,7 +159,7 @@ require_once '../../dbconnect.php';
         <div class="internshipOrder">
             <?php while ($row = mysqli_fetch_array($result)): ?>
                 <div class="internshipCard internshipCard1">
-                    <form action="Job.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
+                    <form action="jobTeacher.php?action=add&id=<?php echo $row["id"] ?>" method="POST">
                         <h1><?php echo $row["topic"]; ?></h1>
                         <p class="company_namef"><?php echo $row["name"]; ?></p>
                         <div class="locationP">

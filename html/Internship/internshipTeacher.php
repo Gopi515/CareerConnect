@@ -89,8 +89,6 @@
                 <ul class="nav-links">
                     <li id="button1" class="interJobbutton"><a href="#">Internship</a></li>
                     <li id="button2" class="interJobbutton"><a href="../Job/jobTeacher.php">Job</a></li>
-                    <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
-                    <li><a href="#"><i class="fas fa-message"></i></a></li>
                     <div class="dropdown">
                         <li onclick="toggleDropdown()"><a><i class="fas fa-user" id="postOptions"></i></a>
                             <div id="myDropdown" class="dropdown-content">
@@ -119,7 +117,7 @@
         </i>
       </div>
        
-      <form method="POST" action="Internship.php">
+      <form method="POST" action="internshipTeacher.php">
             <div class="filterOptions">
                 <!-- checkbox -->
                 <label class="container containerWfrmH">Work from home
@@ -145,7 +143,7 @@
                 </label>
 
                 <!-- filter button -->
-                <button type="submit" name="filter">Apply Filters</button>
+                <button class="applyFilter" type="submit" name="filter">Apply Filters</button>
             </div>
 
         </form>
@@ -158,7 +156,7 @@
         <div class="internshipOrder">
             <?php while ($row = mysqli_fetch_array($result)): ?>
                 <div class="internshipCard internshipCard1">
-                    <form action="Internship.php?action=add&id=<?php echo $row["id"]; ?>" method="POST">
+                    <form action="internshipTeacher.php?action=add&id=<?php echo $row["id"]; ?>" method="POST">
                         <h1><?php echo $row["topic"]; ?></h1>
                         <p class="company_namef"><?php echo $row["name"]; ?></p>
                         <div class="locationP">
