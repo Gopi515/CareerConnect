@@ -50,12 +50,14 @@ html {
 
 /*-------Main landing page-------*/
 .mainLandingPage {
-  background: linear-gradient(180deg,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244),
-      white,
-      rgb(217, 255, 244));
+  background: linear-gradient(
+    180deg,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244),
+    white,
+    rgb(217, 255, 244)
+  );
 }
 
 .navbar {
@@ -427,11 +429,13 @@ html {
   border: none;
   border-radius: 15px;
   margin: 0 auto;
-  background: linear-gradient(-45deg,
-      var(--fourth-col),
-      var(--third-col),
-      var(--third-col),
-      var(--fourth-col));
+  background: linear-gradient(
+    -45deg,
+    var(--fourth-col),
+    var(--third-col),
+    var(--third-col),
+    var(--fourth-col)
+  );
   display: flex;
   justify-content: center;
 }
@@ -1019,11 +1023,11 @@ footer {
   background-color: var(--third-col);
 }
 
-.filterContainer .container:hover input~.checkmark {
+.filterContainer .container:hover input ~ .checkmark {
   background-color: var(--fifth-col);
 }
 
-.filterContainer .container input:checked~.checkmark {
+.filterContainer .container input:checked ~ .checkmark {
   background-color: var(--fourth-col);
 }
 
@@ -1033,7 +1037,7 @@ footer {
   display: none;
 }
 
-.filterContainer .container input:checked~.checkmark:after {
+.filterContainer .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1314,7 +1318,7 @@ footer {
 
 .applicationForm {
   overflow-x: hidden;
-  height: 170%;
+  height: 180%;
 }
 
 .goBack {
@@ -1883,17 +1887,26 @@ footer {
   font-weight: 600;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedProfile {
   width: 27rem;
   margin-left: 5%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedLocation {
   width: 18rem;
   margin-left: 1%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipheading .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipheading
+  .appliedDuration {
   width: 17rem;
 }
 
@@ -1913,19 +1926,31 @@ footer {
   font-weight: 500;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedProfile {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedProfile {
   width: 13rem;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedLocation {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedLocation {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedDuration {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedDuration {
   margin-left: -3%;
 }
 
-.appliedInternship .applliedInternshiplist .appliedInternshipitems .appliedStatus {
+.appliedInternship
+  .applliedInternshiplist
+  .appliedInternshipitems
+  .appliedStatus {
   color: var(--first-col);
   padding-left: 9px;
   padding-right: 9px;
@@ -2758,9 +2783,9 @@ input::-webkit-inner-spin-button {
   font-size: 21px;
 }
 
-#male:checked~.label-1,
-#female:checked~.label-2,
-#others:checked~.label-3 {
+#male:checked ~ .label-1,
+#female:checked ~ .label-2,
+#others:checked ~ .label-3 {
   background-color: var(--fourth-col);
   color: var(--first-col);
 }
@@ -4448,4 +4473,70 @@ input[type="file"]::file-selector-button:hover {
 
 .examSubmitbtn:hover {
   transform: scale(1.1);
+}
+
+.examInstructions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  width: 70rem;
+  color: rgb(255, 112, 29);
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.giveTestbutton {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 240px;
+  margin-left: 160px;
+  padding: 10px 10px;
+  width: 10rem;
+  border-radius: 10px;
+  border: none;
+  color: var(--first-col);
+  background-color: var(--fourth-col);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+}
+.giveTestbutton:hover {
+  border-radius: 50px;
+  background-color: var(--third-col-dark);
+}
+
+#confirmationModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.timer {
+  position: fixed;
+  top: 345px;
+  left: 1000px;
+  background-color: var(--seventh-col);
+  padding: 10px;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  color: var(--fourth-col);
+  box-shadow: var(--box-shadow);
 }
