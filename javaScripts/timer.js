@@ -44,11 +44,6 @@ document.getElementById("examForm").addEventListener("submit", function () {
   sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage when the form is submitted
 });
 
-// Event listener for the popstate event to clear the sessionStorage when the user navigates back
-window.addEventListener("popstate", function () {
-  sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage when the user navigates back
-});
-
 // Function to reset the timer
 function resetTimer() {
   sessionStorage.removeItem("endTime"); // Remove the end time from sessionStorage
@@ -63,5 +58,15 @@ document.querySelector(".goBack").addEventListener("click", function () {
 window.addEventListener("popstate", function () {
   if (!formSubmitted) {
     resetTimer(); // Reset the timer when the user navigates back/forward
+  }
+});
+
+// Event listener for the beforeunload event to warn the user about leaving the page
+window.addEventListener("beforeunload", function (e) {
+  if (!formSubmitted) {
+    const confirmationMessage =
+      "Are you sure you want to leave? Your exam progress will be lost.";
+    e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+    return confirmationMessage; // Gecko, WebKit, Chrome <34
   }
 });

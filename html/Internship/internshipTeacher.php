@@ -233,6 +233,12 @@
     </footer>
 
 
+     <script>
+        window.history.forward(); 
+        function noBack() { 
+            window.history.forward(); 
+        } 
+    </script>
     <script src="../../javaScripts/dropdown.js"></script>
     <script src="../../javaScripts/inputDisable.js"></script>
     <script src="../../javaScripts/buttonSwitch.js"></script>

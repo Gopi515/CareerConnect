@@ -4632,7 +4632,7 @@ input[type="file"]::file-selector-button:hover {
 
 .timer {
   position: fixed;
-  top: 345px;
+  top: 205px;
   left: 1000px;
   background-color: var(--seventh-col);
   padding: 10px;
