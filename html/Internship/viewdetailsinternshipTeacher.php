@@ -74,10 +74,10 @@
                 <?php echo $row["id_count"];?> Applications
                 </h4>
 
-                <div class="detailsContaineroptions">
+                <!-- <div class="detailsContaineroptions">
                 <i class="bookmark fa-solid fa-bookmark"></i>
                 <i class="share fa-solid fa-share-nodes"></i>
-                </div>
+                </div> -->
                 </div>
 
                 <div class="companyAbout">

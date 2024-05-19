@@ -7,6 +7,8 @@ if (!isset($_SESSION['mail'])) {
 
 <?php
 require '../../dbconnect.php';
+
+$limit = 6;
 $query = "SELECT * FROM internships ORDER BY topic ASC";
 $result1 = mysqli_query($conn, $query);
 
@@ -55,7 +57,7 @@ $result4 = mysqli_query($conn, $query);
                   $correctOption = $getData[5];
                   $skillsString = $getData[6];
 
-                  $sql = "INSERT INTO `question_bank`(`email`, `Questions`, `OptionA`, `OptionB`, `OptionC`, `OptionD`, `right_option`, `skills`) 
+                  $sql = "INSERT INTO `question_bank`(`email`, `Questions`, `Option1`, `Option2`, `Option3`, `Option4`, `right_option`, `skills`) 
                       values ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
                   $result = mysqli_query($conn, $sql);
 

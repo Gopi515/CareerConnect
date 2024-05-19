@@ -60,12 +60,12 @@ header("Content-Type: text/html");
             <div class="overlay" id="overlay" style="display: none;"></div>
             <div id="RegisterNav">
                 <div class="twooptions">
-                    <div class="regop optionone">
+                    <!-- <div class="regop optionone">
                         <p>Want to register your college?</p>
                         <a class="adminreg" href="../LoginandRegister/adminRegister.php">
                             <div class="regbtnclg">Register college</div>
                         </a>
-                    </div>
+                    </div> -->
                     <div class="regop optiontwo">
                         <p>Already have a registered account?</p>
                         <a class="adminreg" href="../LoginandRegister/adminLogin.php">

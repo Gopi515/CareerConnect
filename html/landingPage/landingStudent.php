@@ -8,7 +8,7 @@ if (!isset($_SESSION['mail'])) {
 <?php
 require '../../dbconnect.php';
 
-$limit = 15;
+$limit = 6;
 
 $query = "SELECT * FROM internships ORDER BY topic ASC LIMIT $limit";
 $result1 = mysqli_query($conn, $query);
