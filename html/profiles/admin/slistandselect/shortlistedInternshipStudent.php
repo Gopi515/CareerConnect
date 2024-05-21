@@ -44,29 +44,28 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 ?>
 
 <?php
-    if(isset($_POST["Export"])){
-         
-        header('Content-Type: text/csv; charset=utf-8');  
-        header('Content-Disposition: attachment; filename=Intern_Shortlisted_Student.csv');  
-        $output = fopen("php://output", "w");  
-		
-        fputcsv($output, array('ID', 'First Name', 'Last Name', 'Email', 'Start Year', 'End Year', 'ZIP Code', 'City', 'State', 'Country', 'Company Name', 'Internship Topic', 'Work Location', 'Duration', 'Stipend'));
-        $status = "Company shortlisted your application";  
-        $query = "SELECT a.id, s.F_name, s.L_name, s.email, s.start_year, s.end_year, s.pin, s.city, s.state, s.country, p.name, a.profile, a.location, a.duration, i.stipend 
+if (isset($_POST["Export"])) {
+
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=Intern_Shortlisted_Student.csv');
+    $output = fopen("php://output", "w");
+
+    fputcsv($output, array('ID', 'First Name', 'Last Name', 'Email', 'Start Year', 'End Year', 'PIN No.', 'City', 'State', 'Country', 'Company Name', 'Internship Topic', 'Work Location', 'Duration', 'Stipend'));
+    $status = "Company shortlisted your application";
+    $query = "SELECT a.id, s.F_name, s.L_name, s.email, s.start_year, s.end_year, s.pin, s.city, s.state, s.country, p.name, a.profile, a.location, a.duration, i.stipend 
                 FROM internship_applied a 
                 LEFT JOIN internships i ON a.internship_id = i.id
                 LEFT JOIN com_personal_details p ON a.com_id = p.com_id
                 LEFT JOIN stu_personal_details s ON a.stu_id = s.stu_id
                 WHERE a.status = '$status'
-                ORDER BY a.id DESC" ;  
-        $result = mysqli_query($conn, $query);  
-        while($row = mysqli_fetch_assoc($result))  
-        {  
-             fputcsv($output, $row);  
-        }  
-        fclose($output);
-        exit();  
-    } 
+                ORDER BY a.id DESC";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        fputcsv($output, $row);
+    }
+    fclose($output);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +110,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(2)" data-column="2">Department<span class="sort-icon"></span></th>
                     <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
                     <th onclick="sortTable(4)" data-column="4">Batch<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(5)" data-column="5">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(5)" data-column="5">PIN No.<span class="sort-icon"></span></th>
                     <th onclick="sortTable(6)" data-column="6">City<span class="sort-icon"></span></th>
                     <th onclick="sortTable(7)" data-column="7">State<span class="sort-icon"></span></th>
                     <th onclick="sortTable(8)" data-column="8">Country<span class="sort-icon"></span></th>

@@ -71,7 +71,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
                     <th onclick="sortTable(3)" data-column="3">Email<span class="sort-icon"></span></th>
                     <th onclick="sortTable(4)" data-column="4">Mobile<span class="sort-icon"></span></th>
                     <th onclick="sortTable(5)" data-column="5">Date of Arrival<span class="sort-icon"></span></th>
-                    <th onclick="sortTable(6)" data-column="6">ZIP Code<span class="sort-icon"></span></th>
+                    <th onclick="sortTable(6)" data-column="6">PIN No.<span class="sort-icon"></span></th>
                     <th onclick="sortTable(7)" data-column="7">City<span class="sort-icon"></span></th>
                     <th onclick="sortTable(8)" data-column="8">State<span class="sort-icon"></span></th>
                     <th onclick="sortTable(9)" data-column="9">Country<span class="sort-icon"></span></th>

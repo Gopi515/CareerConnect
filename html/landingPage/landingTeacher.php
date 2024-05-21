@@ -138,7 +138,7 @@ $result4 = mysqli_query($conn, $query);
   <!-- content area -->
  <div class="content">
       <div class="helloText">
-        <h1>Hi, There! &#128075;</h1>
+        <h1>Hi there, Teacher! &#128075;</h1>
         <p>Explore</p>
       </div>
 
