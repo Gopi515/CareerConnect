@@ -71,7 +71,7 @@ $result = mysqli_stmt_get_result($stmt);
                     <th>Batch Year</th>
                     <th>Address 1</th>
                     <th>Address 2</th>
-                    <th>Zip Code</th>
+                    <th>PIN No.</th>
                     <th>City</th>
                     <th>State</th>
                     <th>Country</th>
