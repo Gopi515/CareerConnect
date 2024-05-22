@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Regular form submission logic
-    // ...
 
     // Redirect to result.php after processing the exam
     header("Location: result.php");
@@ -62,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       if ($result->num_rows > 0) {
           $row = $result->fetch_assoc();
-          $skills = explode(",", $row['required_skills']);
+          $skills = explode(", ", $row['required_skills']);
           $num_skills = count($skills);
 
           // Calculate the number of questions to select from each skill based on the specified criteria
