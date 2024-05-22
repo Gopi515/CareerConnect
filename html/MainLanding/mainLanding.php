@@ -56,7 +56,7 @@ header("Content-Type: text/html");
             </div>
 
             <!-- the admin page-->
-            <div class="navbar-button" onclick="openRegIn()">Register your college</div>
+            <div class="navbar-button" onclick="openRegIn()">Admin Login</div>
             <div class="overlay" id="overlay" style="display: none;"></div>
             <div id="RegisterNav">
                 <div class="twooptions">
@@ -67,9 +67,9 @@ header("Content-Type: text/html");
                         </a>
                     </div> -->
                     <div class="regop optiontwo">
-                        <p>Already have a registered account?</p>
+                        <p>Admin Login Here?</p>
                         <a class="adminreg" href="../LoginandRegister/adminLogin.php">
-                            <div class="regbtnclg">Admin Login</div>
+                            <div class="regbtnclg">Login</div>
                         </a>
                     </div>
                 </div>

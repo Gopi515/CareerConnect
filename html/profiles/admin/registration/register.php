@@ -72,8 +72,10 @@
                     mysqli_stmt_execute($stmt);
 
                     if ($stmt) {
-                        header("location: ./register.php");
-                        echo "<script>alert('$role has been successfully added. You will be redirected to the register page now.');</script>";
+                        echo "<script type=\"text/javascript\">
+                        alert(\"$role has been successfully added. You will be redirected to the register page now.\");
+                        window.location = \"./register.php\"
+                        </script>";
                         exit;
                     } else {
                         echo "<script>alert('Error: Registration failed. Please try again later.');</script>";
