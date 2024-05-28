@@ -116,6 +116,18 @@ function openxlsxT() {
 function closexlsxT() {
   document.getElementById("uploadModalT").style.display = "none";
 }
+function openxlsxExam() {
+  document.getElementById("uploadModalExam").style.display = "block";
+}
+function closexlsxExam() {
+  document.getElementById("uploadModalExam").style.display = "none";
+}
+function openxlsxSkill() {
+  document.getElementById("uploadModalSkill").style.display = "block";
+}
+function closexlsxSkill() {
+  document.getElementById("uploadModalSkill").style.display = "none";
+}
 function opendel() {
   document.getElementById("deleteModal").style.display = "flex";
   document.getElementById("blurBackground").style.display = "block";

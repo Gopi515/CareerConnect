@@ -49,7 +49,7 @@ if (isset($_POST["UpdateQuestion"])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Internship questions</title>
+    <title>Exam questions</title>
     <link rel="stylesheet" href="../../../../style.css?v=<?php echo time(); ?>" />
     <script src="https://kit.fontawesome.com/0d6185a30c.js" crossorigin="anonymous"></script>
 </head>
@@ -57,7 +57,7 @@ if (isset($_POST["UpdateQuestion"])) {
 <body>
 
     <!-- heading -->
-    <h1 class="interQuestionhead">Update Questions</h1>
+    <h1 class="interQuestionhead">Update Exam Questions</h1>
     <a href="../../../landingPage/landingTeacher.php" class="backinggo goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: -2.5%;"></i></a>
     <!-- <div style="width: 100%; margin: 10px"><div class="openCSV" style="cursor: pointer; background-color: #0083fa; border-radius: 25px; padding:10px; color: white; position: absolute; font-size: 20px; margin-top: -2.5%; float: right;">Import Question from CSV file</div></div> -->
 

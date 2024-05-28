@@ -49,7 +49,7 @@ $totalRecords = mysqli_fetch_assoc($totalRecordsResult)['total'];
 
 <body class="bg-img2">
     <div class="heading1">
-        <h1>Questions list</h1>
+        <h1>Skill Questions list</h1>
     </div>
     <a href="../../../landingPage/landingTeacher.php">
         <div class="regallclosebtn"><i class="fa-solid fa-caret-left" title="back to dashboard"></i></div>

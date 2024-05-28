@@ -84,6 +84,53 @@ $result4 = mysqli_query($conn, $query);
               </script>";
       }
   }
+
+  if (isset($_POST["skill_question_mass_data"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+      $filename = $_FILES["file"]["tmp_name"];
+      $file_extension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
+      // Check if the file extension is CSV
+      if ($file_extension === 'csv') {
+          if ($_FILES["file"]["size"] > 0) {
+              $file = fopen($filename, "r");
+
+              while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+
+                  $questionName = $getData[0];
+                  $option1 = $getData[1];
+                  $option2 = $getData[2];
+                  $option3 = $getData[3];
+                  $option4 = $getData[4];
+                  $correctOption = $getData[5];
+                  $skillsString = $getData[6];
+
+                  $sql = "INSERT INTO `skill_questions`(`email`, `Questions`, `Option1`, `Option2`, `Option3`, `Option4`, `right_option`, `skills`) 
+                      values ('{$_SESSION['mail']}', '$questionName', '$option1', '$option2', '$option3', '$option4', '$correctOption', '$skillsString')";
+                  $result = mysqli_query($conn, $sql);
+
+                  if (!isset($result)) {
+                      echo "<script type=\"text/javascript\">
+                          alert(\"Invalid File:Please Upload CSV File.\");
+                          window.location = \"landingTeacher.php\"
+                          </script>";
+                  } else {
+                      echo "<script type=\"text/javascript\">
+                          alert(\"CSV File has been successfully Imported.\");
+                          window.location = \"landingTeacher.php\"
+                          </script>";
+                  }
+              }
+
+              fclose($file);
+          }
+      } else {
+          // Display error message for invalid file type
+          echo "<script type=\"text/javascript\">
+              alert(\"Invalid File Type: Please Upload CSV File.\");
+              window.location = \"landingTeacher.php\"
+              </script>";
+      }
+  }
 ?>
 
 <body class="bg-img">
@@ -110,7 +157,8 @@ $result4 = mysqli_query($conn, $query);
                 <a href="../profiles/teacher/updateTeacherDetails.php">Update Profile</a>
                 <div class="uploadDrop" onclick="openUQ()">Upload Questions</div>
                 <!-- <a id="uploadLink" class="boxes CR" href="#"><div onclick="openxlsxC()">CSV Question Upload</div></a> -->
-                <a href="../profiles/teacher/Examination/viewQuestions.php">View Questions</a>
+                <a href="../profiles/teacher/Examination/viewQuestions.php">Exam Questions</a>
+                <a href="../profiles/teacher/skillTestQuestion/viewSkillQuestion.php">Skill Questions</a>
                 <a onclick="openLogOut()">Log Out</a>
               </div>
             </li>
@@ -126,15 +174,15 @@ $result4 = mysqli_query($conn, $query);
       <div class="QuestionOP optionone">
         <p>Upload Question for Skill test</p>
         <div class="QuestionsUL">
-          <a href="#" class="regbtnclg rightmarg">Individual Upload ></a>
-          <a href="#" class="regbtnclg rightmarg">CSV Upload ></a>
+          <a href="../profiles/teacher/skillTestQuestion/uploadSkillQuestion.php" class="regbtnclg rightmarg">Individual Upload ></a>
+          <a href="#" class="regbtnclg rightmarg" onclick="openxlsxSkill()">CSV Upload ></a>
         </div>
       </div>
       <div class="QuestionOP optiontwo">
         <p>Upload Question for Examination</p>
         <div class="QuestionsUL">
-          <a href="#" class="regbtnclg rightmarg">Individual Upload ></a>
-          <a href="#" class="regbtnclg rightmarg">CSV Upload ></a>          
+          <a href="../profiles/teacher/Examination/questionUpload.php" class="regbtnclg rightmarg">Individual Upload ></a>
+          <a href="#" class="regbtnclg rightmarg" onclick="openxlsxExam()">CSV Upload ></a>         
         </div>
       </div>
     </div>
@@ -142,16 +190,32 @@ $result4 = mysqli_query($conn, $query);
   </div>
 
   <form action="#" method="post" name="question_excel" enctype="multipart/form-data">
-    <div id="uploadModalC" class="modalXD">
+    <div id="uploadModalExam" class="modalXD">
         <div class=" modal-content-machine">
-            <div id="closemodal" onclick="closexlsxC()"><i class='bx bx-x'></i></div>
-            <h2>Upload the CSV to mass Enter Question</h2>
+            <div id="closemodal" onclick="closexlsxExam()"><i class='bx bx-x'></i></div>
+            <h2>Upload the CSV to mass Enter Exam Question</h2>
             <div id="dropArea">
                 <p>Click choose file button to browse</p>
                 <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
             </div>
             <div id="uploadResult"></div>
             <button type="submit" id="submit" name="question_mass_data">Upload</button>
+            <span id="fileName"></span>
+        </div>
+    </div>
+  </form>
+
+  <form action="#" method="post" name="skill_question_excel" enctype="multipart/form-data">
+    <div id="uploadModalSkill" class="modalXD">
+        <div class=" modal-content-machine">
+            <div id="closemodal" onclick="closexlsxSkill()"><i class='bx bx-x'></i></div>
+            <h2>Upload the CSV to mass Enter Skill Question</h2>
+            <div id="dropArea">
+                <p>Click choose file button to browse</p>
+                <input type="file" name="file" id="file" class="input-large" required accept=".csv" />
+            </div>
+            <div id="uploadResult"></div>
+            <button type="submit" id="submit" name="skill_question_mass_data">Upload</button>
             <span id="fileName"></span>
         </div>
     </div>

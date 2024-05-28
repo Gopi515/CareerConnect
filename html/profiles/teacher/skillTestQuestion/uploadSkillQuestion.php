@@ -44,7 +44,7 @@ if (isset($_POST["submitQuestion"])) {
 <body>
 
     <!-- heading -->
-    <h1 class="interQuestionhead">Add Questions</h1>
+    <h1 class="interQuestionhead">Add Skill Questions</h1>
     <a href="../../../landingPage/landingTeacher.php" class="backinggo goBack"><i class="fa-regular fa-circle-left" style="color: #0083fa; position: absolute; font-size: 50px; margin-top: -2.5%;"></i></a>
     <!-- <div style="width: 100%; margin: 10px"><div class="openCSV" style="cursor: pointer; background-color: #0083fa; border-radius: 25px; padding:10px; color: white; position: absolute; font-size: 20px; margin-top: -2.5%; float: right;">Import Question from CSV file</div></div> -->
 
