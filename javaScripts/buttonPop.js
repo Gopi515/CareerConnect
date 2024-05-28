@@ -133,3 +133,13 @@ function closePOP() {
   document.getElementById("choicePOP").style.display = "none";
   document.getElementById("blurBackground").style.display = "none";
 }
+
+function openUQ() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("UploadQues").style.display = "block";
+}
+
+function closeUQ() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("UploadQues").style.display = "none";
+}
