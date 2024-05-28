@@ -192,7 +192,7 @@ $result4 = mysqli_query($conn, $query);
   <form action="#" method="post" name="question_excel" enctype="multipart/form-data">
     <div id="uploadModalExam" class="modalXD">
         <div class=" modal-content-machine">
-            <div id="closemodal" onclick="closexlsxExam()"><i class='bx bx-x'></i></div>
+            <div id="fortheplace" onclick="closexlsxExam()"><i class='bx bx-x'></i></div>
             <h2>Upload the CSV to mass Enter Exam Question</h2>
             <div id="dropArea">
                 <p>Click choose file button to browse</p>
@@ -208,7 +208,7 @@ $result4 = mysqli_query($conn, $query);
   <form action="#" method="post" name="skill_question_excel" enctype="multipart/form-data">
     <div id="uploadModalSkill" class="modalXD">
         <div class=" modal-content-machine">
-            <div id="closemodal" onclick="closexlsxSkill()"><i class='bx bx-x'></i></div>
+            <div id="fortheplace" onclick="closexlsxSkill()"><i class='bx bx-x'></i></div>
             <h2>Upload the CSV to mass Enter Skill Question</h2>
             <div id="dropArea">
                 <p>Click choose file button to browse</p>
