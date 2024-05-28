@@ -176,7 +176,7 @@ if (isset($_POST["applyjob"])) {
     <!-- job listings -->
     <div class="internshipContainer">
     <?php if ($count > 0): ?>
-        <h2><?php echo $totalInternships . ' Total internships'; ?></h2> <!-- Display total internships -->
+        <h2><?php echo $totalInternships . ' Total jobs'; ?></h2> <!-- Display total jobs -->
         <div class="internshipOrder">
             <?php while ($row = mysqli_fetch_array($result)): ?>
                 <div class="internshipCard internshipCard1">
