@@ -137,9 +137,23 @@ function closePOP() {
 function openUQ() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("UploadQues").style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 function closeUQ() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("UploadQues").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+function openTheSkill() {
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("skilladdpart").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeTheSkill() {
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("skilladdpart").style.display = "none";
+  document.body.style.overflow = "auto";
 }
