@@ -98,8 +98,9 @@ $result4 = mysqli_query($conn, $query);
           </li>
           <li><a href="../Job/jobTeacher.php">Jobs</a></li>
           <li>
-            <a href="../profiles/teacher/Examination/questionUpload.php">Upload Questions</a>
+            <div id="UploadQuestionf" onclick="openUQ()">Upload Questions</div>
           </li>
+          <!-- ../profiles/teacher/Examination/questionUpload.php -->
           <div class="dropdown">
             <li onclick="toggleDropdown()">
               <a><i class="fas fa-user" id="postOptions"></i></a>
@@ -107,8 +108,8 @@ $result4 = mysqli_query($conn, $query);
                 <a href="../profiles/teacher/teacher.php">Create Profile</a>
                 <a href="../profiles/teacher/viewTeacherDetails.php">View Profile</a>
                 <a href="../profiles/teacher/updateTeacherDetails.php">Update Profile</a>
-                <a href="../profiles/teacher/Examination/questionUpload.php">Upload Questions</a>
-                <a id="uploadLink" class="boxes CR" href="#"><div onclick="openxlsxC()">CSV Question Upload</div></a>
+                <div class="uploadDrop" onclick="openUQ()">Upload Questions</div>
+                <!-- <a id="uploadLink" class="boxes CR" href="#"><div onclick="openxlsxC()">CSV Question Upload</div></a> -->
                 <a href="../profiles/teacher/Examination/viewQuestions.php">View Questions</a>
                 <a onclick="openLogOut()">Log Out</a>
               </div>
@@ -118,6 +119,27 @@ $result4 = mysqli_query($conn, $query);
       </div>
     </nav>
   </header>
+
+  <div class="overlay" id="overlay" style="display: none;"></div>
+  <div id="UploadQues">
+    <div class="stayOptions">
+      <div class="QuestionOP optionone">
+        <p>Upload Question for Skill test</p>
+        <div class="QuestionsUL">
+          <a href="#" class="regbtnclg rightmarg">Individual Upload ></a>
+          <a href="#" class="regbtnclg rightmarg">CSV Upload ></a>
+        </div>
+      </div>
+      <div class="QuestionOP optiontwo">
+        <p>Upload Question for Examination</p>
+        <div class="QuestionsUL">
+          <a href="#" class="regbtnclg rightmarg">Individual Upload ></a>
+          <a href="#" class="regbtnclg rightmarg">CSV Upload ></a>          
+        </div>
+      </div>
+    </div>
+    <div class="closeRegIn" id="closeUploadQuestion" onclick="closeUQ()"><i class="fa-solid fa-xmark"></i></div>
+  </div>
 
   <form action="#" method="post" name="question_excel" enctype="multipart/form-data">
     <div id="uploadModalC" class="modalXD">
