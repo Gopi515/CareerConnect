@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Calculate the score
-    $score = ($correct_answers_count / $total_questions) * 100;
+    $score = round(($correct_answers_count / $total_questions) * 100, 2);
 
     // Store the result in the session or database
     $_SESSION['score'] = $score;

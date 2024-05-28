@@ -47,6 +47,23 @@ $result4 = mysqli_query($conn, $query);
     ></script>
   </head>
 
+  <?php
+    if (isset($_POST['submit_skill'])) {
+      $skills = htmlspecialchars($_POST['skill']);
+      if (!empty($skills)) {
+        $_SESSION['test_skill'] = $skills;
+        header("location: ../skillTest/takeSkillExam.php");
+        exit();
+      } else {
+        echo "<script type=\"text/javascript\">
+                alert(\"Invalid File: Please select any skill.\");
+                window.location = \"landingStudent.php\";
+              </script>";
+        exit();
+      }
+    }
+  ?>
+
   <body class="bg-img">
     <!-- welcome section -->
     <header>
@@ -125,7 +142,7 @@ $result4 = mysqli_query($conn, $query);
               <div class="repeater" data-repeater-list="group-e">
                   <div data-repeater-item>
                       <div class="cv-form-row cv-form-row-skills">
-                          <div ss="form-elem">
+                          <form action="#" method="post" name="skill_question_excel" class="form-elem">
                               <div class="input-options">
                                   <div class="option-dropdown">
                                       <select name="skill" class="form-control skill" id="skill_select">
@@ -337,8 +354,8 @@ $result4 = mysqli_query($conn, $query);
                                       </select>
                                   </div>
                               </div>
-                              <div class="btn">Take Test</div>
-                          </div>
+                              <button class="btn" name="submit_skill">Take Test</button>
+                          </form>
                       </div>
                   </div>
               </div>

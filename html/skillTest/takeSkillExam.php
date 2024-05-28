@@ -56,13 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       require '../../dbconnect.php';
 
       // Get the internship ID from the URL parameter (you need to sanitize this input)
-      if (isset($_SESSION['int_id'])) {
-        $skill = $_SESSION['int_id'];
+      if (isset($_SESSION['test_skill'])) {
+        $skill = $_SESSION['test_skill'];
       
         $num_questions = 10;
           // Retrieve and display random questions from each skill
           $question_number = 1;
-          foreach ($num_questions_per_skill as $skill => $num_questions) {
               $sql = "SELECT * FROM skill_questions WHERE skills = '$skill' ORDER BY RAND() LIMIT $num_questions";
               $result = $conn->query($sql);
               
@@ -83,8 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       echo "<br />";
                       $question_number++;
                   }
+              } else {
+                  echo "No questions found.";
               }
-          }
       } else {
           echo "Please select any skill.";
       }
